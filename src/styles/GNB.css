@@ -1,0 +1,101 @@
+.GNB {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1000; /* 다른 요소 위에 배치 */
+    transition: background-color 0.8s ease, border-bottom 0.8s ease, box-shadow 0.8s ease, color 0.8s ease; /* 배경색, 테두리, 그림자, 텍스트 색상 변경 애니메이션 */
+}
+
+.GNB.scrolled {
+    background-color: white; /* 스크롤된 상태에서의 배경색 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* 스크롤된 상태에서의 아래쪽 테두리 */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* 스크롤된 상태에서의 아래쪽 그림자 */
+}
+
+.GNB.scrolled .GNBListDiv > .listA > p {
+    color: black;
+}
+
+.GNB.scrolled .GNBListDiv > .searchDiv {
+    background-color: #f1f1f1;
+}
+
+.GNBListDiv {
+    position: relative;
+    width: 90%;
+    min-width: 1200px;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+}
+
+.GNBListDiv > img {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.GNBListDiv > .listA {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.GNBListDiv > .listA > p {
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.GNBListDiv > .listA:hover {
+    transform: scale(1.2);
+}
+
+.GNBListDiv > .listA:hover > p {
+    font-weight: bold;
+    color: darkblue;
+}
+
+.GNB.scrolled .GNBListDiv > .listA:hover > p {
+    color: darkblue;
+}
+
+.GNBListDiv > .searchDiv {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.SearchIcon {
+    margin-top: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.GNBListDiv > .searchDiv > input {
+    width: 87%;
+    height: 80%;
+    border: 0;
+    font-size: 13px;
+    color: black;
+    outline: none;
+    background-color: transparent;
+}
+
+.GNBListDiv > .searchDiv > input::placeholder {
+    font-size: 11px;
+    color: gray;
+}
