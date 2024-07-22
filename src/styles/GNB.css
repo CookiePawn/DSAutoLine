@@ -10,8 +10,8 @@
 
 .GNB.scrolled {
     background-color: white; /* 스크롤된 상태에서의 배경색 */
+    opacity: 97%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* 스크롤된 상태에서의 아래쪽 테두리 */
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* 스크롤된 상태에서의 아래쪽 그림자 */
 }
 
 .GNB.scrolled .GNBListDiv > .listA > p {
