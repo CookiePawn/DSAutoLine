@@ -1,33 +1,19 @@
-import logo from './assets/logo.svg';
-import './styles/App.css';
-import GNB from './components/GNB'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import GNB from './components/GNB';
+import MainPage from './pages/MainPage';
+import EventPage from './pages/EventPage';
 
 function App() {
 	return (
-		<>
-			<GNB />
-			<div className="App">
-				
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>
-						DS AUTO LINE WEB DEV.
-					</p>
-					<a
-						className="App-link"
-						href="https://halved-writer-29b.notion.site/DS-AUTO-LINE-WEB-DEV-d7523b1774bc410fbccbb8243b2efcc4"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Notion
-					</a>
-				</header>
+		<Router>
+			<div>
+				<Routes>
+					<Route path="/" element={<MainPage />} />
+					<Route path="/Event" element={<EventPage />} />
+				</Routes>
 			</div>
-			<div className='HotSection'>
-
-			</div>
-		</>
-
+		</Router>
 	);
 }
 

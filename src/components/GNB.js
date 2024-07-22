@@ -4,7 +4,7 @@ import '../styles/GNB.css'
 import DSAutoLine from '../assets/DSAUTOLINE.png'
 
 const GNB = (props) => {
-    const [scrolled, setScrolled] = useState(false);
+    const [scrolled, setScrolled] = useState(props.stat);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,8 +15,10 @@ const GNB = (props) => {
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
-
+        if (props.stat == false) {
+            window.addEventListener('scroll', handleScroll);    
+        }
+        
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -26,11 +28,11 @@ const GNB = (props) => {
         <div className={`GNB ${scrolled ? 'scrolled' : ''}`}>
             <div className='GNBListDiv'>
                 {/* <MenuIcon size={25} color={'white'} /> */}
-                <img src={DSAutoLine} alt='DS Auto Line' />
+                <a href='/'><img src={DSAutoLine} alt='DS Auto Line' /></a>
                 <a className='listA'><p>빠른 간편 문의</p></a>
                 <a className='listA'><p>즉시 출고</p></a>
                 <a className='listA'><p>한정 특가</p></a>
-                <a className='listA'><p>이벤트/프로모션</p></a>
+                <a className='listA' href='/Event'><p>이벤트/프로모션</p></a>
                 <a className='listA'><p>고객 리뷰</p></a>
                 <a className='listA'><p>회사소개</p></a>
                 <div className='searchDiv'>

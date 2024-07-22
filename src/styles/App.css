@@ -1,3 +1,9 @@
+/* 전체 페이지의 가로 스크롤을 막기 */
+body {
+  overflow-x: hidden; /* 전체 페이지에서 가로 스크롤을 막음 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +20,7 @@
 }
 
 .App-header {
-  background-color: gray;
+  background-color: #c4c4c4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,6 +44,173 @@
 }
 
 
-.HotSection {
+.hotDealSection {
+  width: 100%;
   min-height: 100vh;
+  position: relative;
+}
+
+.hotDealSection > h1 {
+  margin-left: 60px;
+  margin-top: 100px;
+  margin-bottom: 13px;
+}
+
+.hotDealSection > p {
+  margin-left: 60px;
+  margin-bottom: 30px;
+}
+
+.hotDealListDiv {
+  position: relative;
+  margin-left: 60px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.3s ease;
+}
+
+.hotDealCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+  height: 515px;
+  border-radius: 12px;
+  border: 1px solid #EDEDED;
+  cursor: pointer;
+}
+
+.hotDealCard:hover {
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
+}
+
+.hotDealCardImg {
+  width: 90%;
+}
+
+.hotDealCardTitleDiv {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px; /* 자식 요소 사이의 간격 조정 (선택 사항) */
+}
+
+.hotDealCardTitleDiv > h2 {
+  margin: 0;
+}
+
+.hotDealCardTitleDiv > p {
+  font-weight: 600;
+  color: #767676;
+  background-color: #F0F2F4;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.hotDealCardModel {
+  width: 90%;
+  margin: 0;
+}
+
+.hotDealCardPriceDiv {
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.hotDealCardPriceDiv > p {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.hotDealCardPriceDiv > .hotDealCardPriceTitle {
+  color: #767676;
+}
+
+.hotDealCardPriceDiv > .hotDealCardPrice {
+  margin-left: auto;
+}
+
+.hotDealCardMonthPriceDiv {
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.hotDealCardMonthPriceDiv > p {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.hotDealCardMonthPriceDiv > .hotDealCardMonthPriceTitle {
+  color: #767676;
+}
+
+
+.hotDealCardMonthPriceDiv > .hotDealCardMonthPrice {
+  margin-left: auto;
+  font-size: 25px;
+}
+
+.hotDealCardMonthPriceDiv > .hotDealCardMonthPricePercent {
+  position: absolute;
+  right: 125px;
+}
+
+.hotDealCardMonthPriceDiv > .hotDealCardMonthPricePercent > span {
+  color: red;
+}
+
+
+
+
+.moveButton {
+  position: absolute;
+  top: 330px;
+  left: 60px;
+  width: 44px;
+  height: 44px;
+  background-color: #9FA5AB;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 80%;
+}
+
+.moveButton.right {
+  left: auto;
+  right: 60px;
+  left: initial;
+  z-index: 1000;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+.indicatorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #DBDBDB;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.indicatorDot.active {
+  background-color: #0064FF;
 }
