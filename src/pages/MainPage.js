@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../assets/logo.svg';
-import ray from '../assets/ray.png'
 import '../styles/App.css';
 import GNB from '../components/GNB';
+import {
+    HotDealCard,
+    QuickDealCard,
+    EventCard,
+    CardIndicator,
+    EventCardIndicator,
+} from '../components/Cards';
+import { sliderMove } from '../utils/SliderMove';
 
 
 const MainPage = (props) => {
     const [list, setList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 
-    const [offset, setOffset] = useState(0);
+
+    //한정 특가 변수
+    const [hotDealOffset, setHotDealOffset] = useState(0);
+    const [hotDealCurrentIndex, setHotDealCurrentIndex] = useState(0);
+
+    //즉시 출고 변수
+    const [quickDealOffset, setQuickDealOffset] = useState(0);
+    const [quickDealCurrentIndex, setQuickDealCurrentIndex] = useState(0);
+
+    //이벤트 변수
+    const [eventStart, setEventStart] = useState(0)
+    const [evnetEnd, setEventEnd] = useState(3)
+    const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
+
     const [containerWidth, setContainerWidth] = useState(window.innerWidth); // 창의 너비 초기화
-    const [currentIndex, setCurrentIndex] = useState(0); // 현재 슬라이드 인덱스
-    const cardWidth = 452; // 카드의 너비
-    const cardMargin = 10; // 카드 사이의 마진
-    const visibleCards = 4;
-    const paddingRight = 33; // 마지막 카드가 오른쪽에서 떨어질 거리
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,32 +41,6 @@ const MainPage = (props) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const sliderMove = (direction) => {
-        setOffset((prevOffset) => {
-            const totalWidth = (list.length * (cardWidth + cardMargin)) - cardMargin;
-            const maxOffset = totalWidth - (containerWidth + paddingRight); // 최대로 이동할 수 있는 오프셋
-
-            // 새 오프셋 계산
-            let newOffset = direction === 'left'
-                ? prevOffset - (cardWidth + cardMargin)
-                : prevOffset + (cardWidth + cardMargin);
-
-            // 새로운 오프셋이 0보다 작으면 0으로 설정
-            if (newOffset < 0) newOffset = 0;
-
-            // 새로운 오프셋이 최대 오프셋보다 크면 최대 오프셋으로 설정
-            if (newOffset > maxOffset) newOffset = maxOffset;
-
-            // 현재 인덱스 업데이트
-            const newIndex = Math.min(
-                Math.floor(newOffset / (cardWidth + cardMargin)),
-                list.length - visibleCards
-            );
-            setCurrentIndex(newIndex);
-
-            return newOffset;
-        });
-    };
 
 
     return (
@@ -74,47 +64,74 @@ const MainPage = (props) => {
                 </header>
             </div>
             <div className='hotDealSection'>
-                <button onClick={() => sliderMove('left', list, cardWidth, cardMargin, paddingRight, containerWidth)} className="moveButton">〈</button>
-                <button onClick={() => sliderMove('right', list, cardWidth, cardMargin, paddingRight, containerWidth)} className="moveButton right">〉</button>
+                <button onClick={() => sliderMove('left', list, 442, 10, -96, 4, containerWidth, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton">〈</button>
+                <button onClick={() => sliderMove('right', list, 442, 10, -96, 4, containerWidth, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton right">〉</button>
                 <h1>한정 특가</h1>
                 <p>한정 특가 서브 문구 생각해주세요</p>
-                <div className='hotDealListDiv' style={{ transform: `translateX(-${offset}px)` }}>
+                <div className='hotDealListDiv' style={{ transform: `translateX(-${hotDealOffset}px)` }}>
                     {list.map((item, idx) => (
-                        <div className='hotDealCard' style={{ marginLeft: idx == 0 ? 60 : 50 }}>
-                            <img src={ray} className='hotDealCardImg' />
-                            <span className='hotDealCardTitleDiv'>
-                                <h2>레이</h2>
-                                <p>48개월</p>
-                                <p>선납급 30%</p>
-                            </span>
-                            <p className='hotDealCardModel'>2024년형 가솔린 1.0 트랜디 (A/T)</p>
-                            <span className='hotDealCardPriceDiv'>
-                                <p className='hotDealCardPriceTitle'>차량가</p>
-                                <p className='hotDealCardPrice'>13,900,000원</p>
-                            </span>
-                            <span className='hotDealCardMonthPriceDiv'>
-                                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
-                                <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
-                                <p className='hotDealCardMonthPrice'> 205,150원</p>
-                            </span>
-                        </div>
+                        <HotDealCard item={item} idx={idx} />
                     ))}
                 </div>
                 {/* 슬라이드 인디케이터 */}
-                <div className='indicator'>
-                    {list.slice(0, list.length - 4).map((_, index) => (
-                        <span
-                            key={index}
-                            className={`indicatorDot ${currentIndex === index ? 'active' : ''}`}
-                            onClick={() => {
-                                // 클릭 시 해당 인덱스로 이동
-                                const newOffset = index * (cardWidth + cardMargin);
-                                setOffset(newOffset);
-                                setCurrentIndex(index);
-                            }}
-                        ></span>
+                <CardIndicator
+                    list={list}
+                    num={4}
+                    currentIndex={hotDealCurrentIndex}
+                    cardWidth={452}
+                    cardMargin={10}
+                    setOffset={setHotDealOffset}
+                    setCurrentIndex={setHotDealCurrentIndex}
+                />
+            </div>
+            <div className='quickDealSection'>
+                <button onClick={() => sliderMove('left', list, 442, 10, -96, 4, containerWidth, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton">〈</button>
+                <button onClick={() => sliderMove('right', list, 442, 10, -96, 4, containerWidth, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton right">〉</button>
+                <h1>즉시 출고</h1>
+                <p>즉시 출고 서브 문구 생각해주세요</p>
+                <div className='hotDealListDiv' style={{ transform: `translateX(-${quickDealOffset}px)` }}>
+                    {list.map((item, idx) => (
+                        <QuickDealCard item={item} idx={idx} />
                     ))}
                 </div>
+                {/* 슬라이드 인디케이터 */}
+                <CardIndicator
+                    list={list}
+                    num={4}
+                    currentIndex={quickDealCurrentIndex}
+                    cardWidth={452}
+                    cardMargin={10}
+                    setOffset={setQuickDealOffset}
+                    setCurrentIndex={setQuickDealCurrentIndex}
+                />
+            </div>
+            <div className='eventSection'>
+                <button onClick={() => {
+                    if (eventStart > 0) {
+                        setEventStart(eventStart - 3);
+                        setEventEnd(evnetEnd - 3)
+                        setEventCurrentIndex(eventCurrentIndex-1)
+                    }
+                }} className="moveButton" style={{top: 270}}>〈</button>
+                <button onClick={() => {
+                    if (evnetEnd <= list.length) {
+                        setEventStart(eventStart + 3);
+                        setEventEnd(evnetEnd + 3);
+                        setEventCurrentIndex(eventCurrentIndex+1)
+                    }
+                }} className="moveButton right" style={{top: 270}}>〉</button>
+                <h1>이벤트/프로모션</h1>
+                <p>이벤트 서브 문구 생각해주세요</p>
+                <div className='eventListDiv' style={{ width: containerWidth - 120 }}>
+                    {list.slice(eventStart, evnetEnd).map((item, idx) => (
+                        <EventCard item={item}/>
+                    ))}
+                </div>
+                <EventCardIndicator
+                    list={list}
+                    currentIndex={eventCurrentIndex}
+                    setCurrentIndex={setEventCurrentIndex}
+                />
             </div>
         </>
 
