@@ -1,6 +1,12 @@
-import '../styles/App.css'
+import '../styles/Footer.css'
 
 
+
+/**
+ * Footer
+ * @param {*} props 
+ * @returns 
+ */
 const Footer = (props) => {
     return (
         <footer className='footerSection'>

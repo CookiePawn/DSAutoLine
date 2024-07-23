@@ -1,0 +1,115 @@
+.categorySection {
+    width: 95%;
+    height: 450px;
+    margin: auto;
+    position: relative;
+}
+
+.categorySection > h1 {
+    margin-top: 200px;
+    margin-bottom: 0px;
+}
+
+.categorySection>p {
+    font-size: 13px;
+}
+
+.categoryTitleDiv {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.categoryTitleDiv > h3 {
+    margin-right: 30px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.7s, border-bottom 0.0s;
+}
+
+.categoryTitleDiv > h3.selected {
+    border-bottom: 2px solid black;
+    color: black;
+}
+
+.categoryTitleDiv > h3.unselected {
+    color: rgba(0, 0, 0, 0.4);
+    border-bottom: none;
+}
+
+
+
+
+.categorySection > span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+
+.carListSection {
+    width: 95%;
+    margin: auto;
+}
+
+.carListSection > div { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.carCard {
+    border-radius: 12px;
+    border: 1px solid #ededed;
+    cursor: pointer;
+    transition: all 0.7s ease;
+}
+
+.carCard:hover {
+    box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
+}
+
+
+.carCard > img {
+    max-width: 100%;
+    transition: all 0.3s ease;
+}
+
+.carCard:hover > img {
+    transform: scale(1.05);
+}
+
+.carCard > h2 {
+    width: 90%;
+    margin: auto;
+}
+
+.carCard > p {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.carCard > div {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.carCard > div > h3 {
+    margin: 0;
+    margin-left: auto;
+}
+
+.carCard > div > p {
+    margin: 0;
+    color: gray;
+}

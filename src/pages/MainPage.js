@@ -17,38 +17,27 @@ import { sliderMove } from '../utils/SliderMove';
 
 const MainPage = (props) => {
     const [list, setList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-
-
+    
     //한정 특가 변수
     const [hotDealOffset, setHotDealOffset] = useState(0);
     const [hotDealCurrentIndex, setHotDealCurrentIndex] = useState(0);
+    const [hotNum, setHotNum] = useState(0)
 
     //즉시 출고 변수
     const [quickDealOffset, setQuickDealOffset] = useState(0);
     const [quickDealCurrentIndex, setQuickDealCurrentIndex] = useState(0);
+    const [quickNum, setQuickNum] = useState(0)
 
     //이벤트 변수
     const [eventStart, setEventStart] = useState(0)
     const [evnetEnd, setEventEnd] = useState(3)
     const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
 
-    const [containerWidth, setContainerWidth] = useState(window.innerWidth); // 창의 너비 초기화
-
-
-    useEffect(() => {
-        const handleResize = () => {
-            setContainerWidth(window.innerWidth); // 창 크기 변경 시 업데이트
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-
     //카드 이동
     const [translateX1, setTranslateX1] = useState(0);
     const [translateX2, setTranslateX2] = useState(0);
 
+    //고객 리뷰 애니메이션
     useEffect(() => {
         let animationFrameId;
         const animate = () => {
@@ -62,8 +51,11 @@ const MainPage = (props) => {
     
 
 
+    //console.log('hot: ' + hotNum)
+    //console.log('quick: ' + quickNum)
+
     return (
-        <>
+        <div className='container'>
             <GNB stat={false} />
             <div className="App">
 
@@ -83,20 +75,20 @@ const MainPage = (props) => {
                 </header>
             </div>
             <div className='hotDealSection'>
-                <button onClick={() => sliderMove('left', list, 442, 10, -96, 4, containerWidth, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton">〈</button>
-                <button onClick={() => sliderMove('right', list, 442, 10, -96, 4, containerWidth, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton right">〉</button>
+                <button onClick={() => sliderMove('left', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton">〈</button>
+                <button onClick={() => sliderMove('right', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton right">〉</button>
                 <a className='moreBtn'>더보기 〉</a>
                 <h1>한정 특가</h1>
                 <p>한정 특가 서브 문구 생각해주세요</p>
                 <div className='hotDealListDiv' style={{ transform: `translateX(-${hotDealOffset}px)` }}>
                     {list.map((item, idx) => (
-                        <HotDealCard item={item} idx={idx} />
+                        <HotDealCard item={item} idx={idx} setIndex={setHotNum}/>
                     ))}
                 </div>
                 {/* 슬라이드 인디케이터 */}
                 <CardIndicator
                     list={list}
-                    num={3}
+                    num={hotNum}
                     currentIndex={hotDealCurrentIndex}
                     cardWidth={452}
                     cardMargin={10}
@@ -105,20 +97,20 @@ const MainPage = (props) => {
                 />
             </div>
             <div className='quickDealSection'>
-                <button onClick={() => sliderMove('left', list, 442, 10, -96, 4, containerWidth, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton">〈</button>
-                <button onClick={() => sliderMove('right', list, 442, 10, -96, 4, containerWidth, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton right">〉</button>
+                <button onClick={() => sliderMove('left', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton">〈</button>
+                <button onClick={() => sliderMove('right', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton right">〉</button>
                 <a className='moreBtn'>더보기 〉</a> 
                 <h1>즉시 출고</h1>
                 <p>즉시 출고 서브 문구 생각해주세요</p>
                 <div className='hotDealListDiv' style={{ transform: `translateX(-${quickDealOffset}px)` }}>
                     {list.map((item, idx) => (
-                        <QuickDealCard item={item} idx={idx} />
+                        <QuickDealCard item={item} idx={idx} setIndex={setQuickNum}/>
                     ))}
                 </div>
                 {/* 슬라이드 인디케이터 */}
                 <CardIndicator
                     list={list}
-                    num={3}
+                    num={quickNum}
                     currentIndex={quickDealCurrentIndex}
                     cardWidth={452}
                     cardMargin={10}
@@ -143,7 +135,7 @@ const MainPage = (props) => {
                 }} className="moveButton right" style={{ top: 270 }}>〉</button>
                 <h1>이벤트/프로모션</h1>
                 <p>이벤트 서브 문구 생각해주세요</p>
-                <div className='eventListDiv' style={{ width: containerWidth - 120 }}>
+                <div className='eventListDiv'>
                     {list.slice(eventStart, evnetEnd).map((item, idx) => (
                         <EventCard item={item} />
                     ))}
@@ -174,7 +166,7 @@ const MainPage = (props) => {
 
             </div>
             <Footer/>
-        </>
+        </div>
 
     );
 }

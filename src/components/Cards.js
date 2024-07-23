@@ -1,8 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css'
+import '../styles/QuickFAQPage.css'
 import ray from '../assets/ray.png'
 import casper from '../assets/casper.png'
 import { IoMdStar, IoMdStarOutline } from "react-icons/io";
+
+
+
+/**
+ * 메인 페이지 - 한정 특가 및 즉시 출고에 사용
+ * @returns 카드 크기
+ */
+const mainResize = () => {
+    if (window.innerWidth < 700) {
+        return (((window.innerWidth * 0.95) - 18) / 1);
+    } else if (window.innerWidth < 1070) {
+        return (((window.innerWidth * 0.95) - 69) / 2);
+    } else if (window.innerWidth < 1450) {
+        return (((window.innerWidth * 0.95) - 121) / 3);
+    } else {
+        return (((window.innerWidth * 0.95) - 173) / 4);
+    }
+};
+
+
+/**
+ * 빠른 간편 문의에 사용
+ * @returns 카드 크기
+ */
+const quickResize = () => {
+    // ~ 989 : 2개 
+    // 990 ~ 1239 : 3개
+    // 1240 ~ : 4개
+    // 1500 ~ : 5개
+    if (window.innerWidth < 990) {
+        return(((window.innerWidth * 0.95) - 51) / 2);
+    } else if (window.innerWidth < 1240) {
+        return(((window.innerWidth * 0.95) - 83) / 3);
+    } else if (window.innerWidth < 1499) {
+        return(((window.innerWidth * 0.95) - 115) / 4);
+    } else {
+        return(((window.innerWidth * 0.95) - 147) / 5);
+    }
+};
 
 
 /**
@@ -11,9 +51,24 @@ import { IoMdStar, IoMdStarOutline } from "react-icons/io";
  * @returns 
  */
 export const HotDealCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(mainResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(mainResize());
+            props.setIndex(Math.floor(window.innerWidth / mainResize()))
+        };
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
 
     return (
-        <div className='hotDealCard' style={{ marginLeft: props.idx === 0 ? 60 : 50 }}>
+        <div className='hotDealCard' style={{ minWidth: windowWidth }}>
             <img src={ray} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>레이</h2>
@@ -41,8 +96,23 @@ export const HotDealCard = (props) => {
  * @returns 
  */
 export const QuickDealCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(mainResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(mainResize());
+            props.setIndex(Math.floor(window.innerWidth / mainResize()))
+        };
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className='quickDealCard' style={{ marginLeft: props.idx === 0 ? 60 : 50 }}>
+        <div className='quickDealCard' style={{ minWidth: windowWidth }}>
             <img src={casper} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>현대 캐스퍼</h2>
@@ -87,12 +157,20 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard'>
+        <div className='eventCard' style={{minWidth: ((window.innerWidth * 0.95) - 36) / 3}}>
             <p>이벤트 {props.item}</p>
         </div>
     )
 }
 
+
+
+
+/**
+ * 메인 페이지 - 리뷰 카드
+ * @param {*} props 
+ * @returns 
+ */
 export const ReviewCard = (props) => {
     return (
         <div className='reviewCard'>
@@ -123,22 +201,16 @@ export const ReviewCard = (props) => {
 
 /**
  * 메인 페이지 - 카드 아래 현재 위치 표시
- * @param {list, num, currentIndex, cardWidth, cardMargin, setOffset(), setCurrentIndex()} props 
+ * @param {list, num, currentIndex, setOffset(), setCurrentIndex()} props 
  * @returns 
  */
 export const CardIndicator = (props) => {
     return (
         <div className='indicator'>
-            {props.list.slice(0, props.list.length - props.num).map((_, index) => (
+            {props.list.slice(0, props.list.length / props.num + 1).map((_, index) => (
                 <span
                     key={index}
                     className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
-                    onClick={() => {
-                        // 클릭 시 해당 인덱스로 이동
-                        const newOffset = index * (props.cardWidth + props.cardMargin);
-                        props.setOffset(newOffset);
-                        props.setCurrentIndex(index);
-                    }}
                 ></span>
             ))}
         </div>
@@ -159,11 +231,45 @@ export const EventCardIndicator = (props) => {
                 <span
                     key={index}
                     className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
-                    onClick={() => {
-                        props.setCurrentIndex(index);
-                    }}
                 ></span>
             ))}
+        </div>
+    )
+}
+
+
+
+
+
+/**
+ * 빠른 간편 문의 - 차량 리스트 카드
+ * @param {*} props 
+ * @returns 
+ */
+export const QuickCarCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(quickResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(quickResize());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    return (
+        <div className='carCard' style={{ maxWidth: windowWidth }}>
+            <img src={ray} alt='2024 Ray' />
+            <h2>레이</h2>
+            <p>2024년형 가솔린 1.0 트렌디 (A/T)</p>
+            <div>
+                <p>차량가</p>
+                <h3>13,900,000원</h3>
+            </div>
         </div>
     )
 }

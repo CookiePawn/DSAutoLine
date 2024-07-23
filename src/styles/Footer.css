@@ -1,0 +1,10 @@
+.footerSection {
+    height: 400px;
+    background-color: #3d3d3d;
+  }
+  
+  .footerSection > h1 {
+    color: white;
+    text-align: center;
+    padding-top: 70px;
+  }

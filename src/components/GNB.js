@@ -3,6 +3,13 @@ import { MenuIcon, SearchIcon } from './Icons'
 import '../styles/GNB.css'
 import DSAutoLine from '../assets/DSAUTOLINE.png'
 
+
+
+/**
+ * GNB
+ * @param {*} props 
+ * @returns 
+ */
 const GNB = (props) => {
     const [scrolled, setScrolled] = useState(props.stat);
 
@@ -29,12 +36,12 @@ const GNB = (props) => {
             <div className='GNBListDiv'>
                 {/* <MenuIcon size={25} color={'white'} /> */}
                 <a href='/'><img src={DSAutoLine} alt='DS Auto Line' /></a>
-                <a className='listA'><p>빠른 간편 문의</p></a>
+                <a className='listA' href='/QuickFAQ'><p>빠른 간편 문의</p></a>
                 <a className='listA'><p>즉시 출고</p></a>
                 <a className='listA'><p>한정 특가</p></a>
                 <a className='listA' href='/Event'><p>이벤트/프로모션</p></a>
                 <a className='listA'><p>고객 리뷰</p></a>
-                <a className='listA'><p>회사소개</p></a>
+                <a className='listA' href='/Enter'><p>회사소개</p></a>
                 <div className='searchDiv'>
                     <div className='SearchIcon'>
                         <SearchIcon size={22} color={'black'} />

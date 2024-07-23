@@ -45,29 +45,29 @@ body {
 
 
 .hotDealSection {
-  width: 100%;
+  width: 95%;
   min-height: 800px;
   position: relative;
+  margin: auto;
+  text-align: left;
 }
 
 .hotDealSection > h1 {
-  margin-left: 60px;
   margin-top: 100px;
   margin-bottom: 13px;
 }
 
 .hotDealSection > p {
-  margin-left: 60px;
   margin-bottom: 30px;
 }
 
 .hotDealListDiv {
+  width: 95%;
   position: relative;
-  margin-left: 60px;
-  margin: auto;
   display: flex;
   flex-direction: row;
   transition: all 0.3s ease;
+  gap: 50px;
 }
 
 .hotDealCard {
@@ -75,11 +75,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
-  height: 515px;
   border-radius: 12px;
   border: 1px solid #EDEDED;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .hotDealCard:hover {
@@ -87,7 +86,7 @@ body {
 }
 
 .hotDealCardImg {
-  width: 90%;
+  max-width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -109,11 +108,12 @@ body {
 }
 
 .hotDealCardTitleDiv > p {
+  font-size: 12px;
   font-weight: 600;
   color: #767676;
   background-color: #F0F2F4;
-  border-radius: 12px;
-  padding: 8px;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .hotDealCardModel {
@@ -154,6 +154,7 @@ body {
   font-size: 17px;
   font-weight: bold;
   margin: 0;
+  margin-bottom: 30px;
 }
 
 .hotDealCardMonthPriceDiv > .hotDealCardMonthPriceTitle {
@@ -181,7 +182,7 @@ body {
 .moveButton {
   position: absolute;
   top: 330px;
-  left: 60px;
+  left: 0px;
   width: 44px;
   height: 44px;
   background-color: #9FA5AB;
@@ -196,7 +197,7 @@ body {
 
 .moveButton.right {
   left: auto;
-  right: 60px;
+  right: 0px;
   left: initial;
   z-index: 1000;
   font-weight: bold;
@@ -205,7 +206,7 @@ body {
 
 .moreBtn {
   position: absolute;
-  right: 60px;
+  right: 0px;
   top: 60px;
   cursor: pointer;
   color: #767676;
@@ -224,7 +225,6 @@ body {
   border-radius: 50%;
   background-color: #DBDBDB;
   margin: 0 10px;
-  cursor: pointer;
 }
 .indicatorDot.active {
   background-color: #0064FF;
@@ -234,18 +234,17 @@ body {
 
 .quickDealSection {
   position: relative;
-  width: 100%;
+  width: 95%;
   height: 1000px;
+  margin: auto;
 }
 
 .quickDealSection > h1 {
-  margin-left: 60px;
   margin-top: 100px;
   margin-bottom: 13px;
 }
 
 .quickDealSection > p {
-  margin-left: 60px;
   margin-bottom: 30px;
 }
 
@@ -254,11 +253,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
-  height: 700px;
   border-radius: 12px;
   border: 1px solid #EDEDED;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .quickDealCard:hover {
@@ -307,8 +305,9 @@ body {
 
 .eventSection {
   position: relative;
-  width: 100%;
+  width: 95%;
   height: 700px;
+  margin: auto;
   text-align: center;
 }
 
@@ -321,13 +320,13 @@ body {
   display: flex;
   margin: auto;
   flex-direction: row;
+  gap: 10px;
 }
 
 .eventCard {
   position: relative;
-  min-width: 32.3%;
+  margin: auto;
   height: 340px;
-  margin:auto;
   border-radius: 20px;
   background-color: #c4c4c4;
   cursor: pointer;
@@ -409,13 +408,3 @@ body {
 
 
 
-.footerSection {
-  height: 400px;
-  background-color: #3d3d3d;
-}
-
-.footerSection > h1 {
-  color: white;
-  text-align: center;
-  padding-top: 70px;
-}
