@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react';
 import '../styles/App.css'
 import ray from '../assets/ray.png'
 import casper from '../assets/casper.png'
+import { IoMdStar, IoMdStarOutline } from "react-icons/io";
 
 
 /**
@@ -91,6 +93,29 @@ export const EventCard = (props) => {
     )
 }
 
+export const ReviewCard = (props) => {
+    return (
+        <div className='reviewCard'>
+            <div>
+                <div className='reviewCardStarDiv'>
+                    <IoMdStar size={25} color='yellow' />
+                    <IoMdStar size={25} color='yellow' />
+                    <IoMdStar size={25} color='yellow' />
+                    <IoMdStar size={25} color='yellow' />
+                    <IoMdStarOutline size={25} color='yellow' />
+                </div>
+                <h2>Jihwan***</h2>
+                <p>
+                    정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히
+                    심민혁 상담사님께서 매우 상세하고 이해하기 쉽게 설명해주셔서 큰 도움이 되
+                    었습니다. 상담 과정 내내 저의 필요한 상황을 충분히 고려해주셨고, 모든 질문
+                    에 성심성의껏 답해주셔서 감사했습니다.
+                </p>
+            </div>
+        </div>
+    )
+}
+
 
 
 
@@ -130,7 +155,7 @@ export const CardIndicator = (props) => {
 export const EventCardIndicator = (props) => {
     return (
         <div className='indicator'>
-            {props.list.slice(0, props.list.length/3 + 1 ).map((_, index) => (
+            {props.list.slice(0, props.list.length / 3 + 1).map((_, index) => (
                 <span
                     key={index}
                     className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
