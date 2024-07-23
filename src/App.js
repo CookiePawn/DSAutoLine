@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react
 import GNB from './components/GNB';
 import MainPage from './pages/MainPage';
 import EventPage from './pages/EventPage';
+import EventPage from './pages/EventPage';
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<MainPage />} />
 					<Route path="/Event" element={<EventPage />} />
+					<Route path="/Enter" element={<EnterPage />} />
 				</Routes>
 			</div>
 		</Router>
@@ -18,3 +20,4 @@ function App() {
 }
 
 export default App;
+ 
