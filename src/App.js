@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react
 import GNB from './components/GNB';
 import MainPage from './pages/MainPage';
 import EventPage from './pages/EventPage';
-import EventPage from './pages/EventPage';
+import EnterPage from './pages/EnterPage';
 
 function App() {
 	return (
