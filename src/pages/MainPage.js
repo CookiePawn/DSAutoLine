@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import logo from '../assets/logo.svg';
 import '../styles/App.css';
 import GNB from '../components/GNB';
+import Footer from '../components/Footer';
 import {
     HotDealCard,
     QuickDealCard,
@@ -172,9 +173,7 @@ const MainPage = (props) => {
                 <h1>제휴 파트너사</h1>
 
             </div>
-            <footer className='footerSection'>
-                <h1>FOOTER</h1>
-            </footer>
+            <Footer/>
         </>
 
     );
