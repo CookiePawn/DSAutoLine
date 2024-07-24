@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/QuickFAQPage.css'
 import GNB from '../components/GNB'
+import Footer from '../components/Footer'
 import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickCarCard } from '../components/Cards'
 
 
 const QuickFAQPage = (props) => {
     const [categoryStat, setCategoryStat] = useState(0)
+    const [carStat, setCarStat] = useState(null)
     const [brandStat, setBrandStat] = useState('hyundai')
 
     return (
@@ -30,11 +32,25 @@ const QuickFAQPage = (props) => {
                 <h2>차량 리스트</h2>
                 <div>
                     {Array.from({ length: 15 }, (_, index) => (
-                        <QuickCarCard />
+                        <QuickCarCard 
+                            index={index}
+                            carStat={carStat}
+                            setCarStat={setCarStat}
+                        />
                     ))}
 
                 </div>
             </div>
+            <div className='btnSection'>
+                {
+                    carStat === null 
+                        ? <span className='nonNextBtn'>다음으로</span>
+                        : <a className='nextBtn' href='/'>다음으로</a>
+                }
+                
+            </div>
+            
+            <Footer/>
         </>
     )
 }

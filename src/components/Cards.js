@@ -264,7 +264,11 @@ export const QuickCarCard = (props) => {
 
 
     return (
-        <div className='carCard' style={{ maxWidth: windowWidth }}>
+        <div 
+            className={`carCard ${props.carStat === props.index ? 'selected' : ''}`} 
+            style={{ maxWidth: windowWidth }} 
+            onClick={() => props.setCarStat(props.index)}
+        >
             <img src={ray} alt='2024 Ray' />
             <h2>레이</h2>
             <p>2024년형 가솔린 1.0 트렌디 (A/T)</p>

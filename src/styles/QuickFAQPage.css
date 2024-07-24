@@ -74,6 +74,9 @@
     box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
 }
 
+.carCard.selected {
+    border: 1px solid #0064FF;
+}
 
 .carCard > img {
     max-width: 100%;
@@ -113,4 +116,36 @@
 .carCard > div > p {
     margin: 0;
     color: gray;
+}
+
+
+
+.btnSection {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.nextBtn {
+    padding-left: 73px;
+    padding-right: 73px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #0064FF;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nonNextBtn {
+    padding-left: 73px;
+    padding-right: 73px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #9FA5AB;
+    border-radius: 12px;
+    color: white;
 }
