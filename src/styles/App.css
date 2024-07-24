@@ -79,6 +79,7 @@ body {
   border: 1px solid #EDEDED;
   cursor: pointer;
   transition: all 0.5s ease;
+  box-sizing: border-box
 }
 
 .hotDealCard:hover {
@@ -257,6 +258,7 @@ body {
   border: 1px solid #EDEDED;
   cursor: pointer;
   transition: all 0.5s ease;
+  box-sizing: border-box;
 }
 
 .quickDealCard:hover {

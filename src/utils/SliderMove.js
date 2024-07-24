@@ -10,8 +10,8 @@ export const sliderMove = (direction, list, num, offset, currentIndex, setOffset
     setOffset(() => {
         // 새 오프셋 계산
         let newOffset = direction === 'left'
-            ? -window.innerWidth - (window.innerWidth * 0.025)
-            : window.innerWidth - (window.innerWidth * 0.025);
+            ? -(document.body.clientWidth * 0.95 + 50)
+            : document.body.clientWidth * 0.95 + 50;
 
         if (direction === 'left') {
             if (currentIndex > 0) {
@@ -22,14 +22,14 @@ export const sliderMove = (direction, list, num, offset, currentIndex, setOffset
         }
 
         let result = offset + newOffset
-        console.log(list.length/num)
-        console.log(currentIndex+1)
 
         // 새로운 오프셋이 0보다 작으면 0으로 설정
         if (result < 0) result = 0;
-        if (list.length/num <= currentIndex+1) {
-            setCurrentIndex(0);
-            result=0;
+        if (list.length / num <= currentIndex + 1) {
+            if (direction === 'right') {
+                setCurrentIndex(0);
+                result = 0;
+            }
         }
         return result
     });

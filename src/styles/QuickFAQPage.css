@@ -67,6 +67,7 @@
     border: 1px solid #ededed;
     cursor: pointer;
     transition: all 0.7s ease;
+    box-sizing: border-box;
 }
 
 .carCard:hover {

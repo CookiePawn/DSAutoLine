@@ -12,14 +12,14 @@ import { IoMdStar, IoMdStarOutline } from "react-icons/io";
  * @returns 카드 크기
  */
 const mainResize = () => {
-    if (window.innerWidth < 700) {
-        return (((window.innerWidth * 0.95) - 18) / 1);
-    } else if (window.innerWidth < 1070) {
-        return (((window.innerWidth * 0.95) - 69) / 2);
-    } else if (window.innerWidth < 1450) {
-        return (((window.innerWidth * 0.95) - 121) / 3);
+    if (document.body.clientWidth < 700) {
+        return (((document.body.clientWidth * 0.95) - 0) / 1);
+    } else if (document.body.clientWidth < 1070) {
+        return (((document.body.clientWidth * 0.95) - 50) / 2);
+    } else if (document.body.clientWidth < 1450) {
+        return (((document.body.clientWidth * 0.95) - 100) / 3);
     } else {
-        return (((window.innerWidth * 0.95) - 173) / 4);
+        return (((document.body.clientWidth * 0.95) - 150) / 4);
     }
 };
 
@@ -33,7 +33,9 @@ const quickResize = () => {
     // 990 ~ 1239 : 3개
     // 1240 ~ : 4개
     // 1500 ~ : 5개
-    if (window.innerWidth < 990) {
+    if (window.innerWidth < 500) {
+        return(((window.innerWidth * 0.95) - 0) / 1);
+    } else if (window.innerWidth < 990) {
         return(((window.innerWidth * 0.95) - 51) / 2);
     } else if (window.innerWidth < 1240) {
         return(((window.innerWidth * 0.95) - 83) / 3);
