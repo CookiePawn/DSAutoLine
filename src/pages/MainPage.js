@@ -94,7 +94,7 @@ const MainPage = (props) => {
                             className="moveButton right">〉</button>
                     </>
                 )}
-                <a className='moreBtn'>더보기 〉</a>
+                <a className='moreBtn' href='/HotDeal'>더보기 〉</a>
                 <h1>한정 특가</h1>
                 <p>한정 특가 서브 문구 생각해주세요</p>
                 <div

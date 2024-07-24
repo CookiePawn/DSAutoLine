@@ -12,6 +12,7 @@
 
 .categorySection>p {
     font-size: 13px;
+    color: #767676;
 }
 
 .categoryTitleDiv {
@@ -117,7 +118,6 @@
     margin: 0;
     color: gray;
 }
-
 
 
 .btnSection {

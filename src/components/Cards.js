@@ -39,7 +39,7 @@ const quickResize = () => {
         return(((window.innerWidth * 0.95) - 51) / 2);
     } else if (window.innerWidth < 1240) {
         return(((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1499) {
+    } else if (window.innerWidth < 1799) {
         return(((window.innerWidth * 0.95) - 115) / 4);
     } else {
         return(((window.innerWidth * 0.95) - 147) / 5);
@@ -276,6 +276,52 @@ export const QuickCarCard = (props) => {
                 <p>차량가</p>
                 <h3>13,900,000원</h3>
             </div>
+        </div>
+    )
+}
+
+
+
+
+
+/**
+ * 한정 특가 - 차량 리스트 카드
+ * @param {*} props 
+ * @returns 
+ */
+export const HotDealCarCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(quickResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(quickResize());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    return (
+        <div className='hotDealCard' style={{ maxWidth: windowWidth }}>
+            <img src={ray} className='hotDealCardImg' />
+            <span className='hotDealCardTitleDiv'>
+                <h2>레이</h2>
+                <p>48개월</p>
+                <p>선납급 30%</p>
+            </span>
+            <p className='hotDealCardModel'>2024년형 가솔린 1.0 트랜디 (A/T)</p>
+            <span className='hotDealCardPriceDiv'>
+                <p className='hotDealCardPriceTitle'>차량가</p>
+                <p className='hotDealCardPrice'>13,900,000원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
+                <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
+                <p className='hotDealCardMonthPrice'> 205,150원</p>
+            </span>
         </div>
     )
 }
