@@ -133,7 +133,7 @@ const MainPage = (props) => {
                     </>
                 )}
 
-                <a className='moreBtn'>더보기 〉</a>
+                <a className='moreBtn' href='/QuickDeal'>더보기 〉</a>
                 <h1>즉시 출고</h1>
                 <p>즉시 출고 서브 문구 생각해주세요</p>
                 <div

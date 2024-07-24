@@ -34,15 +34,15 @@ const quickResize = () => {
     // 1240 ~ : 4개
     // 1500 ~ : 5개
     if (window.innerWidth < 500) {
-        return(((window.innerWidth * 0.95) - 0) / 1);
+        return (((window.innerWidth * 0.95) - 0) / 1);
     } else if (window.innerWidth < 990) {
-        return(((window.innerWidth * 0.95) - 51) / 2);
-    } else if (window.innerWidth < 1240) {
-        return(((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1799) {
-        return(((window.innerWidth * 0.95) - 115) / 4);
+        return (((window.innerWidth * 0.95) - 51) / 2);
+    } else if (window.innerWidth < 1450) {
+        return (((window.innerWidth * 0.95) - 83) / 3);
+    } else if (window.innerWidth < 1929) {
+        return (((window.innerWidth * 0.95) - 115) / 4);
     } else {
-        return(((window.innerWidth * 0.95) - 147) / 5);
+        return (((window.innerWidth * 0.95) - 147) / 5);
     }
 };
 
@@ -159,7 +159,7 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard' style={{minWidth: ((window.innerWidth * 0.95) - 36) / 3}}>
+        <div className='eventCard' style={{ minWidth: ((window.innerWidth * 0.95) - 36) / 3 }}>
             <p>이벤트 {props.item}</p>
         </div>
     )
@@ -264,9 +264,9 @@ export const QuickCarCard = (props) => {
 
 
     return (
-        <div 
-            className={`carCard ${props.carStat === props.index ? 'selected' : ''}`} 
-            style={{ maxWidth: windowWidth }} 
+        <div
+            className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
+            style={{ maxWidth: windowWidth }}
             onClick={() => props.setCarStat(props.index)}
         >
             <img src={ray} alt='2024 Ray' />
@@ -321,6 +321,65 @@ export const HotDealCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
                 <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
                 <p className='hotDealCardMonthPrice'> 205,150원</p>
+            </span>
+        </div>
+    )
+}
+
+
+/**
+ * 즉시 출고 - 차량 리스트 카드
+ * @param {*} props 
+ * @returns 
+ */
+export const QuickDealCarCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(quickResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(quickResize());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    return (
+        <div className='quickDealCard' style={{ maxWidth: windowWidth }}>
+            <img src={casper} className='hotDealCardImg' />
+            <span className='hotDealCardTitleDiv'>
+                <h2>현대 캐스퍼</h2>
+                <p>48개월</p>
+                <p>선납급 30%</p>
+            </span>
+            <p className='hotDealCardModel'>2023년형 가솔린 터보 1.0 인스퍼레이션 (A/T)</p>
+            <span className='quickDealCardOptionDiv'>
+                <p className='quickDealCardTitle1'>외장</p>
+                <p className='quickDealCardInfo1'>아틀라스 화이트</p>
+            </span>
+            <span className='quickDealCardOptionDiv'>
+                <p className='quickDealCardTitle1'>내장</p>
+                <p className='quickDealCardInfo1'>라이트 그레이/블루</p>
+            </span>
+            <span className='quickDealCardOptionDiv'>
+                <p className='quickDealCardTitle1'>옵션</p>
+                <div className='quickDealCardInfoDiv'>
+                    <p className='quickDealCardInfo1'>기본가/오토</p>
+                    <p className='quickDealCardInfo1'>기본가/오토</p>
+                    <p className='quickDealCardInfo1'>기본가/오토</p>
+                </div>
+            </span>
+            <div className='quickDealCardBorder' />
+            <span className='hotDealCardPriceDiv'>
+                <p className='hotDealCardPriceTitle'>차량가</p>
+                <p className='hotDealCardPrice'>20,100,000원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
+                <p className='hotDealCardMonthPrice'> 245,400원</p>
             </span>
         </div>
     )

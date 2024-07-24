@@ -37,7 +37,7 @@ const GNB = (props) => {
                 {/* <MenuIcon size={25} color={'white'} /> */}
                 <a href='/'><img src={DSAutoLine} alt='DS Auto Line' /></a>
                 <a className='listA' href='/QuickFAQ'><p>빠른 간편 문의</p></a>
-                <a className='listA'><p>즉시 출고</p></a>
+                <a className='listA' href='/QuickDeal'><p>즉시 출고</p></a>
                 <a className='listA' href='/HotDeal'><p>한정 특가</p></a>
                 <a className='listA' href='/Event'><p>이벤트/프로모션</p></a>
                 <a className='listA'><p>고객 리뷰</p></a>

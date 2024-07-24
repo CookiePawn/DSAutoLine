@@ -5,6 +5,7 @@ import EventPage from './pages/EventPage';
 import EnterPage from './pages/EnterPage';
 import QuickFAQPage from './pages/QuickFAQPage';
 import HotDealPage from './pages/HotDealPage';
+import QuickDealPage from './pages/QuickDealPage';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Route path="/Enter" element={<EnterPage />} />
 					<Route path='/QuickFAQ' element={<QuickFAQPage />} />
 					<Route path='/HotDeal' element={<HotDealPage />} />
+					<Route path='/QuickDeal' element={<QuickDealPage />} />
 				</Routes>
 			</div>
 		</Router>

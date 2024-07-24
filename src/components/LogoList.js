@@ -6,6 +6,7 @@ import genesisLogo from '../assets/genesisLogo.png'
 import chevroletLogo from '../assets/chevroletLogo.png'
 import renaultLogo from '../assets/renaultLogo.png'
 import kgmLogo from '../assets/kgmLogo.png'
+import allLogo from '../assets/ALL.png'
 
 
 
@@ -18,6 +19,15 @@ export const KoreaLogo = (props) => {
 
     return (
         <div className='koreaLogoDiv'>
+            {props.all && (
+                <div
+                    onClick={() => props.setStat('all')}
+                    className={stat === 'all' ? 'selectedLogo' : ''}
+                >
+                    <img src={allLogo} alt="전체" />
+                    <p>전체</p>
+                </div>
+            )}
             <div
                 onClick={() => props.setStat('hyundai')}
                 className={stat === 'hyundai' ? 'selectedLogo' : ''}
