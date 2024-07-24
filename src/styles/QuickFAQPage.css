@@ -75,7 +75,7 @@
 }
 
 .carCard.selected {
-    border: 1px solid #0064FF;
+    border: 2px solid #0064FF;
 }
 
 .carCard > img {

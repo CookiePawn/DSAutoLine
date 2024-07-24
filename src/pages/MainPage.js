@@ -17,21 +17,24 @@ import { sliderMove } from '../utils/SliderMove';
 
 const MainPage = (props) => {
     const [list, setList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-    
+
     //한정 특가 변수
     const [hotDealOffset, setHotDealOffset] = useState(0);
     const [hotDealCurrentIndex, setHotDealCurrentIndex] = useState(0);
     const [hotNum, setHotNum] = useState(0)
+    const [hotHovered, setHotHovered] = useState(false);
 
     //즉시 출고 변수
     const [quickDealOffset, setQuickDealOffset] = useState(0);
     const [quickDealCurrentIndex, setQuickDealCurrentIndex] = useState(0);
     const [quickNum, setQuickNum] = useState(0)
+    const [quickHovered, setQuickHovered] = useState(false);
 
     //이벤트 변수
     const [eventStart, setEventStart] = useState(0)
     const [evnetEnd, setEventEnd] = useState(3)
     const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
+    const [eventHovered, setEventHovered] = useState(false);
 
     //카드 이동
     const [translateX1, setTranslateX1] = useState(0);
@@ -41,14 +44,14 @@ const MainPage = (props) => {
     useEffect(() => {
         let animationFrameId;
         const animate = () => {
-            setTranslateX1(prevTranslateX => (prevTranslateX + 1) % (615*list.length)); // 1px씩 이동, 100에 도달하면 0으로 리셋
-            setTranslateX2(prevTranslateX => (prevTranslateX + 2) % (615*list.length)); // 2px씩 이동, 100에 도달하면 0으로 리셋
+            setTranslateX1(prevTranslateX => (prevTranslateX + 1) % (615 * list.length)); // 1px씩 이동, 100에 도달하면 0으로 리셋
+            setTranslateX2(prevTranslateX => (prevTranslateX + 2) % (615 * list.length)); // 2px씩 이동, 100에 도달하면 0으로 리셋
             animationFrameId = requestAnimationFrame(animate);
         };
         animationFrameId = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(animationFrameId);
     }, []);
-    
+
 
 
     //console.log('hot: ' + hotNum)
@@ -74,15 +77,32 @@ const MainPage = (props) => {
                     </a>
                 </header>
             </div>
-            <div className='hotDealSection'>
-                <button onClick={() => sliderMove('left', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton">〈</button>
-                <button onClick={() => sliderMove('right', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)} className="moveButton right">〉</button>
+            <div
+                className='hotDealSection'
+                onMouseEnter={() => setHotHovered(true)}
+                onMouseLeave={() => setHotHovered(false)}
+            >
+                {hotHovered && (
+                    <>
+                        <button
+                            onMouseEnter={() => setHotHovered(true)}
+                            onClick={() => sliderMove('left', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            className="moveButton">〈</button>
+                        <button
+                            onMouseEnter={() => setHotHovered(true)}
+                            onClick={() => sliderMove('right', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            className="moveButton right">〉</button>
+                    </>
+                )}
                 <a className='moreBtn'>더보기 〉</a>
                 <h1>한정 특가</h1>
                 <p>한정 특가 서브 문구 생각해주세요</p>
-                <div className='hotDealListDiv' style={{ transform: `translateX(-${hotDealOffset}px)` }}>
+                <div
+                    className='hotDealListDiv'
+                    style={{ transform: `translateX(-${hotDealOffset}px)` }}
+                >
                     {list.map((item, idx) => (
-                        <HotDealCard item={item} idx={idx} setIndex={setHotNum}/>
+                        <HotDealCard item={item} idx={idx} setIndex={setHotNum} />
                     ))}
                 </div>
                 {/* 슬라이드 인디케이터 */}
@@ -96,15 +116,32 @@ const MainPage = (props) => {
                     setCurrentIndex={setHotDealCurrentIndex}
                 />
             </div>
-            <div className='quickDealSection'>
-                <button onClick={() => sliderMove('left', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton">〈</button>
-                <button onClick={() => sliderMove('right', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)} className="moveButton right">〉</button>
-                <a className='moreBtn'>더보기 〉</a> 
+            <div className='quickDealSection'
+                onMouseEnter={() => setQuickHovered(true)}
+                onMouseLeave={() => setQuickHovered(false)}
+            >
+                {quickHovered && (
+                    <>
+                        <button
+                            onMouseEnter={() => setQuickHovered(true)}
+                            onClick={() => sliderMove('left', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            className="moveButton">〈</button>
+                        <button
+                            onMouseEnter={() => setQuickHovered(true)}
+                            onClick={() => sliderMove('right', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            className="moveButton right">〉</button>
+                    </>
+                )}
+
+                <a className='moreBtn'>더보기 〉</a>
                 <h1>즉시 출고</h1>
                 <p>즉시 출고 서브 문구 생각해주세요</p>
-                <div className='hotDealListDiv' style={{ transform: `translateX(-${quickDealOffset}px)` }}>
+                <div
+                    className='hotDealListDiv'
+                    style={{ transform: `translateX(-${quickDealOffset}px)` }}
+                >
                     {list.map((item, idx) => (
-                        <QuickDealCard item={item} idx={idx} setIndex={setQuickNum}/>
+                        <QuickDealCard item={item} idx={idx} setIndex={setQuickNum} />
                     ))}
                 </div>
                 {/* 슬라이드 인디케이터 */}
@@ -118,21 +155,33 @@ const MainPage = (props) => {
                     setCurrentIndex={setQuickDealCurrentIndex}
                 />
             </div>
-            <div className='eventSection'>
-                <button onClick={() => {
-                    if (eventStart > 0) {
-                        setEventStart(eventStart - 3);
-                        setEventEnd(evnetEnd - 3)
-                        setEventCurrentIndex(eventCurrentIndex - 1)
-                    }
-                }} className="moveButton" style={{ top: 270 }}>〈</button>
-                <button onClick={() => {
-                    if (evnetEnd <= list.length) {
-                        setEventStart(eventStart + 3);
-                        setEventEnd(evnetEnd + 3);
-                        setEventCurrentIndex(eventCurrentIndex + 1)
-                    }
-                }} className="moveButton right" style={{ top: 270 }}>〉</button>
+            <div
+                className='eventSection'
+                onMouseEnter={() => setEventHovered(true)}
+                onMouseLeave={() => setEventHovered(false)}
+            >
+                {eventHovered && (
+                    <>
+                        <button
+                            onMouseEnter={() => setEventHovered(true)}
+                            onClick={() => {
+                                if (eventStart > 0) {
+                                    setEventStart(eventStart - 3);
+                                    setEventEnd(evnetEnd - 3)
+                                    setEventCurrentIndex(eventCurrentIndex - 1)
+                                }
+                            }} className="moveButton" style={{ top: 270 }}>〈</button>
+                        <button
+                            onMouseEnter={() => setEventHovered(true)}
+                            onClick={() => {
+                                if (evnetEnd <= list.length) {
+                                    setEventStart(eventStart + 3);
+                                    setEventEnd(evnetEnd + 3);
+                                    setEventCurrentIndex(eventCurrentIndex + 1)
+                                }
+                            }} className="moveButton right" style={{ top: 270 }}>〉</button>
+                    </>
+                )}
                 <h1>이벤트/프로모션</h1>
                 <p>이벤트 서브 문구 생각해주세요</p>
                 <div className='eventListDiv'>
@@ -165,7 +214,7 @@ const MainPage = (props) => {
                 <h1>제휴 파트너사</h1>
 
             </div>
-            <Footer/>
+            <Footer />
         </div>
 
     );

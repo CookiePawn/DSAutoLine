@@ -190,17 +190,18 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 900;
   font-weight: bold;
   font-size: 20px;
   opacity: 80%;
+  transition: all 0.5s ease;
 }
 
 .moveButton.right {
   left: auto;
   right: 0px;
   left: initial;
-  z-index: 1000;
+  z-index: 900;
   font-weight: bold;
   font-size: 20px;
 }
