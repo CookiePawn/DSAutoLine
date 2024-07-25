@@ -2,3 +2,42 @@
     width: 100%;
     height: 200vh;
 }
+
+.titleSection {
+    width: 95%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleSection > h1 {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.eventButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px; /* 버튼과 카드 사이의 간격 */
+}
+
+.eventButton {
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #767676;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid #dcdcdc;
+    border-radius: 12px;
+}
+
+.eventButton.selected {
+    background-color: #0064FF;
+    color: #ffffff;
+    border: 2px solid #0064FF;
+}
+
