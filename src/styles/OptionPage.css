@@ -1,0 +1,226 @@
+body {
+    font-family: 'pretendard';
+}
+
+
+.flexSection {
+    width: 95%;
+    margin: auto;
+    margin-top: 130px;
+    display: flex;
+    flex-direction: row;
+}
+
+.infoSection {
+    position: flex;
+    width: 30%;
+    margin-right: 30px;
+    transition: all 0.3s ease;
+}
+
+.infoSection>h1 {
+    margin-bottom: 50px;
+}
+
+.infoSection>span {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.infoSection>span>img {
+    margin-right: 18px;
+}
+
+.infoSection>span * {
+    margin: 0;
+}
+
+.infoSection>img {
+    width: 100%;
+}
+
+.infoSection>.priceTitle>h4 {
+    margin-left: auto;
+}
+
+.infoSection>.priceTitle>h4>span {
+    font-size: 30px;
+}
+
+.infoSection>div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.infoSection>div>span {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoSection>div>span>span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.infoSection>div>span>span>img {
+    cursor: pointer;
+}
+
+.infoSection>div>span>span>p {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.infoSection>div>span>span>p>span {
+    color: #767676;
+    font-weight: 100;
+}
+
+.infoSection>div>p {
+    max-width: 40%;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #0064FF;
+    margin: 0;
+    border-radius: 12px;
+    color: white;
+    margin-left: auto;
+}
+
+.infoSection>.nextBtn {
+    height: 10px;
+    background-color: #0064FF;
+    margin: 0;
+    margin-top: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.optionSection {
+    position: relative;
+    width: 70%;
+    margin-top: 110px;
+    margin-bottom: 100px;
+    border-left: 1px solid #dbdbdb;
+}
+
+.optionMarginDiv {
+    width: 95%;
+    height: 100%;
+    margin-left: auto;
+}
+
+.colorDiv>span {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.colorDiv>span>h3 {
+    margin: 0;
+}
+
+.colorDiv>span>p {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #767676;
+}
+
+.colorDiv>span>span {
+    min-width: 70px;
+    height: 70px;
+    margin-top: 40px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.colorBtn.selected {
+    position: relative;
+    border: 1px solid #0064FF;
+    box-sizing: border-box;
+    min-width: 70px;
+    height: 70px;
+    margin-top: 40px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.colorBtn.selected>img {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.optionDiv {
+    margin-top: 100px;
+    height: 60vh;
+}
+
+
+.selectDiv {
+    margin-top: 100px;
+}
+
+.selectDiv>h4 {
+    margin-bottom: 0;
+    margin-top: 40px;
+}
+
+.selectDiv>span {
+    display: flex;
+    flex-direction: row;
+}
+
+.selectDiv>span>p {
+    width: 162px;
+    height: 45px;
+    border-radius: 12px;
+    border: 1px solid #767676;
+    font-size: 18px;
+    color: #767676;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.selectDiv span>p.selected {
+    border: 1px solid #0064FF;
+    color: #0064FF;
+    font-weight: bold;
+}
+
+.selectDiv>span>input {
+    width: 237px;
+    height: 45px;
+    border-radius: 12px;
+    border: 1px solid #767676;
+    font-size: 18px;
+    color: #767676;
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectDiv>span>input::placeholder {
+    padding-left: 10px;
+}

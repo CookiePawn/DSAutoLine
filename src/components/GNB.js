@@ -12,6 +12,18 @@ import DSAutoLine from '../assets/DSAUTOLINE.png'
  */
 const GNB = (props) => {
     const [scrolled, setScrolled] = useState(props.stat);
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -23,9 +35,9 @@ const GNB = (props) => {
         };
 
         if (props.stat == false) {
-            window.addEventListener('scroll', handleScroll);    
+            window.addEventListener('scroll', handleScroll);
         }
-        
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };

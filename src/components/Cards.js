@@ -178,11 +178,12 @@ export const ReviewCard = (props) => {
         <div className='reviewCard'>
             <div>
                 <div className='reviewCardStarDiv'>
-                    <IoMdStar size={25} color='yellow' />
-                    <IoMdStar size={25} color='yellow' />
-                    <IoMdStar size={25} color='yellow' />
-                    <IoMdStar size={25} color='yellow' />
-                    <IoMdStarOutline size={25} color='yellow' />
+                    <IoMdStar size={25} color='#FBDA03' />
+                    <IoMdStar size={25} color='#FBDA03' />
+                    <IoMdStar size={25} color='#FBDA03' />
+                    <IoMdStar size={25} color='#FBDA03' />
+                    <IoMdStar size={25} color='#FBDA03' />
+                    {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
                 </div>
                 <h2>Jihwan***</h2>
                 <p>
