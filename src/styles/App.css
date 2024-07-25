@@ -2,6 +2,7 @@
 body {
   overflow-x: hidden; /* 전체 페이지에서 가로 스크롤을 막음 */
   margin: 0; /* 기본 여백 제거 */
+  font-family: 'pretendard';
 }
 
 .App {
