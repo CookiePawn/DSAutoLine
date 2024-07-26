@@ -339,6 +339,26 @@ body {
   transition: all 0.3s ease;
 }
 
+.eventCardlist {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 20px;
+  border: 1px solid #EDEDED;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.eventCardTitle {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px; /* 자식 요소 사이의 간격 조정 (선택 사항) */
+}
+
 .eventCard:hover {
   transform: scale(1.02);
 }
@@ -349,6 +369,11 @@ body {
   position: absolute;
   left: 40px;
   bottom: 40px;
+}
+
+.eventCardImg {
+  max-width: 100%;
+  transition: all 0.3s ease;
 }
 
 

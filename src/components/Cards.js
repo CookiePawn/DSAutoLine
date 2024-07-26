@@ -3,6 +3,7 @@ import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
 import ray from '../assets/ray.png'
 import casper from '../assets/casper.png'
+import eventimg from '../assets/eventimage.png'
 import { IoMdStar, IoMdStarOutline } from "react-icons/io";
 
 
@@ -166,6 +167,18 @@ export const EventCard = (props) => {
 }
 
 
+export const EventCardlist = (props) => {
+    const {item} = props;
+    return (
+        <div className='eventCardlist'>
+            <img src={eventimg} className='eventCardImg' />
+            <div className='eventCardTitle'>
+                <h2>{item.name}</h2>
+                <p>{item.period}</p>
+            </div>
+        </div>
+    )
+}
 
 
 /**
