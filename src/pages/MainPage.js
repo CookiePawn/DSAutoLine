@@ -32,7 +32,7 @@ const MainPage = (props) => {
 
     //이벤트 변수
     const [eventStart, setEventStart] = useState(0)
-    const [evnetEnd, setEventEnd] = useState(3)
+    const [evnetEnd, setEventEnd] = useState(5)
     const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
     const [eventHovered, setEventHovered] = useState(false);
 
@@ -166,8 +166,8 @@ const MainPage = (props) => {
                             onMouseEnter={() => setEventHovered(true)}
                             onClick={() => {
                                 if (eventStart > 0) {
-                                    setEventStart(eventStart - 3);
-                                    setEventEnd(evnetEnd - 3)
+                                    setEventStart(eventStart - 5);
+                                    setEventEnd(evnetEnd - 5)
                                     setEventCurrentIndex(eventCurrentIndex - 1)
                                 }
                             }} className="moveButton" style={{ top: 270 }}>〈</button>
@@ -175,15 +175,15 @@ const MainPage = (props) => {
                             onMouseEnter={() => setEventHovered(true)}
                             onClick={() => {
                                 if (evnetEnd <= list.length) {
-                                    setEventStart(eventStart + 3);
-                                    setEventEnd(evnetEnd + 3);
+                                    setEventStart(eventStart + 5);
+                                    setEventEnd(evnetEnd + 5);
                                     setEventCurrentIndex(eventCurrentIndex + 1)
                                 }
                             }} className="moveButton right" style={{ top: 270 }}>〉</button>
                     </>
                 )}
-                <h1>이벤트/프로모션</h1>
-                <p>이벤트 서브 문구 생각해주세요</p>
+                <h1>우수카멘토</h1>
+                <p>우수카멘토와 상담해보세요.</p>
                 <div className='eventListDiv'>
                     {list.slice(eventStart, evnetEnd).map((item, idx) => (
                         <EventCard item={item} />
@@ -208,7 +208,7 @@ const MainPage = (props) => {
                         <ReviewCard />
                     ))}
                 </div>
-                <a>더 많은 리뷰 보기 〉</a>
+                <a><p>더 많은 리뷰 보기</p></a>
             </div>
             <div className='partnerSection'>
                 <h1>제휴 파트너사</h1>

@@ -85,7 +85,7 @@ export const HotDealCard = (props) => {
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
                 <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
-                <p className='hotDealCardMonthPrice'> 205,150원</p>
+                <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
             </span>
         </div>
     )
@@ -145,7 +145,7 @@ export const QuickDealCard = (props) => {
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
-                <p className='hotDealCardMonthPrice'> 245,400원</p>
+                <p className='hotDealCardMonthPrice'><span> 245,400</span>원</p>
             </span>
         </div>
     )
@@ -159,8 +159,8 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard' style={{ minWidth: ((window.innerWidth * 0.95) - 36) / 3 }}>
-            <p>이벤트 {props.item}</p>
+        <div className='eventCard' style={{ minWidth: ((window.innerWidth * 0.95) - 120) / 5 }}>
+            <p>김태경 팀장에게 상담받기 〉</p>
         </div>
     )
 }
@@ -178,11 +178,11 @@ export const ReviewCard = (props) => {
         <div className='reviewCard'>
             <div>
                 <div className='reviewCardStarDiv'>
-                    <IoMdStar size={25} color='#FBDA03' />
-                    <IoMdStar size={25} color='#FBDA03' />
-                    <IoMdStar size={25} color='#FBDA03' />
-                    <IoMdStar size={25} color='#FBDA03' />
-                    <IoMdStar size={25} color='#FBDA03' />
+                    <IoMdStar size={40} color='#FBDA03' />
+                    <IoMdStar size={40} color='#FBDA03' />
+                    <IoMdStar size={40} color='#FBDA03' />
+                    <IoMdStar size={40} color='#FBDA03' />
+                    <IoMdStar size={40} color='#FBDA03' />
                     {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
                 </div>
                 <h2>Jihwan***</h2>
@@ -230,7 +230,7 @@ export const CardIndicator = (props) => {
 export const EventCardIndicator = (props) => {
     return (
         <div className='indicator'>
-            {props.list.slice(0, props.list.length / 3 + 1).map((_, index) => (
+            {props.list.slice(0, props.list.length / 5 + 1).map((_, index) => (
                 <span
                     key={index}
                     className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
@@ -321,7 +321,7 @@ export const HotDealCarCard = (props) => {
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
                 <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
-                <p className='hotDealCardMonthPrice'> 205,150원</p>
+                <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
             </span>
         </div>
     )
@@ -380,7 +380,7 @@ export const QuickDealCarCard = (props) => {
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
-                <p className='hotDealCardMonthPrice'> 245,400원</p>
+                <p className='hotDealCardMonthPrice'><span> 245,400</span>원</p>
             </span>
         </div>
     )
