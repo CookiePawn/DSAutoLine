@@ -45,7 +45,7 @@ const QuickFAQPage = (props) => {
                 {
                     carStat === null 
                         ? <span className='nonNextBtn'>다음으로</span>
-                        : <a className='nextBtn' href='/'>다음으로</a>
+                        : <a className='nextBtn' href='/Option'>다음으로</a>
                 }
                 
             </div>

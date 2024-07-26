@@ -6,6 +6,7 @@ import EnterPage from './pages/EnterPage';
 import QuickFAQPage from './pages/QuickFAQPage';
 import HotDealPage from './pages/HotDealPage';
 import QuickDealPage from './pages/QuickDealPage';
+import OptionPage from './pages/OptionPage';
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 					<Route path='/QuickFAQ' element={<QuickFAQPage />} />
 					<Route path='/HotDeal' element={<HotDealPage />} />
 					<Route path='/QuickDeal' element={<QuickDealPage />} />
+					<Route path='/Option' element={<OptionPage />} />
 				</Routes>
 			</div>
 		</Router>
@@ -25,4 +27,3 @@ function App() {
 }
 
 export default App;
- 

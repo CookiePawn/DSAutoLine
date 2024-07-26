@@ -1,6 +1,9 @@
+body {
+    font-family: 'pretendard';
+}
+
 .categorySection {
     width: 95%;
-    height: 450px;
     margin: auto;
     position: relative;
 }
@@ -10,7 +13,7 @@
     margin-bottom: 0px;
 }
 
-.categorySection>p {
+.categorySection > p {
     font-size: 13px;
     color: #767676;
 }
