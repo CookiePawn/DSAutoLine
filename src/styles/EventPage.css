@@ -41,3 +41,16 @@
     border: 2px solid #0064FF;
 }
 
+.eventSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.eventList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* 카드 사이의 간격 */
+}
