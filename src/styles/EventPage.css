@@ -5,7 +5,7 @@
 
 .titleSection {
     width: 95%;
-    height: 30vh;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,13 +15,6 @@
 .titleSection > h1 {
     margin: 0;
     margin-top: 10px;
-}
-
-.eventButtons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 40px; /* 버튼과 카드 사이의 간격 */
 }
 
 .eventButton {
@@ -35,6 +28,15 @@
     border-radius: 12px;
 }
 
+.eventButtonSection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
 .eventButton.selected {
     background-color: #0064FF;
     color: #ffffff;
@@ -42,10 +44,12 @@
 }
 
 .eventSection {
+    width: 95%;
+    height: 700px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .eventList {
