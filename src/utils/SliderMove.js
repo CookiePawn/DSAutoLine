@@ -10,8 +10,8 @@ export const sliderMove = (direction, list, num, offset, currentIndex, setOffset
     setOffset(() => {
         // 새 오프셋 계산
         let newOffset = direction === 'left'
-            ? -(document.body.clientWidth * 0.95 + 50)
-            : document.body.clientWidth * 0.95 + 50;
+            ? -(document.body.clientWidth * 0.95 + 30)
+            : document.body.clientWidth * 0.95 + 30;
 
         if (direction === 'left') {
             if (currentIndex > 0) {

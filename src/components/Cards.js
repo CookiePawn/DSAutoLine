@@ -16,11 +16,11 @@ const mainResize = () => {
     if (document.body.clientWidth < 700) {
         return (((document.body.clientWidth * 0.95) - 0) / 1);
     } else if (document.body.clientWidth < 1070) {
-        return (((document.body.clientWidth * 0.95) - 50) / 2);
+        return (((document.body.clientWidth * 0.95) - 30) / 2);
     } else if (document.body.clientWidth < 1450) {
-        return (((document.body.clientWidth * 0.95) - 100) / 3);
+        return (((document.body.clientWidth * 0.95) - 60) / 3);
     } else {
-        return (((document.body.clientWidth * 0.95) - 150) / 4);
+        return (((document.body.clientWidth * 0.95) - 90) / 4);
     }
 };
 
@@ -46,6 +46,8 @@ const quickResize = () => {
         return (((window.innerWidth * 0.95) - 147) / 5);
     }
 };
+
+
 
 
 /**
@@ -160,7 +162,7 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard' style={{ minWidth: ((window.innerWidth * 0.95) - 120) / 5 }}>
+        <div className='eventCard' style={{ minWidth: ((window.innerWidth * 0.95) - 137) / 5 }}>
             <p>김태경 팀장에게 상담받기 〉</p>
         </div>
     )
@@ -168,7 +170,7 @@ export const EventCard = (props) => {
 
 
 export const EventCardlist = (props) => {
-    const {item} = props;
+    const { item } = props;
     return (
         <div className='eventCardlist'>
             <img src={eventimg} className='eventCardImg' />
@@ -187,24 +189,42 @@ export const EventCardlist = (props) => {
  * @returns 
  */
 export const ReviewCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(mainResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(mainResize());
+        };
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className='reviewCard'>
+        <div className='reviewCard' style={{minWidth: windowWidth}}>
+            <span></span>
             <div>
                 <div className='reviewCardStarDiv'>
-                    <IoMdStar size={40} color='#FBDA03' />
-                    <IoMdStar size={40} color='#FBDA03' />
-                    <IoMdStar size={40} color='#FBDA03' />
-                    <IoMdStar size={40} color='#FBDA03' />
-                    <IoMdStar size={40} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
                     {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
                 </div>
-                <h2>Jihwan***</h2>
-                <p>
-                    정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히
-                    심민혁 상담사님께서 매우 상세하고 이해하기 쉽게 설명해주셔서 큰 도움이 되
-                    었습니다. 상담 과정 내내 저의 필요한 상황을 충분히 고려해주셨고, 모든 질문
-                    에 성심성의껏 답해주셔서 감사했습니다.
-                </p>
+                <h2>Jihwan****</h2>
+                <span>
+                    <p>
+                        정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히
+                        심민혁 상담사님께서 매우 상세하고 이해하기 쉽게 설명해주셔서 큰 도움이 되
+                        었습니다. 상담 과정 내내 저의 필요한 상황을 충분히 고려해주셨고, 모든 질문
+                        에 성심성의껏 답해주셔서 감사했습니다.
+                    </p>
+                </span>
+
             </div>
         </div>
     )

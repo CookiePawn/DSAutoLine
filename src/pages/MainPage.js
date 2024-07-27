@@ -36,21 +36,11 @@ const MainPage = (props) => {
     const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
     const [eventHovered, setEventHovered] = useState(false);
 
-    //카드 이동
-    const [translateX1, setTranslateX1] = useState(0);
-    const [translateX2, setTranslateX2] = useState(0);
-
-    //고객 리뷰 애니메이션
-    useEffect(() => {
-        let animationFrameId;
-        const animate = () => {
-            setTranslateX1(prevTranslateX => (prevTranslateX + 1) % (615 * list.length)); // 1px씩 이동, 100에 도달하면 0으로 리셋
-            setTranslateX2(prevTranslateX => (prevTranslateX + 2) % (615 * list.length)); // 2px씩 이동, 100에 도달하면 0으로 리셋
-            animationFrameId = requestAnimationFrame(animate);
-        };
-        animationFrameId = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(animationFrameId);
-    }, []);
+    //리뷰 변수
+    const [reviewOffset, setReviewOffset] = useState(0);
+    const [reviewCurrentIndex, setReviewCurrentIndex] = useState(0);
+    const [reviewNum, setReviewNum] = useState(0);
+    const [reviewHovered, setReviewHovered] = useState(false);
 
 
 
@@ -85,10 +75,12 @@ const MainPage = (props) => {
                 {hotHovered && (
                     <>
                         <button
+                            style={{ top: 330 }}
                             onMouseEnter={() => setHotHovered(true)}
                             onClick={() => sliderMove('left', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
                             className="moveButton">〈</button>
                         <button
+                            style={{ top: 330 }}
                             onMouseEnter={() => setHotHovered(true)}
                             onClick={() => sliderMove('right', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
                             className="moveButton right">〉</button>
@@ -123,10 +115,12 @@ const MainPage = (props) => {
                 {quickHovered && (
                     <>
                         <button
+                            style={{ top: 400 }}
                             onMouseEnter={() => setQuickHovered(true)}
                             onClick={() => sliderMove('left', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
                             className="moveButton">〈</button>
                         <button
+                            style={{ top: 400 }}
                             onMouseEnter={() => setQuickHovered(true)}
                             onClick={() => sliderMove('right', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
                             className="moveButton right">〉</button>
@@ -170,7 +164,7 @@ const MainPage = (props) => {
                                     setEventEnd(evnetEnd - 5)
                                     setEventCurrentIndex(eventCurrentIndex - 1)
                                 }
-                            }} className="moveButton" style={{ top: 270 }}>〈</button>
+                            }} className="moveButton" style={{ top: 370 }}>〈</button>
                         <button
                             onMouseEnter={() => setEventHovered(true)}
                             onClick={() => {
@@ -179,7 +173,7 @@ const MainPage = (props) => {
                                     setEventEnd(evnetEnd + 5);
                                     setEventCurrentIndex(eventCurrentIndex + 1)
                                 }
-                            }} className="moveButton right" style={{ top: 270 }}>〉</button>
+                            }} className="moveButton right" style={{ top: 370 }}>〉</button>
                     </>
                 )}
                 <h1>우수카멘토</h1>
@@ -195,16 +189,29 @@ const MainPage = (props) => {
                     setCurrentIndex={setEventCurrentIndex}
                 />
             </div>
-            <div className='reviewSection'>
+            <div
+                className='reviewSection'
+                onMouseEnter={() => setReviewHovered(true)}
+                onMouseLeave={() => setReviewHovered(false)}
+            >
+                {reviewHovered && (
+                    <>
+                        <button
+                            style={{ top: 432 }}
+                            onMouseEnter={() => setReviewHovered(true)}
+                            onClick={() => sliderMove('left', list, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            className="moveButton">〈</button>
+                        <button
+                            style={{ top: 432 }}
+                            onMouseEnter={() => setReviewHovered(true)}
+                            onClick={() => sliderMove('right', list, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            className="moveButton right">〉</button>
+                    </>
+                )}
                 <h1>많은 고객님들이 만족하신 후기</h1>
                 <p>다른 고객님들이 어떻게 느끼셨는지 확인해보세요</p>
-                <div className='reviewCardDiv1' style={{ transform: `translateX(-${translateX1}px)` }}>
-                    {Array.from({ length: 100 }, (_, index) => (
-                        <ReviewCard />
-                    ))}
-                </div>
-                <div className='reviewCardDiv2' style={{ transform: `translateX(-${translateX2}px)` }}>
-                    {Array.from({ length: 100 }, (_, index) => (
+                <div className='reviewCardDiv' style={{ transform: `translateX(-${reviewOffset}px)` }}>
+                    {list.map((item, idx) => (
                         <ReviewCard />
                     ))}
                 </div>
