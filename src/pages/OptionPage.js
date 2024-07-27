@@ -15,7 +15,6 @@ const OptionPage = (props) => {
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
     const [colorStat, setColorStat] = useState(null)
-    const [windowWidth, setWindowWidth] = useState(0)
 
     //이용방법
     const [useingSelect1, setUseingSelect1] = useState(null)
@@ -26,66 +25,67 @@ const OptionPage = (props) => {
     const [useingSelect6, setUseingSelect6] = useState(null)
     const [useingSelect7, setUseingSelect7] = useState(null)
 
-    document.addEventListener('scroll', () => {
-        const leftChild = document.querySelector('.infoSection');
-        const scrollTop = window.scrollY;
 
-        if (scrollTop > 200) {
-            leftChild.style.overflow = 'hidden';
-        } else {
-            leftChild.style.overflow = 'auto';
-        }
-    });
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
+        const handleScroll = () => {
+            if (window.scrollY >= 100) {
+                setScrolled(110);
+            } else {
+                setScrolled(0);
+            }
         };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup event listener on component unmount
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
 
     return (
         <>
             <GNB stat={true} />
             <div className="flexSection">
                 <div className="infoSection">
-                    <h1>옵션 및 이용조건</h1>
-                    <span className="carTitle">
-                        <img src={kiaLogo} alt="차량 브랜드 로고" />
-                        <h3>기아 레이</h3>
-                    </span>
-                    <p>2022.09 | 경차 | 가솔린</p>
-                    <p>988cc | 복합연비 12.7~13.0km/L</p>
-                    <img src={ray} alt="차량 이미지" />
-                    <span className="priceTitle">
-                        <p>총 차량 가격</p>
-                        <h4><span>1,390</span>만원</h4>
-                    </span>
                     <div>
-                        <span>
-                            <span>
-                                {
-                                    !infoSelect1
-                                        ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
-                                        : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
-                                }
-                                <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
-                            </span>
-                            <span>
-                                {
-                                    !infoSelect2
-                                        ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
-                                        : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
-                                }
-                                <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
-                            </span>
+                        <h1>옵션 및 이용조건</h1>
+                        <span className="carTitle" style={{ alignItems: 'center' }}>
+                            <img src={kiaLogo} alt="차량 브랜드 로고" />
+                            <h3>기아 레이</h3>
                         </span>
+                        <p>2022.09 │ 경차 │ 가솔린</p>
+                        <p>988cc │ 복합연비 12.7~13.0km/L</p>
+                        <img src={ray} alt="차량 이미지" />
+                        <span className="priceTitle">
+                            <p>총 차량 가격</p>
+                            <h4><span>1,390</span>만원</h4>
+                        </span>
+                        <div>
+                            <span>
+                                <span>
+                                    {
+                                        !infoSelect1
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
+                                            : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
+                                    }
+                                    <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
+                                </span>
+                                <span>
+                                    {
+                                        !infoSelect2
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
+                                            : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
+                                    }
+                                    <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
+                                </span>
+                            </span>
+                        </div>
+                        <p className="nextBtn">견적서 확인</p>
                     </div>
-                    <p className="nextBtn">견적서 확인</p>
                 </div>
                 <div className="optionSection">
                     <div className="optionMarginDiv">
