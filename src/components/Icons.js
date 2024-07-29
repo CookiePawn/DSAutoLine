@@ -1,6 +1,7 @@
 import { 
     IoIosMenu,
     IoIosSearch,
+    IoMdClose,
 } from 'react-icons/io'
 
 
@@ -24,5 +25,19 @@ export const MenuIcon = (props) => {
 export const SearchIcon = (props) => {
     return (
         <IoIosSearch size={props.size} color={props.color}/>
+    )
+}
+
+
+
+
+/**
+ * X 아이콘
+ * @param {*} props 
+ * @returns 
+ */
+export const CloseIcon = (props) => {
+    return (
+        <IoMdClose size={props.size} color={props.color}/>
     )
 }

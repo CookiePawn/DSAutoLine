@@ -9,7 +9,7 @@ body {
     width: 100%;
     background-color: transparent;
     z-index: 1000; /* 다른 요소 위에 배치 */
-    transition: background-color 0.8s ease, box-shadow 0.8s ease, color 0.8s ease; /* 배경색, 테두리, 그림자, 텍스트 색상 변경 애니메이션 */
+    transition: background-color 0.8s ease, color 0.8s ease; /* 배경색, 테두리, 텍스트 색상 변경 애니메이션 */
 }
 
 .GNB.scrolled {
@@ -20,6 +20,13 @@ body {
 .GNB.scrolled .GNBListDiv > .listA > p {
     color: black;
     font-size: 18px;
+    font-weight: 500;
+}
+
+.GNB.scrolled .GNBListDiv > .rightDiv >  p {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .GNB.scrolled .GNBListDiv > .searchDiv {
@@ -36,8 +43,8 @@ body {
 }
 
 .GNBListDiv > a > img {
-    width: 150px;
-    margin-right: 70px;
+    width: 147px;
+    margin-right: 57px;
 }
 
 .GNBListDiv > .listA {
@@ -53,6 +60,7 @@ body {
 .GNBListDiv > .listA > p {
     color: #FFF;
     font-size: 18px;
+    font-weight: 500;
     margin-right: 60px;
     transition: all 0.3s ease;
 }
@@ -66,34 +74,163 @@ body {
     color: #0064FF;
 }
 
-.GNBListDiv > .searchDiv {
-    position: absolute;
-    right: 0;
-    width: 435px;
-    height: 37px;
-    background-color: white;
-    border-radius: 10px;
+.GNBListDiv > .listA > p.selected {
+    color: #0064FF;
+}
+
+.GNB.scrolled .GNBListDiv > .listA > p.selected {
+    color: #0064FF;
+}
+
+.rightDiv {
+    margin-left: auto;
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-.SearchIcon {
-    margin-top: 4px;
-    margin-left: 10px;
-    margin-right: 10px;
+.rightDiv > p {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    margin-right: 76px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.GNBListDiv > .searchDiv > input {
+.rightDiv > p:hover {
+    color: #0064FF;
+    font-weight: bold;
+}
+
+.GNB.scrolled .GNBListDiv > .rightDiv > p.selected {
+    color: #0064FF;
+}
+
+.GNB.scrolled .GNBListDiv > .rightDiv >  p:hover {
+    color: #0064FF;
+    font-weight: bold;
+}
+
+.rightDiv > span {
+    width: 124px;
+    height: 45px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #0064FF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+.selectedDiv {
+    width: 100%;
+    height: 100px;
+    background-color: #F0F2F4;
+    transition: all 0.8s ease;
+}
+
+.selectedDiv > div {
+    width: 95%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.selectedDiv > div > .searchDiv {
+    width: 570px;
+    height: 55px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+.selectedDiv > div > .searchDiv > input {
+    margin-left: 15px;
+    border: none;
     width: 87%;
-    height: 80%;
-    border: 0;
-    font-size: 13px;
-    color: black;
+    height: 95%;
     outline: none;
-    background-color: transparent;
 }
 
-.GNBListDiv > .searchDiv > input::placeholder {
+.selectedDiv > div > .searchDiv > input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.selectedDiv > div > .searchDiv > .SearchIcon {
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.selectedDiv > div > .CloseIcon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.selectedDiv > div > .dealListDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.selectedDiv > div > .dealListDiv > p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    margin-right: 12px;
+}
+
+.selectedDiv > div > .dealListDiv > input {
+    width: 202px;
+    height: 37px;
+    border-radius: 8px;
+    border: 1px solid #BBB;
+    background-color: transparent;
+    box-sizing: border-box;
+    margin-right: 30px;
+    padding: 10px;
+}
+
+.selectedDiv > div > .dealListDiv > img {
+    margin-left: 70px;
+    cursor: pointer;
+}
+
+.selectedDiv > div > .dealListDiv > h6 {
+    margin-left: 9px;
+    margin-right: 70px;
     font-size: 14px;
-    color: gray;
+    font-weight: 500;
+    color: #111;
+}
+
+.selectedDiv > div > .dealListDiv > h6 > span {
+    color: #767676;
+}
+
+.selectedDiv > div > .dealListDiv > h3 {
+    width: 155px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #9FA5AB;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }

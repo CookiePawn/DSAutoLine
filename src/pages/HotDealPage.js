@@ -7,7 +7,7 @@ import { HotDealCarCard } from '../components/Cards'
 const HotDealPage = (props) => {
     return (
         <>
-            <GNB stat={true} />
+            <GNB stat={true}  page={'한정 특가'}/>
             <div className='bannerSection'>
                 <p>한정 특가 이벤트 배너</p>
             </div>

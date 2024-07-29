@@ -13,7 +13,7 @@ const QuickFAQPage = (props) => {
 
     return (
         <>
-            <GNB stat={true} />
+            <GNB stat={true}  page={'빠른 간편 문의'}/>
             <div className='categorySection'>
                 <h1>빠른 간편 문의</h1>
                 <p>쉽고 간편하게 문의 해보세요</p>

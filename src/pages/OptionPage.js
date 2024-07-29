@@ -48,7 +48,7 @@ const OptionPage = (props) => {
 
     return (
         <>
-            <GNB stat={true} />
+            <GNB stat={true}  page={'빠른 간편 문의'}/>
             <div className="flexSection">
                 <div className="infoSection">
                     <div>

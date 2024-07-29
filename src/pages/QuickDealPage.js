@@ -13,7 +13,7 @@ const QuickDealPage = (props) => {
 
     return (
         <>
-            <GNB stat={true} />
+            <GNB stat={true} page={'즉시 출고'} />
             <div className='bannerSection'>
                 <p>즉시 출고 이벤트 배너</p>
             </div>
