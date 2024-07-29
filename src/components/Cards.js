@@ -47,6 +47,28 @@ const quickResize = () => {
     }
 };
 
+/**
+ * 이벤트 페이지에 사용
+ * @returns 카드 크기
+ */
+const eventResize = () => {
+    // ~ 989 : 2개 
+    // 990 ~ 1239 : 3개
+    // 1240 ~ : 4개
+    // 1500 ~ : 5개
+    if (window.innerWidth < 500) {
+        return (((window.innerWidth * 0.95) - 0) / 1);
+    } else if (window.innerWidth < 990) {
+        return (((window.innerWidth * 0.95) - 51) / 2);
+    } else if (window.innerWidth < 1450) {
+        return (((window.innerWidth * 0.95) - 83) / 3);
+    } else if (window.innerWidth < 1929) {
+        return (((window.innerWidth * 0.95) - 115) / 4);
+    } else {
+        return (((window.innerWidth * 0.95) - 147) / 5);
+    }
+};
+
 
 /**
  * 메인 페이지 - 한정 특가 상품 카드
@@ -166,9 +188,16 @@ export const EventCard = (props) => {
     )
 }
 
-
+/**
+ * 이벤트 페이지 - 이벤트 카드
+ * @param {*} props 
+ * @returns 
+ */
 export const EventCardlist = (props) => {
     const {item} = props;
+
+    const [windowWidth, setWindowWidth] = useState(eventResize());
+
     return (
         <div className='eventCardlist'>
             <img src={eventimg} className='eventCardImg' />
