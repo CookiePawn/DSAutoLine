@@ -196,14 +196,10 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
-<<<<<<< HEAD
-    const { item } = props;
-=======
     const {item} = props;
 
     const [windowWidth, setWindowWidth] = useState(eventResize());
 
->>>>>>> DSAL-13--EVENT
     return (
         <div className='eventCardlist'>
             <img src={eventimg} className='eventCardImg' />
