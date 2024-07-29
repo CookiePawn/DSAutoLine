@@ -55,7 +55,7 @@ const MainPage = (props) => {
             setTranslateX2(prevTranslateX => (prevTranslateX + 2) % (615*list.length)); // 2px씩 이동, 100에 도달하면 0으로 리셋
             animationFrameId = requestAnimationFrame(animate);
         };
-        animationFrameId = requestAnimationFrame(animate); 
+        animationFrameId = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(animationFrameId);
     }, []);
     
