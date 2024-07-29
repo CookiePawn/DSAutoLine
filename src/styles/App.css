@@ -400,22 +400,31 @@ body {
 .eventCardlist {
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
-  min-width: 200px;
-  max-width: 300px;
   border-radius: 20px;
   border: 1px solid #EDEDED;
   background-color: #ffffff;
   padding: 20px;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.eventCardlist:hover {
+  transform: scale(1.02);
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
 }
 
 .eventCardTitle {
   width: 90%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px; /* 자식 요소 사이의 간격 조정 (선택 사항) */
+  flex-direction: column;
+  align-items: flex-start;
 }
+
+.eventCardTitle h2 {
+  margin-bottom: 5px; /* 원하는 간격으로 조정하세요 */
+}
+
 
 .eventCard:hover {
   transform: scale(1.02);
@@ -553,6 +562,7 @@ body {
   height: 700px;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   margin-top: 120px;
 }
 
@@ -560,3 +570,6 @@ body {
 
 
 
+=======
+}
+>>>>>>> DSAL-13--EVENT
