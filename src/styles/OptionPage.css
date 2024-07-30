@@ -32,6 +32,12 @@ body {
     color: #111;
 }
 
+.infoSection > div > h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+}
+
 .infoSection>div>span {
     display: flex;
     flex-direction: row;
@@ -196,7 +202,6 @@ body {
 
 .optionDiv {
     margin-top: 100px;
-    height: 60vh;
 }
 
 
@@ -250,4 +255,140 @@ body {
 
 .selectDiv>span>input::placeholder {
     padding-left: 10px;
+}
+
+
+.optionTrimDiv {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.optionTrimDiv > span {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbdbdb;
+    cursor: pointer;
+}
+
+.optionTrimDiv > span.selected {
+    background-color: #111;
+}
+
+.optionTrimDiv > span.selected > p {
+    color: white;
+}
+
+.optionTrimDiv > span > p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #767676;
+}
+
+.upDownIcon {
+    position: absolute;
+    right: 20px;
+    margin-top: 5px;
+}
+
+.trimInfoDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.trimInfoDiv > span {
+    margin-top: 67px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    gap: 30px;
+}
+
+.trimInfoDiv > span > span {
+    width: 90%;
+    height: 60px;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.trimInfoDiv > span > span.selected {
+    border: 1px solid #0064FF;
+}
+
+.trimInfoDiv > span > span > p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.trimInfoDiv > span > span.selected > p {
+    color: #0064FF;
+    font-weight: bold;
+}
+
+.trimInfoDiv > span > span > img {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.optionSelectDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 67px;
+    gap: 30px;
+}
+
+.optionSelectDiv > div {
+    flex: 1 1 calc(25% - 30px);
+    margin: auto;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.optionSelectDiv > div:hover {
+    border: 1px solid #0064FF;
+}
+
+.optionSelectDiv > div > img {
+    width: 100%;
+}
+
+.optionSelectDiv > div > p {
+    width: 90%;
+    margin: auto;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.optionSelectDiv > div > h4 {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
 }

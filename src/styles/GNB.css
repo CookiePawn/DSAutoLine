@@ -48,7 +48,7 @@ body {
 }
 
 .GNBListDiv > .listA {
-    height: 100px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,6 +83,7 @@ body {
 }
 
 .rightDiv {
+    height: 80px;
     margin-left: auto;
     display: flex;
     flex-direction: row;

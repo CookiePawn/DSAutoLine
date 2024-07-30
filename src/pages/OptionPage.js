@@ -7,14 +7,24 @@ import ray from '../assets/ray.png'
 import nonSelectBox from '../assets/optionPage_nonSelectBox.png'
 import selectBox from '../assets/optionPage_SelectBox.png'
 import optionClick from '../assets/optionClick.png'
+import optionNonClick from '../assets/optionNonClick.png'
+import optionImage1 from '../assets/optionImage1.png'
+import { UpIcon, DownIcon } from "../components/Icons"
 
 
 
 
 const OptionPage = (props) => {
+    const [list, setList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
     const [colorStat, setColorStat] = useState(null)
+
+    //세부모델 선택
+    const [trimStat, setTrimStat] = useState(null)
+    const [trimSelect1, setTrimSelect1] = useState(null)
+    const [trimSelect2, setTrimSelect2] = useState(null)
 
     //이용방법
     const [useingSelect1, setUseingSelect1] = useState(null)
@@ -48,7 +58,7 @@ const OptionPage = (props) => {
 
     return (
         <>
-            <GNB stat={true}  page={'빠른 간편 문의'}/>
+            <GNB stat={true} page={'빠른 간편 문의'} />
             <div className="flexSection">
                 <div className="infoSection">
                     <div>
@@ -60,6 +70,8 @@ const OptionPage = (props) => {
                         <p>2022.09 │ 경차 │ 가솔린</p>
                         <p>988cc │ 복합연비 12.7~13.0km/L</p>
                         <img src={ray} alt="차량 이미지" />
+                        <h4>세부 모델</h4>
+                        <h4>옵션</h4>
                         <span className="priceTitle">
                             <p>총 차량 가격</p>
                             <h4><span>1,390</span>만원</h4>
@@ -106,6 +118,68 @@ const OptionPage = (props) => {
                         </div>
                         <div className="optionDiv">
                             <h3>세부모델 선택</h3>
+                            <div className="optionTrimDiv">
+                                <span className={trimStat === 0 ? 'selected' : ''} onClick={() => trimStat === 0 ? setTrimStat(null) : setTrimStat(0)}>
+                                    <p>트림 1</p>
+                                    <div className='upDownIcon' >
+                                        {trimStat === 0
+                                            ? <UpIcon color={'white'} size={24} />
+                                            : <DownIcon color={'#767676'} size={24} />
+                                        }
+                                    </div>
+                                </span>
+                                <span style={{ borderLeft: 'none' }} className={trimStat === 1 ? 'selected' : ''} onClick={() => trimStat === 1 ? setTrimStat(null) : setTrimStat(1)}>
+                                    <p>트림 2</p>
+                                    <div className='upDownIcon' >
+                                        {trimStat === 1
+                                            ? <UpIcon color={'white'} size={24} />
+                                            : <DownIcon color={'#767676'} size={24} />
+                                        }
+                                    </div>
+                                </span>
+                            </div>
+                            <div className="trimInfoDiv">
+                                <span style={trimStat === 0 ? { height: 490 } : { height: 0 }}>
+                                    {list.map((_, index) => (
+                                        <span onClick={() => setTrimSelect1(index)} className={trimSelect1 === index ? 'selected' : ''}>
+                                            {trimSelect1 === index
+                                                ? <img src={optionClick} />
+                                                : <img src={optionNonClick} />
+                                            }
+                                            <p>2024년형 가솔린 터보 1.6 하이브리드 2WD</p>
+                                        </span>
+                                    ))}
+                                </span>
+                                <span style={trimStat === 1 ? { height: 490 } : { height: 0 }}>
+                                    {Array.from({ length: 15 }, (_, index) => (
+                                        <span onClick={() => setTrimSelect2(index)} className={trimSelect2 === index ? 'selected' : ''}>
+                                            {trimSelect2 === index
+                                                ? <img src={optionClick} />
+                                                : <img src={optionNonClick} />
+                                            }
+                                            <p>프레스티지 (A/T) - 1,635만원</p>
+                                        </span>
+                                    ))}
+                                </span>
+                            </div>
+                            <h3 style={{ marginTop: 120 }}>옵션 추가하기</h3>
+                            {trimSelect1 !== null && trimSelect2 !== null
+                                ? <div className="optionSelectDiv">
+                                    {list.slice(0, 8).map((item, idx) => (
+                                        <div>
+                                            <img src={optionImage1} />
+                                            <p>버튼시동 PACK</p>
+                                            <h4>40만원</h4>
+                                        </div>
+                                    ))}
+                                </div> : null
+                            }
+
+
+
+
+
+
                         </div>
                         <div className="selectDiv">
                             <h3>이용조건 선택</h3>
