@@ -71,10 +71,17 @@ const OptionPage = (props) => {
                         <p>988cc │ 복합연비 12.7~13.0km/L</p>
                         <img src={ray} alt="차량 이미지" />
                         <h4>세부 모델</h4>
+                        <div className="infoSelectedListDiv">
+                            <span>
+                                <p>2024년형 가솔린 터보 1.6 하이브리드 2WD</p>
+                                <p>트랜디 (A/T)</p>
+                            </span>
+                            <p>1,390 만원</p>
+                        </div>
                         <h4>옵션</h4>
                         <span className="priceTitle">
-                            <p>총 차량 가격</p>
-                            <h4><span>1,390</span>만원</h4>
+                            <p>합계</p>
+                            <h4>1,390 만원</h4>
                         </span>
                         <div>
                             <span>

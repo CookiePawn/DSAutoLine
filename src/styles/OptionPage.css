@@ -66,6 +66,33 @@ body {
     width: 100%;
 }
 
+.infoSelectedListDiv {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.infoSelectedListDiv > p {
+    margin: 0;
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: #111;
+}
+
+.infoSelectedListDiv > span {
+    gap: 12px;
+}
+
+.infoSelectedListDiv > span > p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    color: #767676;
+}
+
 .infoSection>div>p {
     margin: 0;
     font-size: 18px;
@@ -85,13 +112,8 @@ body {
     margin: 0;
     font-size: 20px;
     font-weight: 500;
-    color: #111;
+    color: #0064FF;
     margin-left: auto;
-}
-
-.infoSection>div>.priceTitle>h4>span {
-    font-size: 32px;
-    font-weight: bold;
 }
 
 .infoSection>div>div {
