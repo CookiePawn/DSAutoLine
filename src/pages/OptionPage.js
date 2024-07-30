@@ -79,9 +79,16 @@ const OptionPage = (props) => {
                             <p>1,390 만원</p>
                         </div>
                         <h4>옵션</h4>
+                        <div className="infoSelectedListDiv">
+                            <span style={{borderRight: '1px solid #ededed'}}>
+                                <p>버튼 시동 PACK</p>
+                                <p>컴포트 I</p>
+                            </span>
+                            <p>+ 245 만원</p>
+                        </div>
                         <span className="priceTitle">
                             <p>합계</p>
-                            <h4>1,390 만원</h4>
+                            <h4>1,653 만원</h4>
                         </span>
                         <div>
                             <span>
@@ -146,7 +153,7 @@ const OptionPage = (props) => {
                                 </span>
                             </div>
                             <div className="trimInfoDiv">
-                                <span style={trimStat === 0 ? { height: 490 } : { height: 0 }}>
+                                <span style={trimStat === 0 ? { height: 430 } : { height: 0 }}>
                                     {list.map((_, index) => (
                                         <span onClick={() => setTrimSelect1(index)} className={trimSelect1 === index ? 'selected' : ''}>
                                             {trimSelect1 === index
@@ -157,7 +164,7 @@ const OptionPage = (props) => {
                                         </span>
                                     ))}
                                 </span>
-                                <span style={trimStat === 1 ? { height: 490 } : { height: 0 }}>
+                                <span style={trimStat === 1 ? { height: 430 } : { height: 0 }}>
                                     {Array.from({ length: 15 }, (_, index) => (
                                         <span onClick={() => setTrimSelect2(index)} className={trimSelect2 === index ? 'selected' : ''}>
                                             {trimSelect2 === index
@@ -211,7 +218,7 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
-                                <input placeholder="0" />
+                                <input placeholder="0" type="number"/>
                             </span>
                             <h4>선납금</h4>
                             <span>

@@ -12,19 +12,20 @@ body {
 }
 
 .infoSection {
-    margin-right: 30px;
+    margin-right: 50px;
     margin-bottom: 100px;
-    width: 30%;
+    width: 550px;
 }
 
 .infoSection>div {
     position: -webkit-sticky;
     position: sticky;
     height: auto;
-    top: 0px;
+    top: -190px;
 }
 
 .infoSection>div>h1 {
+    word-spacing: -0.4rem;
     margin: 0;
     margin-bottom: 50px;
     font-size: 40px;
@@ -36,6 +37,8 @@ body {
     font-size: 18px;
     font-weight: 500;
     color: #111;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .infoSection>div>span {
@@ -68,10 +71,11 @@ body {
 
 .infoSelectedListDiv {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    margin: 0;
+    margin-bottom: 30px;
 }
 
 .infoSelectedListDiv > p {
@@ -80,10 +84,14 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #111;
+    display: flex;
+    align-self: flex-end;
 }
 
 .infoSelectedListDiv > span {
+    margin: 0;
     gap: 12px;
+    width: 70%;
 }
 
 .infoSelectedListDiv > span > p {
@@ -99,6 +107,11 @@ body {
     font-weight: 500;
     color: #767676;
     margin-bottom: 16px;
+}
+
+.infoSection>div>.priceTitle {
+    border-top: 1px solid #ededed;
+    padding-top: 40px;
 }
 
 .infoSection>div>.priceTitle>p {
@@ -121,7 +134,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 30px;
 }
 
 .infoSection>div>div>span {
@@ -166,11 +178,11 @@ body {
 
 .optionSection {
     position: relative;
-    width: 70%;
+    width: calc(100% - 580px);
     margin-top: 110px;
     margin-bottom: 100px;
     margin-left: auto;
-    border-left: 1px solid #dbdbdb;
+    border-left: 1px solid #ededed;
 }
 
 .optionMarginDiv {
@@ -218,8 +230,8 @@ body {
 
 .colorBtn.selected>img {
     position: absolute;
-    top: -15px;
-    right: -15px;
+    top: -11px;
+    right: -11px;
 }
 
 .optionDiv {
@@ -245,7 +257,7 @@ body {
     width: 162px;
     height: 45px;
     border-radius: 12px;
-    border: 1px solid #767676;
+    border: 1px solid #bbbbbb;
     font-size: 18px;
     color: #767676;
     margin-right: 20px;
@@ -265,7 +277,9 @@ body {
     width: 237px;
     height: 45px;
     border-radius: 12px;
-    border: 1px solid #767676;
+    border: 1px solid #bbbbbb;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 18px;
     color: #767676;
     margin-top: 20px;
@@ -282,6 +296,7 @@ body {
 
 .optionTrimDiv {
     width: 100%;
+    max-width: 1040px;
     height: 80px;
     display: flex;
     flex-direction: row;
@@ -322,6 +337,7 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
+    max-width: 1040px;
 }
 
 .trimInfoDiv > span {
@@ -369,6 +385,7 @@ body {
 
 
 .optionSelectDiv {
+    max-width: 1100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
