@@ -13,46 +13,24 @@ import selectBox from '../assets/optionPage_SelectBox.png'
  * @returns 
  */
 const GNB = (props) => {
-    const [scrolled, setScrolled] = useState(props.stat);
     const [searchStat, setSearchStat] = useState(false);
     const [dealStat, setDealStat] = useState(false);
     const [selectBox1, setSelectBox1] = useState(false)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-
-            }
-        };
-
-        if (!props.stat) {
-            if (!searchStat && !dealStat) {
-                window.addEventListener('scroll', handleScroll);
-            }
-        }
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [props.stat, searchStat, dealStat]);
-
     return (
-        <div className={`GNB ${scrolled ? 'scrolled' : ''}`}>
+        <div className='GNB scrolled'>
             <div className='GNBListDiv'>
                 {/* <MenuIcon size={25} color={'white'} /> */}
                 <a href='/'><img src={DSAutoLine} alt='DS Auto Line' /></a>
                 <a className='listA' href='/QuickFAQ'><p className={props.page === '빠른 간편 문의' ? 'selected' : ''}>빠른 간편 문의</p></a>
-                <a className='listA' href='/QuickDeal'><p className={props.page === '즉시 출고' ? 'selected' : ''}>즉시 출고</p></a>
                 <a className='listA' href='/HotDeal'><p className={props.page === '한정 특가' ? 'selected' : ''}>한정 특가</p></a>
+                <a className='listA' href='/QuickDeal'><p className={props.page === '즉시 출고' ? 'selected' : ''}>즉시 출고</p></a>
                 <a className='listA' href='/Event'><p className={props.page === '이벤트/프로모션' ? 'selected' : ''}>이벤트/프로모션</p></a>
                 <a className='listA'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
                 <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
                 <div className='rightDiv'>
-                    <p onClick={() => { setSearchStat(true); setDealStat(false); setScrolled(true); }} className={searchStat ? 'selected' : ''}>검색</p>
-                    <span onClick={() => { setSearchStat(false); setDealStat(true); setScrolled(true); }}>간편상담신청</span>
+                    <p onClick={() => { setSearchStat(true); setDealStat(false); }} className={searchStat ? 'selected' : ''}>검색</p>
+                    <span onClick={() => { setSearchStat(false); setDealStat(true); }}>간편상담신청</span>
                 </div>
             </div>
             {searchStat &&

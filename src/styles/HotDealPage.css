@@ -30,9 +30,13 @@ body {
 .titleSection>h1 {
     margin: 0;
     font-size: 40px;
-    font-weight: bold;
+    font-weight: normal;
     color: #111;
     margin-bottom: 12px;
+}
+
+.titleSection>h1>span {
+    font-weight: bold;
 }
 
 .titleSection>p {

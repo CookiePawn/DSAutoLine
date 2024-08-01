@@ -53,13 +53,19 @@ body {
   text-align: left;
 }
 
+
 .hotDealSection > h1 {
   font-size: 40px;
-  font-weight: bold;
+  font-weight: normal;
   margin-top: 120px;
-  margin-bottom: 12px;
+  margin-bottom: 40px;
   color: #111;
 }
+
+.hotDealSection > h1 > span{
+  font-weight: bold;
+}
+
 
 .hotDealSection > p {
   margin-bottom: 40px;
@@ -86,11 +92,12 @@ body {
   border: 1px solid #EDEDED;
   cursor: pointer;
   transition: all 0.5s ease;
-  box-sizing: border-box
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hotDealCard:hover {
-  box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 40px rgba(0,0,0,0.07);
 }
 
 .hotDealCardImg {
@@ -108,29 +115,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 16px; /* 자식 요소 사이의 간격 조정 (선택 사항) */
-  flex-wrap: wrap;
 }
 
 .hotDealCardTitleDiv > h2 {
   margin: 0;
   font-size: 28px;
   color: #111;
-}
-
-.hotDealCardTitleDiv > p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 37px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #767676;
-  background-color: #F0F2F4;
-  border-radius: 10px;
-  margin: 0;
 }
 
 .hotDealCardModel {
@@ -141,33 +131,12 @@ body {
   font-weight: normal;
   color: #111;
   margin-bottom: 16px;
-}
-
-.hotDealCardPriceDiv {
-  position: relative;
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.hotDealCardPriceDiv > p {
-  font-size: 17px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.hotDealCardPriceDiv > .hotDealCardPriceTitle {
-  color: #767676;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.hotDealCardPriceDiv > .hotDealCardPrice {
-  margin-left: auto;
-  font-size: 18px;
-  font-weight: 500;
-  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
 }
 
 .hotDealCardMonthPriceDiv {
@@ -176,7 +145,8 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  margin-bottom: 30px;
+  margin: auto;
+  margin-bottom: 8px;
 }
 
 .hotDealCardMonthPriceDiv > p {
@@ -192,6 +162,8 @@ body {
 
 .hotDealCardMonthPriceDiv > .hotDealCardMonthPrice {
   margin-left: auto;
+  position: relative;
+  top: 5px;
 }
 
 .hotDealCardMonthPriceDiv > .hotDealCardMonthPrice > span {
@@ -207,6 +179,33 @@ body {
 
 .hotDealCardMonthPriceDiv > .hotDealCardMonthPricePercent > span {
   color: red;
+}
+
+.infoPaddingDiv {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.infoPaddingDiv > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.infoPaddingDiv > span > p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #767676;
+  background-color: #f0f2f4;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5.5px;
+  padding-bottom: 5.5px;
+  border-radius: 12px;
 }
 
 
@@ -237,17 +236,6 @@ body {
   font-size: 20px;
 }
 
-.moreBtn {
-  position: absolute;
-  right: 0px;
-  top: 60px;
-  cursor: pointer;
-  color: #767676;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-
 .indicator {
   display: flex;
   justify-content: center;
@@ -269,24 +257,19 @@ body {
 .quickDealSection {
   position: relative;
   width: 95%;
-  height: 1000px;
   margin: auto;
 }
 
 .quickDealSection > h1 {
   font-size: 40px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
   margin-top: 120px;
-  margin-bottom: 12px;
+  margin-bottom: 40px;
 }
 
-.quickDealSection > p {
-  margin: 0;
-  margin-bottom: 40px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #767676;
+.quickDealSection > h1 > span {
+  font-weight: bold;
 }
 
 .quickDealCard {
@@ -302,7 +285,7 @@ body {
 }
 
 .quickDealCard:hover {
-  box-shadow: 6px 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 40px rgba(0,0,0,0.07);
 }
 
 .quickDealCard:hover > img {
@@ -327,9 +310,10 @@ body {
 }
 
 .quickDealCardInfoDiv {
-  margin-left: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 .quickDealCardInfo1 {
@@ -338,10 +322,35 @@ body {
   font-weight: 500;
   margin: 0;
   margin-left: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+}
+
+
+
+
+
+.quickDealCardInfoDiv > p:nth-of-type(2) {
+  min-width: 46px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0064FF;
+  margin: 0;
 }
 
 .quickDealCardInfoDiv .quickDealCardInfo1 {
+  max-width: 180px;
   margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
 }
 
 .quickDealCardBorder {
@@ -352,6 +361,22 @@ body {
 }
 
 
+.eventBannerImage {
+  display: block;
+  width: 95%;
+  margin: auto;
+}
+
+.eventBannerImage > img {
+  width: 100%;
+  margin-top: 106px;
+  margin-bottom: 120px;
+}
+
+
+
+
+
 
 .eventSection {
   position: relative;
@@ -359,23 +384,18 @@ body {
   flex-direction: column;
   width: 95%;
   margin: auto;
-  text-align: center;
 }
 
 .eventSection > h1 {
   font-size: 40px;
-  font-weight: bold;
+  font-weight: normal;
   color: #111;
   margin: 0;
-  margin-bottom: 12px;
+  margin-bottom: 40px;
 }
 
-.eventSection > p {
-  font-size: 16px;
-  font-weight: 500;
-  color: #767676;
-  margin: 0;
-  margin-bottom: 40px;
+.eventSection > h1 > span {
+  font-weight: bold;
 }
 
 .eventListDiv {
@@ -449,24 +469,19 @@ body {
   margin: auto;
   position: relative;
   height: 900px;
-  text-align: center;
   margin-top: 120px;
 }
 
 .reviewSection > h1 {
   margin: 0;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: normal;
   color: #111;
-  margin-bottom: 12px;
+  margin-bottom: 40px;
 }
 
-.reviewSection > p {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #767676;
-  margin-bottom: 40px;
+.reviewSection > h1 > span {
+  font-weight: bold;
 }
 
 .reviewSection > div {
@@ -490,15 +505,8 @@ body {
   box-sizing: border-box;
 }
 
-.reviewCard > span {
-  display: inline-block;
-  width: 100%;
-  height: 340px;
-  background-color: #c4c4c4;
-}
-
 .reviewCard > div {
-  margin: 30px;
+  margin: 20px;
   text-align: left;
 }
 
@@ -508,25 +516,23 @@ body {
 
 .reviewCard > div > h2 {
   margin: 0;
-  margin-top: 24px;
-  margin-bottom: 8px;
-  font-size: 28px;
+  margin-bottom: 12px;
+  font-size: 20px;
   font-weight: bold;
-  color: #111;
+  color: #000000;
   line-height: 120%;
 }
 
-.reviewCard > div > span {
+.reviewCard > div > span:nth-of-type(1) {
   display: inline-block;
   width: 100%;
-  height: 100px;
   overflow: hidden;
 }
 
-.reviewCard > div > span > p {
+.reviewCard > div > span:nth-of-type(1) > p {
   margin: 0;
   color: #767676;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 140%;
   display: -webkit-box;
@@ -534,21 +540,39 @@ body {
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: normal;
+  overflow: hidden;
 }
 
-.reviewSection > a {
-  display: inline-block;
-  margin-top: 70px;
+.reviewCard > div > span:nth-of-type(2) {
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ededed;
+}
+
+.moreBtnA {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 40px;
   cursor: pointer;
-  font-weight: bold;
-  color: #767676;
   width: 209px;
   height: 60px;
   border: 1px solid #BBB;
   border-radius: 12px;
+  text-decoration: none;
 }
 
-.reviewSection > a > p {
+.moreBtnA > span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.moreBtnA > span > p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -559,12 +583,23 @@ body {
 
 
 .partnerSection {
+  width: 95%;
   height: 700px;
+  margin: auto;
   display: flex;
-  justify-content: center;
   margin-top: 120px;
 }
 
+.partnerSection > h1 {
+  font-size: 40px;
+  font-weight: normal;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+.partnerSection > h1 > span {
+  font-weight: bold;
+}
 
 
 

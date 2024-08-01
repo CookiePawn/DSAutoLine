@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
-import ray from '../assets/ray.png'
-import casper from '../assets/casper.png'
+import ray from '../assets/img/car/ray.png'
+import santafe from '../assets/img/car/santafe.png'
+import morning from '../assets/img/car/morning.png'
 import eventimg from '../assets/eventimage.png'
+import reviewImg1 from '../assets/img/review/review1.png'
 import { IoMdStar, IoMdStarOutline } from "react-icons/io";
 
 
@@ -99,19 +101,24 @@ export const HotDealCard = (props) => {
             <img src={ray} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>레이</h2>
-                <p>48개월</p>
-                <p>선납급 30%</p>
             </span>
             <p className='hotDealCardModel'>2024년형 가솔린 1.0 트랜디 (A/T)</p>
-            <span className='hotDealCardPriceDiv'>
-                <p className='hotDealCardPriceTitle'>차량가</p>
-                <p className='hotDealCardPrice'>13,900,000원</p>
-            </span>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
             </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
+            </span>
+            <div className='infoPaddingDiv'>
+                <span>
+                    <p>48개월</p>
+                    <p>선납금 30%</p>
+                </span>
+            </div>
         </div>
     )
 }
@@ -140,38 +147,41 @@ export const QuickDealCard = (props) => {
 
     return (
         <div className='quickDealCard' style={{ minWidth: windowWidth }}>
-            <img src={casper} className='hotDealCardImg' />
+            <img src={santafe} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
-                <h2>현대 캐스퍼</h2>
-                <p>48개월</p>
-                <p>선납급 30%</p>
+                <h2>현대 디 올 뉴 싼타페</h2>
             </span>
-            <p className='hotDealCardModel'>2023년형 가솔린 터보 1.0 인스퍼레이션 (A/T)</p>
+            <p className='hotDealCardModel'>2024년형 가솔린 터보 2.5 2WD 익스클루시브 (7인승)</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>아틀라스 화이트</p>
+                <p className='quickDealCardInfo1'>크리미 화이트</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>라이트 그레이/블루</p>
+                <p className='quickDealCardInfo1'>블랙</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
+                    <p className='quickDealCardInfo1'>크리미 화이트 펄 외장컬러, 파노라마 썬루프</p>
+                    <p>외 2건</p>
                 </div>
             </span>
             <div className='quickDealCardBorder' />
-            <span className='hotDealCardPriceDiv'>
-                <p className='hotDealCardPriceTitle'>차량가</p>
-                <p className='hotDealCardPrice'>20,100,000원</p>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 235,980</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
-                <p className='hotDealCardMonthPrice'><span> 245,400</span>원</p>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 249,800</span>원</p>
             </span>
+            <div className='infoPaddingDiv'>
+                <span>
+                    <p>48개월</p>
+                    <p>선납금 30%</p>
+                </span>
+            </div>
         </div>
     )
 }
@@ -196,7 +206,7 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
-    const {item} = props;
+    const { item } = props;
 
     const [windowWidth, setWindowWidth] = useState(eventResize());
 
@@ -233,18 +243,10 @@ export const ReviewCard = (props) => {
     }, []);
 
     return (
-        <div className='reviewCard' style={{minWidth: windowWidth}}>
-            <span></span>
+        <div className='reviewCard' style={{ minWidth: windowWidth }}>
+            <span><img src={reviewImg1} style={{width: '100%'}}/></span>
             <div>
-                <div className='reviewCardStarDiv'>
-                    <IoMdStar size={33} color='#FBDA03' />
-                    <IoMdStar size={33} color='#FBDA03' />
-                    <IoMdStar size={33} color='#FBDA03' />
-                    <IoMdStar size={33} color='#FBDA03' />
-                    <IoMdStar size={33} color='#FBDA03' />
-                    {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
-                </div>
-                <h2>Jihwan****</h2>
+                <h2>기아 K3</h2>
                 <span>
                     <p>
                         정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히
@@ -253,6 +255,15 @@ export const ReviewCard = (props) => {
                         에 성심성의껏 답해주셔서 감사했습니다.
                     </p>
                 </span>
+                <span></span>
+                <div className='reviewCardStarDiv'>
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    <IoMdStar size={33} color='#FBDA03' />
+                    {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
+                </div>
 
             </div>
         </div>
@@ -332,13 +343,17 @@ export const QuickCarCard = (props) => {
             style={{ maxWidth: windowWidth }}
             onClick={() => props.setCarStat(props.index)}
         >
-            <img src={ray} alt='2024 Ray' />
-            <h2>레이</h2>
+            <img src={morning} alt='2024 Ray' />
+            <h2>모닝</h2>
             <p>2024년형 가솔린 1.0 트렌디 (A/T)</p>
-            <div>
-                <p>차량가</p>
-                <h3>13,900,000원</h3>
-            </div>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 151,200</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv' style={{marginBottom: 40}}>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 187,207</span>원</p>
+            </span>
         </div>
     )
 }
@@ -372,19 +387,24 @@ export const HotDealCarCard = (props) => {
             <img src={ray} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>레이</h2>
-                <p>48개월</p>
-                <p>선납급 30%</p>
             </span>
             <p className='hotDealCardModel'>2024년형 가솔린 1.0 트랜디 (A/T)</p>
-            <span className='hotDealCardPriceDiv'>
-                <p className='hotDealCardPriceTitle'>차량가</p>
-                <p className='hotDealCardPrice'>13,900,000원</p>
-            </span>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
             </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPricePercent'><span>26%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span> 205,150</span>원</p>
+            </span>
+            <div className='infoPaddingDiv'>
+                <span>
+                    <p>48개월</p>
+                    <p>선납금 30%</p>
+                </span>
+            </div>
         </div>
     )
 }
@@ -412,38 +432,41 @@ export const QuickDealCarCard = (props) => {
 
     return (
         <div className='quickDealCard' style={{ maxWidth: windowWidth }}>
-            <img src={casper} className='hotDealCardImg' />
+            <img src={santafe} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
-                <h2>현대 캐스퍼</h2>
-                <p>48개월</p>
-                <p>선납급 30%</p>
+                <h2>현대 디 올 뉴 싼타페</h2>
             </span>
-            <p className='hotDealCardModel'>2023년형 가솔린 터보 1.0 인스퍼레이션 (A/T)</p>
+            <p className='hotDealCardModel'>2024년형 가솔린 터보 2.5 2WD 익스클루시브 (7인승)</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>아틀라스 화이트</p>
+                <p className='quickDealCardInfo1'>크리미 화이트</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>라이트 그레이/블루</p>
+                <p className='quickDealCardInfo1'>블랙</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
-                    <p className='quickDealCardInfo1'>기본가/오토</p>
+                    <p className='quickDealCardInfo1'>크리미 화이트 펄 외장컬러, 파노라마 썬루프</p>
+                    <p>외 2건</p>
                 </div>
             </span>
             <div className='quickDealCardBorder' />
-            <span className='hotDealCardPriceDiv'>
-                <p className='hotDealCardPriceTitle'>차량가</p>
-                <p className='hotDealCardPrice'>20,100,000원</p>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 235,980</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>월렌탈료</p>
-                <p className='hotDealCardMonthPrice'><span> 245,400</span>원</p>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPrice'><span> 249,800</span>원</p>
             </span>
+            <div className='infoPaddingDiv'>
+                <span>
+                    <p>48개월</p>
+                    <p>선납금 30%</p>
+                </span>
+            </div>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import '../styles/OptionPage.css'
 import GNB from "../components/GNB"
 import Footer from "../components/Footer"
 import kiaLogo from '../assets/kiaLogo.png'
-import ray from '../assets/ray.png'
+import ray from '../assets/img/car/ray.png'
 import nonSelectBox from '../assets/optionPage_nonSelectBox.png'
 import selectBox from '../assets/optionPage_SelectBox.png'
 import optionClick from '../assets/optionClick.png'

@@ -2,6 +2,7 @@ import {
     IoIosMenu,
     IoIosSearch,
     IoMdClose,
+    IoIosArrowForward,
 } from 'react-icons/io'
 import { 
     SlArrowDown, 
@@ -70,5 +71,18 @@ export const UpIcon = (props) => {
 export const DownIcon = (props) => {
     return (
         <SlArrowDown size={props.size} color={props.color}/>
+    )
+}
+
+
+
+/**
+ * right 아이콘
+ * @param {*} props 
+ * @returns 
+ */
+export const RightIcon = (props) => {
+    return (
+        <IoIosArrowForward  size={props.size} color={props.color}/>
     )
 }

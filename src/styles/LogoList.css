@@ -7,13 +7,14 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+    margin-bottom: 100px;
 }
 
 .koreaLogoDiv > div {
     width: 133px;
     height: 133px;
     border: 1px solid #dbdbdb;
-    border-radius: 12px;
+    border-radius: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +26,6 @@ body {
 
 .koreaLogoDiv > div.selectedLogo {
     border: 1px solid #0064FF;
-    border-radius: 12px;
 }
 
 .koreaLogoDiv > div > p {
