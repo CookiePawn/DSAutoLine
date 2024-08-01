@@ -2,6 +2,7 @@ import '../styles/HotDealPage.css'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { HotDealCarCard } from '../components/Cards'
+import { hotDealList } from '../assets/item'
 
 
 const HotDealPage = (props) => {
@@ -17,8 +18,8 @@ const HotDealPage = (props) => {
             </div>
             <div className='carListSection'>
                 <div>
-                    {Array.from({ length: 6  }, (_, index) => (
-                        <HotDealCarCard/>
+                    {hotDealList.map((item, idx) => (
+                        <HotDealCarCard item={item}/>
                     ))}
 
                 </div>
