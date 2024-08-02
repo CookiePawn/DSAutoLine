@@ -129,7 +129,7 @@ body {
 .carCard>h2 {
     width: 90%;
     margin: auto;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     color: #111;
 }
@@ -138,7 +138,8 @@ body {
     width: 90%;
     margin: auto;
     margin-top: 10px;
-    font-size: 18px;
+    margin-bottom: 20px ;
+    font-size: 14px;
     font-weight: normal;
     color: #111;
     display: -webkit-box;

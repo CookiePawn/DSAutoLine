@@ -40,7 +40,8 @@ export const quickDealList = [
     { name: '니로', info: '2024년형 가솔린 1.6 하이브리드 2WD 노블레스 (A/T)', img: 'niro', rentalPrice: 193870, leasePrice: 181302, category: '소형/승용', enter: '기아', entry: '국산', outColor: '오로라 블랙 펄', inColor: '블랙', option: [{1: '기본가/오토'}] },
     { name: '아이오닉 6', info: '2024년형 전기 (스탠다드) 가격인하 익스클루시브 (A/T)', img: 'ioniq6', rentalPrice: 407200, leasePrice: 395650, category: '전기', enter: '기아', entry: '국산', outColor: '세레니티 화이트 펄', inColor: '블랙', option: [{1: '세레니티 화이트 펄 외장컬러'}]},
     { name: '모닝', info: '2024년형 가솔린 1.0 시그니처 (A/T)', img: 'morning', rentalPrice: 120700, leasePrice: 100990, category: '소형/승용', enter: '기아', entry: '국산', outColor: '클리어 화이트', inColor: '블랙', option: [{1: '기본가/오토'}] },
-    { name: '쏘렌토', info: '2024년형 가솔린 터보 1.6 하이브리드 2WD 노블레스 (A/T)', img: 'sorento', rentalPrice: 278270, leasePrice: 240900, category: 'SUV', enter: '기아', entry: '국산',outColor: '스노우 화이트', inColor: '올리브', option: [{1: '스노우 화이트 펄 외장컬러'}, {2: '파노라마 썬루프'}] },
+    { name: '쏘렌토', info: '2024년형 가솔린 터보 1.6 하이브리드 2WD 노블레스 (A/T)', img: 'sorento', rentalPrice: 278270, leasePrice: 240900, category: 'SUV', enter: '기아', entry: '국산', outColor: '스노우 화이트', inColor: '올리브', option: [{1: '스노우 화이트 펄 외장컬러'}, {2: '파노라마 썬루프'}] },
+    { name: 'E-Class', info: '2024년형 가솔린 2.0 E300 4MATIC AMG LINE (A/T)', img: 'benz-e-class', rentalPrice: 1705000, leasePrice: 1580970, category: '세단', enter: '벤츠', entry: '수입', outColor: '미드나잇 블랙', inColor: '프로덕트 레드', option: [{1: 'AMG 패키지'}, {2: '4MATIC'}] },
 ]
 
 
