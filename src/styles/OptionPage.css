@@ -1,5 +1,5 @@
 body {
-    font-family: 'pretendard';
+    
 }
 
 
@@ -29,7 +29,7 @@ body {
     margin: 0;
     margin-bottom: 50px;
     font-size: 40px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
 }
 
@@ -57,7 +57,7 @@ body {
 .infoSection>div>span>h3 {
     margin: 0;
     font-size: 28px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
 }
 
@@ -82,7 +82,7 @@ body {
     margin: 0;
     margin-left: auto;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
     display: flex;
     align-self: flex-end;
@@ -97,7 +97,7 @@ body {
 .infoSelectedListDiv > span > p {
     margin: 0;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: 400;
     color: #767676;
 }
 
@@ -172,7 +172,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     color: white;
 }
 
@@ -270,7 +270,7 @@ body {
 .selectDiv span>p.selected {
     border: 1px solid #0064FF;
     color: #0064FF;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .selectDiv>span>input {
@@ -323,7 +323,7 @@ body {
 
 .optionTrimDiv > span > p {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     color: #767676;
 }
 
@@ -373,7 +373,7 @@ body {
 
 .trimInfoDiv > span > span.selected > p {
     color: #0064FF;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .trimInfoDiv > span > span > img {

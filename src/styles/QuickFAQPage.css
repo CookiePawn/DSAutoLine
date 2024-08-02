@@ -1,5 +1,5 @@
 body {
-    font-family: 'pretendard';
+    
 }
 
 .categorySection {
@@ -27,7 +27,7 @@ body {
 
 .categoryTitleDiv>h3 {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     color: #767676;
     cursor: pointer;
     padding: 8px;
@@ -56,7 +56,7 @@ body {
 
 .quickCarListSection>h2 {
     font-size: 28px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
     margin: 0;
 }
@@ -84,7 +84,7 @@ body {
     border: 1px solid #bbb;
     border-radius: 20px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     color: #767676;
     cursor: pointer;
 }
@@ -130,7 +130,7 @@ body {
     width: 90%;
     margin: auto;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
 }
 
@@ -140,7 +140,7 @@ body {
     margin-top: 10px;
     margin-bottom: 20px ;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
     color: #111;
     display: -webkit-box;
     -webkit-line-clamp: 1;

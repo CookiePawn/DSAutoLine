@@ -2,7 +2,7 @@
 body {
   overflow-x: hidden; /* 전체 페이지에서 가로 스크롤을 막음 */
   margin: 0; /* 기본 여백 제거 */
-  font-family: 'pretendard';
+  
 }
 
 .App {
@@ -56,14 +56,14 @@ body {
 
 .hotDealSection > h1 {
   font-size: 40px;
-  font-weight: normal;
+  font-weight: 400;
   margin-top: 120px;
   margin-bottom: 40px;
   color: #111;
 }
 
 .hotDealSection > h1 > span{
-  font-weight: bold;
+  font-weight: 600;
 }
 
 
@@ -120,7 +120,7 @@ body {
 .hotDealCardTitleDiv > h2 {
   margin: 0;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #111;
 }
 
@@ -129,7 +129,7 @@ body {
   margin: 0;
   margin-top: 10px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   color: #111;
   margin-bottom: 20px;
   display: -webkit-box;
@@ -168,7 +168,7 @@ body {
 
 .hotDealCardMonthPriceDiv > .hotDealCardMonthPrice > span {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #111;
 }
 
@@ -221,7 +221,7 @@ body {
   border: none;
   cursor: pointer;
   z-index: 900;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 20px;
   opacity: 80%;
   transition: all 0.5s ease;
@@ -232,7 +232,7 @@ body {
   right: 0px;
   left: initial;
   z-index: 900;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 20px;
 }
 
@@ -262,14 +262,14 @@ body {
 
 .quickDealSection > h1 {
   font-size: 40px;
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
   margin-top: 120px;
   margin-bottom: 40px;
 }
 
 .quickDealSection > h1 > span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .quickDealCard {
@@ -303,7 +303,7 @@ body {
 
 .quickDealCardTitle1 {
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   color: #767676;
   margin: 0;
   margin-bottom: 12px;
@@ -396,14 +396,14 @@ body {
 
 .eventSection > h1 {
   font-size: 40px;
-  font-weight: normal;
+  font-weight: 400;
   color: #111;
   margin: 0;
   margin-bottom: 40px;
 }
 
 .eventSection > h1 > span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .eventListDiv {
@@ -497,13 +497,13 @@ body {
 .reviewSection > h1 {
   margin: 0;
   font-size: 40px;
-  font-weight: normal;
+  font-weight: 400;
   color: #111;
   margin-bottom: 40px;
 }
 
 .reviewSection > h1 > span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .reviewSection > div {
@@ -541,7 +541,7 @@ body {
   margin: 0;
   margin-bottom: 12px;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #000000;
   line-height: 120%;
 }
@@ -591,7 +591,7 @@ body {
   margin: 0;
   margin-left: auto;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   color: #767676;
   align-self: flex-end;
 }
@@ -607,7 +607,7 @@ body {
 .reviewCard > div > span:nth-of-type(4) > p {
   margin: 0;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: 400;
   color: #767676;
 }
 
@@ -654,13 +654,13 @@ body {
 
 .partnerSection > h1 {
   font-size: 40px;
-  font-weight: normal;
+  font-weight: 400;
   color: #111;
   margin-bottom: 40px;
 }
 
 .partnerSection > h1 > span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .partnerSection > img {

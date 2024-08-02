@@ -1,5 +1,5 @@
 body {
-    font-family: 'pretendard';
+    
 }
 
 .bannerSection {
@@ -14,17 +14,17 @@ body {
 .bannerSection > p {
     color: white;
     font-size: 50px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .categorySection > h1 {
     font-size: 40px;
-    font-weight: normal;
+    font-weight: 400;
     color: #111;
 }
 
 .categorySection > h1 > span {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .categorySection > p {
@@ -40,7 +40,7 @@ body {
 
 .carListSection > h2 {
     font-size: 28px;
-    font-weight: bold;
+    font-weight: 600;
     color: #111;
 }
 

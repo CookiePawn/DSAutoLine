@@ -1,5 +1,5 @@
 body {
-    font-family: 'pretendard';
+    
 }
 
 .koreaLogoDiv {
@@ -35,5 +35,5 @@ body {
 
 .koreaLogoDiv > div.selectedLogo > p {
     color: #0064FF;
-    font-weight: bold;
+    font-weight: 600;
 }
