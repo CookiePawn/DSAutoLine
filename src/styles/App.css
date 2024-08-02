@@ -131,7 +131,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: #111;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -363,8 +363,8 @@ body {
 
 .quickDealCardBorder {
   width: 90%;
-  border: 1px solid #EDEDED;
-  margin-top: 16px;
+  border-bottom: 1px solid #EDEDED;
+  margin-top: 10px;
   margin-bottom: 16px;
 }
 
@@ -521,7 +521,7 @@ body {
 .reviewCard {
   border-radius: 12px;
   background-color: white;
-  border: 1px solid #dedede;
+  border: 1px solid #ededed;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -570,7 +570,7 @@ body {
   display: block;
   height: 1px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 14px;
   margin-bottom: 20px;
   border-bottom: 1px solid #ededed;
 }
