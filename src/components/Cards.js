@@ -173,8 +173,8 @@ export const QuickDealCard = (props) => {
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel'>{props.item.info}</p>
-            <span className='quickDealCardOptionDiv' style={{marginTop: 20}}>
+            <p className='hotDealCardModel' style={{marginBottom: 20}}>{props.item.info}</p>
+            <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
                 <p className='quickDealCardInfo1'>{props.item.outColor}</p>
             </span>
@@ -483,8 +483,8 @@ export const QuickDealCarCard = (props) => {
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel'>{props.item.info}</p>
-            <span className='quickDealCardOptionDiv'  style={{marginTop: 20}}>
+            <p className='hotDealCardModel' style={{marginBottom: 20}}>{props.item.info}</p>
+            <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
                 <p className='quickDealCardInfo1'>{props.item.outColor}</p>
             </span>
