@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import eventBanner1 from '../assets/img/banner/eventBanner1.png'
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
-import { hotDealList, quickDealList, reviewList } from '../assets/item';
+import { hotDealList, quickDealList, reviewList, carmentoList } from '../assets/item';
 import {
     HotDealCard,
     QuickDealCard,
@@ -36,7 +36,7 @@ const MainPage = (props) => {
 
     //이벤트 변수
     const [eventStart, setEventStart] = useState(0)
-    const [evnetEnd, setEventEnd] = useState(5)
+    const [evnetEnd, setEventEnd] = useState(6)
     const [eventCurrentIndex, setEventCurrentIndex] = useState(0);
     const [eventHovered, setEventHovered] = useState(false);
 
@@ -81,12 +81,12 @@ const MainPage = (props) => {
                         <button
                             style={{ top: 330 }}
                             onMouseEnter={() => setHotHovered(true)}
-                            onClick={() => sliderMove('left', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            onClick={() => sliderMove('left', hotDealList, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
                             className="moveButton">〈</button>
                         <button
                             style={{ top: 330 }}
                             onMouseEnter={() => setHotHovered(true)}
-                            onClick={() => sliderMove('right', list, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            onClick={() => sliderMove('right', hotDealList, hotNum, hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
                             className="moveButton right">〉</button>
                     </>
                 )}
@@ -124,12 +124,12 @@ const MainPage = (props) => {
                         <button
                             style={{ top: 400 }}
                             onMouseEnter={() => setQuickHovered(true)}
-                            onClick={() => sliderMove('left', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            onClick={() => sliderMove('left', quickDealList, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
                             className="moveButton">〈</button>
                         <button
                             style={{ top: 400 }}
                             onMouseEnter={() => setQuickHovered(true)}
-                            onClick={() => sliderMove('right', list, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            onClick={() => sliderMove('right', quickDealList, quickNum, quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
                             className="moveButton right">〉</button>
                     </>
                 )}
@@ -172,12 +172,12 @@ const MainPage = (props) => {
                         <button
                             style={{ top: 432 }}
                             onMouseEnter={() => setReviewHovered(true)}
-                            onClick={() => sliderMove('left', list, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            onClick={() => sliderMove('left', reviewList, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
                             className="moveButton">〈</button>
                         <button
                             style={{ top: 432 }}
                             onMouseEnter={() => setReviewHovered(true)}
-                            onClick={() => sliderMove('right', list, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            onClick={() => sliderMove('right', reviewList, reviewNum, reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
                             className="moveButton right">〉</button>
                     </>
                 )}
@@ -203,26 +203,18 @@ const MainPage = (props) => {
                         <button
                             onMouseEnter={() => setEventHovered(true)}
                             onClick={() => {
-                                if (eventStart > 0) {
-                                    setEventStart(eventStart - 5);
-                                    setEventEnd(evnetEnd - 5)
-                                    setEventCurrentIndex(eventCurrentIndex - 1)
-                                }
+
                             }} className="moveButton" style={{ top: 370 }}>〈</button>
                         <button
                             onMouseEnter={() => setEventHovered(true)}
                             onClick={() => {
-                                if (evnetEnd <= list.length) {
-                                    setEventStart(eventStart + 5);
-                                    setEventEnd(evnetEnd + 5);
-                                    setEventCurrentIndex(eventCurrentIndex + 1)
-                                }
+                            
                             }} className="moveButton right" style={{ top: 370 }}>〉</button>
                     </>
                 )}
                 <h1>가장 좋은<br /><span>후기를 받은 우수카멘토</span></h1>
                 <div className='eventListDiv'>
-                    {list.slice(eventStart, evnetEnd).map((item, idx) => (
+                    {carmentoList.map((item, idx) => (
                         <EventCard item={item} />
                     ))}
                 </div>

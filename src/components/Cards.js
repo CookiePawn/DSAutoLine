@@ -82,14 +82,16 @@ const eventResize = () => {
  * @returns 카드 크기
  */
 const carmentoResize = () => {
-    if (window.innerWidth < 990) {
-        return (((window.innerWidth * 0.95) - 46) / 2);
-    } else if (window.innerWidth < 1300) {
-        return (((window.innerWidth * 0.95) - 76) / 3);
+    if (window.innerWidth < 700) {
+        return (((window.innerWidth * 0.95) - 45) / 2);
+    } else if (window.innerWidth < 990) {
+        return (((window.innerWidth * 0.95) - 75) / 3);
+    } else if (window.innerWidth < 1250) {
+        return (((window.innerWidth * 0.95) - 105) / 4);
     } else if (window.innerWidth < 1500) {
-        return (((window.innerWidth * 0.95) - 108) / 4);
+        return (((window.innerWidth * 0.95) - 135) / 5);
     } else {
-        return ((window.innerWidth * 0.95) - 137) / 5;
+        return ((window.innerWidth * 0.95) - 165) / 6;
     }
 
 };
@@ -218,7 +220,7 @@ export const QuickDealCard = (props) => {
 
 
 /**
- * 메인 페이지 - 이벤트 카드
+ * 메인 페이지 - 우수 카멘토
  * @param {*} props 
  * @returns 
  */
@@ -237,10 +239,11 @@ export const EventCard = (props) => {
         };
     }, []);
     return (
-        <div className='eventCard' style={{ minWidth: cardNum, backgroundImage: `url(${carmento1})` }}>
+        <div className='eventCard' style={{ minWidth: cardNum }}>
+            <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)}/>
             <div>
                 <span>
-                    <p>김태경 팀장에게 상담받기</p>
+                    <p>{props.item.name} {props.item.position}에게 상담받기</p>
                     <RightIcon size={23} color={'white'} />
                 </span>
             </div>

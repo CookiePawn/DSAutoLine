@@ -1,3 +1,13 @@
+export const carmentoList = [
+    { name: '김태경', position: '팀장', img: 'carmento1'},
+    { name: '백지환', position: '디자이너', img: 'carmento1'},
+    { name: '안준철', position: '개발자', img: 'carmento1'},
+    { name: '심민혁', position: '개발자', img: 'carmento1'},
+    { name: '소대현', position: '개발자', img: 'carmento1'},
+    { name: '정의석', position: '디자이너', img: 'carmento1'},
+    { name: '김민경', position: '마케팅 팀장', img: 'carmento1'},
+]
+
 export const hotDealList = [
     { name: '레이', info: '2024년형 가솔린 1.0 트랜디 (A/T)', img: 'ray', rentalPrice: 205150, rentalPercent: 26, leasePrice: 190100, leasePercent: 20 },
     { name: 'EV6', info: '2023년형 전기 (롱레인지) 에어 2WD (A/T)', img: 'EV6', rentalPrice: 219536, rentalPercent: 31, leasePrice: 200230, leasePercent: 26 },
