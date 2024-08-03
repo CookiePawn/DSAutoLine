@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react"
 import '../styles/OptionPage.css'
 import GNB from "../components/GNB"
 import Footer from "../components/Footer"
-import kiaLogo from '../assets/kiaLogo.png'
-import ray from '../assets/img/car/ray.png'
 import nonSelectBox from '../assets/optionPage_nonSelectBox.png'
 import selectBox from '../assets/optionPage_SelectBox.png'
 import optionClick from '../assets/optionClick.png'
 import optionNonClick from '../assets/optionNonClick.png'
-import optionImage1 from '../assets/optionImage1.png'
 import { UpIcon, DownIcon } from "../components/Icons"
+import { optionList } from "../assets/item"
 
 
 
@@ -19,41 +17,36 @@ const OptionPage = (props) => {
 
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
-    const [colorStat, setColorStat] = useState(null)
+    const [colorStat, setColorStat] = useState([])
 
     //세부모델 선택
     const [trimStat, setTrimStat] = useState(null)
     const [trimSelect1, setTrimSelect1] = useState(null)
     const [trimSelect2, setTrimSelect2] = useState(null)
+    const [trimPrice, setTrimPrice] = useState(0);
+
+    //옵션
+    const [options, setOptions] = useState([])
+    const [optionPrice, setOptionPrice] = useState(0)
 
     //이용방법
     const [useingSelect1, setUseingSelect1] = useState(null)
     const [useingSelect2, setUseingSelect2] = useState(null)
     const [useingSelect3, setUseingSelect3] = useState(null)
-    const [useingSelect4, setUseingSelect4] = useState(null)
+    const [useingSelect4, setUseingSelect4] = useState('')
     const [useingSelect5, setUseingSelect5] = useState(null)
     const [useingSelect6, setUseingSelect6] = useState(null)
     const [useingSelect7, setUseingSelect7] = useState(null)
 
+    console.log(useingSelect4)
 
-    const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY >= 100) {
-                setScrolled(110);
-            } else {
-                setScrolled(0);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        // Cleanup event listener on component unmount
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    const oil = [
+        optionList.lpg && 'LPG',
+        optionList.gasoline && '가솔린',
+        optionList.diesel && '디젤',
+        optionList.hybrid && '가솔린+전기'
+    ].filter(Boolean).join(', ');
 
 
     return (
@@ -64,31 +57,32 @@ const OptionPage = (props) => {
                     <div>
                         <h1>옵션 및 이용조건</h1>
                         <span className="carTitle" style={{ alignItems: 'center' }}>
-                            <img src={kiaLogo} alt="차량 브랜드 로고" />
-                            <h3>기아 레이</h3>
+                            <img src={require(`../assets/img/logo/${optionList.logoImg}.png`)} alt="차량 브랜드 로고" />
+                            <h3>{optionList.enter} {optionList.name}</h3>
                         </span>
-                        <p>2022.09 │ 경차 │ 가솔린</p>
-                        <p>988cc │ 복합연비 12.7~13.0km/L</p>
-                        <img src={ray} alt="차량 이미지" />
+                        <p>{optionList.year}.{optionList.month} │ {optionList.size} │ {oil}</p>
+                        <p>{optionList.minCC.toLocaleString()}~{optionList.maxCC.toLocaleString()}CC │ 복합연비 {optionList.minFuelEfficiency}~{optionList.maxFuelEfficiency}km/L</p>
+                        <img src={require(`../assets/img/car/${optionList.carImg}.png`)} alt="차량 이미지" />
                         <h4>세부 모델</h4>
                         <div className="infoSelectedListDiv">
                             <span>
-                                <p>2024년형 가솔린 터보 1.6 하이브리드 2WD</p>
-                                <p>트랜디 (A/T)</p>
+                                <p>{trimSelect1}</p>
+                                <p>{trimSelect2}</p>
                             </span>
-                            <p>1,390 만원</p>
+                            <p>{(trimPrice / 10000).toLocaleString()} 만원</p>
                         </div>
                         <h4>옵션</h4>
                         <div className="infoSelectedListDiv">
-                            <span style={{borderRight: '1px solid #ededed'}}>
-                                <p>버튼 시동 PACK</p>
-                                <p>컴포트 I</p>
+                            <span className="selectOptionListSpan">
+                                {options.map((item, idx) => (
+                                    <p>{item.name}</p>
+                                ))}
                             </span>
-                            <p>+ 245 만원</p>
+                            <p>+ {(optionPrice / 10000).toLocaleString()} 만원</p>
                         </div>
                         <span className="priceTitle">
                             <p>합계</p>
-                            <h4>1,653 만원</h4>
+                            <h4>{((trimPrice + optionPrice) / 10000).toLocaleString()} 만원</h4>
                         </span>
                         <div>
                             <span>
@@ -110,7 +104,11 @@ const OptionPage = (props) => {
                                 </span>
                             </span>
                         </div>
-                        <p className="nextBtn">견적서 확인</p>
+                        {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
+                            ? <p className="nextBtn">견적서 확인</p>
+                            : <p className="nonNextBtn">견적서 확인</p>
+                        }
+
                     </div>
                 </div>
                 <div className="optionSection">
@@ -118,13 +116,13 @@ const OptionPage = (props) => {
                         <div className="colorDiv">
                             <span>
                                 <h3>외장 색상</h3>
-                                <p>클리어 화이트(UD)</p>
+                                <p>{colorStat.name}</p>
                             </span>
                             <span>
-                                {Array.from({ length: 6 }, (_, index) => (
-                                    colorStat !== index
-                                        ? <span style={{ backgroundColor: '#dbdbdb' }} onClick={() => setColorStat(index)} />
-                                        : <span className='colorBtn selected' style={{ backgroundColor: '#dbdbdb' }} onClick={() => setColorStat(index)}>
+                                {optionList.color.map((item, index) => (
+                                    colorStat !== item
+                                        ? <span style={{ backgroundColor: item.rgb }} onClick={() => setColorStat(item)} />
+                                        : <span className='colorBtn selected' style={{ backgroundColor: item.rgb }}>
                                             <img src={optionClick} />
                                         </span>
                                 ))}
@@ -153,25 +151,41 @@ const OptionPage = (props) => {
                                 </span>
                             </div>
                             <div className="trimInfoDiv">
-                                <span style={trimStat === 0 ? { height: 430 } : { height: 0 }}>
-                                    {list.map((_, index) => (
-                                        <span onClick={() => setTrimSelect1(index)} className={trimSelect1 === index ? 'selected' : ''}>
-                                            {trimSelect1 === index
+                                {trimSelect1 && trimStat !== 0 &&
+                                    <span style={{ overflowY: 'hidden', height: 65 }}>
+                                        <span className={'selected'}>
+                                            <img src={optionClick} />
+                                            <p>{trimSelect1}</p>
+                                        </span>
+                                    </span>
+                                }
+                                <span style={trimStat === 0 ? { display: 'block' } : { display: 'none' }}>
+                                    {Array.from(new Set(optionList.trim.map(item => item.trim1))).map((item, index) => (
+                                        <span onClick={() => { setTrimSelect1(item); setTrimStat(1) }} className={trimSelect1 === item ? 'selected' : ''}>
+                                            {trimSelect1 === item
                                                 ? <img src={optionClick} />
                                                 : <img src={optionNonClick} />
                                             }
-                                            <p>2024년형 가솔린 터보 1.6 하이브리드 2WD</p>
+                                            <p>{item}</p>
                                         </span>
                                     ))}
                                 </span>
-                                <span style={trimStat === 1 ? { height: 430 } : { height: 0 }}>
-                                    {Array.from({ length: 15 }, (_, index) => (
-                                        <span onClick={() => setTrimSelect2(index)} className={trimSelect2 === index ? 'selected' : ''}>
-                                            {trimSelect2 === index
+                                {trimSelect2 && trimStat !== 1 &&
+                                    <span style={{ overflowY: 'hidden', height: 65, borderLeft: '1px solid #ededed' }}>
+                                        <span className={'selected'}>
+                                            <img src={optionClick} />
+                                            <p>{trimSelect2} - {(trimPrice / 10000).toLocaleString()}만원</p>
+                                        </span>
+                                    </span>
+                                }
+                                <span style={{ display: trimSelect1 && trimStat === 1 ? 'block' : 'none', borderLeft: '1px solid #ededed' }}>
+                                    {optionList.trim.filter((item) => item.trim1 === trimSelect1).map((item, index) => (
+                                        <span onClick={() => { setTrimSelect2(item.trim2); setTrimStat(null); setTrimPrice(item.price) }} className={trimSelect2 === item.trim2 ? 'selected' : ''}>
+                                            {trimSelect2 === item.trim2
                                                 ? <img src={optionClick} />
                                                 : <img src={optionNonClick} />
                                             }
-                                            <p>프레스티지 (A/T) - 1,635만원</p>
+                                            <p>{item.trim2} - {(item.price / 10000).toLocaleString()}만원</p>
                                         </span>
                                     ))}
                                 </span>
@@ -179,11 +193,28 @@ const OptionPage = (props) => {
                             <h3 style={{ marginTop: 120 }}>옵션 추가하기</h3>
                             {trimSelect1 !== null && trimSelect2 !== null
                                 ? <div className="optionSelectDiv">
-                                    {list.slice(0, 8).map((item, idx) => (
-                                        <div>
-                                            <img src={optionImage1} />
-                                            <p>버튼시동 PACK</p>
-                                            <h4>40만원</h4>
+                                    {optionList.option.map((item, idx) => (
+                                        <div
+                                            className={options.find(option => option.name === item.name) && "selected"}
+                                            onClick={() => {
+                                                if (options.find(option => option.name === item.name)) {
+                                                    // item이 options에 이미 존재하는 경우
+                                                    setOptions(options.filter(option => option.name !== item.name));
+                                                    setOptionPrice(optionPrice - item.price);
+                                                } else {
+                                                    // item이 options에 존재하지 않는 경우
+                                                    setOptions([...options, item]);
+                                                    setOptionPrice(optionPrice + item.price);
+                                                }
+                                            }}
+                                        >
+                                            <img src={require(`../assets/img/option/${item.img}.png`)} />
+                                            <p>{item.name}</p>
+                                            <h4>{(item.price / 10000).toLocaleString()}만원</h4>
+                                            {options.find(option => option.name === item.name) &&
+                                                <img src={optionClick} style={{ width: 25, position: 'absolute', right: 15, bottom: 15 }} />
+                                            }
+
                                         </div>
                                     ))}
                                 </div> : null
@@ -218,27 +249,27 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
-                                <input placeholder="0" type="number"/>
+                                <input placeholder="0" type="number" value={useingSelect4} onChange={event => setUseingSelect4(event.target.value)}/>
                             </span>
                             <h4>선납금</h4>
                             <span>
-                                <p className={useingSelect4 === false ? 'selected' : ''} onClick={() => setUseingSelect4(false)}>없음</p>
-                                <p className={useingSelect4 === 10 ? 'selected' : ''} onClick={() => setUseingSelect4(10)}>10%</p>
-                                <p className={useingSelect4 === 20 ? 'selected' : ''} onClick={() => setUseingSelect4(20)}>20%</p>
-                                <p className={useingSelect4 === 30 ? 'selected' : ''} onClick={() => setUseingSelect4(30)}>30%</p>
-                                <p className={useingSelect4 === 40 ? 'selected' : ''} onClick={() => setUseingSelect4(40)}>40%</p>
+                                <p className={useingSelect5 === false ? 'selected' : ''} onClick={() => setUseingSelect5(false)}>없음</p>
+                                <p className={useingSelect5 === 10 ? 'selected' : ''} onClick={() => setUseingSelect5(10)}>10%</p>
+                                <p className={useingSelect5 === 20 ? 'selected' : ''} onClick={() => setUseingSelect5(20)}>20%</p>
+                                <p className={useingSelect5 === 30 ? 'selected' : ''} onClick={() => setUseingSelect5(30)}>30%</p>
+                                <p className={useingSelect5 === 40 ? 'selected' : ''} onClick={() => setUseingSelect5(40)}>40%</p>
                             </span>
                             <h4>보험연령</h4>
                             <span>
-                                <p className={useingSelect5 === 21 ? 'selected' : ''} onClick={() => setUseingSelect5(21)}>만 21세 이상</p>
-                                <p className={useingSelect5 === 26 ? 'selected' : ''} onClick={() => setUseingSelect5(26)}>만 26세 이상</p>
+                                <p className={useingSelect6 === 21 ? 'selected' : ''} onClick={() => setUseingSelect6(21)}>만 21세 이상</p>
+                                <p className={useingSelect6 === 26 ? 'selected' : ''} onClick={() => setUseingSelect6(26)}>만 26세 이상</p>
                             </span>
                             <h4>연간 주행거리</h4>
                             <span>
-                                <p className={useingSelect6 === 10000 ? 'selected' : ''} onClick={() => setUseingSelect6(10000)}>연간 1만km</p>
-                                <p className={useingSelect6 === 20000 ? 'selected' : ''} onClick={() => setUseingSelect6(20000)}>연간 2만km</p>
-                                <p className={useingSelect6 === 30000 ? 'selected' : ''} onClick={() => setUseingSelect6(30000)}>연간 3만km</p>
-                                <p className={useingSelect6 === '무제한' ? 'selected' : ''} onClick={() => setUseingSelect6('무제한')}>무제한</p>
+                                <p className={useingSelect7 === 10000 ? 'selected' : ''} onClick={() => setUseingSelect7(10000)}>연간 1만km</p>
+                                <p className={useingSelect7 === 20000 ? 'selected' : ''} onClick={() => setUseingSelect7(20000)}>연간 2만km</p>
+                                <p className={useingSelect7 === 30000 ? 'selected' : ''} onClick={() => setUseingSelect7(30000)}>연간 3만km</p>
+                                <p className={useingSelect7 === '무제한' ? 'selected' : ''} onClick={() => setUseingSelect7('무제한')}>무제한</p>
                             </span>
                         </div>
                     </div>

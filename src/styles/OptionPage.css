@@ -21,7 +21,7 @@ body {
     position: -webkit-sticky;
     position: sticky;
     height: auto;
-    top: -190px;
+    top: -140px;
 }
 
 .infoSection>div>h1 {
@@ -67,15 +67,24 @@ body {
 
 .infoSection>div>img {
     width: 100%;
+    margin-bottom: 40px;
 }
 
 .infoSelectedListDiv {
     width: 100%;
+    min-height: 54.5px;
+    max-height: 100px;
     display: flex;
-    flex-direction: row;
     gap: 10px;
-    margin: 0;
     margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.selectOptionListSpan {
+    display: flex;
+    height: 100px;
+    overflow-y: auto;
+    border-right: 1px solid #ededed;
 }
 
 .infoSelectedListDiv > p {
@@ -116,15 +125,15 @@ body {
 
 .infoSection>div>.priceTitle>p {
     margin: 0;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 600;
     color: #111;
 }
 
 .infoSection>div>.priceTitle>h4 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 600;
     color: #0064FF;
     margin-left: auto;
 }
@@ -174,6 +183,21 @@ body {
     font-size: 18px;
     font-weight: 600;
     color: white;
+    cursor: pointer;
+}
+
+.infoSection>div>.nonNextBtn {
+    height: 20px;
+    background-color: #9FA5AB;
+    margin: 0;
+    margin-top: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
 }
 
 .optionSection {
@@ -200,12 +224,15 @@ body {
 
 .colorDiv>span>h3 {
     margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: #111;
 }
 
 .colorDiv>span>p {
     margin: 0;
     margin-left: 20px;
-    font-size: 14px;
+    font-size: 18px;
     color: #767676;
 }
 
@@ -238,14 +265,31 @@ body {
     margin-top: 100px;
 }
 
+.optionDiv > h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
 
 .selectDiv {
     margin-top: 100px;
 }
 
+.selectDiv > h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #111;
+}
+
 .selectDiv>h4 {
     margin-bottom: 0;
     margin-top: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #111;
 }
 
 .selectDiv>span {
@@ -258,7 +302,8 @@ body {
     height: 45px;
     border-radius: 12px;
     border: 1px solid #bbbbbb;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 500;
     color: #767676;
     margin-right: 20px;
     display: flex;
@@ -290,7 +335,7 @@ body {
 }
 
 .selectDiv>span>input::placeholder {
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 
@@ -343,11 +388,11 @@ body {
 .trimInfoDiv > span {
     margin-top: 67px;
     width: 50%;
+    max-height: 430px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
-    gap: 30px;
+    overflow-y: auto;
 }
 
 .trimInfoDiv > span > span {
@@ -358,6 +403,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -390,11 +438,11 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 67px;
     gap: 30px;
 }
 
 .optionSelectDiv > div {
+    position: relative;
     flex: 1 1 calc(25% - 30px);
     margin: auto;
     box-sizing: border-box;
@@ -405,8 +453,13 @@ body {
     transition: all 0.5s ease;
 }
 
-.optionSelectDiv > div:hover {
+.optionSelectDiv > div.selected {
     border: 1px solid #0064FF;
+    transition: all 0.5s ease;
+}
+
+.optionSelectDiv > div:hover {
+    transform: scale(1.02);
 }
 
 .optionSelectDiv > div > img {
