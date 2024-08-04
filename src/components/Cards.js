@@ -433,7 +433,7 @@ export const HotDealCarCard = (props) => {
 
 
     return (
-        <div className='hotDealCard' style={{ maxWidth: windowWidth }}>
+        <div className='hotDealCard' style={{ maxWidth: windowWidth }}  onClick={() => window.location.href='/Option'}>
             <img src={require(`../assets/img/car/${props.item.img}.png`)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>

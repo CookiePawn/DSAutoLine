@@ -8,13 +8,12 @@ import optionClick from '../assets/optionClick.png'
 import optionNonClick from '../assets/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
 import { optionList } from "../assets/item"
+import { OptionPagePopUp } from "../components/PopUp"
 
 
 
 
 const OptionPage = (props) => {
-    const [list, setList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
     const [colorStat, setColorStat] = useState([])
@@ -38,8 +37,8 @@ const OptionPage = (props) => {
     const [useingSelect6, setUseingSelect6] = useState(null)
     const [useingSelect7, setUseingSelect7] = useState(null)
 
-    console.log(useingSelect4)
-
+    //최종 버튼
+    const [nextStat, setNextStat] = useState(false)
 
     const oil = [
         optionList.lpg && 'LPG',
@@ -51,7 +50,10 @@ const OptionPage = (props) => {
 
     return (
         <>
-            <GNB stat={true} page={'빠른 간편 문의'} />
+            {nextStat &&
+                <OptionPagePopUp />
+            }
+            <GNB stat={true}/>
             <div className="flexSection">
                 <div className="infoSection">
                     <div>
@@ -105,7 +107,7 @@ const OptionPage = (props) => {
                             </span>
                         </div>
                         {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
-                            ? <p className="nextBtn">견적서 확인</p>
+                            ? <p className="nextBtn" onClick={() => { setNextStat(true); document.body.style.overflow = 'hidden';}}>견적서 확인</p>
                             : <p className="nonNextBtn">견적서 확인</p>
                         }
 
@@ -159,7 +161,7 @@ const OptionPage = (props) => {
                                         </span>
                                     </span>
                                 }
-                                <span style={trimStat === 0 ? { display: 'block' } : { display: 'none' }}>
+                                <span style={{ display: trimStat === 0 ? 'block' : 'none', borderRight: '1px solid #ededed' }}>
                                     {Array.from(new Set(optionList.trim.map(item => item.trim1))).map((item, index) => (
                                         <span onClick={() => { setTrimSelect1(item); setTrimStat(1) }} className={trimSelect1 === item ? 'selected' : ''}>
                                             {trimSelect1 === item
@@ -171,7 +173,7 @@ const OptionPage = (props) => {
                                     ))}
                                 </span>
                                 {trimSelect2 && trimStat !== 1 &&
-                                    <span style={{ overflowY: 'hidden', height: 65, borderLeft: '1px solid #ededed' }}>
+                                    <span style={{ overflowY: 'hidden', height: 65, borderLeft: trimStat !== 0 && '1px solid #ededed' }}>
                                         <span className={'selected'}>
                                             <img src={optionClick} />
                                             <p>{trimSelect2} - {(trimPrice / 10000).toLocaleString()}만원</p>
@@ -241,7 +243,7 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금</h4>
                             <span>
-                                <p className={useingSelect3 === false ? 'selected' : ''} onClick={() => setUseingSelect3(false)}>없음</p>
+                                <p className={useingSelect3 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect3('없음')}>없음</p>
                                 <p className={useingSelect3 === 10 ? 'selected' : ''} onClick={() => setUseingSelect3(10)}>10%</p>
                                 <p className={useingSelect3 === 20 ? 'selected' : ''} onClick={() => setUseingSelect3(20)}>20%</p>
                                 <p className={useingSelect3 === 30 ? 'selected' : ''} onClick={() => setUseingSelect3(30)}>30%</p>
@@ -249,11 +251,11 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
-                                <input placeholder="0" type="number" value={useingSelect4} onChange={event => setUseingSelect4(event.target.value)}/>
+                                <input placeholder="0" type="number" value={useingSelect4} onChange={event => setUseingSelect4(event.target.value)} />
                             </span>
                             <h4>선납금</h4>
                             <span>
-                                <p className={useingSelect5 === false ? 'selected' : ''} onClick={() => setUseingSelect5(false)}>없음</p>
+                                <p className={useingSelect5 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect5('없음')}>없음</p>
                                 <p className={useingSelect5 === 10 ? 'selected' : ''} onClick={() => setUseingSelect5(10)}>10%</p>
                                 <p className={useingSelect5 === 20 ? 'selected' : ''} onClick={() => setUseingSelect5(20)}>20%</p>
                                 <p className={useingSelect5 === 30 ? 'selected' : ''} onClick={() => setUseingSelect5(30)}>30%</p>
