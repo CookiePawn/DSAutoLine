@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
+import '../styles/EventPage.css';
 import ray from '../assets/img/car/ray.png'
 import santafe from '../assets/img/car/santafe.png'
 import morning from '../assets/img/car/morning.png'
@@ -59,10 +60,6 @@ const quickResize = () => {
  * @returns 카드 크기
  */
 const eventResize = () => {
-    // ~ 989 : 2개 
-    // 990 ~ 1239 : 3개
-    // 1240 ~ : 4개
-    // 1500 ~ : 5개
     if (window.innerWidth < 500) {
         return (((window.innerWidth * 0.95) - 0) / 1);
     } else if (window.innerWidth < 990) {
@@ -75,6 +72,7 @@ const eventResize = () => {
         return (((window.innerWidth * 0.95) - 147) / 5);
     }
 };
+
 
 
 /**
@@ -257,20 +255,32 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
-    const { item } = props;
-
     const [windowWidth, setWindowWidth] = useState(eventResize());
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(eventResize());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className='eventCardlist'>
+        <div
+            className='eventCardlist'
+            style={{ maxWidth: windowWidth }}
+        >
             <img src={eventimg} className='eventCardImg' />
             <div className='eventCardTitle'>
-                <h2>{item.name}</h2>
-                <p>{item.period}</p>
+                <h2>{props.item.name}</h2>
+                <p>{props.item.period}</p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 
 /**
