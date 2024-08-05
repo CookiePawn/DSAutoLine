@@ -1,6 +1,8 @@
 .titleSection {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 .titleSection > h1 {
@@ -32,6 +34,7 @@
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+    margin: auto;
 }
 
 

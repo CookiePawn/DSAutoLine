@@ -429,23 +429,6 @@ body {
   background-color: #DBDBDB;
 }
 
-.eventCardlist {
-  flex: 1 1 calc(33.333% - 20px);
-  box-sizing: border-box;
-  border-radius: 20px;
-  border: 1px solid #EDEDED;
-  background-color: #ffffff;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.eventCardlist:hover {
-  transform: scale(1.02);
-  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
-}
-
 .eventCardTitle {
   width: 90%;
   display: flex;
@@ -455,7 +438,6 @@ body {
 
 .eventCardTitle h2 {
   margin-bottom: 5px;
-  /* 원하는 간격으로 조정하세요 */
 }
 
 
