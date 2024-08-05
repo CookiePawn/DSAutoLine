@@ -3,11 +3,13 @@ import {
     IoIosSearch,
     IoMdClose,
     IoIosArrowForward,
+    IoMdStar,
 } from 'react-icons/io'
 import { 
     SlArrowDown, 
     SlArrowUp,
 } from "react-icons/sl";
+
 
 
 /**
@@ -86,3 +88,16 @@ export const RightIcon = (props) => {
         <IoIosArrowForward  size={props.size} color={props.color}/>
     )
 }
+
+
+/**
+ * star 아이콘
+ * @param {*} props 
+ * @returns 
+ */
+export const StarIcon = (props) => {
+    return (
+        <IoMdStar  size={props.size} color={props.color}/>
+    )
+}
+

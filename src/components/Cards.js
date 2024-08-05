@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
-import ray from '../assets/img/car/ray.png'
-import santafe from '../assets/img/car/santafe.png'
-import morning from '../assets/img/car/morning.png'
 import eventimg from '../assets/eventimage.png'
-import reviewImg1 from '../assets/img/review/review1.png'
-import carmento1 from '../assets/img/carmento/carmento1.jpg'
 import { IoMdStar, IoMdStarOutline } from "react-icons/io";
 import { RightIcon } from './Icons';
-import { quickDealList } from '../assets/item';
 
 
 
@@ -294,8 +288,8 @@ export const ReviewCard = (props) => {
     }, []);
 
     return (
-        <div className='reviewCard' style={{ minWidth: windowWidth }}>
-            <span><img src={require(`../assets/img/review/${props.item.img}.png`)} style={{ width: '100%' }} /></span>
+        <div className='reviewCard' style={{ minWidth: windowWidth }} onClick={() => window.location.href = '/ReviewMore'}>
+            <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
             <div>
                 <h2>{props.item.enter} {props.item.car}</h2>
                 <span>
@@ -528,3 +522,55 @@ export const QuickDealCarCard = (props) => {
         </div>
     )
 }
+
+
+
+
+/**
+ * 리뷰 페이지 - 리뷰 카드
+ * @param {*} props 
+ * @returns 
+ */
+export const ReviewPageCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(quickResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(quickResize());
+            props.setIndex(Math.floor(window.innerWidth / quickResize()))
+        };
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <div className='reviewCard' style={{ maxWidth: windowWidth }}  onClick={() => window.location.href = '/ReviewMore'}>
+            <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
+            <div>
+                <h2>{props.item.enter} {props.item.car}</h2>
+                <span>
+                    <p>{props.item.content}</p>
+                </span>
+                <span></span>
+                <span>
+                    <p>{props.item.name[0]}*{props.item.name[2]} 님</p>
+                    <p>{props.item.DATE}</p>
+                </span>
+                <span>
+                    <p>평점</p>
+                    <div className='reviewCardStarDiv'>
+                        {Array.from({ length: props.item.star }, (_, index) => (
+                            <IoMdStar size={33} color='#FBDA03' />
+                        ))}
+                        {/* <IoMdStarOutline size={25} color='#FBDA03' /> */}
+                    </div>
+                </span>
+            </div>
+        </div>
+    )
+}
+

@@ -14,7 +14,7 @@ body {
 
 .GNB.scrolled {
     background-color: white; /* 스크롤된 상태에서의 배경색 */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* 스크롤된 상태에서의 아래쪽 테두리 */
+    border-bottom: 1px solid #ededed; /* 스크롤된 상태에서의 아래쪽 테두리 */
 }
 
 .GNB.scrolled .GNBListDiv > .listA > p {

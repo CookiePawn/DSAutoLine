@@ -14,7 +14,10 @@
     background-color: white;
     opacity: 100%;
     margin: auto;
-    transform: translateY(100%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -22,12 +25,12 @@
     justify-content: center;
 }
 
-.popupDiv > img {
+.popupDiv>img {
     width: 197px;
     height: 185px;
 }
 
-.popupDiv > h2 {
+.popupDiv>h2 {
     font-size: 28px;
     font-weight: 600;
     color: #111;
@@ -35,7 +38,7 @@
     margin-top: 30px;
 }
 
-.popupDiv > p {
+.popupDiv>p {
     font-size: 16px;
     font-weight: 500;
     color: #767676;
@@ -44,7 +47,7 @@
     margin-bottom: 30px;
 }
 
-.popupDiv > span {
+.popupDiv>span {
     background-color: #0064FF;
     width: 210px;
     height: 51px;
@@ -56,4 +59,206 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+}
+
+
+
+.reviewPopupDimmed {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.reviewPopupDiv {
+    width: 1098px;
+    height: 613px;
+    background-color: white;
+    opacity: 100%;
+    margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.reviewPopupDiv > div:nth-of-type(1) {
+    margin-left: 42px;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #767676;
+    margin: 0;
+    margin-bottom: 60px;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > span {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > span > h3 {
+    margin: 0;
+    width: 53px;
+    height: 53px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0064FF;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > span > p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    line-height: 28px;
+    margin: 0;
+    margin-left: 16px;
+}
+
+.reviewPopupDiv > div:nth-of-type(1) > span > p > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #767676;
+}
+
+
+
+
+.reviewPopupDiv > div:nth-of-type(2) {
+    width: 582px;
+    margin-left: 120px;
+    margin-top: 40px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span > span:nth-of-type(2) {
+    margin-left: auto;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span > span > p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) >span > span > input{
+    width: 276px;
+    height: 37px;
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span > span > input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    color: #bbb;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span > span > span {
+    cursor: pointer;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span > span > img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > textarea {
+    width: 582px;
+    height: 199px;
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    outline: none;
+    padding: 10px;
+}
+
+
+/* 스크롤바 전체 */
+.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar {
+    width: 8px; /* 너비 */
+}
+
+/* 스크롤바 트랙 */
+.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-track {
+    background: #00ff0000; /* 배경색 */
+}
+
+/* 스크롤바 핸들 */
+.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-thumb {
+    background-color: #bbb; /* 색상 */
+    border: 2px solid #f0f0f0; /* 핸들 주위의 여백 */
+}
+
+/* 스크롤바 핸들 호버 시 */
+.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4; /* 호버 시 색상 */
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p {
+    font-size: 18px;
+    font-weight: 500;
+    width: 155px;
+    height: 47px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p:nth-of-type(1) {
+    color: #767676;
+    border: 1px solid #bbb;
+    margin-right: 20px;
+}
+
+.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p:nth-of-type(2) {
+    color: white;
+    background-color: #0064FF;
 }

@@ -7,6 +7,8 @@ import QuickFAQPage from './pages/QuickFAQPage';
 import HotDealPage from './pages/HotDealPage';
 import QuickDealPage from './pages/QuickDealPage';
 import OptionPage from './pages/OptionPage';
+import ReviewPage from './pages/ReviewPage';
+import ReviewMorePage from './pages/ReviewMorePage';
 
 function App() {
 	return (
@@ -20,6 +22,8 @@ function App() {
 					<Route path='/HotDeal' element={<HotDealPage />} />
 					<Route path='/QuickDeal' element={<QuickDealPage />} />
 					<Route path='/Option' element={<OptionPage />} />
+					<Route path='/Review' element={<ReviewPage />} />
+					<Route path='/ReviewMore' element={<ReviewMorePage />} />
 				</Routes>
 			</div>
 		</Router>

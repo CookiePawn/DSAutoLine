@@ -187,7 +187,7 @@ const MainPage = (props) => {
                         <ReviewCard item={item} />
                     ))}
                 </div>
-                <a className='moreBtnA'>
+                <a className='moreBtnA' href='/Review'>
                     <span>
                         <p>더 많은 리뷰 보기</p>
                     </span>

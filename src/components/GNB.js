@@ -33,7 +33,7 @@ const GNB = (props) => {
                 <a className='listA' href='/HotDeal'><p className={props.page === '한정 특가' ? 'selected' : ''}>한정 특가</p></a>
                 <a className='listA' href='/QuickDeal'><p className={props.page === '즉시 출고' ? 'selected' : ''}>즉시 출고</p></a>
                 <a className='listA' href='/Event'><p className={props.page === '이벤트/프로모션' ? 'selected' : ''}>이벤트/프로모션</p></a>
-                <a className='listA'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
+                <a className='listA' href='/Review'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
                 <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
                 <div className='rightDiv'>
                     <p onClick={() => { setSearchStat(true); setDealStat(false); document.body.style.overflow = 'hidden';}} className={searchStat ? 'selected' : ''}>검색</p>
