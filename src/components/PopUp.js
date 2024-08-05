@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import '../styles/PopUp.css'
 import { StarIcon } from './Icons'
 import imageUpload from '../assets/img/popup/imageUpload.png'
+import nonClick from '../assets/optionPage_nonSelectBox.png'
+import onClick from '../assets/optionPage_SelectBox.png'
 
 
 
@@ -81,6 +83,52 @@ export const ReviewPagePopUp = (props) => {
                             <p onClick={() => { document.body.style.overflow = 'auto'; window.location.href = '/'; }}>작성 완료</p>
                         </span>
 
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+
+
+export const CarmentoPopUp = (props) => {
+    return (
+        <>
+            <div className='carmentoDimmed'>
+                <div>
+                    <div>
+                        <span>
+                            <img src={require('../assets/img/carmento/carmento1.jpg')} />
+                        </span>
+                        <span>
+                            <h2>이주빈 팀장</h2>
+                            <p>고객님들이 항상 만족하실 수 있도록 <br/>최선을 다하겠습니다.</p>
+                        </span>
+                    </div>
+                    <div>
+                        <h2>우수 카멘토에게 상담 받아보세요</h2>
+                        <span>
+                            <h4>이름</h4>
+                            <input/>
+                        </span>
+                        <span>
+                            <h4>연락처</h4>
+                            <input type='number'/>
+                        </span>
+                        <span>
+                            <img src={nonClick}/>
+                            <p>개인정보 수집 · 이용 · 제공 동의 <span>(보기)</span></p>
+                        </span>
+                        <span>
+                            <img src={nonClick}/>
+                            <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
+                        </span>
+                        <span>
+                            <span onClick={() => { props.setCarmentoPopup(false); document.body.style.overflow = 'auto' }}>취소</span>
+                            <span onClick={() => { props.setCheckPopup(true); props.setCarmentoPopup(false); }}>상담 신청하기</span>
+                        </span>
                     </div>
                 </div>
             </div>

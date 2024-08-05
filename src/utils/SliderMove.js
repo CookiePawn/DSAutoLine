@@ -5,32 +5,31 @@
  * @param {*} setOffset 
  * @param {*} setCurrentIndex 
  */
-
-export const sliderMove = (direction, list, num, offset, currentIndex, setOffset, setCurrentIndex) => {
+export const sliderMove = (direction, offset, currentIndex, setOffset, setCurrentIndex) => {
     setOffset(() => {
-        // 새 오프셋 계산
         let newOffset = direction === 'left'
             ? -(document.body.clientWidth * 0.95 + 30)
             : document.body.clientWidth * 0.95 + 30;
 
+        let result = offset + newOffset;
+
         if (direction === 'left') {
             if (currentIndex > 0) {
                 setCurrentIndex(currentIndex - 1);
+                result = offset + newOffset;
+            } else {
+                result = offset; // left에서 처음 페이지면 offset을 변경하지 않음
             }
         } else {
-            setCurrentIndex(currentIndex + 1);
-        }
-
-        let result = offset + newOffset
-
-        // 새로운 오프셋이 0보다 작으면 0으로 설정
-        if (result < 0) result = 0;
-        if (list.length / num <= currentIndex + 1) {
-            if (direction === 'right') {
-                setCurrentIndex(0);
+            if (currentIndex < 1) { // 두 번째 페이지까지만
+                setCurrentIndex(currentIndex + 1);
+                result = offset + newOffset;
+            } else {
+                setCurrentIndex(0); // 처음으로 돌아가기
                 result = 0;
             }
         }
-        return result
+
+        return result;
     });
 };
