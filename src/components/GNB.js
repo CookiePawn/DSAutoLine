@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MenuIcon, SearchIcon, CloseIcon } from './Icons'
 import '../styles/GNB.css'
-import DSAutoLine from '../assets/DSAUTOLINE.png'
+import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png'
 import nonSelectBox from '../assets/optionPage_nonSelectBox.png'
 import selectBox from '../assets/optionPage_SelectBox.png'
 import { OptionPagePopUp } from '../components/PopUp'

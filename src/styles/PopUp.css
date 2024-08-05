@@ -262,3 +262,163 @@
     color: white;
     background-color: #0064FF;
 }
+
+
+
+
+
+
+
+.carmentoDimmed {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.carmentoDimmed > div {
+    width: 431px;
+    height: 509px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carmentoDimmed > div > div:nth-of-type(1){
+    display: flex;
+    flex-direction: row;
+    width: 87%;
+    margin: auto;
+    margin-top: 30px;
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 30px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(1) {
+    display: flex;
+    justify-content: center;
+    width: 71px;
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(1) > img {
+    height: 71px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) {
+    margin-left: 20px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) > h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) > p {
+    width: 280px;
+    text-wrap: wrap;
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+}
+
+
+.carmentoDimmed > div > div:nth-of-type(2) {
+    width: 87%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > input {
+    margin-left: auto;
+    margin-right: 20px;
+    width: 254px;
+    height: 37px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    outline: none; 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > img {
+    cursor: pointer;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+    margin-left: 11px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > p > span {
+    color: #767676;
+    cursor: pointer;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > span {
+    height: 47px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > span:nth-of-type(1) {
+    width: 90px;
+    border: 1px solid #bbb;
+    font-size: 18px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.carmentoDimmed > div > div:nth-of-type(2) > span > span:nth-of-type(2) {
+    width: 265px;
+    background-color: #0064FF;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    margin-left: auto;
+}
