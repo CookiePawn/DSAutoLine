@@ -74,13 +74,13 @@ const eventResize = () => {
  * @returns 카드 크기
  */
 const carmentoResize = () => {
-    if (window.innerWidth < 700) {
+    if (window.innerWidth < 850) {
         return (((window.innerWidth * 0.95) - 45) / 2);
-    } else if (window.innerWidth < 990) {
+    } else if (window.innerWidth < 1150) {
         return (((window.innerWidth * 0.95) - 75) / 3);
-    } else if (window.innerWidth < 1250) {
+    } else if (window.innerWidth < 1400) {
         return (((window.innerWidth * 0.95) - 105) / 4);
-    } else if (window.innerWidth < 1500) {
+    } else if (window.innerWidth < 1650) {
         return (((window.innerWidth * 0.95) - 135) / 5);
     } else {
         return ((window.innerWidth * 0.95) - 165) / 6;
@@ -101,7 +101,6 @@ export const HotDealCard = (props) => {
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(mainResize());
-            props.setIndex(Math.floor(window.innerWidth / mainResize()))
         };
         handleResize()
 
@@ -151,7 +150,6 @@ export const QuickDealCard = (props) => {
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(mainResize());
-            props.setIndex(Math.floor(window.innerWidth / mainResize()))
         };
         handleResize()
 
@@ -231,7 +229,7 @@ export const EventCard = (props) => {
         };
     }, []);
     return (
-        <div className='eventCard' style={{ minWidth: cardNum }}>
+        <div className='eventCard' style={{ minWidth: cardNum }} onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden'}}>
             <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)}/>
             <div>
                 <span>
