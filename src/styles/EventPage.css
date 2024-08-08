@@ -3,7 +3,7 @@
     height: auto;
     margin: auto;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 120px;
     margin-bottom: 40px;
     display: block;
 }
@@ -36,10 +36,11 @@
 }
 
 .eventButtonSection {
+    width: 95%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 20px;
+    margin: auto;
+    gap: 30px;
     margin-bottom: 40px;
     background-color: #ffffff;
 }
@@ -51,9 +52,9 @@
 }
 
 .eventpageSection {
-    width: 100%;
+    width: 95%;
     display: flex;
-    justify-content: center;
+    margin:auto;
     margin-bottom: 120px;
 }
 
@@ -61,16 +62,13 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-color: #292479;
-    gap: 20px;
+    gap: 30px;
     width: 100%;
 }
 
 .eventCardlist {
-    flex: 1 1 calc(25% - 20px);
+    flex: 1 1 calc(25% - 30px);
     border-radius: 12px;
-    background-color: #612525;
-    justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
 }
