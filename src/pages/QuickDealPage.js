@@ -58,7 +58,6 @@ const QuickDealPage = (props) => {
             </div>
             <div className='quickCarListSection'>
                 <h2>출고가능 차량 <span>{filteredList.length}대</span></h2>
-                <span></span>
                 <div className='quickCarListSelectDiv'>
                     <p onClick={() => entryFilter(categoryStat, '전체')} className={listStat === '전체' ? 'selected' : ''}>전체</p>
                     <p onClick={() => entryFilter(categoryStat, '소형/승용')} className={listStat === '소형/승용' ? 'selected' : ''}>소형/승용</p>

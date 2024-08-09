@@ -29,15 +29,18 @@ const GNB = (props) => {
             <div className='GNBListDiv'>
                 {/* <MenuIcon size={25} color={'white'} /> */}
                 <a href='/'><img src={DSAutoLine} alt='DS Auto Line' /></a>
-                <a className='listA' href='/QuickFAQ'><p className={props.page === '빠른 간편 문의' ? 'selected' : ''}>빠른 간편 문의</p></a>
-                <a className='listA' href='/HotDeal'><p className={props.page === '한정 특가' ? 'selected' : ''}>한정 특가</p></a>
-                <a className='listA' href='/QuickDeal'><p className={props.page === '즉시 출고' ? 'selected' : ''}>즉시 출고</p></a>
-                <a className='listA' href='/Event'><p className={props.page === '이벤트/프로모션' ? 'selected' : ''}>이벤트/프로모션</p></a>
-                <a className='listA' href='/Review'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
-                <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
+                <span>
+                    <a className='listA' href='/QuickFAQ'><p className={props.page === '빠른 간편 문의' ? 'selected' : ''}>빠른 간편 문의</p></a>
+                    <a className='listA' href='/HotDeal'><p className={props.page === '한정 특가' ? 'selected' : ''}>한정 특가</p></a>
+                    <a className='listA' href='/QuickDeal'><p className={props.page === '즉시 출고' ? 'selected' : ''}>즉시 출고</p></a>
+                    <a className='listA' href='/Event'><p className={props.page === '이벤트/프로모션' ? 'selected' : ''}>이벤트/프로모션</p></a>
+                    <a className='listA' href='/Review'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
+                    <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
+                </span>
+
                 <div className='rightDiv'>
-                    <p onClick={() => { setSearchStat(true); setDealStat(false); document.body.style.overflow = 'hidden';}} className={searchStat ? 'selected' : ''}>검색</p>
-                    <span onClick={() => { setSearchStat(false); setDealStat(true); document.body.style.overflow = 'hidden';}}>간편상담신청</span>
+                    <p onClick={() => { setSearchStat(true); setDealStat(false); document.body.style.overflow = 'hidden'; }} className={searchStat ? 'selected' : ''}>검색</p>
+                    <span onClick={() => { setSearchStat(false); setDealStat(true); document.body.style.overflow = 'hidden'; }}>간편상담신청</span>
                 </div>
             </div>
             {searchStat &&
@@ -49,7 +52,7 @@ const GNB = (props) => {
                                 <SearchIcon size={25} color={'black '} />
                             </div>
                         </div>
-                        <div className='CloseIcon' onClick={() => { setDealStat(false); setSearchStat(false); document.body.style.overflow = 'auto';}}>
+                        <div className='CloseIcon' onClick={() => { setDealStat(false); setSearchStat(false); document.body.style.overflow = 'auto'; }}>
                             <CloseIcon size={31} color={'black'} />
                         </div>
                     </div>
@@ -71,26 +74,26 @@ const GNB = (props) => {
                                     : <img src={selectBox} onClick={() => setSelectBox1(!selectBox1)} />
                             }
                             <h6>개인정보 취급방침 동의 <span>(보기)</span></h6>
-                            <h3  onClick={() => { setDealStat(false); setPopupStat(true);}}>간편 상담 신청하기</h3>
+                            <h3 onClick={() => { setDealStat(false); setPopupStat(true); }}>간편 상담 신청하기</h3>
                         </div>
-                        <div className='CloseIcon' onClick={() =>  setDealStat(false) } >
+                        <div className='CloseIcon' onClick={() => { setDealStat(false); setSearchStat(false); document.body.style.overflow = 'auto'; }} >
                             <CloseIcon size={31} color={'black'} />
                         </div>
                     </div>
                 </div>
             }
             {searchStat &&
-                <div className="GNBDimmed" onClick={() => { setSearchStat(false); document.body.style.overflow = 'auto';}}>
+                <div className="GNBDimmed" onClick={() => { setSearchStat(false); document.body.style.overflow = 'auto'; }}>
 
                 </div>
             }
             {dealStat &&
-                <div className="GNBDimmed" onClick={() => { setDealStat(false); document.body.style.overflow = 'auto';}}>
+                <div className="GNBDimmed" onClick={() => { setDealStat(false); document.body.style.overflow = 'auto'; }}>
 
                 </div>
             }
-            {popupStat && 
-                <OptionPagePopUp/>
+            {popupStat &&
+                <OptionPagePopUp />
             }
         </div>
     )

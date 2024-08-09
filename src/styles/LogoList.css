@@ -14,7 +14,7 @@ body {
     width: 133px;
     height: 133px;
     border: 1px solid #dbdbdb;
-    border-radius: 100px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;

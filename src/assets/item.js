@@ -72,7 +72,7 @@ export const optionList = {
     name: 'K5',
     enter: '기아',
     logoImg: 'kia',
-    carImg: 'K5',
+    carImg: 'K3',
     year: 2024,
     month: 3,
     size: '중형',

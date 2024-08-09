@@ -6,20 +6,21 @@ import Footer from '../components/Footer';
 import eventBanner1 from '../assets/img/banner/eventBanner1.png'
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
-import { hotDealList, quickDealList, reviewList, carmentoList } from '../assets/item';
+import { hotDealList, quickDealList, reviewList, carmentoList, quickFAQList } from '../assets/item';
 import {
     HotDealCard,
     QuickDealCard,
     EventCard,
     ReviewCard,
+    PopularCarCard,
 } from '../components/Cards';
+import { popularResize } from '../utils/ResizeCard';
 import { sliderMove } from '../utils/SliderMove';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
 
 
 
 const MainPage = (props) => {
-
     //한정 특가 변수
     const [hotDealOffset, setHotDealOffset] = useState(0);
     const [hotDealCurrentIndex, setHotDealCurrentIndex] = useState(0);
@@ -38,13 +39,36 @@ const MainPage = (props) => {
     //리뷰 변수
     const [reviewOffset, setReviewOffset] = useState(0);
     const [reviewCurrentIndex, setReviewCurrentIndex] = useState(0);
-    const [reviewNum, setReviewNum] = useState(0);
     const [reviewHovered, setReviewHovered] = useState(false);
 
+    //인기 차량 리스트
+    const [popularStat, setPopularStat] = useState(popularResize());
+    const [popularEntryStat, setPopularEntryStat] = useState(0);
+    const [popularList, setPopularList] = useState(quickFAQList.filter(item => item.entry === '국산'))
+
+    useEffect(() => {
+        const handleResize = () => {
+            setPopularStat(popularResize());
+            console.log(popularResize())
+        };
+        handleResize()
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const popularFunction = () => {
+            popularEntryStat === 0 
+                ? setPopularList(quickFAQList.filter(item => item.entry === '국산'))
+                : setPopularList(quickFAQList.filter(item => item.entry === '수입'))
+        }
+        popularFunction()
+    }, [popularEntryStat])
 
 
-    //console.log('hot: ' + hotNum)
-    //console.log('quick: ' + quickNum)
 
     return (
         <div className='container'>
@@ -157,6 +181,33 @@ const MainPage = (props) => {
                 <img src={eventBanner1} />
             </div>
 
+            <section className='popularSection'>
+                <h1>가장 <span>인기 많은 차량</span></h1>
+                <span>
+                    <p className={popularEntryStat === 0 && 'selected'} onClick={() => setPopularEntryStat(0)}>국산 차</p>
+                    <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
+                </span>
+                <div>
+                    {popularList.length >= 5
+                        ? popularList.slice(0, popularStat).map((item, idx) => (
+                            <PopularCarCard
+                                item={item}
+                                index={idx}
+                                carStat={null}
+                                setCarStat={() => window.location.href = "/Option"}
+                            />
+                        ))
+                        : popularList.map((item, idx) => (
+                            <PopularCarCard
+                                item={item}
+                                index={idx}
+                                carStat={null}
+                                setCarStat={() => window.location.href = "/Option"}
+                            />
+                        ))}
+                </div>
+            </section>
+
             <div
                 className='reviewSection'
                 onMouseEnter={() => setReviewHovered(true)}
@@ -189,7 +240,7 @@ const MainPage = (props) => {
                 </a>
             </div>
             {carmentPopup &&
-                <CarmentoPopUp setCarmentoPopup={setCarmentoPopup} setCheckPopup={setCheckPopup}/>
+                <CarmentoPopUp setCarmentoPopup={setCarmentoPopup} setCheckPopup={setCheckPopup} />
             }
             {checkPopup &&
                 <OptionPagePopUp />
@@ -216,7 +267,7 @@ const MainPage = (props) => {
                 <h1>가장 좋은<br /><span>후기를 받은 우수카멘토</span></h1>
                 <div className='eventListDiv'>
                     {carmentoList.map((item, idx) => (
-                        <EventCard item={item} setCarmentoPopup={setCarmentoPopup}/>
+                        <EventCard item={item} setCarmentoPopup={setCarmentoPopup} />
                     ))}
                 </div>
                 {/* <EventCardIndicator

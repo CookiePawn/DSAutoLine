@@ -17,7 +17,7 @@ body {
     border-bottom: 1px solid #ededed; /* 스크롤된 상태에서의 아래쪽 테두리 */
 }
 
-.GNB.scrolled .GNBListDiv > .listA > p {
+.GNB.scrolled .GNBListDiv > span  .listA > p {
     color: black;
     font-size: 18px;
     font-weight: 500;
@@ -44,10 +44,18 @@ body {
 
 .GNBListDiv > a > img {
     width: 147px;
-    margin-right: 57px;
 }
 
-.GNBListDiv > .listA {
+.GNBListDiv > span {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.GNBListDiv > span  > .listA {
     height: 80px;
     display: flex;
     justify-content: center;
@@ -57,28 +65,27 @@ body {
     transition: all 0.3s ease;
 }
 
-.GNBListDiv > .listA > p {
+.GNBListDiv > span  > .listA > p {
     color: #FFF;
     font-size: 18px;
     font-weight: 500;
-    margin-right: 60px;
     transition: all 0.3s ease;
 }
 
-.GNBListDiv > .listA:hover > p {
+.GNBListDiv > span  > .listA:hover > p {
     font-weight: 600;
     color: #0064FF;
 }
 
-.GNB.scrolled .GNBListDiv > .listA:hover > p {
+.GNB.scrolled .GNBListDiv > span  > .listA:hover > p {
     color: #0064FF;
 }
 
-.GNBListDiv > .listA > p.selected {
+.GNBListDiv > span  > .listA > p.selected {
     color: #0064FF;
 }
 
-.GNB.scrolled .GNBListDiv > .listA > p.selected {
+.GNB.scrolled .GNBListDiv > span  > .listA > p.selected {
     color: #0064FF;
 }
 

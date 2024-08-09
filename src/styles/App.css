@@ -440,7 +440,7 @@ body {
   transform: scale(1.02);
 }
 
-.eventCard > img {
+.eventCard>img {
   width: 100%;
 }
 
@@ -520,12 +520,12 @@ body {
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.07);
 }
 
-.reviewCard > span > img {
+.reviewCard>span>img {
   width: 100%;
   transition: all 0.5s ease;
 }
 
-.reviewCard:hover > span > img {
+.reviewCard:hover>span>img {
   transform: scale(1.05);
 }
 
@@ -670,4 +670,59 @@ body {
 
 .partnerSection>img {
   margin-bottom: 40px;
+}
+
+
+
+.popularSection {
+  width: 95%;
+  margin: auto;
+  margin-top: 120px;
+}
+
+.popularSection>h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 400;
+  color: #111;
+}
+
+.popularSection>h1>span {
+  font-weight: 600;
+}
+
+.popularSection>span {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.popularSection>span>p {
+  width: 85px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #767676;
+  border: 1px solid #bbb;
+  margin: 0;
+  cursor: pointer;
+}
+
+.popularSection>span>p.selected {
+  color: white;
+  background-color: #0064FF;
+}
+
+.popularSection > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
 }

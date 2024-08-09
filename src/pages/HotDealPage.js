@@ -12,7 +12,7 @@ const HotDealPage = (props) => {
             <div className='bannerSection'>
                 <p>한정 특가 이벤트 배너</p>
             </div>
-            <div className='titleSection'>
+            <div className='hotDealTitleSection'>
                 <h1>한정 <span>특가</span></h1>
                 <p>특별 할인이 들어간 가격의 차량을 확인하세요</p>
             </div>

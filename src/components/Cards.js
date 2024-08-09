@@ -3,90 +3,11 @@ import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
 import '../styles/EventPage.css';
 import eventimg from '../assets/eventimage.png'
-import { IoMdStar, IoMdStarOutline } from "react-icons/io";
+import { IoMdStar } from "react-icons/io";
 import { RightIcon } from './Icons';
+import { mainResize, eventResize, quickResize, carmentoResize } from '../utils/ResizeCard';
 
 
-
-/**
- * 메인 페이지 - 한정 특가 및 즉시 출고에 사용
- * @returns 카드 크기
- */
-const mainResize = () => {
-    if (document.body.clientWidth < 700) {
-        return (((document.body.clientWidth * 0.95) - 0) / 1);
-    } else if (document.body.clientWidth < 1070) {
-        return (((document.body.clientWidth * 0.95) - 30) / 2);
-    } else if (document.body.clientWidth < 1450) {
-        return (((document.body.clientWidth * 0.95) - 60) / 3);
-    } else if (document.body.clientWidth < 1700) {
-        return (((document.body.clientWidth * 0.95) - 90) / 4);
-    } else {
-        return (((document.body.clientWidth * 0.95) - 120) / 5);
-    }
-};
-
-
-/**
- * 빠른 간편 문의에 사용
- * @returns 카드 크기
- */
-const quickResize = () => {
-    // ~ 989 : 2개 
-    // 990 ~ 1239 : 3개
-    // 1240 ~ : 4개
-    // 1500 ~ : 5개
-    if (window.innerWidth < 500) {
-        return (((window.innerWidth * 0.95) - 0) / 1);
-    } else if (window.innerWidth < 990) {
-        return (((window.innerWidth * 0.95) - 51) / 2);
-    } else if (window.innerWidth < 1450) {
-        return (((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1929) {
-        return (((window.innerWidth * 0.95) - 115) / 4);
-    } else {
-        return (((window.innerWidth * 0.95) - 147) / 5);
-    }
-};
-
-/**
- * 이벤트 페이지에 사용
- * @returns 카드 크기
- */
-const eventResize = () => {
-    if (window.innerWidth < 500) {
-        return (((window.innerWidth * 0.95) - 0) / 1);
-    } else if (window.innerWidth < 990) {
-        return (((window.innerWidth * 0.95) - 51) / 2);
-    } else if (window.innerWidth < 1450) {
-        return (((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1929) {
-        return (((window.innerWidth * 0.95) - 104) / 4);
-    } else {
-        return (((window.innerWidth * 0.95) - 136) / 5);
-    }
-};
-
-
-
-/**
- * 메인 페이지 - 우수 카멘토
- * @returns 카드 크기
- */
-const carmentoResize = () => {
-    if (window.innerWidth < 850) {
-        return (((window.innerWidth * 0.95) - 45) / 2);
-    } else if (window.innerWidth < 1150) {
-        return (((window.innerWidth * 0.95) - 75) / 3);
-    } else if (window.innerWidth < 1400) {
-        return (((window.innerWidth * 0.95) - 105) / 4);
-    } else if (window.innerWidth < 1650) {
-        return (((window.innerWidth * 0.95) - 135) / 5);
-    } else {
-        return ((window.innerWidth * 0.95) - 165) / 6;
-    }
-
-};
 
 
 
@@ -323,6 +244,47 @@ export const ReviewCard = (props) => {
     )
 }
 
+
+/**
+ * 메인 페이지 - 인기 차량 리스트 카드
+ * @param {*} props 
+ * @returns 
+ */
+export const PopularCarCard = (props) => {
+    const [windowWidth, setWindowWidth] = useState(quickResize());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(quickResize());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    return (
+        <div
+            className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
+            style={{ maxWidth: windowWidth }}
+            onClick={() => props.setCarStat(props.index)}
+        >
+            <img src={require(`../assets/img/car/${props.item.img}.png`)} alt='2024 Ray' />
+            <h2>{props.item.name}</h2>
+            <p>{props.item.info}</p>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
+                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+            </span>
+        </div>
+    )
+}
 
 
 

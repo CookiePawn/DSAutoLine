@@ -138,16 +138,16 @@ const OptionPage = (props) => {
                                     <div className='upDownIcon' >
                                         {trimStat === 0
                                             ? <UpIcon color={'white'} size={24} />
-                                            : <DownIcon color={'#767676'} size={24} />
+                                            : <DownIcon color={'white'} size={24} />
                                         }
                                     </div>
                                 </span>
-                                <span style={{ borderLeft: 'none' }} className={trimStat === 1 ? 'selected' : ''} onClick={() => trimStat === 1 ? setTrimStat(null) : setTrimStat(1)}>
+                                <span className={trimStat === 1 ? 'selected' : ''} onClick={() => trimStat === 1 ? setTrimStat(null) : setTrimStat(1)}>
                                     <p>트림 2</p>
                                     <div className='upDownIcon' >
                                         {trimStat === 1
                                             ? <UpIcon color={'white'} size={24} />
-                                            : <DownIcon color={'#767676'} size={24} />
+                                            : <DownIcon color={'white'} size={24} />
                                         }
                                     </div>
                                 </span>

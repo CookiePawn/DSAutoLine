@@ -17,7 +17,7 @@ body {
     font-weight: 600;
 }
 
-.titleSection {
+.hotDealTitleSection {
     width: 95%;
     height: auto;
     margin: auto;
@@ -27,7 +27,8 @@ body {
     display: block;
 }
 
-.titleSection>h1 {
+.hotDealTitleSection>h1 {
+    max-width: 145px;
     margin: 0;
     font-size: 40px;
     font-weight: 400;
@@ -35,11 +36,12 @@ body {
     margin-bottom: 12px;
 }
 
-.titleSection>h1>span {
+.hotDealTitleSection>h1>span {
     font-weight: 600;
 }
 
-.titleSection>p {
+.hotDealTitleSection>p {
+    max-width: 275px;
     margin: 0;
     font-weight: 500;
     font-size: 16px;

@@ -21,7 +21,7 @@ body {
     position: -webkit-sticky;
     position: sticky;
     height: auto;
-    top: -140px;
+    top: -220px;
 }
 
 .infoSection>div>h1 {
@@ -193,7 +193,8 @@ body {
 }
 
 .infoSection>div>.nextBtn {
-    height: 20px;
+    width: 100%;
+    height: 51px;
     background-color: #0064FF;
     margin: 0;
     margin-top: 20px;
@@ -208,7 +209,8 @@ body {
 }
 
 .infoSection>div>.nonNextBtn {
-    height: 20px;
+    width: 100%;
+    height: 51px;
     background-color: #9FA5AB;
     margin: 0;
     margin-top: 20px;
@@ -366,16 +368,17 @@ body {
     height: 80px;
     display: flex;
     flex-direction: row;
+    gap: 2px;
 }
 
 .optionTrimDiv > span {
     position: relative;
-    width: 50%;
+    width: calc(50% - 8px);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 1px solid #dbdbdb;
+    background-color: #bbb;
     cursor: pointer;
 }
 
@@ -390,7 +393,7 @@ body {
 .optionTrimDiv > span > p {
     font-size: 20px;
     font-weight: 600;
-    color: #767676;
+    color: white;
 }
 
 .upDownIcon {

@@ -10,7 +10,7 @@
     font-weight: 600;
     color: #111;
     margin: 0;
-    margin-top: 100px;
+    margin-top: 180px;
     margin-bottom: 12px;
     width: calc(100% - 30px);
     gap: 30px;
@@ -37,6 +37,7 @@
     font-weight: 500;
     cursor: pointer;
     margin: auto;
+    margin-bottom: 40px;
 }
 
 
