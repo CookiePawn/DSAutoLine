@@ -54,16 +54,16 @@ const quickResize = () => {
  * @returns 카드 크기
  */
 const eventResize = () => {
-    if (window.innerWidth < 500) {
+    if (window.innerWidth < 700) {
         return (((window.innerWidth * 0.95) - 0) / 1);
-    } else if (window.innerWidth < 990) {
-        return (((window.innerWidth * 0.95) - 51) / 2);
+    } else if (window.innerWidth < 1070) {
+        return (((window.innerWidth * 0.95) - 30) / 2);
     } else if (window.innerWidth < 1450) {
         return (((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1929) {
-        return (((window.innerWidth * 0.95) - 104) / 4);
+    } else if (window.innerWidth < 1920) {
+        return (((window.innerWidth * 0.95) - 130) / 4);
     } else {
-        return (((window.innerWidth * 0.95) - 136) / 5);
+        return (((window.innerWidth * 0.95) - 160) / 5);
     }
 };
 
