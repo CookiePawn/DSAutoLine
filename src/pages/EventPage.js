@@ -6,7 +6,6 @@ import { EventCardlist } from '../components/Cards';
 
 const EventPage = (props) => {
     const [selectedButton, setSelectedButton] = useState(0);
-    const [isDimmed, setIsDimmed] = useState(false);
 
     const nowEvent = [
         { name: '이벤트 1', period: '2024.07.01 ~ 2024.07.31', imgSrc: '/path/to/image1.jpg' },
@@ -31,7 +30,6 @@ const EventPage = (props) => {
         { name: '(종)이벤트 4', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
         { name: '(종)이벤트 5', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
         
-        // ... 종료된 이벤트 목록
     ];
 
     const getEvents = () => {
@@ -39,9 +37,7 @@ const EventPage = (props) => {
     };
 
     const handleButtonClick = (buttonIndex) => {
-        setIsDimmed(true);
         setSelectedButton(buttonIndex);
-        setTimeout(() => setIsDimmed(false), 300); // Dimmed 효과를 위해 짧은 시간동안 유지
     };
 
     return (
