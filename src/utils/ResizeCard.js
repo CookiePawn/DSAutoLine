@@ -51,9 +51,9 @@ export const eventResize = () => {
     } else if (window.innerWidth < 1450) {
         return (((window.innerWidth * 0.95) - 83) / 3);
     } else if (window.innerWidth < 1929) {
-        return (((window.innerWidth * 0.95) - 104) / 4);
+        return (((window.innerWidth * 0.95) - 115) / 4);
     } else {
-        return (((window.innerWidth * 0.95) - 136) / 5);
+        return (((window.innerWidth * 0.95) - 147) / 5);
     }
 };
 

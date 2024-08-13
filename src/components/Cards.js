@@ -184,10 +184,19 @@ export const EventCardlist = (props) => {
 
     return (
         <div
-            className='eventCardlist'
+            className="eventCardlist"
             style={{ maxWidth: windowWidth }}
         >
-            <img src={eventimg} className='eventCardImg' />
+            <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
+                <img 
+                    src={eventimg} 
+                    className="eventCardImg"  
+                    alt="이미지 로딩이 실패하였습니다"
+                />
+                {props.isEnded && (
+                    <div className="overlayText">종료된 이벤트입니다</div>
+                )}
+            </div>
             <div className='eventCardTitle'>
                 <h2>{props.item.name}</h2>
                 <p>{props.item.period}</p>

@@ -10,25 +10,25 @@ const EventPage = (props) => {
     const nowEvent = [
         { name: '이벤트 1', period: '2024.07.01 ~ 2024.07.31', imgSrc: '/path/to/image1.jpg' },
         { name: '이벤트 2', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 3', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 4', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 5', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 6', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 7', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 8', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 9', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 10', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 11', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 12', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '이벤트 13', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 3', period: '2024.09.01 ~ 2024.09.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 4', period: '2024.10.01 ~ 2024.10.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 5', period: '2024.11.01 ~ 2024.11.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 6', period: '2024.12.01 ~ 2024.12.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 7', period: '2025.01.01 ~ 2025.01.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 8', period: '2025.02.01 ~ 2025.02.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 9', period: '2025.03.01 ~ 2025.03.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 10', period: '2025.04.01 ~ 2025.04.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 11', period: '2025.05.01 ~ 2025.05.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 12', period: '2025.06.01 ~ 2025.06.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '이벤트 13', period: '2025.07.01 ~ 2025.07.15', imgSrc: '/path/to/image2.jpg' },
     ];
 
     const endedEvents = [
         { name: '(종)이벤트 1', period: '2024.07.01 ~ 2024.07.31', imgSrc: '/path/to/image1.jpg' },
         { name: '(종)이벤트 2', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '(종)이벤트 3', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '(종)이벤트 4', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
-        { name: '(종)이벤트 5', period: '2024.08.01 ~ 2024.08.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '(종)이벤트 3', period: '2024.09.01 ~ 2024.09.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '(종)이벤트 4', period: '2024.10.01 ~ 2024.10.15', imgSrc: '/path/to/image2.jpg' },
+        { name: '(종)이벤트 5', period: '2024.11.01 ~ 2024.11.15', imgSrc: '/path/to/image2.jpg' },
         
     ];
 
@@ -64,7 +64,7 @@ const EventPage = (props) => {
             <div className="eventpageSection">
                 <div className='eventList'>
                     {getEvents().map((item, idx) => (
-                        <EventCardlist key={idx} item={item} />
+                         <EventCardlist key={idx} item={item} isEnded={selectedButton === 1} />
                     ))}
                 </div>
             </div>
