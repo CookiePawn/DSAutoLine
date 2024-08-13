@@ -182,10 +182,13 @@ export const EventCardlist = (props) => {
         };
     }, []);
 
+    const eventId = props.item.id;
+
     return (
         <div
             className="eventCardlist"
             style={{ maxWidth: windowWidth }}
+            onClick={() => window.location.href = `/Event/${eventId}`}
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
                 <img 
