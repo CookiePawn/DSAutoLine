@@ -10,6 +10,20 @@ import { mainResize, eventResize, quickResize, carmentoResize } from '../utils/R
 
 
 
+const carImageError = (img) => {
+    let imageSrc;
+
+    try {
+        imageSrc = require(`../assets/img/car/${img}.png`);  // 동적으로 이미지 로드
+    } catch (error) {
+        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
+    }
+
+    return imageSrc
+}
+
+
+
 
 /**
  * 메인 페이지 - 한정 특가 상품 카드
@@ -34,20 +48,20 @@ export const HotDealCard = (props) => {
 
     return (
         <div className='hotDealCard' style={{ minWidth: windowWidth }}>
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} className='hotDealCardImg' />
+            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.leasePercent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.rentalPercent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -82,29 +96,29 @@ export const QuickDealCard = (props) => {
 
     return (
         <div className='quickDealCard' style={{ minWidth: windowWidth }}>
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} className='hotDealCardImg' />
+            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel' style={{marginBottom: 20}}>{props.item.info}</p>
+            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>{props.item.outColor}</p>
+                <p className='quickDealCardInfo1'>크리미 화이트</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>{props.item.inColor}</p>
+                <p className='quickDealCardInfo1'>블랙</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    {props.item.option.length === 1
+                    {3 === 1
                         ? <>
-                            <p className='quickDealCardInfo2'>{props.item.option[0][1]}</p>
+                            <p className='quickDealCardInfo2'>스노우 화이트 펄</p>
                         </>
                         : <>
-                            <p className='quickDealCardInfo1'>{props.item.option[0][1]}, {props.item.option[1][2]}</p>
-                            <p>외 {props.item.option.length}건</p>
+                            <p className='quickDealCardInfo1'>스노우 화이트 펄, KRELL 프리미엄 사운드</p>
+                            <p>외 1건</p>
                         </>
                     }
 
@@ -113,11 +127,11 @@ export const QuickDealCard = (props) => {
             <div className='quickDealCardBorder' />
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -150,8 +164,8 @@ export const EventCard = (props) => {
         };
     }, []);
     return (
-        <div className='eventCard' style={{ minWidth: cardNum }} onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden'}}>
-            <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)}/>
+        <div className='eventCard' style={{ minWidth: cardNum }} onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden' }}>
+            <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)} />
             <div>
                 <span>
                     <p>{props.item.name} {props.item.position}에게 상담받기</p>
@@ -191,9 +205,9 @@ export const EventCardlist = (props) => {
             onClick={() => window.location.href = `/Event/${eventId}`}
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
-                <img 
-                    src={eventimg} 
-                    className="eventCardImg"  
+                <img
+                    src={eventimg}
+                    className="eventCardImg"
                     alt="이미지 로딩이 실패하였습니다"
                 />
                 {props.isEnded && (
@@ -409,22 +423,23 @@ export const HotDealCarCard = (props) => {
     }, []);
 
 
+
     return (
-        <div className='hotDealCard' style={{ maxWidth: windowWidth }}  onClick={() => window.location.href='/Option'}>
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} className='hotDealCardImg' />
+        <div className='hotDealCard' style={{ maxWidth: windowWidth }} onClick={() => window.location.href = '/Option'}>
+            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.leasePercent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.rentalPercent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -459,29 +474,29 @@ export const QuickDealCarCard = (props) => {
 
     return (
         <div className='quickDealCard' style={{ maxWidth: windowWidth }}>
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} className='hotDealCardImg' />
+            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel' style={{marginBottom: 20}}>{props.item.info}</p>
+            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>{props.item.outColor}</p>
+                <p className='quickDealCardInfo1'>크리미 화이트</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>{props.item.inColor}</p>
+                <p className='quickDealCardInfo1'>블랙</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    {props.item.option.length === 1
+                    {3 === 1
                         ? <>
-                            <p className='quickDealCardInfo2'>{props.item.option[0][1]}</p>
+                            <p className='quickDealCardInfo2'>스노우 화이트 펄</p>
                         </>
                         : <>
-                            <p className='quickDealCardInfo1'>{props.item.option[0][1]}, {props.item.option[1][2]}</p>
-                            <p>외 {props.item.option.length}건</p>
+                            <p className='quickDealCardInfo1'>스노우 화이트 펄, KRELL 프리미엄 사운드</p>
+                            <p>외 1건</p>
                         </>
                     }
 
@@ -490,11 +505,11 @@ export const QuickDealCarCard = (props) => {
             <div className='quickDealCardBorder' />
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -531,7 +546,7 @@ export const ReviewPageCard = (props) => {
     }, []);
 
     return (
-        <div className='reviewCard' style={{ maxWidth: windowWidth }}  onClick={() => window.location.href = '/ReviewMore'}>
+        <div className='reviewCard' style={{ maxWidth: windowWidth }} onClick={() => window.location.href = '/ReviewMore'}>
             <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
             <div>
                 <h2>{props.item.enter} {props.item.car}</h2>

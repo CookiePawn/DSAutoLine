@@ -1,14 +1,24 @@
+import React, { useState, useEffect } from 'react'
 import '../styles/HotDealPage.css'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { HotDealCarCard } from '../components/Cards'
-import { hotDealList } from '../assets/item'
+import { hotDealAxios } from '../services/Request'
 
 
 const HotDealPage = (props) => {
+    const [hotDealList, setHotDealList] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const tmp = await hotDealAxios()
+            setHotDealList(tmp)
+        }
+        fetchData()
+    }, [])
     return (
         <>
-            <GNB stat={true}  page={'한정 특가'}/>
+            <GNB stat={true} page={'한정 특가'} />
             <div className='bannerSection'>
                 <p>한정 특가 이벤트 배너</p>
             </div>
@@ -18,10 +28,9 @@ const HotDealPage = (props) => {
             </div>
             <div className='carListSection'>
                 <div>
-                    {hotDealList.map((item, idx) => (
-                        <HotDealCarCard item={item}/>
+                    {hotDealList && hotDealList.map((item, idx) => (
+                        <HotDealCarCard item={item} />
                     ))}
-
                 </div>
             </div>
             <Footer />

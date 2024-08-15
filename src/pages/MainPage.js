@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import eventBanner1 from '../assets/img/banner/eventBanner1.png'
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
-import { hotDealList, quickDealList, reviewList, carmentoList, quickFAQList } from '../assets/item';
+import { reviewList, carmentoList, quickFAQList } from '../assets/item';
 import {
     HotDealCard,
     QuickDealCard,
@@ -17,6 +17,7 @@ import {
 import { popularResize } from '../utils/ResizeCard';
 import { sliderMove } from '../utils/SliderMove';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
+import { hotDealAxios, quickDealAxios } from '../services/Request';
 
 
 
@@ -68,6 +69,19 @@ const MainPage = (props) => {
         popularFunction()
     }, [popularEntryStat])
 
+
+    const [hotDealList, setHotDealList] = useState([])
+    const [quickDealList, setQuickDealList] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response1 = await hotDealAxios()
+            setHotDealList(response1)
+            const response2 = await quickDealAxios(null, null, null)
+            setQuickDealList(response2)
+        }
+        fetchData()
+    }, [])
 
 
     return (
