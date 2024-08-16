@@ -1,58 +1,155 @@
 /* 전체 페이지의 가로 스크롤을 막기 */
-body {
-  overflow-x: hidden;
+body, html {
   /* 전체 페이지에서 가로 스크롤을 막음 */
   margin: 0;
   /* 기본 여백 제거 */
 
 }
 
-.App {
+
+.mainPage_QuickFAQSection {
+  max-width: 1280px;
+  min-width: 1280px;
+  height: 1px;
+  margin: auto;
+  background-color: #DBDBDB;
+  position: relative;
+}
+
+.mainPage_QuickFAQSection > span {
+  position: absolute;
+  right: -300px;
+  top: 120px;
+}
+
+.mainPage_QuickFAQSection > span > span {
+  height: 4300px;
+  position: relative;
+  display: block;
+}
+
+
+.mainPage_QuickFAQSection > span > span > div {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 300px;
+  width: 260px;
+  height: 381px;
+  background-color: white;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  z-index: 1200; 
+  overflow: hidden;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > img {
+  width: 33px;
+  height: 33px;
+  margin-left: 23px;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > h3 {
+  margin: 0;
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > h4 {
+  margin: 0;
+  margin-left: 23px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > input {
+  margin: 0;
+  width: 160px;
+  height: 37px;
+  border: 1px solid #bbb;
+  outline: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: 23px;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > p {
+  margin: 0;
+  margin-left: 11px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #111;
+}
+
+.mainPage_QuickFAQSection > span > span > div > span > p > span {
+  padding-left: 8px;
+  color: #767676;
+  cursor: pointer;
+}
+
+.mainPage_QuickFAQSection > span > span > div > div {
+  width: 100%;
+  height: 50px;
+  background-color: #0064FF;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.mainPage_BannerSection {
+  width: 100%;
+  height: 700px;
+  margin: auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #c4c4c4;
-  min-height: 100vh;
+.mainPage_BannerSection > div {
+  height: 700px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  gap: 80px;
+  transform: translateX(-1360px);
 }
 
-.App-link {
-  color: #61dafb;
+.mainPage_BannerImage {
+  max-width: 1280px;
+  min-width: 1280px;
+  height: 700px;
+  background-color: #c4c4c4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
 
 
 .hotDealSection {
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   position: relative;
   margin: auto;
   text-align: left;
+  overflow: hidden;
 }
 
 
@@ -77,40 +174,37 @@ body {
 }
 
 .hotDealListDiv {
-  width: 95%;
   position: relative;
   display: flex;
   flex-direction: row;
   transition: all 0.3s ease;
-  gap: 30px;
+  gap: 40px;
 }
 
 .hotDealCard {
+  min-width: 290px;
+  max-width: 290px;
+  height: 419px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  border: 1px solid #EDEDED;
   cursor: pointer;
-  transition: all 0.5s ease;
   box-sizing: border-box;
   overflow: hidden;
 }
 
 .hotDealCard:hover {
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.07);
+  border: 1px solid #0064FF;
 }
 
 .hotDealCardImg {
   max-width: 100%;
+  height: 227px;
   transition: all 0.3s ease;
+  background-color: #f5f5f5;
+  margin-bottom: 16px;
 }
-
-.hotDealCard:hover>.hotDealCardImg {
-  transform: scale(1.05);
-}
-
 
 .hotDealCardTitleDiv {
   width: 90%;
@@ -130,10 +224,10 @@ body {
   width: 90%;
   margin: 0;
   margin-top: 10px;
+  margin-bottom: 16px;
   font-size: 14px;
   font-weight: 400;
   color: #111;
-  margin-bottom: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -212,6 +306,20 @@ body {
 
 
 
+.moveButton1 {
+  width: 44px;
+  height: 44px;
+  background-color: #9FA5AB;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 900;
+  font-weight: 600;
+  font-size: 20px;
+  opacity: 80%;
+  transition: all 0.5s ease;
+}
+
 
 .moveButton {
   position: absolute;
@@ -238,30 +346,14 @@ body {
   font-size: 20px;
 }
 
-.indicator {
-  display: flex;
-  justify-content: center;
-  margin-top: 70px;
-}
-
-.indicatorDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #DBDBDB;
-  margin: 0 10px;
-}
-
-.indicatorDot.active {
-  background-color: #0064FF;
-}
-
 
 
 .quickDealSection {
   position: relative;
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
+  overflow: hidden;
 }
 
 .quickDealSection>h1 {
@@ -277,23 +369,20 @@ body {
 }
 
 .quickDealCard {
+  min-width: 290px;
+  max-width: 290px;
+  height: 541px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  border: 1px solid #EDEDED;
   cursor: pointer;
-  transition: all 0.5s ease;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .quickDealCard:hover {
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.07);
-}
-
-.quickDealCard:hover>img {
-  transform: scale(1.05);
+  border: 1px solid #0064FF;
 }
 
 .quickDealCardOptionDiv {
@@ -376,7 +465,8 @@ body {
 
 .eventBannerImage {
   display: block;
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -389,7 +479,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -410,10 +501,12 @@ body {
   display: flex;
   margin: auto;
   flex-direction: row;
-  gap: 30px;
+  gap: 40px;
 }
 
 .eventCard {
+  width: 290px;
+  height: 370px;
   position: relative;
   display: flex;
   margin: auto;
@@ -475,11 +568,13 @@ body {
 
 
 .reviewSection {
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
   position: relative;
   margin-top: 120px;
   margin-bottom: 120px;
+  overflow: hidden;
 }
 
 .reviewSection>h1 {
@@ -495,19 +590,20 @@ body {
 }
 
 .reviewSection>div {
-  width: 95%;
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
 
 .reviewCardDiv {
-  gap: 30px;
+  gap: 40px;
   transition: all 0.3s ease;
 }
 
 .reviewCard {
-  border-radius: 12px;
+  min-width: 400px;
+  max-width: 400px;
+  height: 584px;
   background-color: white;
   border: 1px solid #ededed;
   overflow: hidden;
@@ -517,16 +613,13 @@ body {
 }
 
 .reviewCard:hover {
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.07);
+  border: 1px solid #0064FF;
 }
 
 .reviewCard>span>img {
   width: 100%;
+  height: 308px;
   transition: all 0.5s ease;
-}
-
-.reviewCard:hover>span>img {
-  transform: scale(1.05);
 }
 
 .reviewCard>div {
@@ -629,7 +722,6 @@ body {
   height: 50px;
   box-sizing: border-box;
   border: 1px solid #BBB;
-  border-radius: 12px;
   text-decoration: none;
 }
 
@@ -651,7 +743,8 @@ body {
 
 
 .partnerSection {
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
   margin-top: 120px;
   margin-bottom: 200px;
@@ -675,7 +768,8 @@ body {
 
 
 .popularSection {
-  width: 95%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
   margin-top: 120px;
 }
@@ -720,9 +814,9 @@ body {
   background-color: #0064FF;
 }
 
-.popularSection > div {
+.popularSection>div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 }

@@ -1,35 +1,34 @@
 /**
  * 슬라이더 이벤트 구현
- * @param {*} direction 
- * @param {*} currentIndex
- * @param {*} setOffset 
- * @param {*} setCurrentIndex 
+ * @param {*} ref
  */
-export const sliderMove = (direction, offset, currentIndex, setOffset, setCurrentIndex) => {
-    setOffset(() => {
-        let newOffset = direction === 'left'
-            ? -(document.body.clientWidth * 0.95 + 30)
-            : document.body.clientWidth * 0.95 + 30;
+export const handleNext = (ref) => {
+    if (ref.current) {
+        ref.current.slickNext(); // 다음 슬라이드로 이동
+    }
 
-        let result = offset + newOffset;
-
-        if (direction === 'left') {
-            if (currentIndex > 0) {
-                setCurrentIndex(currentIndex - 1);
-                result = offset + newOffset;
-            } else {
-                result = offset; // left에서 처음 페이지면 offset을 변경하지 않음
-            }
-        } else {
-            if (currentIndex < 1) { // 두 번째 페이지까지만
-                setCurrentIndex(currentIndex + 1);
-                result = offset + newOffset;
-            } else {
-                setCurrentIndex(0); // 처음으로 돌아가기
-                result = 0;
-            }
-        }
-
-        return result;
-    });
 };
+export const handlePrev = (ref) => {
+    if (ref.current) {
+        ref.current.slickPrev(); // 다음 슬라이드로 이동
+    }
+};
+
+
+export const hotDealSlicerSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+};
+
+
+export const reviewSlicerSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+};
+

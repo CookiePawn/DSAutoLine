@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react"
 import '../styles/OptionPage.css'
 import GNB from "../components/GNB"
 import Footer from "../components/Footer"
-import nonSelectBox from '../assets/optionPage_nonSelectBox.png'
-import selectBox from '../assets/optionPage_SelectBox.png'
-import optionClick from '../assets/optionClick.png'
-import optionNonClick from '../assets/optionNonClick.png'
+import nonSelectBox from '../assets/img/functionIcon/optionPage_nonSelectBox.png'
+import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
+import optionClick from '../assets/img/functionIcon/optionClick.png'
+import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
 import { optionList } from "../assets/item"
 import { OptionPagePopUp } from "../components/PopUp"

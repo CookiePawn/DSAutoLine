@@ -1,12 +1,12 @@
 import React from 'react'
 import '../styles/LogoList.css'
-import hyundaiLogo from '../assets/hyundaiLogo.png'
-import kiaLogo from '../assets/kiaLogo.png'
-import genesisLogo from '../assets/genesisLogo.png'
-import chevroletLogo from '../assets/chevroletLogo.png'
-import renaultLogo from '../assets/renaultLogo.png'
-import kgmLogo from '../assets/kgmLogo.png'
-import allLogo from '../assets/ALL.png'
+import hyundaiLogo from '../assets/img/logo/hyundaiLogo.png'
+import kiaLogo from '../assets/img/logo/kiaLogo.png'
+import genesisLogo from '../assets/img/logo/genesisLogo.png'
+import chevroletLogo from '../assets/img/logo/chevroletLogo.png'
+import renaultLogo from '../assets/img/logo/renaultLogo.png'
+import kgmLogo from '../assets/img/logo/kgmLogo.png'
+import allLogo from '../assets/img/logo/ALL.png'
 
 
 

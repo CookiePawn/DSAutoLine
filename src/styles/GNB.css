@@ -1,7 +1,3 @@
-body {
-    
-}
-
 .GNB {
     position: fixed;
     top: 0;
@@ -19,7 +15,7 @@ body {
 
 .GNB.scrolled .GNBListDiv > span  .listA > p {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -35,7 +31,9 @@ body {
 
 .GNBListDiv {
     position: relative;
-    width: 95%;
+    min-width: 1280px;
+    max-width: 1280px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -47,16 +45,14 @@ body {
 }
 
 .GNBListDiv > span {
+    width: 670px;
     display: flex;
     flex-direction: row;
-    gap: 60px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 50px;
+    margin-left: 90px;
 }
 
 .GNBListDiv > span  > .listA {
-    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +63,7 @@ body {
 
 .GNBListDiv > span  > .listA > p {
     color: #FFF;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
 }
@@ -89,166 +85,29 @@ body {
     color: #0064FF;
 }
 
-.rightDiv {
-    height: 80px;
+
+.GNBSearchDiv {
+    width: 275px;
+    height: calc(80px - 34px);
+    border-bottom: 1px solid #111;
     margin-left: auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
-.rightDiv > p {
-    font-size: 18px;
-    font-weight: 500;
-    color: white;
-    margin-right: 76px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.rightDiv > p:hover {
-    color: #0064FF;
-    font-weight: 600;
-}
-
-.GNB.scrolled .GNBListDiv > .rightDiv > p.selected {
-    color: #0064FF;
-}
-
-.GNB.scrolled .GNBListDiv > .rightDiv >  p:hover {
-    color: #0064FF;
-    font-weight: 600;
-}
-
-.rightDiv > span {
-    width: 124px;
-    height: 45px;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: #0064FF;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-
-
-.selectedDiv {
-    width: 100%;
-    height: 100px;
-    background-color: #F0F2F4;
-    transition: all 0.8s ease;
-}
-
-.selectedDiv > div {
-    width: 95%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-}
-
-.selectedDiv > div > .searchDiv {
-    width: 570px;
-    height: 55px;
-    background-color: #FFF;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: auto;
-}
-
-.selectedDiv > div > .searchDiv > input {
-    margin-left: 15px;
-    border: none;
-    width: 87%;
-    height: 95%;
+.GNBSearchDiv > input {
+    width: 250px;
+    height: calc(100% - 10px);
+    margin-right: 7px;
     outline: none;
-}
-
-.selectedDiv > div > .searchDiv > input::placeholder {
-    font-size: 16px;
-    font-weight: 500;
-    color: #767676;
-}
-
-.selectedDiv > div > .searchDiv > .SearchIcon {
-    margin-left: auto;
-    margin-right: 15px;
-    margin-top: 5px;
-}
-
-.selectedDiv > div > .CloseIcon {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-}
-
-.selectedDiv > div > .dealListDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.selectedDiv > div > .dealListDiv > p {
-    font-size: 16px;
-    font-weight: 500;
-    color: #111;
-    margin-right: 12px;
-}
-
-.selectedDiv > div > .dealListDiv > input {
-    width: 202px;
-    height: 37px;
-    border-radius: 8px;
-    border: 1px solid #BBB;
-    background-color: transparent;
-    box-sizing: border-box;
-    margin-right: 30px;
-    padding: 10px;
-}
-
-.selectedDiv > div > .dealListDiv > img {
-    margin-left: 70px;
-    cursor: pointer;
-}
-
-.selectedDiv > div > .dealListDiv > h6 {
-    margin-left: 9px;
-    margin-right: 70px;
+    border: none;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     color: #111;
 }
 
-.selectedDiv > div > .dealListDiv > h6 > span {
-    color: #767676;
-}
-
-.selectedDiv > div > .dealListDiv > h3 {
-    width: 155px;
-    height: 47px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    background-color: #9FA5AB;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-}
-
-.GNBDimmed {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 100;
-    left: 0;
-    z-index: 900;
-    background-color: rgba(0, 0, 0, 0.4);
+.GNBSearchDiv > span {
+    width: 30px;
+    cursor: pointer;
+    margin-top: 5px;
 }
