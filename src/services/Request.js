@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+
+const dbServerUrl = process.env.REACT_APP_DB_SERVER_URL;
 
 
 
@@ -9,7 +11,7 @@ import axios from 'axios';
  */
 export const hotDealAxios = async () => {
     try {
-        const response = await axios.get('http://15.165.235.73:3000/hotDeal')
+        const response = await axios.get(`${dbServerUrl}/hotDeal`)
         return response.data
     } catch (error) {
         console.log(error)
@@ -28,15 +30,15 @@ export const quickDealAxios = async (entry, enter, category) => {
     let response;
     try {
         if (entry === null && enter === null && category === null) {
-            response = await axios.get('http://15.165.235.73:3000/quickDeal?entry=&enter=&category=')
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=&enter=&category=`)
         } else if (category === '전체' && enter === 'all') {
-            response = await axios.get(`http://15.165.235.73:3000/quickDeal?entry=${entry}&enter=&category=`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=`)
         } else if (category === '전체') {
-            response = await axios.get(`http://15.165.235.73:3000/quickDeal?entry=${entry}&enter=${enter}&category=`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=`)
         } else if (enter === 'all') {
-            response = await axios.get(`http://15.165.235.73:3000/quickDeal?entry=${entry}&enter=&category=${category}`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=${category}`)
         } else {
-            response = await axios.get(`http://15.165.235.73:3000/quickDeal?entry=${entry}&enter=${enter}&category=${category}`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=${category}`)
         }
         return response.data
     } catch (error) {
@@ -54,7 +56,7 @@ export const quickDealAxios = async (entry, enter, category) => {
  */
 export const reviewInfoAxios = async (nid) => {
     try {
-        const response = await axios.get(`http://15.165.235.73:3000/review/${nid}`)
+        const response = await axios.get(`${dbServerUrl}/review/${nid}`)
         return response.data
     } catch (error) {
         console.log(error)
