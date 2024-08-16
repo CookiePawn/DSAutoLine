@@ -1,0 +1,85 @@
+.EnterbannerSection {
+    width: 100%;
+    height: 70vh;
+    background-color: #c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+.EnterbannerSection > h1{
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+}
+.EnterbannerSection > h1 > .Point{
+    color: #0064FF;
+    font-size: 60px; 
+}
+.EnterbannerSection > p{
+    margin: 0;
+    font-size: 28px;
+    font-weight: 400;
+    color: #1d1d1d ;
+}
+
+.EnterTitleSection {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.EnterTitleSection > p{
+    margin: 0;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.EnterTitleSection p:nth-child(3) {
+    margin-bottom: 60px;
+}
+
+.EnterTitleSection p:nth-child(5) {
+    margin-bottom: 92px;
+}
+
+.titlelogo {
+    width: 25%;
+    height: 10vh;
+    margin: 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.advantageSection {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom right, #0064FF, #5497FF);
+    color: #ffffff;
+}
+
+
+.advantage-column {
+    width: 100%;
+    margin: 0;
+    display: flex;
+
+}
+
+.advantage-column ul {
+    list-style-type: none;
+}
+
+.centered {
+    text-align: center;
+}
+
+.advantage-column li {
+    margin: 0;
+}
