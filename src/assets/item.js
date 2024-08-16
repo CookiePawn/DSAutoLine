@@ -71,7 +71,7 @@ export const reviewList = [
 export const optionList = {
     name: 'K5',
     enter: '기아',
-    logoImg: 'kia',
+    logoImg: 'kiaLogo',
     carImg: 'K3',
     year: 2024,
     month: 3,

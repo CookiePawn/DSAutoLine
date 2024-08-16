@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import logo from '../assets/logo.svg';
+import React, { useState, useEffect, useRef } from 'react'
 import '../styles/App.css';
 import GNB from '../components/GNB';
 import Footer from '../components/Footer';
@@ -14,55 +13,36 @@ import {
     ReviewCard,
     PopularCarCard,
 } from '../components/Cards';
-import { popularResize } from '../utils/ResizeCard';
-import { sliderMove } from '../utils/SliderMove';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
 import { hotDealAxios, quickDealAxios } from '../services/Request';
+import Slider from "react-slick";
+import '../styles/slick.css'
+import '../styles/slick-theme.css'
+import { handleNext, handlePrev, hotDealSlicerSettings, reviewSlicerSettings, mainBannerSlicerSettings } from '../utils/SliderMove';
 
 
 
 const MainPage = (props) => {
     //한정 특가 변수
-    const [hotDealOffset, setHotDealOffset] = useState(0);
-    const [hotDealCurrentIndex, setHotDealCurrentIndex] = useState(0);
     const [hotHovered, setHotHovered] = useState(false);
 
     //즉시 출고 변수
-    const [quickDealOffset, setQuickDealOffset] = useState(0);
-    const [quickDealCurrentIndex, setQuickDealCurrentIndex] = useState(0);
     const [quickHovered, setQuickHovered] = useState(false);
 
     //우수카멘토 변수
-    const [eventHovered, setEventHovered] = useState(false);
     const [carmentPopup, setCarmentoPopup] = useState(false);
     const [checkPopup, setCheckPopup] = useState(false);
 
     //리뷰 변수
-    const [reviewOffset, setReviewOffset] = useState(0);
-    const [reviewCurrentIndex, setReviewCurrentIndex] = useState(0);
     const [reviewHovered, setReviewHovered] = useState(false);
 
     //인기 차량 리스트
-    const [popularStat, setPopularStat] = useState(popularResize());
     const [popularEntryStat, setPopularEntryStat] = useState(0);
     const [popularList, setPopularList] = useState(quickFAQList.filter(item => item.entry === '국산'))
 
     useEffect(() => {
-        const handleResize = () => {
-            setPopularStat(popularResize());
-            console.log(popularResize())
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
         const popularFunction = () => {
-            popularEntryStat === 0 
+            popularEntryStat === 0
                 ? setPopularList(quickFAQList.filter(item => item.entry === '국산'))
                 : setPopularList(quickFAQList.filter(item => item.entry === '수입'))
         }
@@ -70,6 +50,13 @@ const MainPage = (props) => {
     }, [popularEntryStat])
 
 
+    //슬라이더
+    const hotDealSliderRef = useRef(null);
+    const quickDealSliderRef = useRef(null);
+    const reviewSliderRef = useRef(null);
+
+
+    //DB 리스트 로드
     const [hotDealList, setHotDealList] = useState([])
     const [quickDealList, setQuickDealList] = useState([])
 
@@ -83,28 +70,63 @@ const MainPage = (props) => {
         fetchData()
     }, [])
 
+    //간편 문의 변수
+    const [infoSelect1, setInfoSelect1] = useState(false)
+    const [infoSelect2, setInfoSelect2] = useState(false)
+
 
     return (
         <div className='container'>
             <GNB stat={false} />
-            <div className="App">
-
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        DS AUTO LINE WEB DEV.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://halved-writer-29b.notion.site/DS-AUTO-LINE-WEB-DEV-d7523b1774bc410fbccbb8243b2efcc4"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Notion
-                    </a>
-                </header>
-            </div>
-            <div
+            <section className="mainPage_BannerSection">
+                <div style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>
+                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
+                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
+                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
+                </div>
+            </section>
+            <section className='mainPage_QuickFAQSection'>
+                <span>
+                    <span>
+                        <div>
+                            <span style={{ marginTop: 23, marginBottom: 25 }}>
+                                <img src={require('../assets/img/popup/quickFAQIcon.png')} />
+                                <h3>간편하게 문의해보세요</h3>
+                            </span>
+                            <span>
+                                <h4>이름</h4>
+                                <input />
+                            </span>
+                            <span>
+                                <h4>연락처</h4>
+                                <input />
+                            </span>
+                            <span>
+                                <h4>차종</h4>
+                                <input />
+                            </span>
+                            <span>
+                                {
+                                    !infoSelect1
+                                        ? <img style={{width: 23, height: 23}} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} onClick={() => setInfoSelect1(!infoSelect1)} />
+                                        : <img style={{width: 23, height: 23}} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} onClick={() => setInfoSelect1(!infoSelect1)} />
+                                }
+                                <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
+                            </span>
+                            <span style={{marginTop: 16}}>
+                                {
+                                    !infoSelect2
+                                        ? <img style={{width: 23, height: 23}} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} onClick={() => setInfoSelect2(!infoSelect2)} />
+                                        : <img style={{width: 23, height: 23}} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} onClick={() => setInfoSelect2(!infoSelect2)} />
+                                }
+                                <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
+                            </span>
+                            <div>상담신청하기</div>
+                        </div>
+                    </span>
+                </span>
+            </section>
+            <section
                 className='hotDealSection'
                 onMouseEnter={() => setHotHovered(true)}
                 onMouseLeave={() => setHotHovered(false)}
@@ -112,85 +134,63 @@ const MainPage = (props) => {
                 {hotHovered && (
                     <>
                         <button
-                            style={{ top: 330 }}
+                            style={{ top: 300 }}
                             onMouseEnter={() => setHotHovered(true)}
-                            onClick={() => sliderMove('left', hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            onClick={() => handlePrev(hotDealSliderRef)}
                             className="moveButton">〈</button>
                         <button
-                            style={{ top: 330 }}
+                            style={{ top: 300 }}
                             onMouseEnter={() => setHotHovered(true)}
-                            onClick={() => sliderMove('right', hotDealOffset, hotDealCurrentIndex, setHotDealOffset, setHotDealCurrentIndex)}
+                            onClick={() => handleNext(hotDealSliderRef)}
                             className="moveButton right">〉</button>
                     </>
                 )}
                 <h1>한정 <span>특가</span></h1>
-                <div
-                    className='hotDealListDiv'
-                    style={{ transform: `translateX(-${hotDealOffset}px)` }}
-                >
+                <Slider {...hotDealSlicerSettings} ref={hotDealSliderRef}>
                     {hotDealList.map((item, idx) => (
                         <HotDealCard item={item} idx={idx} />
                     ))}
-                </div>
-                {/* 슬라이드 인디케이터
-                <CardIndicator
-                    list={list}
-                    num={hotNum}
-                    currentIndex={hotDealCurrentIndex}
-                    cardWidth={452}
-                    cardMargin={10}
-                    setOffset={setHotDealOffset}
-                    setCurrentIndex={setHotDealCurrentIndex}
-                /> */}
+                </Slider>
                 <a className='moreBtnA' href='/HotDeal'>
                     <span>
                         <p>자세히 보기</p>
                     </span>
                 </a>
-            </div>
-            <div className='quickDealSection'
+            </section>
+            <section className='quickDealSection'
                 onMouseEnter={() => setQuickHovered(true)}
                 onMouseLeave={() => setQuickHovered(false)}
             >
                 {quickHovered && (
                     <>
                         <button
-                            style={{ top: 400 }}
+                            style={{ top: 300 }}
                             onMouseEnter={() => setQuickHovered(true)}
-                            onClick={() => sliderMove('left', quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            onClick={() => handlePrev(quickDealSliderRef)}
                             className="moveButton">〈</button>
                         <button
-                            style={{ top: 400 }}
+                            style={{ top: 300 }}
                             onMouseEnter={() => setQuickHovered(true)}
-                            onClick={() => sliderMove('right', quickDealOffset, quickDealCurrentIndex, setQuickDealOffset, setQuickDealCurrentIndex)}
+                            onClick={() => handleNext(quickDealSliderRef)}
                             className="moveButton right">〉</button>
                     </>
                 )}
                 <h1>즉시 <span>출고</span></h1>
                 <div
                     className='hotDealListDiv'
-                    style={{ transform: `translateX(-${quickDealOffset}px)` }}
                 >
-                    {quickDealList.map((item, idx) => (
-                        <QuickDealCard item={item} idx={idx} />
-                    ))}
+                    <Slider {...hotDealSlicerSettings} ref={quickDealSliderRef}>
+                        {quickDealList.map((item, idx) => (
+                            <QuickDealCard item={item} idx={idx} />
+                        ))}
+                    </Slider>
                 </div>
-                {/* 슬라이드 인디케이터
-                <CardIndicator
-                    list={list}
-                    num={quickNum}
-                    currentIndex={quickDealCurrentIndex}
-                    cardWidth={452}
-                    cardMargin={10}
-                    setOffset={setQuickDealOffset}
-                    setCurrentIndex={setQuickDealCurrentIndex}
-                /> */}
                 <a className='moreBtnA' href='QuickDeal'>
                     <span>
                         <p>자세히 보기</p>
                     </span>
                 </a>
-            </div>
+            </section>
             <div className='eventBannerImage'>
                 <img src={eventBanner1} />
             </div>
@@ -202,8 +202,8 @@ const MainPage = (props) => {
                     <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
                 </span>
                 <div>
-                    {popularList.length >= 5
-                        ? popularList.slice(0, popularStat).map((item, idx) => (
+                    {popularList.length >= 4
+                        ? popularList.slice(0, 4).map((item, idx) => (
                             <PopularCarCard
                                 item={item}
                                 index={idx}
@@ -221,8 +221,7 @@ const MainPage = (props) => {
                         ))}
                 </div>
             </section>
-
-            <div
+            <section
                 className='reviewSection'
                 onMouseEnter={() => setReviewHovered(true)}
                 onMouseLeave={() => setReviewHovered(false)}
@@ -230,71 +229,52 @@ const MainPage = (props) => {
                 {reviewHovered && (
                     <>
                         <button
-                            style={{ top: 432 }}
+                            style={{ top: 220 }}
                             onMouseEnter={() => setReviewHovered(true)}
-                            onClick={() => sliderMove('left', reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            onClick={() => handlePrev(reviewSliderRef)}
                             className="moveButton">〈</button>
                         <button
-                            style={{ top: 432 }}
+                            style={{ top: 220 }}
                             onMouseEnter={() => setReviewHovered(true)}
-                            onClick={() => sliderMove('right', reviewOffset, reviewCurrentIndex, setReviewOffset, setReviewCurrentIndex)}
+                            onClick={() => handleNext(reviewSliderRef)}
                             className="moveButton right">〉</button>
                     </>
                 )}
                 <h1>많은 고객님들이 <span>만족하신 후기</span></h1>
-                <div className='reviewCardDiv' style={{ transform: `translateX(-${reviewOffset}px)` }}>
-                    {reviewList.map((item, idx) => (
-                        <ReviewCard item={item} />
-                    ))}
+                <div className='reviewCardDiv'>
+                    <Slider {...reviewSlicerSettings} ref={reviewSliderRef}>
+                        {reviewList.map((item, idx) => (
+                            <ReviewCard item={item} />
+                        ))}
+                    </Slider>
                 </div>
                 <a className='moreBtnA' href='/Review'>
                     <span>
                         <p>더 많은 리뷰 보기</p>
                     </span>
                 </a>
-            </div>
+            </section>
             {carmentPopup &&
                 <CarmentoPopUp setCarmentoPopup={setCarmentoPopup} setCheckPopup={setCheckPopup} />
             }
             {checkPopup &&
                 <OptionPagePopUp />
             }
-            <div
+            <section
                 className='eventSection'
-                onMouseEnter={() => setEventHovered(true)}
-                onMouseLeave={() => setEventHovered(false)}
             >
-                {eventHovered && (
-                    <>
-                        <button
-                            onMouseEnter={() => setEventHovered(true)}
-                            onClick={() => {
-
-                            }} className="moveButton" style={{ top: 370 }}>〈</button>
-                        <button
-                            onMouseEnter={() => setEventHovered(true)}
-                            onClick={() => {
-
-                            }} className="moveButton right" style={{ top: 370 }}>〉</button>
-                    </>
-                )}
                 <h1>가장 좋은<br /><span>후기를 받은 우수카멘토</span></h1>
                 <div className='eventListDiv'>
-                    {carmentoList.map((item, idx) => (
+                    {carmentoList.slice(0, 4).map((item, idx) => (
                         <EventCard item={item} setCarmentoPopup={setCarmentoPopup} />
                     ))}
                 </div>
-                {/* <EventCardIndicator
-                    list={list}
-                    currentIndex={eventCurrentIndex}
-                    setCurrentIndex={setEventCurrentIndex}
-                /> */}
-            </div>
-            <div className='partnerSection'>
+            </section>
+            <section className='partnerSection'>
                 <h1>제휴 <span>파트너사</span></h1>
                 <img src={partner1} style={{ width: '100%' }} />
                 <img src={partner2} style={{ width: '100%' }} />
-            </div>
+            </section>
             <Footer />
         </div>
 

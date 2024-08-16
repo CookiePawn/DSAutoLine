@@ -31,23 +31,8 @@ const carImageError = (img) => {
  * @returns 
  */
 export const HotDealCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(mainResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(mainResize());
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
     return (
-        <div className='hotDealCard' style={{ minWidth: windowWidth }}>
+        <div className='hotDealCard'>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
@@ -80,27 +65,14 @@ export const HotDealCard = (props) => {
  * @returns 
  */
 export const QuickDealCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(mainResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(mainResize());
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
 
     return (
-        <div className='quickDealCard' style={{ minWidth: windowWidth }}>
+        <div className='quickDealCard'>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
+            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}adfsvsvsdavsdvsdvsdvasdasdasdasdasdsa</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
                 <p className='quickDealCardInfo1'>크리미 화이트</p>
@@ -150,21 +122,8 @@ export const QuickDealCard = (props) => {
  * @returns 
  */
 export const EventCard = (props) => {
-    const [cardNum, setCardNum] = useState(carmentoResize())
-
-    useEffect(() => {
-        const handleResize = () => {
-            setCardNum(carmentoResize())
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     return (
-        <div className='eventCard' style={{ minWidth: cardNum }} onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden' }}>
+        <div className='eventCard' onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden' }}>
             <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)} />
             <div>
                 <span>
@@ -229,22 +188,8 @@ export const EventCardlist = (props) => {
  * @returns 
  */
 export const ReviewCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(mainResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(mainResize());
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
-        <div className='reviewCard' style={{ minWidth: windowWidth }} onClick={() => window.location.href = '/ReviewMore'}>
+        <div className='reviewCard' onClick={() => window.location.href = '/ReviewMore'}>
             <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
             <div>
                 <h2>{props.item.enter} {props.item.car}</h2>
@@ -277,24 +222,9 @@ export const ReviewCard = (props) => {
  * @returns 
  */
 export const PopularCarCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(quickResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(quickResize());
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
     return (
         <div
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
-            style={{ maxWidth: windowWidth }}
             onClick={() => props.setCarStat(props.index)}
         >
             <img src={require(`../assets/img/car/${props.item.img}.png`)} alt='2024 Ray' />
@@ -308,48 +238,6 @@ export const PopularCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
             </span>
-        </div>
-    )
-}
-
-
-
-
-
-/**
- * 메인 페이지 - 카드 아래 현재 위치 표시
- * @param {list, num, currentIndex, setOffset(), setCurrentIndex()} props 
- * @returns 
- */
-export const CardIndicator = (props) => {
-    return (
-        <div className='indicator'>
-            {props.list.slice(0, props.list.length / props.num + 1).map((_, index) => (
-                <span
-                    key={index}
-                    className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
-                ></span>
-            ))}
-        </div>
-    )
-}
-
-
-
-/**
- * 메인 페이지 - 이벤트 카드 아래 현재 위치 표시
- * @param {list, currentIndex, setCurrentIndex()} props 
- * @returns 
- */
-export const EventCardIndicator = (props) => {
-    return (
-        <div className='indicator'>
-            {props.list.slice(0, props.list.length / 5 + 1).map((_, index) => (
-                <span
-                    key={index}
-                    className={`indicatorDot ${props.currentIndex === index ? 'active' : ''}`}
-                ></span>
-            ))}
         </div>
     )
 }

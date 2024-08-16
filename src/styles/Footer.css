@@ -15,7 +15,8 @@ body {
 }
 
 .footerSection > div:nth-of-type(1) > span {
-  width: 75%;
+  min-width: 1280px;
+  max-width: 1280px;
   height: 100%;
   margin: auto;
   display: flex;
@@ -42,14 +43,16 @@ body {
 
 .footerSection > div:nth-of-type(2) {
   display: flex;
-  width: 100vw;
+  width: 100wv;
+  margin: auto;
   height: 254px;
   border-bottom: 1px solid #767676;
 }
 
 
 .footerSection > div:nth-of-type(2) > span {
-  width: 75%;
+  min-width: 1280px;
+  max-width: 1280px;
   margin: auto;
   margin-top: 40px;
   display: flex;
@@ -100,6 +103,9 @@ body {
 
 
 .footerSection > div:nth-of-type(3) {
+  min-width: 1280px;
+  max-width: 1280px;
+  margin: auto;
   height: 56px;
   display: flex;
   align-items: center;
