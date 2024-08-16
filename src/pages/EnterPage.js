@@ -39,6 +39,31 @@ const EnterPage = (props) => {
                 </div>
                 
             </div>
+            <div className="processSection">
+                <h1>계약진행절차</h1>
+                <div className="circleSection">
+                    <div className="circle">리스/렌트 상담</div>
+                    <div className="line"></div>
+                    <div className="circle">견적서 발송</div>
+                    <div className="line"></div>
+                    <div className="circle">필요서류 준비</div>
+                    <div className="line"></div>
+                    <div className="circle">심사 및 승인</div>
+                </div>
+                <div className="circleSection">
+                    <div className="circle">계약 완료</div>
+                    <div className="line"></div>
+                    <div className="circle">차량 출고</div>
+                    <div className="line"></div>
+                    <div className="circle">사후관리</div>
+                </div>
+            </div>
+            <div className="GuideSection">
+                <h1>DS오토라인 오시는 길</h1>
+                <div className="GuideMapSection">
+                    <h1>맵 공간</h1>
+                </div>
+            </div>
             <Footer />
         
         </>

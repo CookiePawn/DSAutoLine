@@ -69,7 +69,6 @@
     width: 100%;
     margin: 0;
     display: flex;
-
 }
 
 .advantage-column > h1 {
@@ -86,6 +85,7 @@
 }
 
 .listsytle {
+    padding-left: 12%;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -94,3 +94,78 @@
     font-weight: 500;
 }
 
+.processSection {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;;
+    margin-top: 59px;
+    color: #0667FF;
+    height: auto;
+}
+
+.processSection > h1 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 54px;
+}
+
+
+.circleSection {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.circle {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 57px;
+    width: 203px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #0667ff;
+    background-color: #ffffff;
+    border: 1.5px solid #0667ff;
+    border-radius: 28.5px;
+}
+
+.line {
+    justify-content: center;
+    width: 34px;
+    height: 1.5px;
+    background-color: #0667ff;
+}
+
+.GuideSection {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 87px;
+    width: 100%;
+    height: auto;
+}
+
+.GuideSection > h1 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.GuideMapSection {
+    width:80%;
+    height: 660px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    border-radius: 46px;
+    margin-bottom: 90px;
+}
