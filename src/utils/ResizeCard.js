@@ -39,23 +39,7 @@ export const quickResize = () => {
     }
 };
 
-/**
- * 이벤트 페이지에 사용
- * @returns 카드 크기
- */
-export const eventResize = () => {
-    if (window.innerWidth < 500) {
-        return (((window.innerWidth * 0.95) - 0) / 1);
-    } else if (window.innerWidth < 990) {
-        return (((window.innerWidth * 0.95) - 51) / 2);
-    } else if (window.innerWidth < 1450) {
-        return (((window.innerWidth * 0.95) - 83) / 3);
-    } else if (window.innerWidth < 1929) {
-        return (((window.innerWidth * 0.95) - 115) / 4);
-    } else {
-        return (((window.innerWidth * 0.95) - 147) / 5);
-    }
-};
+
 
 
 

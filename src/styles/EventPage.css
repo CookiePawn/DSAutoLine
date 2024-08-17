@@ -1,9 +1,15 @@
+.container{
+    max-width: 1280px;
+    min-width: 1280px;
+    margin: auto;
+}
+
 .eventTitleSection {
-    width: 95%;
+    width: 100%;
     height: auto;
     margin: auto;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 180px;
     margin-bottom: 40px;
     display: block;
 }
@@ -32,11 +38,10 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     border: 2px solid #dcdcdc;
-    border-radius: 12px;
 }
 
 .eventButtonSection {
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -52,7 +57,7 @@
 }
 
 .eventpageSection {
-    width: 95%;
+    width: 100%;
     display: flex;
     margin:auto;
     margin-bottom: 120px;
@@ -67,8 +72,7 @@
 }
 
 .eventCardlist {
-    flex: 1 1 calc(25% - 30px);
-    display: inline-block;
+    flex: 0 0 calc(33% - 30px);
     cursor: pointer;
 }
 

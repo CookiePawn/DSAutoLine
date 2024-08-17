@@ -141,26 +141,11 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
-    const [windowWidth, setWindowWidth] = useState(eventResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(eventResize());
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     const eventId = props.item.id;
 
     return (
         <div
             className="eventCardlist"
-            style={{ maxWidth: windowWidth }}
             onClick={() => window.location.href = `/Event/${eventId}`}
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>

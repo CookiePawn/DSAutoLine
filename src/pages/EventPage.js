@@ -55,30 +55,32 @@ const EventPage = (props) => {
 
     return (
         <>
-            <GNB stat={true} page={'이벤트/프로모션'} />
-            <div className="eventTitleSection">
-                <h1>이벤트/프로모션</h1>
-                <p>더 많은 혜택과 함께 하세요</p>
-            </div>
-            <div className="eventButtonSection">
-                <button
-                    onClick={() => handleButtonClick(0)}
-                    className={`eventButton ${selectedButton === 0 ? 'selected' : ''}`}
-                >
-                    진행중인 이벤트
-                </button>
-                <button
-                    onClick={() => handleButtonClick(1)}
-                    className={`eventButton ${selectedButton === 1 ? 'selected' : ''}`}
-                >
-                    종료된 이벤트
-                </button>
-            </div>
-            <div className="eventpageSection">
-                <div className='eventList'>
-                    {getEvents().map((item, idx) => (
-                         <EventCardlist key={idx} item={item} isEnded={selectedButton === 1} />
-                    ))}
+            <div className='container'>
+                <GNB stat={true} page={'이벤트/프로모션'} />
+                <div className="eventTitleSection">
+                    <h1>이벤트/프로모션</h1>
+                    <p>더 많은 혜택과 함께 하세요</p>
+                </div>
+                <div className="eventButtonSection">
+                    <button
+                        onClick={() => handleButtonClick(0)}
+                        className={`eventButton ${selectedButton === 0 ? 'selected' : ''}`}
+                    >
+                        진행중인 이벤트
+                    </button>
+                    <button
+                        onClick={() => handleButtonClick(1)}
+                        className={`eventButton ${selectedButton === 1 ? 'selected' : ''}`}
+                    >
+                        종료된 이벤트
+                    </button>
+                </div>
+                <div className="eventpageSection">
+                    <div className='eventList'>
+                        {getEvents().map((item, idx) => (
+                            <EventCardlist key={idx} item={item} isEnded={selectedButton === 1} />
+                        ))}
+                    </div>
                 </div>
             </div>
             <Footer />
