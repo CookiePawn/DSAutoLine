@@ -4,6 +4,7 @@ import {
     IoMdClose,
     IoIosArrowForward,
     IoMdStar,
+    IoIosNotifications,
 } from 'react-icons/io'
 import { 
     SlArrowDown, 
@@ -101,3 +102,17 @@ export const StarIcon = (props) => {
     )
 }
 
+
+
+
+
+/**
+ * 알림 아이콘
+ * @param {*} props 
+ * @returns 
+ */
+export const NoticeIcon = (props) => {
+    return (
+        <IoIosNotifications  size={props.size} color={props.color}/>
+    )
+}
