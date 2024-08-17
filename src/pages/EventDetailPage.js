@@ -19,18 +19,20 @@ const EventDetailPage = () => {
     return (
         <>
             <GNB stat={true} page={'이벤트/프로모션'} />
-            <div className='DetailTitleSection'>
-                <h1>{eventData.name}</h1>
-                <p>{eventData.period}</p>
-            </div>
-            <div className='OptionSection'>
-                {/* 여기에 옵션 관련 내용 추가 가능 */}
-            </div>
-            <div className='ScriptSection'>
-                <p>{eventData.script}</p>
-            </div>
-            <div className='ButtonSection'>
-                <button className="backButton" onClick={() => navigate(-1)}>목록으로</button>
+            <div className='edcontainer'>
+                <div className='DetailTitleSection'>
+                    <h1>{eventData.name}</h1>
+                    <p>{eventData.period}</p>
+                </div>
+                <div className='OptionSection'>
+                    {/* 여기에 옵션 관련 내용 추가 가능 */}
+                </div>
+                <div className='ScriptSection'>
+                    <p>{eventData.script}</p>
+                </div>
+                <div className='ButtonSection'>
+                    <button className="backButton" onClick={() => navigate(-1)}>목록으로</button>
+                </div>
             </div>
             <Footer />
         </>

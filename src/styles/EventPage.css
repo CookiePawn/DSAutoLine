@@ -1,4 +1,4 @@
-.container{
+.event_container{
     max-width: 1280px;
     min-width: 1280px;
     margin: auto;
@@ -72,7 +72,8 @@
 }
 
 .eventCardlist {
-    flex: 0 0 calc(33% - 30px);
+    width: 406px;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
