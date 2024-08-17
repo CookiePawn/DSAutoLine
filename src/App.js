@@ -11,6 +11,8 @@ import OptionPage from './pages/OptionPage';
 import ReviewPage from './pages/ReviewPage';
 import ReviewMorePage from './pages/ReviewMorePage';
 
+import AdminPage from './pages/AdminPage';
+
 function App() {
 	return (
 		<Router>
@@ -26,6 +28,7 @@ function App() {
 					<Route path='/Option' element={<OptionPage />} />
 					<Route path='/Review' element={<ReviewPage />} />
 					<Route path='/ReviewMore' element={<ReviewMorePage />} />
+					<Route path='/Admin' element={<AdminPage />} />
 				</Routes>
 			</div>
 		</Router>

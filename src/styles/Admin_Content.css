@@ -1,0 +1,64 @@
+.admin_content {
+    background-color: white;
+    border: 1px solid #bbb;
+}
+
+.admin_content > h2 {
+    margin: 0;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.admin_content > h2 > span {
+    font-size: 20px;
+    color: #0064FF;
+}
+
+.admin_content .header-row {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #111;
+}
+
+.admin_content .header-row > input {
+    margin: 20px;
+}
+
+.admin_content .notification {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.admin_content .notification > input {
+    margin-right: 30px;
+}
+
+.admin_content .notification-text {
+    display: flex;
+    align-items: center;
+}
+
+.admin_content .notification-text .icon {
+    background-color: #f4f4f4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #ff0000;
+}
+
+.admin_content .delete-button {
+    width: 60px;
+    color: #ff0000;
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+    margin-left: auto;
+    cursor: pointer;
+}
