@@ -25,10 +25,14 @@ const EnterPage = () => {
                     const map = new window.kakao.maps.Map(container, options);
                     const markerPosition = new window.kakao.maps.LatLng(36.831875766482334, 127.14499095041695);
                     const marker = new window.kakao.maps.Marker({
-                        position: markerPosition
+                        position: markerPosition,
                     });
                     marker.setMap(map);
                     
+                    const infowindow = new window.kakao.maps.InfoWindow({
+                        content: '<div style="padding:5px; font-size:15px;">두정상가8길 62-804호</div>',
+                    });
+                    infowindow.open(map, marker);
                 });
             }
         };

@@ -78,7 +78,7 @@ const EventPage = (props) => {
         <>
             <div className='event_container'>
                 <GNB stat={true} page={'이벤트/프로모션'} />
-                <FastFAQSticky height={450}/>
+                <FastFAQSticky height={600}/>
                 <div className="eventTitleSection">
                     <h1>이벤트/프로모션</h1>
                     <p>더 많은 혜택과 함께 하세요</p>

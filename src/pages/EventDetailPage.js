@@ -20,7 +20,7 @@ const EventDetailPage = () => {
     return (
         <>
             <GNB stat={true} page={'이벤트/프로모션'} />
-            <FastFAQSticky height={450}/>
+            <FastFAQSticky height={600}/>
             <div className='edcontainer'>
                 <div className='DetailTitleSection'>
                     <h1>{eventData.name}</h1>
