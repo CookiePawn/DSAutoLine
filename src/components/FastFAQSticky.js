@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/FastFAQSticky.css'
 
 
@@ -8,10 +8,38 @@ const FastFAQSticky = (props) => {
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
 
+    const [load, setLoad] = useState(0)
+
+    useEffect(() => {
+        // 페이지 높이를 업데이트하는 함수
+        const updateHeight = () => {
+            setLoad(document.documentElement.scrollHeight);
+        };
+
+        // 처음 렌더링 시 높이 업데이트
+        updateHeight();
+
+        // MutationObserver 설정
+        const observer = new MutationObserver(updateHeight);
+
+        // body에 대해 감지할 요소와 설정
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+        });
+
+        // 컴포넌트 언마운트 시 옵저버를 해제
+        return () => {
+            observer.disconnect();
+        };
+    }, []); // 빈 배열로 한번만 실행
+
+
     return (
         <section className='mainPage_QuickFAQSection'>
             <span>
-                <span style={{height:  document.body.clientHeight - props.height}}>
+                <span style={load !== 0 ? { height: document.body.clientHeight - props.height } : null}>
                     <div>
                         <span style={{ marginTop: 23, marginBottom: 25 }}>
                             <img src={require('../assets/img/popup/quickFAQIcon.png')} />
