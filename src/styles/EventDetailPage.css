@@ -5,7 +5,7 @@
 }
 
 .DetailTitleSection {
-    width: 100%;
+    width: 1280px;
     margin: auto;
     text-align: center;
     margin-top: 180px;
@@ -29,7 +29,7 @@
 }
 
 .OptionSection {
-    width: 100%;
+    width: 1280px;
     height: 86px;
     margin: auto;
     align-items: flex-end;
@@ -39,13 +39,16 @@
 }
 
 .ScriptSection {
-    width: 100%;
+    width: 1280px;
     margin: auto;
     font-size: 18px;
     font-weight: 400;
     background-color: #d9d9d9;
+}
+
+.ScriptSection > p {
+    margin: 0;
     padding: 20px;
-    border-radius: 12px;
 }
 
 .ButtonSection {
