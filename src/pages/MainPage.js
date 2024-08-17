@@ -67,6 +67,7 @@ const MainPage = (props) => {
             setHotDealList(response1)
             const response2 = await quickDealAxios(null, null, null)
             setQuickDealList(response2)
+            document.body.style.overflowX = 'hidden';
         }
         fetchData()
     }, [])
@@ -75,7 +76,7 @@ const MainPage = (props) => {
 
 
     return (
-        <div className='container'>
+        <div className='mainPage_container'>
             <GNB stat={false} />
             <section className="mainPage_BannerSection">
                 <div style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>
