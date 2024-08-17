@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import GNB from "../components/GNB";
 import '../styles/EventDetailPage.css';
 import { nowEvent, endedEvents } from './EventPage';
+import FastFAQSticky from '../components/FastFAQSticky';
 
 const EventDetailPage = () => {
     const { id } = useParams();
@@ -19,6 +20,7 @@ const EventDetailPage = () => {
     return (
         <>
             <GNB stat={true} page={'이벤트/프로모션'} />
+            <FastFAQSticky height={200}/>
             <div className='edcontainer'>
                 <div className='DetailTitleSection'>
                     <h1>{eventData.name}</h1>
