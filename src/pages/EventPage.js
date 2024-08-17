@@ -55,7 +55,7 @@ const EventPage = (props) => {
 
     return (
         <>
-            <div className='container'>
+            <div className='event_container'>
                 <GNB stat={true} page={'이벤트/프로모션'} />
                 <div className="eventTitleSection">
                     <h1>이벤트/프로모션</h1>

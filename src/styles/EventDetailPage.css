@@ -1,8 +1,14 @@
+.edcontainer{
+    min-width: 1280px;
+    max-width: 1280px;
+    margin:auto;
+}
+
 .DetailTitleSection {
-    width: 95%;
+    width: 100%;
     margin: auto;
     text-align: center;
-    margin-top: 160px;
+    margin-top: 180px;
     margin-bottom: 40px;
 }
 
@@ -23,7 +29,7 @@
 }
 
 .OptionSection {
-    width: 95%;
+    width: 100%;
     height: 86px;
     margin: auto;
     align-items: flex-end;
@@ -33,7 +39,7 @@
 }
 
 .ScriptSection {
-    width: 95%;
+    width: 100%;
     margin: auto;
     font-size: 18px;
     font-weight: 400;
@@ -43,7 +49,7 @@
 }
 
 .ButtonSection {
-    width: 95%;
+    width: 100%;
     margin: 40px auto;
     text-align: center;
 }
