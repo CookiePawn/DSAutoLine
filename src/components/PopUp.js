@@ -135,3 +135,19 @@ export const CarmentoPopUp = (props) => {
         </>
     )
 }
+
+
+export const ReviewAddPagePopUp = (props) => {
+    return (
+        <>
+            <div className="popupDimmed">
+                <div className="popupDiv">
+                    <img src={require('../assets/img/popup/popupIcon.png')} />
+                    <h2>리뷰를 작성해주셔서 감사합니다</h2>
+                    <p>해당 리뷰는 적정 심사 후 홈페이지에 업로드 됩니다.</p>
+                    <span onClick={() => window.location.href = '/Review'}>닫기</span>
+                </div>
+            </div>
+        </>
+    )
+}

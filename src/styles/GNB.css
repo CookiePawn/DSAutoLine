@@ -107,6 +107,12 @@
     color: #111;
 }
 
+.GNBSearchDiv > input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+}
+
 .GNBSearchDiv > span {
     width: 30px;
     cursor: pointer;

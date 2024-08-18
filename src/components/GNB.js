@@ -41,7 +41,7 @@ const GNB = (props) => {
                     <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
                 </span>
                 <div className='GNBSearchDiv'>
-                    <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                    <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder='차종을 검색하세요'/>
                     <span>
                         <SearchIcon size={25} color={'#111'} />
                     </span>

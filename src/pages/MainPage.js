@@ -67,7 +67,6 @@ const MainPage = (props) => {
             setHotDealList(response1)
             const response2 = await quickDealAxios(null, null, null)
             setQuickDealList(response2)
-            document.body.style.overflowX = 'hidden';
         }
         fetchData()
     }, [])
