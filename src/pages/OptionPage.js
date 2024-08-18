@@ -221,12 +221,6 @@ const OptionPage = (props) => {
                                     ))}
                                 </div> : null
                             }
-
-
-
-
-
-
                         </div>
                         <div className="selectDiv">
                             <h3>이용조건 선택</h3>

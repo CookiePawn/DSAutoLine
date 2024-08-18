@@ -3,7 +3,7 @@ body {
 }
 
 .categorySection {
-    width: 95%;
+    width: 1280px;
     margin: auto;
     position: relative;
 }
@@ -38,7 +38,6 @@ body {
     cursor: pointer;
     transition: all 0.5s ease;
     border: 2px solid #dbdbdb;
-    border-radius: 12px;
     margin-right: 30px;
     margin-bottom: 40px;
 }
@@ -46,6 +45,7 @@ body {
 .categoryTitleDiv>h3.selected {
     font-weight: 600;
     color: white;
+    border: none;
     background-color: #0064FF;
 }
 
@@ -54,7 +54,7 @@ body {
 
 
 .quickCarListSection {
-    width: 95%;
+    width: 1280px;
     margin: auto;
 }
 
@@ -87,7 +87,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     border: 1px solid #bbb;
-    border-radius: 20px;
     font-size: 16px;
     font-weight: 600;
     color: #767676;
@@ -102,20 +101,21 @@ body {
 .quickCarCardListDiv {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     margin-bottom: 100px;
 }
 
 .carCard {
-    width: 290px;
+    min-width: 290px;
+    max-width: 290px;
+    position: relative;
     height: 381px;
     cursor: pointer;
-    transition: all 0.7s ease;
     box-sizing: border-box;
 }
 
 .carCard:hover {
-    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #0064FF;
 }
 
 .carCard.selected {
@@ -128,10 +128,6 @@ body {
     transition: all 0.3s ease;
     background-color: #f5f5f5;
     margin-bottom: 16px;
-}
-
-.carCard:hover>img {
-    transform: scale(1.05);
 }
 
 .carCard>h2 {

@@ -4,6 +4,7 @@ import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { HotDealCarCard } from '../components/Cards'
 import { hotDealAxios } from '../services/Request'
+import FastFAQSticky from '../components/FastFAQSticky'
 
 
 const HotDealPage = (props) => {
@@ -22,6 +23,7 @@ const HotDealPage = (props) => {
             <div className='bannerSection'>
                 <p>한정 특가 이벤트 배너</p>
             </div>
+            <FastFAQSticky height={1150}/>
             <div className='hotDealTitleSection'>
                 <h1>한정 <span>특가</span></h1>
                 <p>특별 할인이 들어간 가격의 차량을 확인하세요</p>

@@ -237,24 +237,9 @@ export const PopularCarCard = (props) => {
  * @returns 
  */
 export const QuickCarCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(quickResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(quickResize());
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
     return (
         <div
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
-            style={{ maxWidth: windowWidth }}
             onClick={() => props.setCarStat(props.index)}
         >
             <img src={require(`../assets/img/car/${props.item.img}.png`)} alt='2024 Ray' />
@@ -282,23 +267,8 @@ export const QuickCarCard = (props) => {
  * @returns 
  */
 export const HotDealCarCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(quickResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(quickResize());
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
-
     return (
-        <div className='hotDealCard' style={{ maxWidth: windowWidth }} onClick={() => window.location.href = '/Option'}>
+        <div className='hotDealCard' onClick={() => window.location.href = '/Option'}>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
@@ -331,22 +301,8 @@ export const HotDealCarCard = (props) => {
  * @returns 
  */
 export const QuickDealCarCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(quickResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(quickResize());
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-
     return (
-        <div className='quickDealCard' style={{ maxWidth: windowWidth }}>
+        <div className='quickDealCard'>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
@@ -403,23 +359,8 @@ export const QuickDealCarCard = (props) => {
  * @returns 
  */
 export const ReviewPageCard = (props) => {
-    const [windowWidth, setWindowWidth] = useState(quickResize());
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(quickResize());
-            props.setIndex(Math.floor(window.innerWidth / quickResize()))
-        };
-        handleResize()
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
-        <div className='reviewCard' style={{ maxWidth: windowWidth }} onClick={() => window.location.href = '/ReviewMore'}>
+        <div className='reviewCard' onClick={() => window.location.href = '/ReviewMore'}>
             <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
             <div>
                 <h2>{props.item.enter} {props.item.car}</h2>

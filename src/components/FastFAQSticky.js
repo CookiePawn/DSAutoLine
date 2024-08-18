@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/FastFAQSticky.css'
+import { OptionPagePopUp } from '../components/PopUp'
 
 
 
@@ -9,7 +10,7 @@ const FastFAQSticky = (props) => {
     const [infoSelect2, setInfoSelect2] = useState(false)
 
     const [load, setLoad] = useState(0)
-
+    const [nextStat, setNextStat] = useState(false)
     useEffect(() => {
         // 페이지 높이를 업데이트하는 함수
         const updateHeight = () => {
@@ -38,6 +39,9 @@ const FastFAQSticky = (props) => {
 
     return (
         <section className='mainPage_QuickFAQSection'>
+            {nextStat &&
+                <OptionPagePopUp />
+            }
             <span>
                 <span style={load !== 0 ? { height: document.body.clientHeight - props.height } : null}>
                     <div>
@@ -73,7 +77,7 @@ const FastFAQSticky = (props) => {
                             }
                             <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
                         </span>
-                        <div>상담신청하기</div>
+                        <div onClick={() =>  {setNextStat(true); document.body.style.overflow = 'hidden';}}>상담신청하기</div>
                     </div>
                 </span>
             </span>

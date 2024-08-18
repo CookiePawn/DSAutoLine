@@ -3,34 +3,40 @@ body, html {
 }
 
 .enter_container {
-    min-width: 1280px;
-    max-width: 1280px;
+    width: 100%;
     margin: auto;
     position: relative;
 }
 
 .EnterbannerSection {
     width: 100%;
-    height: 70vh;
     background-color: #c4c4c4;
+}
+
+.EnterbannerSection > div {
+    min-width: 1280px;
+    max-width: 1280px;
+    height: 700px;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column
 }
 
-.EnterbannerSection > h1{
+.EnterbannerSection > div > h1{
     margin: 0;
-    font-size: 40px;
-    font-weight: 600;
+    font-size: 33px;
+    font-weight: 6 00;
     color: #000000;
     margin-bottom: 10px;
 }
-.EnterbannerSection > h1 > .Point{
+.EnterbannerSection > div > h1 > .Point{
     color: #0064FF;
-    font-size: 60px; 
+    font-size: 45px; 
+    font-weight: 600;
 }
-.EnterbannerSection > p{
+.EnterbannerSection > div > p{
     margin: 0;
     font-size: 28px;
     font-weight: 400;
@@ -38,8 +44,10 @@ body, html {
 }
 
 .EnterTitleSection {
-    width: 100%;
+    min-width: 1280px;
+    max-width: 1280px;
     height: auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,8 +69,7 @@ body, html {
 }
 
 .titlelogo {
-    width: 25%;
-    height: 10vh;
+    width: 300px;
     margin: 0;
     margin-top: 60px;
     margin-bottom: 60px;
@@ -75,11 +82,20 @@ body, html {
     color: #ffffff;
 }
 
+.advantageSection > div {
+    min-width: 1280px;
+    max-width: 1280px;
+    height: 550px;
+    margin: auto;
+}
+
 
 .advantage-column {
     width: 100%;
     margin: 0;
     display: flex;
+    justify-content: center;
+    gap: 200px;
 }
 
 .advantage-column > h1 {

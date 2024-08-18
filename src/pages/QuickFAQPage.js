@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickCarCard } from '../components/Cards'
 import { quickFAQList } from '../assets/item'
+import FastFAQSticky from '../components/FastFAQSticky'
 
 
 const QuickFAQPage = (props) => {
@@ -37,6 +38,7 @@ const QuickFAQPage = (props) => {
             <div className='bannerSection'>
                 <p>이벤트 배너</p>
             </div>
+            <FastFAQSticky height={1150}/>
             <div className='categorySection'>
                 <h1>빠른 <span>간편 문의</span></h1>
                 <p>쉽고 간편하게 문의 해보세요</p>

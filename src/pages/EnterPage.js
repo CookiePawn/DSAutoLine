@@ -3,6 +3,8 @@ import GNB from "../components/GNB";
 import Footer from "../components/Footer";
 import '../styles/EnterPage.css';
 import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png';
+import FastFAQSticky from '../components/FastFAQSticky'
+import { FaS } from 'react-icons/fa6';
 
 const EnterPage = () => {
 
@@ -28,7 +30,7 @@ const EnterPage = () => {
                         position: markerPosition,
                     });
                     marker.setMap(map);
-                    
+
                     const infowindow = new window.kakao.maps.InfoWindow({
                         content: '<div style="padding:5px; font-size:15px;">두정상가8길 62-804호</div>',
                     });
@@ -41,11 +43,14 @@ const EnterPage = () => {
 
     return (
         <>
+            <GNB stat={true} page={'회사소개'} />
+            <FastFAQSticky height={550}/>
             <div className='enter_container'>
-                <GNB stat={true} page={'회사소개'} />
                 <div className="EnterbannerSection">
-                    <h1>고객님의 <span className="Point">‘마음’</span>을 움직입니다.</h1>
-                    <p>저희 DS 오토라인은 신뢰와 믿음을 바탕으로 고객님의 마음을 움직이겠습니다.</p>
+                    <div>
+                        <h1>고객님의 <span className="Point">‘마음’</span>을 움직입니다.</h1>
+                        <p>저희 DS 오토라인은 신뢰와 믿음을 바탕으로 고객님의 마음을 움직이겠습니다.</p>
+                    </div>
                 </div>
                 <div className="EnterTitleSection">
                     <img src={DSAutoLine} className="titlelogo" alt="이미지 로딩이 실패하였습니다" />
@@ -55,24 +60,27 @@ const EnterPage = () => {
                     <p>층상담을 통해 보다 합리적이고 어디에서 쉽게 볼 수 없는 견적서를 드리겠습니다.</p>
                 </div>
                 <div className="advantageSection">
-                    <div className="advantage-column">
-                        <h1>장기렌트 장점</h1>
-                        <ul className="listsytle">
-                            <li>1. 낮은 초기비용 or 유지비용</li>
-                            <li>2. 유지 관리의 편리</li>
-                            <li>3. 개인 사업자 or 법인 사업자 비용처리 가능</li>
-                            <li>4. 신용도에 영향 없음</li>
-                        </ul>
+                    <div>
+                        <div className="advantage-column">
+                            <h1>장기렌트 장점</h1>
+                            <ul className="listsytle">
+                                <li>1. 낮은 초기비용 or 유지비용</li>
+                                <li>2. 유지 관리의 편리</li>
+                                <li>3. 개인 사업자 or 법인 사업자 비용처리 가능</li>
+                                <li>4. 신용도에 영향 없음</li>
+                            </ul>
+                        </div>
+                        <div className="advantage-column">
+                            <h1>리스 장점</h1>
+                            <ul className="listsytle">
+                                <li>1. 낮은 초기비용</li>
+                                <li>2. 건강보험료, 재산세 할증 부담 없음</li>
+                                <li>3. 개인 사업자 or 법인 사업자 비용처리 가능</li>
+                                <li>4. 보험경력 유지</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="advantage-column">
-                        <h1>리스 장점</h1>
-                        <ul className="listsytle">
-                            <li>1. 낮은 초기비용</li>
-                            <li>2. 건강보험료, 재산세 할증 부담 없음</li>
-                            <li>3. 개인 사업자 or 법인 사업자 비용처리 가능</li>
-                            <li>4. 보험경력 유지</li>
-                        </ul>
-                    </div>
+
                 </div>
                 <div className="processSection">
                     <h1>계약진행절차</h1>

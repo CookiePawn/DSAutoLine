@@ -87,6 +87,7 @@
 
 
 .GNBSearchDiv {
+    position: relative;
     width: 275px;
     height: calc(80px - 34px);
     border-bottom: 1px solid #111;
@@ -110,4 +111,40 @@
     width: 30px;
     cursor: pointer;
     margin-top: 5px;
+}
+
+
+.GNBSearchListDiv {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.GNBSearchListDiv > span {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.GNBSearchListDiv > span > span {
+    cursor: pointer;
+}
+
+
+.GNBSearchListCard {
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.GNBSearchListCard > p {
+    margin: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
 }

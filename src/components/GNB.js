@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { SearchIcon } from './Icons'
+import { SearchIcon, CloseIcon } from './Icons'
 import '../styles/GNB.css'
 import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png'
+import { GNBSearchList } from '../assets/item'
 
 
 
@@ -11,6 +12,21 @@ import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png'
  * @returns 
  */
 const GNB = (props) => {
+    const [searchValue, setSearchValue] = useState('')
+    const [searchList, setSearchList] = useState([])
+    
+    useEffect(() => {
+        const fetchData = () => {
+            setSearchList(
+                GNBSearchList.filter(item => 
+                    item.name.toLowerCase().includes(searchValue.toLowerCase())
+                )
+            );
+        };
+        fetchData();
+    }, [searchValue]);
+
+
     return (
         <div className='GNB scrolled'>
             <div className='GNBListDiv'>
@@ -24,12 +40,25 @@ const GNB = (props) => {
                     <a className='listA' href='/Review'><p className={props.page === '고객 리뷰' ? 'selected' : ''}>고객 리뷰</p></a>
                     <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
                 </span>
-
                 <div className='GNBSearchDiv'>
-                    <input />
+                    <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
                     <span>
                         <SearchIcon size={25} color={'#111'} />
                     </span>
+                    {searchValue !== '' &&
+                        <div className='GNBSearchListDiv'>
+                            {searchList.length > 0 && searchList.map((item, idx) => (
+                                <div className='GNBSearchListCard'>
+                                    <p>{item.name}</p>
+                                </div>
+                            ))}
+                            <span>
+                                <span onClick={() => setSearchValue('')}>
+                                    <CloseIcon size={25} color={'#111'} />
+                                </span>
+                            </span>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

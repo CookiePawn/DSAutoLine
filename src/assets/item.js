@@ -116,3 +116,23 @@ export const optionList = {
         { name: '파노라마 선루프', img: 'panoramaSunroof', price: 1090000 },
     ],
 }
+
+
+export const GNBSearchList = [
+    {name: '레이', enter: '기아'},
+    {name: '레이 EV', enter: '기아'},
+    {name: '그랜저', enter: '현대'},
+    {name: 'K3', enter: '기아'},
+    {name: 'K4', enter: '기아'},
+    {name: 'K5', enter: '기아'},
+    {name: 'K7', enter: '기아'},
+    {name: 'K8', enter: '기아'},
+    {name: 'K9', enter: '기아'},
+    {name: 'EV6', enter: '기아'},
+    {name: 'EV9', enter: '기아'},
+    {name: '아이오닉 5', enter: '현대'},
+    {name: '아반떼', enter: '현대'},
+    {name: '소나타', enter: '현대'},
+    {name: '로체', enter: '기아'},
+    {name: '쏘렌토', enter: '기아'},
+]

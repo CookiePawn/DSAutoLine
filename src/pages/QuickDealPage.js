@@ -5,6 +5,7 @@ import '../styles/QuickDealPage.css'
 import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickDealCarCard } from '../components/Cards'
 import { quickDealAxios } from "../services/Request"
+import FastFAQSticky from '../components/FastFAQSticky'
 
 
 
@@ -36,6 +37,7 @@ const QuickDealPage = (props) => {
             <div className='bannerSection'>
                 <p>즉시 출고 이벤트 배너</p>
             </div>
+            <FastFAQSticky height={1150}/>
             <div className='categorySection'>
                 <h1>즉시 <span>출고</span></h1>
                 <p>지금 바로 출고 할 수 있는 차량을 확인해보세요</p>

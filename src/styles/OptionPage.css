@@ -5,16 +5,18 @@ body {
 
 .flexSection {
     width: 95%;
+    min-width: 1280px;
     margin: auto;
     margin-top: 130px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .infoSection {
-    margin-right: 50px;
     margin-bottom: 100px;
-    width: 550px;
+    margin-right: 50px;
+    width: 500px;
 }
 
 .infoSection>div {
@@ -28,7 +30,7 @@ body {
     word-spacing: -0.4rem;
     margin: 0;
     margin-bottom: 50px;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 600;
     color: #111;
 }
@@ -59,14 +61,14 @@ body {
     font-size: 28px;
     font-weight: 600;
     color: #111;
-}
+} 
 
 .infoSection>div>span * {
     margin: 0;
 }
 
 .infoSection>div>img {
-    width: 100%;
+    width: 480px;
     margin-bottom: 40px;
 }
 
@@ -223,19 +225,23 @@ body {
     color: white;
 }
 
+
+
+
+
+
 .optionSection {
     position: relative;
-    width: calc(100% - 580px);
+    width: calc(100% - 550px);
     margin-top: 110px;
     margin-bottom: 100px;
-    margin-left: auto;
     border-left: 1px solid #ededed;
+    padding-left: 50px;
 }
 
 .optionMarginDiv {
     width: 95%;
     height: 100%;
-    margin-left: auto;
 }
 
 .colorDiv>span {
