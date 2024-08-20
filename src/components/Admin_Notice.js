@@ -3,7 +3,7 @@ import '../styles/Admin_Content.css'
 
 
 
-function Content() {
+function Admin_Notice() {
     const items = [
         { id: 1, text: '새로운 고객님이 추가되었습니다.' },
         { id: 2, text: '새로운 리뷰가 추가되었습니다.' },
@@ -18,11 +18,6 @@ function Content() {
         { id: 1, text: '새로운 고객님이 추가되었습니다.' },
         { id: 2, text: '새로운 리뷰가 추가되었습니다.' },
         { id: 1, text: '새로운 고객님이 추가되었습니다.' },
-        { id: 2, text: '새로운 리뷰가 추가되었습니다.' },
-        { id: 1, text: '새로운 고객님이 추가되었습니다.' },
-        { id: 2, text: '새로운 리뷰가 추가되었습니다.' },
-        { id: 1, text: '새로운 고객님이 추가되었습니다.' },
-        { id: 2, text: '새로운 리뷰가 추가되었습니다.' },
     ];
 
     return (
@@ -45,4 +40,4 @@ function Content() {
     );
 }
 
-export default Content;
+export default Admin_Notice;

@@ -1,30 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Admin_Sidebar.css'
-import { UpIcon, DownIcon } from '../components/Icons'
+import { UpIcon, DownIcon, RightIcon } from '../components/Icons'
 
-function Sidebar() {
+function Admin_Sidebar(props) {
     const [categoryStat, setCategoryStat] = useState(null)
+
+    useEffect(() => {
+        categoryStat !== null && props.setPage(categoryStat)
+    }, [categoryStat])
 
     return (
         <div className="admin_Sidebar_sidebar">
             <div className="menu">
-                <span onClick={() => setCategoryStat(categoryStat === 0 ? null : 0)}>
-                    <p>빠른 간편 문의</p>
-                    <span>
-                        {categoryStat === 0
-                            ? <UpIcon size={20} color={'#bbb'} />
-                            : <DownIcon size={20} color={'#bbb'} />
-                        }
-                    </span>
-                </span>
-                {categoryStat === 0 &&
-                    <div className='admin_Sidebar_categoryDiv'>
-                        <p>차량 추가</p>
-                        <p>차량 수정 및 삭제</p>
-                    </div>
-                }
                 <span onClick={() => setCategoryStat(categoryStat === 1 ? null : 1)}>
-                    <p>한정 특가</p>
+                    <p>빠른 간편 문의</p>
                     <span>
                         {categoryStat === 1
                             ? <UpIcon size={20} color={'#bbb'} />
@@ -39,7 +28,7 @@ function Sidebar() {
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 2 ? null : 2)}>
-                    <p>즉시 출고</p>
+                    <p>한정 특가</p>
                     <span>
                         {categoryStat === 2
                             ? <UpIcon size={20} color={'#bbb'} />
@@ -54,7 +43,7 @@ function Sidebar() {
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 3 ? null : 3)}>
-                    <p>고객 리스트</p>
+                    <p>즉시 출고</p>
                     <span>
                         {categoryStat === 3
                             ? <UpIcon size={20} color={'#bbb'} />
@@ -62,6 +51,12 @@ function Sidebar() {
                         }
                     </span>
                 </span>
+                {categoryStat === 3 &&
+                    <div className='admin_Sidebar_categoryDiv'>
+                        <p>차량 추가</p>
+                        <p>차량 수정 및 삭제</p>
+                    </div>
+                }
                 <span onClick={() => setCategoryStat(categoryStat === 4 ? null : 4)}>
                     <p>이벤트</p>
                     <span>
@@ -92,9 +87,21 @@ function Sidebar() {
                         <p>리뷰 수정 및 삭제</p>
                     </div>
                 }
+                <span onClick={() => setCategoryStat(categoryStat === 6 ? null : 6)}>
+                    <p>옵션 추가 및 수정</p>
+                    <span>
+                        <RightIcon size={25} color={'#bbb'} />
+                    </span>
+                </span>
+                <span onClick={() => setCategoryStat(categoryStat === 7 ? null : 7)}>
+                    <p>고객 리스트</p>
+                    <span>
+                        <RightIcon size={25} color={'#bbb'} />
+                    </span>
+                </span>
             </div>
         </div>
     );
 }
 
-export default Sidebar;
+export default Admin_Sidebar;
