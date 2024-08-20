@@ -38,8 +38,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 2 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p>차량 추가</p>
-                        <p>차량 수정 및 삭제</p>
+                        <p onClick={() => props.setPage(2, 'add')}>차량 추가</p>
+                        <p onClick={() => props.setPage(2, 'editDelete')}>차량 수정 및 삭제</p>
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 3 ? null : 3)}>
