@@ -5,14 +5,36 @@ import FastFAQSticky from '../components/FastFAQSticky'
 import '../styles/ReviewAddPage.css'
 import { StarIcon } from "../components/Icons";
 import { ReviewAddPagePopUp } from "../components/PopUp";
+import { reviewAddAxios } from "../services/Request";
 
 
 
 
 
 const ReviewAddPage = () => {
+    const [popupStat, setPopupStat] = useState(false)
+
+    //insert
+    const [name, setName] = useState('')
+    const [car, setCar] = useState('')
+    const [enter, setEnter] = useState('기아')
     const [starStat, setStarStat] = useState(0)
-    const [popupStat, setPopupStat] = useState(false) 
+    const [img, setImg] = useState('K5')
+    const [comment, setComment] = useState('')
+
+
+    const clickFunction = async () => {
+        await reviewAddAxios({
+            car_name: car,
+            enter: enter,
+            name: name,
+            img: img,
+            star: starStat,
+            comment: comment,
+        })
+        setPopupStat(true);
+        document.body.style.overflowY = 'hidden'
+    }
 
     return (
         <>
@@ -20,17 +42,17 @@ const ReviewAddPage = () => {
                 <ReviewAddPagePopUp />
             }
             <GNB page={'고객 리뷰'} />
-            <FastFAQSticky height={450}/> 
+            <FastFAQSticky height={450} />
             <section className="reviewAdd_inputSection">
                 <h1>리뷰 작성</h1>
                 <p>서비스가 어떠셨나요?? 리뷰로 알려주세요</p>
                 <span>
                     <h3>이름</h3>
-                    <input />
+                    <input value={name} onChange={(e) => setName(e.target.value)} />
                 </span>
                 <span>
                     <h3>차량명</h3>
-                    <input />
+                    <input value={car} onChange={(e) => setCar(e.target.value)} />
                 </span>
                 <span>
                     <h3>별점</h3>
@@ -46,13 +68,13 @@ const ReviewAddPage = () => {
                 </span>
                 <span>
                     <h3>사진</h3>
-                    <img src={require('../assets/img/popup/imageUpload.png')} alt="이미지 업로드 이미지"/>
+                    <img src={require('../assets/img/popup/imageUpload.png')} alt="이미지 업로드 이미지" />
                 </span>
                 <span>
                     <h3>내용</h3>
-                    <textarea />
+                    <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
                 </span>
-                <button onClick={() => { setPopupStat(true); document.body.style.overflowY='hidden'}}>작성 완료</button>
+                <button onClick={clickFunction}>작성 완료</button>
             </section>
             <Footer />
         </>

@@ -1,21 +1,38 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Footer from "../components/Footer";
 import GNB from "../components/GNB";
 import '../styles/EventDetailPage.css';
-import { nowEvent, endedEvents } from './EventPage';
 import FastFAQSticky from '../components/FastFAQSticky';
+import { eventInfoAxios } from '../services/Request';
+
+
+const carImageError = (img) => {
+    let imageSrc;
+
+    try {
+        imageSrc = require(`../assets/img/event/${img}.png`);  // 동적으로 이미지 로드
+    } catch (error) {
+        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
+    }
+
+    return imageSrc
+}
+
+
+
 
 const EventDetailPage = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
+    const [content, setContent] = useState([])
 
-    const allEvents = [...nowEvent, ...endedEvents];
-    const eventData = allEvents.find(event => event.id.toString() === id);
-
-    if (!eventData) {
-        return <div>이벤트를 찾을 수 없습니다.</div>;
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await eventInfoAxios(id)
+            setContent(response)
+        }
+        fetchData()
+    }, [])
 
     return (
         <>
@@ -23,17 +40,17 @@ const EventDetailPage = () => {
             <FastFAQSticky height={600}/>
             <div className='edcontainer'>
                 <div className='DetailTitleSection'>
-                    <h1>{eventData.name}</h1>
-                    <p>{eventData.period}</p>
+                    <h1>{content.title}</h1>
+                    <p>{content.start_date} ~ {content.end_date}</p>
                 </div>
                 <div className='OptionSection'>
                     {/* 여기에 옵션 관련 내용 추가 가능 */}
                 </div>
                 <div className='ScriptSection'>
-                    <img src={require('../assets/eventimage.png')}/>
+                    <img src={carImageError(content.img)}/>
                 </div>
                 <div className='ButtonSection'>
-                    <button className="backButton" onClick={() => navigate(-1)}>목록으로</button>
+                    <button className="backButton" onClick={() => window.location.href='/event'}>목록으로</button>
                 </div>
             </div>
             <Footer />

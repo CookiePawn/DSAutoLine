@@ -488,14 +488,13 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 30px;
 }
 
 .optionSelectDiv > div {
     position: relative;
-    flex: 1 1 calc(25% - 30px);
-    margin: auto;
+    min-width: calc(25% - 30px);
+    max-width: calc(25% - 30px);
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
     border-radius: 12px;

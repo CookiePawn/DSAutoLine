@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from 'react-router-dom';
 import '../styles/ReviewMorePage.css'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { StarIcon } from "../components/Icons";
 import { ReviewCard } from "../components/Cards";
-import { reviewList } from '../assets/item'
-import { reviewInfoAxios } from "../services/Request";
+import { reviewInfoAxios, reviewAxios } from "../services/Request";
 import Slider from "react-slick";
 import '../styles/slick.css'
 import '../styles/slick-theme.css'
@@ -15,8 +15,10 @@ import FastFAQSticky from '../components/FastFAQSticky';
 
 
 const ReviewMorePage = () => {
+    const { id } = useParams();
     const [reviewHovered, setReviewHovered] = useState(false);
     const [reviewInfo, setReviewInfo] = useState([])
+    const [reviewList, setReviewList] = useState([])
 
     //슬라이더
     const reviewSliderRef = useRef(null);
@@ -24,8 +26,10 @@ const ReviewMorePage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const tmp = await reviewInfoAxios(1)
-            setReviewInfo(tmp)
+            const response1 = await reviewInfoAxios(id)
+            setReviewInfo(response1)
+            const response2 = await reviewAxios()
+            setReviewList(response2)
         }
         fetchData()
     }, [])
@@ -40,7 +44,9 @@ const ReviewMorePage = () => {
     }
 
     
-
+    if (reviewInfo.length === 0 || reviewList.length === 0) {
+        return null
+    }
     return (
         <>
             <GNB />
@@ -49,7 +55,7 @@ const ReviewMorePage = () => {
                 <img src={imageSrc} alt="리뷰 이미지"/>
                 <div>
                     <h1>{reviewInfo.enter} {reviewInfo.car_name}</h1>
-                    <h4>{reviewInfo.name} 님      <span>{reviewInfo.created_at}</span></h4>
+                    <h4>{reviewInfo.name} 님      <span>{reviewInfo.created_at && reviewInfo.created_at.split('T')[0]}</span></h4>
                     <span>
                         <p>평점</p>
                         {Array.from({ length: reviewInfo.star }, (_, index) => (

@@ -42,6 +42,7 @@
     width: 33px;
     height: 33px;
     margin-left: 23px;
+    cursor: pointer;
   }
   
   .mainPage_QuickFAQSection > span > span > div > span > h3 {
@@ -70,6 +71,7 @@
     box-sizing: border-box;
     margin-left: auto;
     margin-right: 23px;
+    padding: 0px 10px;
   }
   
   .mainPage_QuickFAQSection > span > span > div > span > p {
