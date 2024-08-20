@@ -221,7 +221,7 @@
 }
 
 .admin_content_colorAddSection > div:nth-of-type(2) > input {
-    width: 90%;
+    width: calc(90% - 20px);
     height: 40px;
     border: 1px solid #bbb;
     border-radius: 12px;
@@ -229,6 +229,7 @@
     margin: auto;
     margin-top: 0;
     margin-bottom: 0;
+    padding: 0px 10px;
 }
 
 .admin_content_colorAddSection > div:nth-of-type(2) > button {

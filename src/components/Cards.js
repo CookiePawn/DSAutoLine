@@ -75,22 +75,22 @@ export const QuickDealCard = (props) => {
             <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}adfsvsvsdavsdvsdvsdvasdasdasdasdasdsa</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>크리미 화이트</p>
+                <p className='quickDealCardInfo1'>{props.item.out_color}</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>블랙</p>
+                <p className='quickDealCardInfo1'>{props.item.in_color}</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    {3 === 1
+                    {props.item.option.length === 1
                         ? <>
-                            <p className='quickDealCardInfo2'>스노우 화이트 펄</p>
+                            <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
                         </>
                         : <>
-                            <p className='quickDealCardInfo1'>스노우 화이트 펄, KRELL 프리미엄 사운드</p>
-                            <p>외 1건</p>
+                            <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
+                            <p>외 {props.item.option.length}건</p>
                         </>
                     }
 
@@ -135,13 +135,16 @@ export const EventCard = (props) => {
     )
 }
 
+
+
+
 /**
  * 이벤트 페이지 - 이벤트 카드
  * @param {*} props 
  * @returns 
  */
 export const EventCardlist = (props) => {
-    const eventId = props.item.id;
+    const eventId = props.item.seq;
 
     return (
         <div
@@ -150,7 +153,7 @@ export const EventCardlist = (props) => {
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
                 <img
-                    src={eventId%2 === 0 ? eventImg1 : eventImg2}
+                    src={carImageError(props.item.img)}
                     className="eventCardImg"
                     alt="이미지 로딩이 실패하였습니다"
                 />
@@ -159,8 +162,8 @@ export const EventCardlist = (props) => {
                 )}
             </div>
             <div className='eventCardTitle'>
-                <h2>{props.item.name}</h2>
-                <p>{props.item.period}</p>
+                <h2>{props.item.title}</h2>
+                <p>{props.item.start_date} ~ {props.item.end_date}</p>
             </div>
         </div>
     );
@@ -175,16 +178,16 @@ export const EventCardlist = (props) => {
 export const ReviewCard = (props) => {
     return (
         <div className='reviewCard' onClick={() => window.location.href = '/ReviewMore'}>
-            <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
+            <span><img src={carImageError(props.item.img)} /></span>
             <div>
-                <h2>{props.item.enter} {props.item.car}</h2>
+                <h2>{props.item.enter} {props.item.car_name}</h2>
                 <span>
-                    <p>{props.item.content}</p>
+                    <p>{props.item.comment}</p>
                 </span>
                 <span></span>
                 <span>
                     <p>{props.item.name[0]}*{props.item.name[2]} 님</p>
-                    <p>{props.item.DATE}</p>
+                    <p>{props.item.created_at.split('T')[0]}</p>
                 </span>
                 <span>
                     <p>평점</p>
@@ -242,16 +245,16 @@ export const QuickCarCard = (props) => {
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
             onClick={() => props.setCarStat(props.index)}
         >
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} alt='2024 Ray' />
+            <img src={carImageError(props.item.img)} alt='2024 Ray' />
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
         </div>
     )
@@ -302,7 +305,7 @@ export const HotDealCarCard = (props) => {
  */
 export const QuickDealCarCard = (props) => {
     return (
-        <div className='quickDealCard'>
+        <div className='quickDealCard' onClick={() => window.location.href = `/Estimated/${props.item.car_code}`}>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
@@ -310,22 +313,22 @@ export const QuickDealCarCard = (props) => {
             <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>크리미 화이트</p>
+                <p className='quickDealCardInfo1'>{props.item.out_color}</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>블랙</p>
+                <p className='quickDealCardInfo1'>{props.item.in_color}</p>
             </span>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    {3 === 1
+                    {props.item.option.length === 1
                         ? <>
-                            <p className='quickDealCardInfo2'>스노우 화이트 펄</p>
+                            <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
                         </>
                         : <>
-                            <p className='quickDealCardInfo1'>스노우 화이트 펄, KRELL 프리미엄 사운드</p>
-                            <p>외 1건</p>
+                            <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
+                            <p>외 {props.item.option.length}건</p>
                         </>
                     }
 
@@ -360,17 +363,17 @@ export const QuickDealCarCard = (props) => {
  */
 export const ReviewPageCard = (props) => {
     return (
-        <div className='reviewCard' onClick={() => window.location.href = '/ReviewMore'}>
-            <span><img src={require(`../assets/img/review/${props.item.img}.png`)} /></span>
+        <div className='reviewCard' onClick={() => window.location.href = `/ReviewMore/${props.item.seq}`}>
+            <span><img src={carImageError(props.item.img)} /></span>
             <div>
-                <h2>{props.item.enter} {props.item.car}</h2>
+                <h2>{props.item.enter} {props.item.car_name}</h2>
                 <span>
-                    <p>{props.item.content}</p>
+                    <p>{props.item.comment}</p>
                 </span>
                 <span></span>
                 <span>
                     <p>{props.item.name[0]}*{props.item.name[2]} 님</p>
-                    <p>{props.item.DATE}</p>
+                    <p>{props.item.created_at.split('T')[0]}</p>
                 </span>
                 <span>
                     <p>평점</p>

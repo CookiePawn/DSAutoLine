@@ -1,11 +1,8 @@
 export const carmentoList = [
     { name: '김태경', position: '팀장', img: 'carmento1' },
-    { name: '백지환', position: '디자이너', img: 'carmento1' },
-    { name: '안준철', position: '개발자', img: 'carmento1' },
-    { name: '심민혁', position: '개발자', img: 'carmento1' },
-    { name: '소대현', position: '개발자', img: 'carmento1' },
-    { name: '정의석', position: '디자이너', img: 'carmento1' },
-    { name: '김민경', position: '마케팅 팀장', img: 'carmento1' },
+    { name: '허종현', position: '대리', img: 'carmento1' },
+    { name: '최진욱', position: '대리', img: 'carmento1' },
+    { name: '정의석', position: '대리', img: 'carmento1' },
 ]
 
 export const hotDealList = [
@@ -54,19 +51,6 @@ export const quickDealList = [
     { name: 'E-Class', info: '2024년형 가솔린 2.0 E300 4MATIC AMG LINE (A/T)', img: 'benz-e-class', rentalPrice: 1705000, leasePrice: 1580970, category: '세단', enter: '벤츠', entry: '수입', outColor: '미드나잇 블랙', inColor: '프로덕트 레드', option: [{ 1: 'AMG 패키지' }, { 2: '4MATIC' }] },
 ]
 
-
-export const reviewList = [
-    { name: '백지환', DATE: '2024-07-28', img: 'review1', car: 'K3', enter: '기아', star: 2, content: '정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히 심민혁 상담사님께서 매우 상세하고 이해하기 쉽게 설명해주셔서 큰 도움이 되었습니다. 상담 과정 내내 저의 필요와 상황을 충분히 고려해주셨고 감사합니다.' },
-    { name: '박명수', DATE: '2024-07-11', img: 'review2', car: 'EV6', enter: '기아', star: 5, content: '장기렌트 견적을 알아보다 고동윤 대리님을 만났습니다. 설명도 친절하게 잘해주시고 모르는것을 물어보면 알아봐주셔서 알려주는 점이 인상깊었습니다. 아주 만족한 거래였습니다' },
-    { name: '김우희', DATE: '2024-04-17', img: 'review3', car: '캐스퍼 인스퍼레이션', enter: '현대', star: 5, content: '안녕하세요! 캐스퍼 차량 후기 남깁니다! ☺️ 오늘 캐스퍼 운전 처음으로 해 봤는데 추천해 주신 대로 선루프 있는 차량으로 하길 너무 잘한 것 같아요! ㅎㅎ 사실 풀옵션 차량으로 하게 되면 월 납입금이 올라가서 많이 부담이었습니다!' },
-    { name: '이시현', DATE: '2024-07-28', img: 'review4', car: '스포티지', enter: '기아', star: 5, content: '급하게 차량을 구하던 중 지인을 통해 알게된 이장현 과장님 통해서 일주일만에 차량 받았습니다! 감기로 고생하시는 와중에도 친절하고 정확하게 알려주시고, 도와주셔서 빠르게 진행되서 플렉스 해버린 기분입니다.' },
-    { name: '카리나', DATE: '2023-12-21', img: 'review5', car: '카니발', enter: '기아', star: 5, content: ' 차량을 너무 빨리 받아 고마운 마음에 글 남깁니다. 원래 거래하던 렌트카 회사와 계약 직전까지 갔다가 우연히 인터넷을 보고 검색하여 소개받은 김명진 대리님 너무 감사드립니다. ' },
-    { name: '백지환', DATE: '2024-07-28', img: 'review1', car: 'K3', enter: '기아', star: 2, content: '정말 친절하게 상담해주셔서 덕분에 너무 편하게 선택할 수 있었습니다! 특히 심민혁 상담사님께서 매우 상세하고 이해하기 쉽게 설명해주셔서 큰 도움이 되었습니다. 상담 과정 내내 저의 필요와 상황을 충분히 고려해주셨고 감사합니다.' },
-    { name: '박명수', DATE: '2024-07-11', img: 'review2', car: 'EV6', enter: '기아', star: 5, content: '장기렌트 견적을 알아보다 고동윤 대리님을 만났습니다. 설명도 친절하게 잘해주시고 모르는것을 물어보면 알아봐주셔서 알려주는 점이 인상깊었습니다. 아주 만족한 거래였습니다' },
-    { name: '김우희', DATE: '2024-04-17', img: 'review3', car: '캐스퍼 인스퍼레이션', enter: '현대', star: 5, content: '안녕하세요! 캐스퍼 차량 후기 남깁니다! ☺️ 오늘 캐스퍼 운전 처음으로 해 봤는데 추천해 주신 대로 선루프 있는 차량으로 하길 너무 잘한 것 같아요! ㅎㅎ 사실 풀옵션 차량으로 하게 되면 월 납입금이 올라가서 많이 부담이었습니다!' },
-    { name: '이시현', DATE: '2024-07-28', img: 'review4', car: '스포티지', enter: '기아', star: 5, content: '급하게 차량을 구하던 중 지인을 통해 알게된 이장현 과장님 통해서 일주일만에 차량 받았습니다! 감기로 고생하시는 와중에도 친절하고 정확하게 알려주시고, 도와주셔서 빠르게 진행되서 플렉스 해버린 기분입니다.' },
-    { name: '카리나', DATE: '2023-12-21', img: 'review5', car: '카니발', enter: '기아', star: 5, content: ' 차량을 너무 빨리 받아 고마운 마음에 글 남깁니다. 원래 거래하던 렌트카 회사와 계약 직전까지 갔다가 우연히 인터넷을 보고 검색하여 소개받은 김명진 대리님 너무 감사드립니다. ' },
-]
 
 export const optionList = {
     name: 'K5',

@@ -4,7 +4,7 @@ import GNB from '../components/GNB';
 import Footer from '../components/Footer';
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
-import { reviewList, carmentoList, quickFAQList } from '../assets/item';
+import { carmentoList, quickFAQList } from '../assets/item';
 import {
     HotDealCard,
     QuickDealCard,
@@ -13,7 +13,7 @@ import {
     PopularCarCard,
 } from '../components/Cards';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
-import { hotDealAxios, quickDealAxios } from '../services/Request';
+import { hotDealAxios, quickDealAxios, reviewAxios } from '../services/Request';
 import Slider from "react-slick";
 import '../styles/slick.css'
 import '../styles/slick-theme.css'
@@ -59,6 +59,7 @@ const MainPage = (props) => {
     //DB 리스트 로드
     const [hotDealList, setHotDealList] = useState([])
     const [quickDealList, setQuickDealList] = useState([])
+    const [reviewList, setReviewList] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,6 +67,8 @@ const MainPage = (props) => {
             setHotDealList(response1)
             const response2 = await quickDealAxios(null, null, null)
             setQuickDealList(response2)
+            const response3 = await reviewAxios()
+            setReviewList(response3)
         }
         fetchData()
     }, [])
