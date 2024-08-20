@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import '../styles/App.css';
 import GNB from '../components/GNB';
 import Footer from '../components/Footer';
-import eventBanner1 from '../assets/img/banner/eventBanner1.png'
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
 import { reviewList, carmentoList, quickFAQList } from '../assets/item';
@@ -71,7 +70,7 @@ const MainPage = (props) => {
         fetchData()
     }, [])
 
-    
+
 
 
     return (
@@ -79,12 +78,12 @@ const MainPage = (props) => {
             <GNB stat={false} />
             <section className="mainPage_BannerSection">
                 <div style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>
-                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
-                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
-                    <img className='mainPage_BannerImage' src={require('../assets/img/dsautoline/DSAUTOLINE_car.png')} />
+                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner2.png')} />
+                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner1.png')} />
+                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner2.png')} />
                 </div>
             </section>
-            <FastFAQSticky height={1300}/>
+            <FastFAQSticky height={1300} />
             <section
                 className='hotDealSection'
                 onMouseEnter={() => setHotHovered(true)}
@@ -151,7 +150,7 @@ const MainPage = (props) => {
                 </a>
             </section>
             <div className='eventBannerImage'>
-                <img src={eventBanner1} />
+                <img src={require('../assets/img/banner/lineBanner1.png')} />
             </div>
 
             <section className='popularSection'>

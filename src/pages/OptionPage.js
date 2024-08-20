@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import '../styles/OptionPage.css'
 import GNB from "../components/GNB"
 import Footer from "../components/Footer"
@@ -91,16 +91,16 @@ const OptionPage = (props) => {
                                 <span>
                                     {
                                         !infoSelect1
-                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
-                                            : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} />
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨"/>
+                                            : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨"/>
                                     }
                                     <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
                                 </span>
                                 <span>
                                     {
                                         !infoSelect2
-                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
-                                            : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} />
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨"/>
+                                            : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨"/>
                                     }
                                     <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
                                 </span>
@@ -125,7 +125,7 @@ const OptionPage = (props) => {
                                     colorStat !== item
                                         ? <span style={{ backgroundColor: item.rgb }} onClick={() => setColorStat(item)} />
                                         : <span className='colorBtn selected' style={{ backgroundColor: item.rgb }}>
-                                            <img src={optionClick} />
+                                            <img src={optionClick} alt="색상 선택 됨"/>
                                         </span>
                                 ))}
                             </span>
@@ -156,7 +156,7 @@ const OptionPage = (props) => {
                                 {trimSelect1 && trimStat !== 0 &&
                                     <span style={{ overflowY: 'hidden', height: 65 }}>
                                         <span className={'selected'}>
-                                            <img src={optionClick} />
+                                            <img src={optionClick} alt="트림 선택 됨"/>
                                             <p>{trimSelect1}</p>
                                         </span>
                                     </span>

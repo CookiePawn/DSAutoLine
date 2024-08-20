@@ -46,7 +46,7 @@ const ReviewMorePage = () => {
             <GNB />
             <FastFAQSticky height={450}/>
             <section className="reviewMoreSection">
-                <img src={imageSrc} />
+                <img src={imageSrc} alt="리뷰 이미지"/>
                 <div>
                     <h1>{reviewInfo.enter} {reviewInfo.car_name}</h1>
                     <h4>{reviewInfo.name} 님      <span>{reviewInfo.created_at}</span></h4>

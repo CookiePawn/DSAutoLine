@@ -17,7 +17,8 @@ const QuickFAQPage = (props) => {
 
     useEffect(() => {
         entryFilter(categoryStat, listStat);
-    }, [brandStat])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [brandStat, categoryStat, listStat])
 
     const entryFilter = (cStat, lStat) => {
         setCategoryStat(cStat);
@@ -36,9 +37,9 @@ const QuickFAQPage = (props) => {
         <>
             <GNB stat={true} page={'빠른 간편 문의'} />
             <div className='bannerSection'>
-                <p>이벤트 배너</p>
+                <img src={require('../assets/img/banner/eventBanner2.png')} alt='이벤트 베너'/>
             </div>
-            <FastFAQSticky height={1150}/>
+            <FastFAQSticky height={1150} />
             <div className='categorySection'>
                 <h1>빠른 <span>간편 문의</span></h1>
                 <p>쉽고 간편하게 문의 해보세요</p>

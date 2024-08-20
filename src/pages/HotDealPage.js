@@ -21,7 +21,7 @@ const HotDealPage = (props) => {
         <>
             <GNB stat={true} page={'한정 특가'} />
             <div className='bannerSection'>
-                <p>한정 특가 이벤트 배너</p>
+                <img src={require('../assets/img/banner/eventBanner2.png')}/>
             </div>
             <FastFAQSticky height={1150}/>
             <div className='hotDealTitleSection'>

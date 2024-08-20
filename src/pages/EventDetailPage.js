@@ -30,7 +30,7 @@ const EventDetailPage = () => {
                     {/* 여기에 옵션 관련 내용 추가 가능 */}
                 </div>
                 <div className='ScriptSection'>
-                    <p>{eventData.script}</p>
+                    <img src={require('../assets/eventimage.png')}/>
                 </div>
                 <div className='ButtonSection'>
                     <button className="backButton" onClick={() => navigate(-1)}>목록으로</button>

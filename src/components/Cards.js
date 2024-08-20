@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
 import '../styles/EventPage.css';
-import eventimg from '../assets/eventimage.png'
+import eventImg1 from '../assets/img/banner/eventBanner1.png'
+import eventImg2 from '../assets/img/banner/eventBanner2.png'
 import { IoMdStar } from "react-icons/io";
 import { RightIcon } from './Icons';
-import { mainResize, eventResize, quickResize, carmentoResize } from '../utils/ResizeCard';
 
 
 
@@ -150,7 +150,7 @@ export const EventCardlist = (props) => {
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
                 <img
-                    src={eventimg}
+                    src={eventId%2 === 0 ? eventImg1 : eventImg2}
                     className="eventCardImg"
                     alt="이미지 로딩이 실패하였습니다"
                 />

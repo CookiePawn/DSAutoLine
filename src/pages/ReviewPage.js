@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../styles/ReviewPage.css'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { ReviewPageCard } from '../components/Cards'
 import { reviewList } from '../assets/item'
-import { ReviewPagePopUp } from '../components/PopUp'
 import FastFAQSticky from '../components/FastFAQSticky'
 
 
 const ReviewPage = () => {
-    const [index, setIndex] = useState(1)
     const [startStat, setStartStat] = useState(0)
     const [endStat, setEndStat] = useState(6)
     const [pageNum, setPageNum] = useState(0)

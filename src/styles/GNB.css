@@ -153,4 +153,9 @@
     font-size: 14px;
     font-weight: 500;
     color: #111;
+    cursor: pointer;
+}
+
+.GNBSearchListCard > p:hover {
+    color: #0064FF;
 }

@@ -46,7 +46,7 @@ const ReviewAddPage = () => {
                 </span>
                 <span>
                     <h3>사진</h3>
-                    <img src={require('../assets/img/popup/imageUpload.png')}/>
+                    <img src={require('../assets/img/popup/imageUpload.png')} alt="이미지 업로드 이미지"/>
                 </span>
                 <span>
                     <h3>내용</h3>
