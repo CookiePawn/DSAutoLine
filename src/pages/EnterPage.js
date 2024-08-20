@@ -199,14 +199,8 @@ const EnterPage = () => {
                         </div>
                     </div>
                 </div> 
-                <div className='Enter_line'></div>
-                <div className='Enter_appliSection'>
-                    <div className='Enter_TitleTextSeciton'>
-                        <div className='Enter_TitleText'>
-                            <h1>DS AUTOLINE에<br/> 한번 상담 신청해보세요.</h1>
-                        </div>
-                    </div>
-                </div>
+                <div className='Space'></div>
+                
             </div>
             <Footer />
         </>

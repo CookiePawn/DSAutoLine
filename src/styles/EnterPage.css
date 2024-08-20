@@ -337,3 +337,7 @@ body, html {
     height: 660px;
     border-radius: 46px;
 }
+
+.Space {
+    height: 200px;
+}
