@@ -19,6 +19,7 @@ import '../styles/slick.css'
 import '../styles/slick-theme.css'
 import { handleNext, handlePrev, hotDealSlicerSettings, reviewSlicerSettings } from '../utils/SliderMove';
 import FastFAQSticky from '../components/FastFAQSticky';
+import BannerSlider from '../components/Main_EventBanner';
 
 
 
@@ -82,13 +83,7 @@ const MainPage = (props) => {
     return (
         <div className='mainPage_container'>
             <GNB stat={false} />
-            <section className="mainPage_BannerSection">
-                <div style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>
-                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner2.png')} />
-                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner1.png')} />
-                    <img className='mainPage_BannerImage' src={require('../assets/img/banner/eventBanner2.png')} />
-                </div>
-            </section>
+            <BannerSlider/>
             <FastFAQSticky height={1300} />
             <section
                 className='hotDealSection'
