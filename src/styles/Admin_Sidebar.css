@@ -37,6 +37,10 @@
     cursor: pointer;
 }
 
+.admin_Sidebar_sidebar > .menu > span.selected > p {
+    color: #0064FF;
+}
+
 .admin_Sidebar_sidebar > .menu > span > span {
     margin-left: auto;
     margin-right: 20px;
@@ -78,4 +82,8 @@
     color: gray;
     font-weight: 400;
     cursor: pointer;
+}
+
+.admin_Sidebar_categoryDiv > p.selected {
+    color: #0064FF;
 }

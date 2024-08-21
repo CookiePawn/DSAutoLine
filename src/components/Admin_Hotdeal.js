@@ -66,14 +66,14 @@ function Admin_Hotdeal({ action }) {
         <div className="admin_content">
             {action === 'editDelete' && (
                 <>
-                    <h2>한정 특가</h2>
+                    <h2>한정 특가 <span>- 차량 수정 및 삭제</span></h2>
                     <div className="header-row">
-                        <input type="checkbox" />
+                        {/* <input type="checkbox" /> */}
                     </div>
                     <div className="admin_content_HotdealList">
                         {carList.map((car) => (
                             <div className="admin_content_HotdealItem" key={car.id}>
-                                <input type="checkbox" className="admin_content_hotdeal-checkbox" />
+                                {/* <input type="checkbox" className="admin_content_hotdeal-checkbox" /> */}
                                 <img src={ev6} alt="Car" className="admin_content_hotdeal-image" />
                                 <div className="admin_content_hotdeal-info">
                                     {editingCar && editingCar.id === car.id ? (
@@ -140,14 +140,14 @@ function Admin_Hotdeal({ action }) {
 
             {action === 'add' && (
                 <>
-                    <h2>한정 특가</h2>
+                    <h2>한정 특가 <span>- 차량 추가</span></h2>
                     <div className="header-row">
-                        <input type="checkbox" />
+                        {/* <input type="checkbox" /> */}
                     </div>
                     <div className="admin_content_HotdealList">
                         {carList.map((car) => (
                             <div className="admin_content_HotdealItem" key={car.id}>
-                                <input type="checkbox" className="admin_content_hotdeal-checkbox" />
+                                {/* <input type="checkbox" className="admin_content_hotdeal-checkbox" /> */}
                                 <img src={ev6} alt="Car" className="admin_content_hotdeal-image" />
                                 <div className="admin_content_hotdeal-info">
                                     <h1>{car.name}</h1>

@@ -24,11 +24,11 @@ function Admin_Notice() {
         <div className="admin_content">
             <h2>알림 <span>{items.length}건</span></h2>
             <div className="header-row">
-                <input type="checkbox" />
+                {/* <input type="checkbox" /> */}
             </div>
             {items.map(item => (
                 <div className="notification" key={item.id}>
-                    <input type="checkbox" />
+                    {/* <input type="checkbox" /> */}
                     <div className="notification-text">
                         <span className="icon">!</span>
                         <span>{item.text}</span>
