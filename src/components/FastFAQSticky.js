@@ -43,7 +43,7 @@ const FastFAQSticky = (props) => {
     }, []); // 빈 배열로 한번만 실행
 
     const clickFunction = async () => {
-        if (infoSelect1 && infoSelect2 && name && phone && car) {
+        if (infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') {
             await fastFAQAxios({
                 name: name,
                 phone: phone,
@@ -96,7 +96,7 @@ const FastFAQSticky = (props) => {
                             <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
                         </span>
                         <div
-                            style={(infoSelect1 && infoSelect2) ? null : { backgroundColor: '#dbdbdb', cursor: 'auto' }}
+                            style={(infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') ? null : { backgroundColor: '#dbdbdb', cursor: 'auto' }}
                             onClick={clickFunction}
                         >상담신청하기</div>
                     </div>
