@@ -36,6 +36,93 @@ const ReviewAddPage = () => {
         document.body.style.overflowY = 'hidden'
     }
 
+
+
+
+
+    const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Set the desired aspect ratio
+            const aspectRatio = 4 / 3;
+            let newWidth, newHeight;
+
+            if (img.width / img.height > aspectRatio) {
+                // Wider than desired aspect ratio
+                newWidth = img.height * aspectRatio;
+                newHeight = img.height;
+            } else {
+                // Taller or equal to desired aspect ratio
+                newWidth = img.width;
+                newHeight = img.width / aspectRatio;
+            }
+
+            // Set canvas size to the new dimensions
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+
+            // Draw the image on the canvas with the new size
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+            // Convert the canvas to a PNG data URL
+            const pngUrl = canvas.toDataURL('image/png');
+            setImagePreviewUrl(pngUrl);
+
+            // Send the PNG data URL to the server to save the image
+            uploadImageToServer(pngUrl);
+        };
+    };
+
+    const uploadImageToServer = async (pngUrl) => {
+        // Convert data URL to Blob
+        const response = await fetch(pngUrl);
+        const blob = await response.blob();
+
+        // Create a FormData object to send the image data
+        const formData = new FormData();
+        formData.append('file', blob, 'uploaded_image.png');
+
+        // Use fetch or axios to send the image to the server
+        fetch('/upload', {
+            method: 'POST',
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Image uploaded successfully:', data);
+            })
+            .catch((error) => {
+                console.error('Error uploading image:', error);
+            });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             {popupStat &&
@@ -68,7 +155,18 @@ const ReviewAddPage = () => {
                 </span>
                 <span>
                     <h3>사진</h3>
-                    <img src={require('../assets/img/popup/imageUpload.png')} alt="이미지 업로드 이미지" />
+                    <img
+                        src={require('../assets/img/popup/imageUpload.png')}
+                        alt="이미지 업로드 이미지"
+                        onClick={() => document.getElementById('fileInput').click()}
+                    />
+                    <input
+                        id="fileInput"
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={handleImageUpload}
+                    />
                 </span>
                 <span>
                     <h3>내용</h3>

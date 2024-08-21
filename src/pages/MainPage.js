@@ -57,9 +57,9 @@ const MainPage = (props) => {
 
 
     //DB 리스트 로드
-    const [hotDealList, setHotDealList] = useState([])
-    const [quickDealList, setQuickDealList] = useState([])
-    const [reviewList, setReviewList] = useState([])
+    const [hotDealList, setHotDealList] = useState(null)
+    const [quickDealList, setQuickDealList] = useState(null)
+    const [reviewList, setReviewList] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,6 +76,9 @@ const MainPage = (props) => {
 
 
 
+    if (!hotDealList || !quickDealList || !reviewList) {
+        return null
+    }
     return (
         <div className='mainPage_container'>
             <GNB stat={false} />

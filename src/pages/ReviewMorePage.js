@@ -17,8 +17,8 @@ import FastFAQSticky from '../components/FastFAQSticky';
 const ReviewMorePage = () => {
     const { id } = useParams();
     const [reviewHovered, setReviewHovered] = useState(false);
-    const [reviewInfo, setReviewInfo] = useState([])
-    const [reviewList, setReviewList] = useState([])
+    const [reviewInfo, setReviewInfo] = useState(null)
+    const [reviewList, setReviewList] = useState(null)
 
     //슬라이더
     const reviewSliderRef = useRef(null);
@@ -44,12 +44,12 @@ const ReviewMorePage = () => {
     }
 
     
-    if (reviewInfo.length === 0 || reviewList.length === 0) {
+    if (!reviewInfo || !reviewList) {
         return null
     }
     return (
         <>
-            <GNB />
+            <GNB page={'고객 리뷰'}/>
             <FastFAQSticky height={450}/>
             <section className="reviewMoreSection">
                 <img src={imageSrc} alt="리뷰 이미지"/>

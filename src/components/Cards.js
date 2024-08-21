@@ -177,7 +177,7 @@ export const EventCardlist = (props) => {
  */
 export const ReviewCard = (props) => {
     return (
-        <div className='reviewCard' onClick={() => window.location.href = '/ReviewMore'}>
+        <div className='reviewCard' onClick={() => window.location.href = `/ReviewMore/${props.item.seq}`}>
             <span><img src={carImageError(props.item.img)} /></span>
             <div>
                 <h2>{props.item.enter} {props.item.car_name}</h2>

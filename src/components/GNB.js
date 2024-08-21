@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SearchIcon, CloseIcon } from './Icons'
 import '../styles/GNB.css'
 import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png'
-import { GNBSearchList } from '../assets/item'
+import { quickFAQAxios } from '../services/Request';
 
 
 
@@ -14,17 +14,29 @@ import { GNBSearchList } from '../assets/item'
 const GNB = (props) => {
     const [searchValue, setSearchValue] = useState('')
     const [searchList, setSearchList] = useState([])
-    
+    const [GNBSearchList, setGNBSearchList] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await quickFAQAxios(null, null, null)
+            setGNBSearchList(response)
+        }
+        fetchData()
+    }, [])
+
+
     useEffect(() => {
         const fetchData = () => {
-            setSearchList(
-                GNBSearchList.filter(item => 
-                    item.name.toLowerCase().includes(searchValue.toLowerCase())
-                )
-            );
+            if (GNBSearchList) {
+                setSearchList(
+                    GNBSearchList.filter(item =>
+                        item.name.toLowerCase().includes(searchValue.toLowerCase())
+                    )
+                );
+            }
         };
         fetchData();
-    }, [searchValue]);
+    }, [searchValue, GNBSearchList]);
 
 
     return (
@@ -41,12 +53,17 @@ const GNB = (props) => {
                     <a className='listA' href='/Enter'><p className={props.page === '회사소개' ? 'selected' : ''}>회사소개</p></a>
                 </span>
                 <div className='GNBSearchDiv'>
-                    <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder='차종을 검색하세요'/>
+                    <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder='차종을 검색하세요' />
                     <span>
                         <SearchIcon size={25} color={'#111'} />
                     </span>
                     {searchValue !== '' &&
                         <div className='GNBSearchListDiv'>
+
+                            {searchList.length === 0 &&
+                                <div className='GNBSearchListCard'>
+                                    <p style={{color: '#bbb'}}>검색 결과가 없습니다</p>
+                                </div>}
                             {searchList.length > 0 && searchList.map((item, idx) => (
                                 <div className='GNBSearchListCard'>
                                     <p>{item.name}</p>

@@ -6,8 +6,6 @@ import Footer from "../components/Footer"
 import nonSelectBox from '../assets/img/functionIcon/optionPage_nonSelectBox.png'
 import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
 import optionClick from '../assets/img/functionIcon/optionClick.png'
-import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
-import { UpIcon, DownIcon } from "../components/Icons"
 import { OptionPagePopUp } from "../components/PopUp"
 import { estimatedAxios } from "../services/Request";
 
@@ -32,7 +30,7 @@ const carImageError = (img) => {
 
 const OptionPage = (props) => {
     const { id } = useParams();
-    const [content, setContent] = useState([])
+    const [content, setContent] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,12 +38,11 @@ const OptionPage = (props) => {
             setContent(response)
         }
         fetchData()
-    }, [])
+    }, [id])
 
 
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
-    const [colorStat, setColorStat] = useState([])
     const [oilStat, setOilStat] = useState(null)
 
     //세부모델 선택
@@ -55,7 +52,6 @@ const OptionPage = (props) => {
     const [trimPrice, setTrimPrice] = useState(0);
 
     //옵션
-    const [options, setOptions] = useState([])
     const [optionPrice, setOptionPrice] = useState(0)
 
     //이용방법
@@ -72,41 +68,40 @@ const OptionPage = (props) => {
 
 
     useEffect(() => {
-        const oil = [
-            content.lpg === 1 && 'LPG',
-            content.gasoline === 1 && '가솔린',
-            content.diesel === 1 && '디젤',
-            content.hybrid === 1 && '하이브리드'
-        ].filter(Boolean).join(', ');
-        setOilStat(oil)
+        if (content) {
+            const oil = [
+                content.lpg === 1 && 'LPG',
+                content.gasoline === 1 && '가솔린',
+                content.diesel === 1 && '디젤',
+                content.hybrid === 1 && '하이브리드'
+            ].filter(Boolean).join(', ');
+            setOilStat(oil)
 
-        if (content.option) {
-            const totalPrice = content.option.reduce((acc, item) => acc + item.price, 0);
-            setOptionPrice(totalPrice);
+            if (content.option) {
+                const totalPrice = content.option.reduce((acc, item) => acc + item.price, 0);
+                setOptionPrice(totalPrice);
+            }
+
+            if (content.trim) {
+                setTrimSelect1(content.trim[0].trim1)
+                setTrimSelect2(content.trim[0].trim2)
+                setTrimPrice(content.trim[0].price)
+            }
         }
-
-        if (content.trim) {
-            setTrimSelect1(content.trim[0].trim1)
-            setTrimSelect2(content.trim[0].trim2)
-            setTrimPrice(content.trim[0].price)
-        }
-
     }, [content])
 
 
 
 
-    if (content.length === 0) {
-        return (
-            <p>트림 없지롱</p>
-        )
+    if (!content || !content.option || !content.trim || !content.color) {
+        return null
     }
     return (
         <>
             {nextStat &&
                 <OptionPagePopUp />
             }
-            <GNB stat={true} />
+            <GNB stat={true} page={'즉시 출고'}/>
             <div className="flexSection">
                 <div className="infoSection">
                     <div>
@@ -159,7 +154,7 @@ const OptionPage = (props) => {
                                 </span>
                             </span>
                         </div>
-                        {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
+                        { useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
                             ? <p className="nextBtn" onClick={() => { setNextStat(true); document.body.style.overflow = 'hidden'; }}>견적서 확인</p>
                             : <p className="nonNextBtn">견적서 확인</p>
                         }
@@ -184,15 +179,9 @@ const OptionPage = (props) => {
                             <div className="optionTrimDiv">
                                 <span>
                                     <p>트림 1</p>
-                                    <div className='upDownIcon' >
-                                        <DownIcon color={'white'} size={24} />
-                                    </div>
                                 </span>
                                 <span>
                                     <p>트림 2</p>
-                                    <div className='upDownIcon' >
-                                        <DownIcon color={'white'} size={24} />
-                                    </div>
                                 </span>
                             </div>
                             <div className="trimInfoDiv">
@@ -217,9 +206,7 @@ const OptionPage = (props) => {
                             {trimSelect1 !== null && trimSelect2 !== null
                                 ? <div className="optionSelectDiv">
                                     {content.option.map((item, idx) => (
-                                        <div
-                                            className={options.find(option => option.name === item.name) && "selected"}
-                                        >
+                                        <div>
                                             <img src={carImageError(`option/${item.img}`)} />
                                             <p>{item.name}</p>
                                             <h4>{(item.price / 10000).toLocaleString()}만원</h4>

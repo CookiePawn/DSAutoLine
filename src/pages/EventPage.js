@@ -5,6 +5,7 @@ import '../styles/EventPage.css';
 import { EventCardlist } from '../components/Cards';
 import FastFAQSticky from '../components/FastFAQSticky';
 import { eventAxios } from '../services/Request';
+import NoCardList from '../components/NoCardList'
 
 
 
@@ -12,7 +13,7 @@ import { eventAxios } from '../services/Request';
 
 const EventPage = (props) => {
     const [selectedButton, setSelectedButton] = useState(0);
-    const [eventList, setEventList] = useState([])
+    const [eventList, setEventList] = useState(null)
 
     const handleButtonClick = (buttonIndex) => {
         setSelectedButton(buttonIndex);
@@ -35,6 +36,9 @@ const EventPage = (props) => {
     }, [selectedButton])
 
 
+    if (!eventList) {
+        return null
+    }
     return (
         <>
             <div className='event_container'>
@@ -60,6 +64,7 @@ const EventPage = (props) => {
                 </div>
                 <div className="eventpageSection">
                     <div className='eventList'>
+                        {eventList.length === 0 && <NoCardList card={'이벤트가'} />}
                         {eventList.map((item, idx) => (
                             <EventCardlist key={idx} item={item} isEnded={selectedButton === 1} />
                         ))}

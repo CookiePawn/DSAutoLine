@@ -6,6 +6,7 @@ import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickDealCarCard } from '../components/Cards'
 import { quickDealAxios } from "../services/Request"
 import FastFAQSticky from '../components/FastFAQSticky'
+import NoCardList from "../components/NoCardList"
 
 
 
@@ -13,7 +14,7 @@ const QuickDealPage = (props) => {
     const [categoryStat, setCategoryStat] = useState('국산')
     const [brandStat, setBrandStat] = useState('all')
     const [listStat, setListStat] = useState('전체')
-    const [quickDealList, setQuickDealList] = useState([])
+    const [quickDealList, setQuickDealList] = useState(null)
 
 
 
@@ -31,12 +32,14 @@ const QuickDealPage = (props) => {
     }, [categoryStat, brandStat, listStat])
 
 
-
+    if (!quickDealList) {
+        return null
+    }
     return (
         <>
             <GNB stat={true} page={'즉시 출고'} />
             <div className='bannerSection'>
-                <img src={require('../assets/img/banner/eventBanner1.png')} alt="이벤트 베너"/>
+                <img src={require('../assets/img/banner/eventBanner1.png')} alt="이벤트 베너" />
             </div>
             <FastFAQSticky height={1150} />
             <div className='categorySection'>
@@ -61,6 +64,7 @@ const QuickDealPage = (props) => {
                     <p onClick={() => { setListStat('전기'); fetchData(categoryStat, brandStat, '전기') }} className={listStat === '전기' ? 'selected' : ''}>전기</p>
                 </div>
                 <div className='quickCarCardListDiv'>
+                    {quickDealList.length === 0 && <NoCardList card={'차량이'}/>}
                     {quickDealList && quickDealList.map((item, index) => (
                         <QuickDealCarCard
                             index={index}

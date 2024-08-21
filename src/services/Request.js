@@ -104,7 +104,7 @@ export const quickFAQAxios = async (entry, enter, category) => {
     let response;
     try {
         if (entry === null && enter === null && category === null) {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=${'현대'}&category=`)
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=&category=`)
         } else if (category === '전체' && enter === 'all') {
             response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=`)
         } else if (category === '전체') {

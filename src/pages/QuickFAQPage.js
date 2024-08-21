@@ -6,6 +6,7 @@ import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickCarCard } from '../components/Cards'
 import FastFAQSticky from '../components/FastFAQSticky'
 import { quickFAQAxios } from '../services/Request'
+import NoCardList from '../components/NoCardList'
 
 
 const QuickFAQPage = (props) => {
@@ -13,7 +14,7 @@ const QuickFAQPage = (props) => {
     const [categoryStat, setCategoryStat] = useState('국산')
     const [brandStat, setBrandStat] = useState('현대')
     const [listStat, setListStat] = useState('전체')
-    const [quickFAQList, setQuickFAQList] = useState([])
+    const [quickFAQList, setQuickFAQList] = useState(null)
 
 
     const fetchData = async (entry, enter, category) => {
@@ -22,7 +23,7 @@ const QuickFAQPage = (props) => {
     }
 
     useEffect(() => {
-        fetchData(null, null, null)
+        fetchData(null, '현대', null)
     }, [])
 
     useEffect(() => {
@@ -31,6 +32,9 @@ const QuickFAQPage = (props) => {
 
 
 
+    if (!quickFAQList) {
+        return null
+    }
     return (
         <>
             <GNB stat={true} page={'빠른 간편 문의'} />
@@ -60,6 +64,7 @@ const QuickFAQPage = (props) => {
                     <p onClick={() => { setListStat('전기'); fetchData(categoryStat, brandStat, '전기') }} className={listStat === '전기' ? 'selected' : ''}>전기</p>
                 </div>
                 <div className='quickCarCardListDiv'>
+                    {quickFAQList.length === 0 && <NoCardList card={'차량이'}/>}
                     {quickFAQList.map((item, index) => (
                         <QuickCarCard
                             item={item}

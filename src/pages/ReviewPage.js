@@ -5,13 +5,14 @@ import Footer from '../components/Footer'
 import { ReviewPageCard } from '../components/Cards'
 import FastFAQSticky from '../components/FastFAQSticky'
 import { reviewAxios } from '../services/Request'
+import NoCardList from '../components/NoCardList'
 
 
 const ReviewPage = () => {
     const [startStat, setStartStat] = useState(0)
     const [endStat, setEndStat] = useState(6)
     const [pageNum, setPageNum] = useState(0)
-    const [reviewList, setReviewList] = useState([])
+    const [reviewList, setReviewList] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +31,7 @@ const ReviewPage = () => {
     };
 
 
-    if (reviewList.length === 0) {
+    if (!reviewList) {
         return null
     }
     return (
@@ -44,6 +45,7 @@ const ReviewPage = () => {
             </section>
             <section className='reviewCardSection'>
                 <span>
+                    {reviewList.length === 0 && <NoCardList card={'리뷰가'} />}
                     {reviewList.length > 8 && reviewList.slice(startStat, endStat).map((item, idx) => (
                         <ReviewPageCard item={item} />
                     ))}
