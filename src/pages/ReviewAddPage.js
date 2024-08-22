@@ -5,7 +5,8 @@ import FastFAQSticky from '../components/FastFAQSticky'
 import '../styles/ReviewAddPage.css'
 import { StarIcon } from "../components/Icons";
 import { ReviewAddPagePopUp } from "../components/PopUp";
-import { reviewAddAxios, carEnterListAxios } from "../services/Request";
+import { reviewAddAxios, carEnterListAxios, imageUploadAxios } from "../services/Request";
+import { imageResize4_3, generateRandomString } from "../utils/imageResize";
 import Select from "react-select";
 
 
@@ -20,10 +21,8 @@ const ReviewAddPage = () => {
     const [car, setCar] = useState('')
     const [enter, setEnter] = useState('')
     const [starStat, setStarStat] = useState(0)
-    const [img, setImg] = useState('K5')
+    const [img, setImg] = useState(null)
     const [comment, setComment] = useState('')
-
-
 
 
     const [axiosList, setAxiosList] = useState(null)
@@ -55,103 +54,25 @@ const ReviewAddPage = () => {
 
 
 
-
-    console.log(enterOptions);
-    console.log(carOptions);
-
-
-
-
-
     const clickFunction = async () => {
-        await reviewAddAxios({
-            car_name: car,
-            enter: enter,
-            name: name,
-            img: img,
-            star: starStat,
-            comment: comment,
-        })
-        setPopupStat(true);
-        document.body.style.overflowY = 'hidden'
+        if (name !== '' && car !== '' && enter !== '' && img !== null && starStat >= 1 && comment !== '') {
+            const random = generateRandomString(15)
+            await reviewAddAxios({
+                car_name: car,
+                enter: enter,
+                name: name,
+                img: `review_${random}`,
+                star: starStat,
+                comment: comment,
+            })
+            await imageUploadAxios(img, `review_${random}`)
+            setPopupStat(true);
+            document.body.style.overflowY = 'hidden'
+        }
+
     }
 
-
-
-
-    const [imagePreviewUrl, setImagePreviewUrl] = useState('');
-
-    const handleImageUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const img = new Image();
-        img.src = URL.createObjectURL(file);
-
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-
-            // Set the desired aspect ratio
-            const aspectRatio = 4 / 3;
-            let newWidth, newHeight;
-
-            if (img.width / img.height > aspectRatio) {
-                // Wider than desired aspect ratio
-                newWidth = img.height * aspectRatio;
-                newHeight = img.height;
-            } else {
-                // Taller or equal to desired aspect ratio
-                newWidth = img.width;
-                newHeight = img.width / aspectRatio;
-            }
-
-            // Set canvas size to the new dimensions
-            canvas.width = newWidth;
-            canvas.height = newHeight;
-
-            // Draw the image on the canvas with the new size
-            ctx.drawImage(img, 0, 0, newWidth, newHeight);
-
-            // Convert the canvas to a PNG data URL
-            const pngUrl = canvas.toDataURL('image/png');
-            setImagePreviewUrl(pngUrl);
-
-            // Send the PNG data URL to the server to save the image
-            uploadImageToServer(pngUrl);
-        };
-    };
-
-    const uploadImageToServer = async (pngUrl) => {
-        // Convert data URL to Blob
-        const response = await fetch(pngUrl);
-        const blob = await response.blob();
-
-        // Create a FormData object to send the image data
-        const formData = new FormData();
-        formData.append('file', blob, 'uploaded_image.png');
-
-        // Use fetch or axios to send the image to the server
-        fetch('/upload', {
-            method: 'POST',
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Image uploaded successfully:', data);
-            })
-            .catch((error) => {
-                console.error('Error uploading image:', error);
-            });
-    };
-
-
-
-
-
-
-
-
+    console.log(img)
 
 
 
@@ -171,7 +92,7 @@ const ReviewAddPage = () => {
                 <p>서비스가 어떠셨나요?? 리뷰로 알려주세요</p>
                 <span>
                     <h3>이름</h3>
-                    <input value={name} onChange={(e) => setName(e.target.value)} />
+                    <input maxLength={10} value={name} onChange={(e) => setName(e.target.value)} />
                 </span>
                 <span>
                     <h3>기업</h3>
@@ -219,8 +140,12 @@ const ReviewAddPage = () => {
                         type="file"
                         accept="image/*"
                         style={{ display: 'none' }}
-                        onChange={handleImageUpload}
+                        onChange={async (e) => {
+                            const resizedImage = await imageResize4_3(e);
+                            setImg(resizedImage);
+                        }}
                     />
+                    <p style={{marginLeft: 50}}>{`${img.slice(5, 50)}...`}</p>
                 </span>
                 <span>
                     <h3>내용</h3>

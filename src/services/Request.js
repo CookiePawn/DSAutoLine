@@ -207,3 +207,33 @@ export const carEnterListAxios = async () => {
         console.log(error)
     }
 }
+
+
+
+
+/**
+ * 이미지 업로드
+ * @returns 
+ */
+export const imageUploadAxios = async (pngUrl, imgName) => {
+    // Convert data URL to Blob
+    const response = await fetch(pngUrl);
+    const blob = await response.blob();
+
+    // Create a FormData object to send the image data
+    const formData = new FormData();
+    formData.append('file', blob, `${imgName}.png`);
+
+    // Use fetch or axios to send the image to the server
+    fetch(`${process.env.REACT_APP_DB_SERVER_URL}/image`, {
+        method: 'POST',
+        body: formData,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Image uploaded successfully:', data);
+        })
+        .catch((error) => {
+            console.error('Error uploading image:', error);
+        });
+}
