@@ -2,25 +2,8 @@ import React from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
 import '../styles/EventPage.css';
-import eventImg1 from '../assets/img/banner/eventBanner1.png'
-import eventImg2 from '../assets/img/banner/eventBanner2.png'
 import { IoMdStar } from "react-icons/io";
 import { RightIcon } from './Icons';
-
-
-
-
-const carImageError = (img) => {
-    let imageSrc;
-
-    try {
-        imageSrc = require(`../assets/img/car/${img}.png`);  // 동적으로 이미지 로드
-    } catch (error) {
-        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
-    }
-
-    return imageSrc
-}
 
 
 
@@ -33,7 +16,15 @@ const carImageError = (img) => {
 export const HotDealCard = (props) => {
     return (
         <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
-            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
+            <img
+                className='hotDealCardImg'
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="한정 특가 상품 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
             </span>
@@ -68,7 +59,15 @@ export const QuickDealCard = (props) => {
 
     return (
         <div className='quickDealCard'>
-            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
+            <img
+                className='hotDealCardImg'
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="즉시 출고 상품 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
@@ -153,9 +152,13 @@ export const EventCardlist = (props) => {
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
                 <img
-                    src={carImageError(props.item.img)}
                     className="eventCardImg"
-                    alt="이미지 로딩이 실패하였습니다"
+                    src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                    alt="이벤트 카드 이미지"
+                    onError={(e) => {
+                        e.target.onerror = null; // 무한 루프 방지
+                        e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                    }}
                 />
                 {props.isEnded && (
                     <div className="overlayText">종료된 이벤트입니다</div>
@@ -178,7 +181,16 @@ export const EventCardlist = (props) => {
 export const ReviewCard = (props) => {
     return (
         <div className='reviewCard' onClick={() => window.location.href = `/ReviewMore/${props.item.seq}`}>
-            <span><img src={carImageError(props.item.img)} /></span>
+            <span>
+                <img
+                    src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                    alt="리뷰 이미지"
+                    onError={(e) => {
+                        e.target.onerror = null; // 무한 루프 방지
+                        e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                    }}
+                />
+            </span>
             <div>
                 <h2>{props.item.enter} {props.item.car_name}</h2>
                 <span>
@@ -245,7 +257,14 @@ export const QuickCarCard = (props) => {
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
             onClick={() => props.setCarStat(props.index)}
         >
-            <img src={carImageError(props.item.img)} alt='2024 Ray' />
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="빠른 간편 문의 카드 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
@@ -272,7 +291,15 @@ export const QuickCarCard = (props) => {
 export const HotDealCarCard = (props) => {
     return (
         <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
-            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
+            <img
+                className='hotDealCardImg'
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="한정 특가 카드 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
             </span>
@@ -306,7 +333,15 @@ export const HotDealCarCard = (props) => {
 export const QuickDealCarCard = (props) => {
     return (
         <div className='quickDealCard' onClick={() => window.location.href = `/Estimated/${props.item.car_code}`}>
-            <img src={carImageError(props.item.img)} className='hotDealCardImg' />
+            <img
+                className='hotDealCardImg'
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="즉시 출고 카드 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
@@ -364,7 +399,16 @@ export const QuickDealCarCard = (props) => {
 export const ReviewPageCard = (props) => {
     return (
         <div className='reviewCard' onClick={() => window.location.href = `/ReviewMore/${props.item.seq}`}>
-            <span><img src={carImageError(props.item.img)} /></span>
+            <span>
+                <img
+                    src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                    alt="리뷰 이미지"
+                    onError={(e) => {
+                        e.target.onerror = null; // 무한 루프 방지
+                        e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                    }}
+                />
+            </span>
             <div>
                 <h2>{props.item.enter} {props.item.car_name}</h2>
                 <span>

@@ -30,16 +30,7 @@ const ReviewMorePage = () => {
         }
         fetchData()
     }, [])
-
-
-    let imageSrc;
-
-    try {
-        imageSrc = require(`../assets/img/review/${reviewInfo.img}.png`);  // 동적으로 이미지 로드
-    } catch (error) {
-        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
-    }
-
+    
     
     if (!reviewInfo) {
         return null
@@ -49,7 +40,14 @@ const ReviewMorePage = () => {
             <GNB page={'고객 리뷰'}/>
             <FastFAQSticky height={450}/>
             <section className="reviewMoreSection">
-                <img src={imageSrc} alt="리뷰 이미지"/>
+                <img 
+                    src={`${process.env.REACT_APP_IMG_URL}/${reviewInfo.img}.png`} 
+                    alt="리뷰 이미지"
+                    onError={(e) => {
+                        e.target.onerror = null; // 무한 루프 방지
+                        e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                    }}    
+                />
                 <div>
                     <h1>{reviewInfo.enter} {reviewInfo.car_name}</h1>
                     <h4>{reviewInfo.name} 님      <span>{reviewInfo.created_at && reviewInfo.created_at.split('T')[0]}</span></h4>

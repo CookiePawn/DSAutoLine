@@ -72,8 +72,6 @@ const ReviewAddPage = () => {
 
     }
 
-    console.log(img)
-
 
 
 
@@ -145,7 +143,7 @@ const ReviewAddPage = () => {
                             setImg(resizedImage);
                         }}
                     />
-                    <p style={{marginLeft: 50}}>{`${img.slice(5, 50)}...`}</p>
+                    <p style={{marginLeft: 50}}>{img && `${img.slice(5, 50)}...`}</p>
                 </span>
                 <span>
                     <h3>내용</h3>
