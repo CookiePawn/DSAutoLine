@@ -5,7 +5,7 @@ import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { StarIcon } from "../components/Icons";
 import { ReviewCard } from "../components/Cards";
-import { reviewInfoAxios, reviewAxios } from "../services/Request";
+import { reviewInfoAxios } from "../services/Request";
 import Slider from "react-slick";
 import '../styles/slick.css'
 import '../styles/slick-theme.css'
@@ -18,7 +18,6 @@ const ReviewMorePage = () => {
     const { id } = useParams();
     const [reviewHovered, setReviewHovered] = useState(false);
     const [reviewInfo, setReviewInfo] = useState(null)
-    const [reviewList, setReviewList] = useState(null)
 
     //슬라이더
     const reviewSliderRef = useRef(null);
@@ -26,10 +25,8 @@ const ReviewMorePage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response1 = await reviewInfoAxios(id)
-            setReviewInfo(response1)
-            const response2 = await reviewAxios()
-            setReviewList(response2)
+            const response = await reviewInfoAxios(id)
+            setReviewInfo(response)
         }
         fetchData()
     }, [])
@@ -44,7 +41,7 @@ const ReviewMorePage = () => {
     }
 
     
-    if (!reviewInfo || !reviewList) {
+    if (!reviewInfo) {
         return null
     }
     return (
@@ -95,7 +92,7 @@ const ReviewMorePage = () => {
                         </>
                     )}
                     <Slider {...reviewSlicerSettings} ref={reviewSliderRef}>
-                        {reviewList.map((item, idx) => (
+                        {reviewInfo.order.map((item, idx) => (
                             <ReviewCard item={item} />
                         ))}
                     </Slider>

@@ -178,3 +178,32 @@ export const estimatedAxios = async (id) => {
         console.log(error)
     }
 }
+
+/**
+ * 즉시 출고 - 견적서 추가
+ * @returns 
+ */
+export const estimatedAddAxios = async (data) => {
+    try {
+        const response = await axios.post(`${dbServerUrl}/estimateInsert`, data)
+        console.log(response)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+
+/**
+ * 리뷰 작성 페이지 - 차량 이름과 기업 이름 로드
+ * @returns 
+ */
+export const carEnterListAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/reviewSelect`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}

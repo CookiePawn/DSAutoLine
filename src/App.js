@@ -47,7 +47,7 @@ function App() {
 					<Route path='/QuickDeal' element={<QuickDealPage />} />
 
 					{/* 옵션 선택 페이지 */}
-					<Route path='/Option' element={<OptionPage />} />
+					<Route path='/Option/:id' element={<OptionPage />} />
 					<Route path='/Estimated/:id' element={<EstimatedPage />} />
 
 					{/* 리뷰 페이지 */}

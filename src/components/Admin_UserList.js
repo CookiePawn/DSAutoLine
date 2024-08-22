@@ -14,6 +14,8 @@ const Admin_UserList = (props) => {
                     <p>차종</p>
                     <p>옵션</p>
                     <p>이용조건</p>
+                    <p>담당 카멘토</p>
+                    <p>신청 방법</p>
                 </span>
             </div>
             <div className="admin_content_UserListDiv">
@@ -35,8 +37,10 @@ const Admin_UserList = (props) => {
                             <p>만 21세 이상</p>
                             <p>연 1만km</p>
                         </span>
+                        <p>x</p>
+                        <p>즉시 출고</p>
                     </span>
-                    <button>확인</button>
+                    <button>완료</button>
                     <button>삭제</button>
                 </div>
                 <div>
@@ -50,23 +54,27 @@ const Admin_UserList = (props) => {
                         <span>
                             <p>X</p>
                         </span>
+                        <p>x</p>
+                        <p>간편 상담</p>
                     </span>
-                    <button>확인</button>
+                    <button>완료</button>
                     <button>삭제</button>
                 </div>
                 <div>
                     <span>
                         <p>안준철</p>
                         <p>01089152856</p>
-                        <p>기아 K5</p>
+                        <p>x</p>
                         <span>
                             <p>X</p>
                         </span>
                         <span>
                             <p>X</p>
                         </span>
+                        <p>김태경 팀장</p>
+                        <p>우수 카멘토</p>
                     </span>
-                    <button>확인</button>
+                    <button>완료</button>
                     <button>삭제</button>
                 </div>
             </div>

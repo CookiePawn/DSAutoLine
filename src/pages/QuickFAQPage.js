@@ -68,7 +68,7 @@ const QuickFAQPage = (props) => {
                     {quickFAQList.map((item, index) => (
                         <QuickCarCard
                             item={item}
-                            index={index}
+                            index={item.car_code}
                             carStat={carStat}
                             setCarStat={setCarStat}
                         />
@@ -80,7 +80,7 @@ const QuickFAQPage = (props) => {
                 {
                     carStat === null
                         ? <span className='nonNextBtn'>다음으로</span>
-                        : <a className='nextBtn' href='/Option'>다음으로</a>
+                        : <a className='nextBtn' href={`/Option/${carStat}`}>다음으로</a>
                 }
 
             </div>

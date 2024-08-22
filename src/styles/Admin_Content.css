@@ -491,7 +491,7 @@
 }
 
 .admin_content_UserListTitleSpan > p:nth-of-type(1) {
-    width: 8%;
+    width: 6%;
 }
 
 .admin_content_UserListTitleSpan > p:nth-of-type(2) {
@@ -499,19 +499,27 @@
 }
 
 .admin_content_UserListTitleSpan > p:nth-of-type(3) {
-    width: 19%;
+    width: 12%;
 }
 
 .admin_content_UserListTitleSpan > p:nth-of-type(4) {
-    width: 38%;
+    width: 25%;
 }
 
 .admin_content_UserListTitleSpan > p:nth-of-type(5) {
     width: 15%;
 }
 
+.admin_content_UserListTitleSpan > p:nth-of-type(6) {
+    width: 15%;
+}
+
+.admin_content_UserListTitleSpan > p:nth-of-type(7) {
+    width: 10%;
+}
+
 .admin_content_UserListDiv > div > span > p:nth-of-type(1) {
-    width: 8%;
+    width: 6%;
 }
 
 .admin_content_UserListDiv > div > span > p:nth-of-type(2) {
@@ -519,11 +527,11 @@
 }
 
 .admin_content_UserListDiv > div > span > p:nth-of-type(3) {
-    width: 19%;
+    width: 12%;
 }
 
 .admin_content_UserListDiv > div > span > span:nth-of-type(1) {
-    width: 38%;
+    width: 25%;
 }
 
 .admin_content_UserListDiv > div > span > span:nth-of-type(2) {
@@ -536,6 +544,14 @@
 
 .admin_content_UserListDiv > div > span > span:nth-of-type(2) > p {
     margin: 5px 0px;
+}
+
+.admin_content_UserListDiv > div > span > p:nth-of-type(4) {
+    width: 15%;
+}
+
+.admin_content_UserListDiv > div > span > p:nth-of-type(5) {
+    width: 10%;
 }
 
 .admin_content_UserListDiv > div > button {

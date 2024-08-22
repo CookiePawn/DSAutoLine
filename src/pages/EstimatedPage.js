@@ -7,7 +7,7 @@ import nonSelectBox from '../assets/img/functionIcon/optionPage_nonSelectBox.png
 import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
 import optionClick from '../assets/img/functionIcon/optionClick.png'
 import { OptionPagePopUp } from "../components/PopUp"
-import { estimatedAxios } from "../services/Request";
+import { estimatedAxios, estimatedAddAxios } from "../services/Request";
 
 
 
@@ -62,6 +62,8 @@ const OptionPage = (props) => {
     const [useingSelect5, setUseingSelect5] = useState(null)
     const [useingSelect6, setUseingSelect6] = useState(null)
     const [useingSelect7, setUseingSelect7] = useState(null)
+    const [useingSelect8, setUseingSelect8] = useState('')
+    const [useingSelect9, setUseingSelect9] = useState('')
 
     //최종 버튼
     const [nextStat, setNextStat] = useState(false)
@@ -91,6 +93,32 @@ const OptionPage = (props) => {
     }, [content])
 
 
+    const clickFunction = async () => {
+        if (infoSelect1 && infoSelect2 && id && content) {
+            await estimatedAddAxios({
+                car_code: id,
+                car_name: content.name,
+                enter: content.enter,
+                out_color: content.color[0].name,
+                trim1: trimSelect1,
+                trim2: trimSelect2,
+                options: content.option.map(option => option.name),
+                method: useingSelect1,
+                period: useingSelect2,
+                deposit: useingSelect3,
+                deposit_price: useingSelect4,
+                payment_price: useingSelect5,
+                age: useingSelect6,
+                annual_mileage: useingSelect7,
+                name: useingSelect8,
+                phone: useingSelect9,
+            })
+            setNextStat(true);
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+
 
 
     if (!content || !content.option || !content.trim || !content.color) {
@@ -101,7 +129,7 @@ const OptionPage = (props) => {
             {nextStat &&
                 <OptionPagePopUp />
             }
-            <GNB stat={true} page={'즉시 출고'}/>
+            <GNB stat={true} page={'즉시 출고'} />
             <div className="flexSection">
                 <div className="infoSection">
                     <div>
@@ -154,8 +182,8 @@ const OptionPage = (props) => {
                                 </span>
                             </span>
                         </div>
-                        { useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
-                            ? <p className="nextBtn" onClick={() => { setNextStat(true); document.body.style.overflow = 'hidden'; }}>견적서 확인</p>
+                        {useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && useingSelect8 !== '' && useingSelect9.length >= 10 && infoSelect1 && infoSelect2
+                            ? <p className="nextBtn" onClick={clickFunction}>견적서 확인</p>
                             : <p className="nonNextBtn">견적서 확인</p>
                         }
 
@@ -224,17 +252,17 @@ const OptionPage = (props) => {
                             </span>
                             <h4>이용기간</h4>
                             <span>
-                                <p className={useingSelect2 === 36 ? 'selected' : ''} onClick={() => setUseingSelect2(36)}>36개월</p>
-                                <p className={useingSelect2 === 48 ? 'selected' : ''} onClick={() => setUseingSelect2(48)}>48개월</p>
-                                <p className={useingSelect2 === 60 ? 'selected' : ''} onClick={() => setUseingSelect2(60)}>60개월</p>
+                                <p className={useingSelect2 === '36개월' ? 'selected' : ''} onClick={() => setUseingSelect2('36개월')}>36개월</p>
+                                <p className={useingSelect2 === '48개월' ? 'selected' : ''} onClick={() => setUseingSelect2('48개월')}>48개월</p>
+                                <p className={useingSelect2 === '60개월' ? 'selected' : ''} onClick={() => setUseingSelect2('60개월')}>60개월</p>
                             </span>
                             <h4>보증금</h4>
                             <span>
                                 <p className={useingSelect3 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect3('없음')}>없음</p>
-                                <p className={useingSelect3 === 10 ? 'selected' : ''} onClick={() => setUseingSelect3(10)}>10%</p>
-                                <p className={useingSelect3 === 20 ? 'selected' : ''} onClick={() => setUseingSelect3(20)}>20%</p>
-                                <p className={useingSelect3 === 30 ? 'selected' : ''} onClick={() => setUseingSelect3(30)}>30%</p>
-                                <p className={useingSelect3 === 40 ? 'selected' : ''} onClick={() => setUseingSelect3(40)}>40%</p>
+                                <p className={useingSelect3 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect3('10%')}>10%</p>
+                                <p className={useingSelect3 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect3('20%')}>20%</p>
+                                <p className={useingSelect3 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect3('30%')}>30%</p>
+                                <p className={useingSelect3 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect3('40%')}>40%</p>
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
@@ -243,22 +271,27 @@ const OptionPage = (props) => {
                             <h4>선납금</h4>
                             <span>
                                 <p className={useingSelect5 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect5('없음')}>없음</p>
-                                <p className={useingSelect5 === 10 ? 'selected' : ''} onClick={() => setUseingSelect5(10)}>10%</p>
-                                <p className={useingSelect5 === 20 ? 'selected' : ''} onClick={() => setUseingSelect5(20)}>20%</p>
-                                <p className={useingSelect5 === 30 ? 'selected' : ''} onClick={() => setUseingSelect5(30)}>30%</p>
-                                <p className={useingSelect5 === 40 ? 'selected' : ''} onClick={() => setUseingSelect5(40)}>40%</p>
+                                <p className={useingSelect5 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect5('10%')}>10%</p>
+                                <p className={useingSelect5 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect5('20%')}>20%</p>
+                                <p className={useingSelect5 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect5('30%')}>30%</p>
+                                <p className={useingSelect5 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect5('40%')}>40%</p>
                             </span>
                             <h4>보험연령</h4>
                             <span>
-                                <p className={useingSelect6 === 21 ? 'selected' : ''} onClick={() => setUseingSelect6(21)}>만 21세 이상</p>
-                                <p className={useingSelect6 === 26 ? 'selected' : ''} onClick={() => setUseingSelect6(26)}>만 26세 이상</p>
+                                <p className={useingSelect6 === '만 21세 이상' ? 'selected' : ''} onClick={() => setUseingSelect6('만 21세 이상')}>만 21세 이상</p>
+                                <p className={useingSelect6 === '만 26세 이상' ? 'selected' : ''} onClick={() => setUseingSelect6('만 26세 이상')}>만 26세 이상</p>
                             </span>
                             <h4>연간 주행거리</h4>
                             <span>
-                                <p className={useingSelect7 === 10000 ? 'selected' : ''} onClick={() => setUseingSelect7(10000)}>연간 1만km</p>
-                                <p className={useingSelect7 === 20000 ? 'selected' : ''} onClick={() => setUseingSelect7(20000)}>연간 2만km</p>
-                                <p className={useingSelect7 === 30000 ? 'selected' : ''} onClick={() => setUseingSelect7(30000)}>연간 3만km</p>
+                                <p className={useingSelect7 === '연간 1만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 1만km')}>연간 1만km</p>
+                                <p className={useingSelect7 === '연간 2만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 2만km')}>연간 2만km</p>
+                                <p className={useingSelect7 === '연간 3만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 3만km')}>연간 3만km</p>
                                 <p className={useingSelect7 === '무제한' ? 'selected' : ''} onClick={() => setUseingSelect7('무제한')}>무제한</p>
+                            </span>
+                            <h4>개인 정보</h4>
+                            <span>
+                                <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10}/>
+                                <input placeholder="연락처를 적어주세요"value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} maxLength={11}/>
                             </span>
                         </div>
                     </div>

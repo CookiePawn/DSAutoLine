@@ -32,7 +32,7 @@ const carImageError = (img) => {
  */
 export const HotDealCard = (props) => {
     return (
-        <div className='hotDealCard'>
+        <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>
@@ -271,7 +271,7 @@ export const QuickCarCard = (props) => {
  */
 export const HotDealCarCard = (props) => {
     return (
-        <div className='hotDealCard' onClick={() => window.location.href = '/Option'}>
+        <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
             <img src={carImageError(props.item.img)} className='hotDealCardImg' />
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.name}</h2>

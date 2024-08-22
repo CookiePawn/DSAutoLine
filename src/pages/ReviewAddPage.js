@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GNB from "../components/GNB";
 import Footer from "../components/Footer";
 import FastFAQSticky from '../components/FastFAQSticky'
 import '../styles/ReviewAddPage.css'
 import { StarIcon } from "../components/Icons";
 import { ReviewAddPagePopUp } from "../components/PopUp";
-import { reviewAddAxios } from "../services/Request";
+import { reviewAddAxios, carEnterListAxios } from "../services/Request";
+import Select from "react-select";
 
 
 
@@ -17,10 +18,49 @@ const ReviewAddPage = () => {
     //insert
     const [name, setName] = useState('')
     const [car, setCar] = useState('')
-    const [enter, setEnter] = useState('기아')
+    const [enter, setEnter] = useState('')
     const [starStat, setStarStat] = useState(0)
     const [img, setImg] = useState('K5')
     const [comment, setComment] = useState('')
+
+
+
+
+    const [axiosList, setAxiosList] = useState(null)
+    const [enterOptions, setEnterOptions] = useState(null)
+    const [carOptions, setCarOptions] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await carEnterListAxios()
+            setAxiosList(response)
+            // 중복을 제거한 제조사 목록을 생성
+            setEnterOptions(Array.from(
+                new Set(response.map(item => item.enter))
+            ).map(enter => ({
+                value: enter,
+                label: enter
+            })));
+
+            // 중복을 제거한 자동차 모델 목록을 생성
+            setCarOptions(Array.from(
+                new Set(response.map(item => item.name))
+            ).map(name => ({
+                value: name,
+                label: name
+            })));
+        }
+        fetchData()
+    }, [])
+
+
+
+
+    console.log(enterOptions);
+    console.log(carOptions);
+
+
+
 
 
     const clickFunction = async () => {
@@ -35,7 +75,6 @@ const ReviewAddPage = () => {
         setPopupStat(true);
         document.body.style.overflowY = 'hidden'
     }
-
 
 
 
@@ -117,12 +156,9 @@ const ReviewAddPage = () => {
 
 
 
-
-
-
-
-
-
+    if (!axiosList) {
+        return null
+    }
     return (
         <>
             {popupStat &&
@@ -138,8 +174,26 @@ const ReviewAddPage = () => {
                     <input value={name} onChange={(e) => setName(e.target.value)} />
                 </span>
                 <span>
-                    <h3>차량명</h3>
-                    <input value={car} onChange={(e) => setCar(e.target.value)} />
+                    <h3>기업</h3>
+                    <Select
+                        className="selectItem"
+                        onChange={(e) => setEnter(e.value)}
+                        options={enterOptions}
+                        placeholder="유형 선택"
+                        value={enterOptions.filter(function (option) {
+                            return option.value === enter;
+                        })}
+                    />
+                    <h3 style={{ marginLeft: 50 }}>차량</h3>
+                    <Select
+                        className="selectItem"
+                        onChange={(e) => setCar(e.value)}
+                        options={carOptions}
+                        placeholder="유형 선택"
+                        value={carOptions.filter(function (option) {
+                            return option.value === car;
+                        })}
+                    />
                 </span>
                 <span>
                     <h3>별점</h3>

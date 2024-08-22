@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom';
 import '../styles/OptionPage.css'
 import GNB from "../components/GNB"
 import Footer from "../components/Footer"
@@ -7,16 +8,42 @@ import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
 import optionClick from '../assets/img/functionIcon/optionClick.png'
 import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
-import { optionList } from "../assets/item"
 import { OptionPagePopUp } from "../components/PopUp"
+import { estimatedAxios, estimatedAddAxios } from "../services/Request";
 
+
+
+const carImageError = (img) => {
+    let imageSrc;
+
+    try {
+        imageSrc = require(`../assets/img/${img}.png`);  // 동적으로 이미지 로드
+    } catch (error) {
+        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
+    }
+
+    return imageSrc
+}
 
 
 
 const OptionPage = (props) => {
+    const { id } = useParams();
+    const [content, setContent] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await estimatedAxios(id)
+            setContent(response)
+        }
+        fetchData()
+    }, [id])
+
+
     const [infoSelect1, setInfoSelect1] = useState(false)
     const [infoSelect2, setInfoSelect2] = useState(false)
     const [colorStat, setColorStat] = useState([])
+    const [oilStat, setOilStat] = useState(null)
 
     //세부모델 선택
     const [trimStat, setTrimStat] = useState(null)
@@ -36,35 +63,72 @@ const OptionPage = (props) => {
     const [useingSelect5, setUseingSelect5] = useState(null)
     const [useingSelect6, setUseingSelect6] = useState(null)
     const [useingSelect7, setUseingSelect7] = useState(null)
+    const [useingSelect8, setUseingSelect8] = useState('')
+    const [useingSelect9, setUseingSelect9] = useState('')
 
     //최종 버튼
     const [nextStat, setNextStat] = useState(false)
 
-    const oil = [
-        optionList.lpg && 'LPG',
-        optionList.gasoline && '가솔린',
-        optionList.diesel && '디젤',
-        optionList.hybrid && '가솔린+전기'
-    ].filter(Boolean).join(', ');
+    useEffect(() => {
+        if (content) {
+            const oil = [
+                content.lpg === 1 && 'LPG',
+                content.gasoline === 1 && '가솔린',
+                content.diesel === 1 && '디젤',
+                content.hybrid === 1 && '하이브리드'
+            ].filter(Boolean).join(', ');
+            setOilStat(oil)
+        }
+    }, [content])
 
 
+    const clickFunction = async () => {
+        if (infoSelect1 && infoSelect2 && id && content) {
+            await estimatedAddAxios({
+                car_code: id,
+                car_name: content.name,
+                enter: content.enter,
+                out_color: colorStat.name,
+                trim1: trimSelect1,
+                trim2: trimSelect2,
+                options: options.map(option => option.name),
+                method: useingSelect1,
+                period: useingSelect2,
+                deposit: useingSelect3,
+                deposit_price: useingSelect4,
+                payment_price: useingSelect5,
+                age: useingSelect6,
+                annual_mileage: useingSelect7,
+                name: useingSelect8,
+                phone: useingSelect9,
+            })
+            setNextStat(true);
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+
+
+    if (!content || !content.option || !content.trim || !content.color) {
+        return null
+    }
     return (
         <>
             {nextStat &&
                 <OptionPagePopUp />
             }
-            <GNB stat={true}/>
+            <GNB stat={true} />
             <div className="flexSection">
                 <div className="infoSection">
                     <div>
                         <h1>옵션 및 이용조건</h1>
                         <span className="carTitle" style={{ alignItems: 'center' }}>
-                            <img src={require(`../assets/img/logo/${optionList.logoImg}.png`)} alt="차량 브랜드 로고" />
-                            <h3>{optionList.enter} {optionList.name}</h3>
+                            <img src={carImageError(`logo/${content.logo_img}`)} alt="차량 브랜드 로고" />
+                            <h3>{content.enter} {content.name}</h3>
                         </span>
-                        <p>{optionList.year}.{optionList.month} │ {optionList.size} │ {oil}</p>
-                        <p>{optionList.minCC.toLocaleString()}~{optionList.maxCC.toLocaleString()}CC │ 복합연비 {optionList.minFuelEfficiency}~{optionList.maxFuelEfficiency}km/L</p>
-                        <img src={require(`../assets/img/car/${optionList.carImg}.png`)} alt="차량 이미지" />
+                        <p>{content.year}.{content.month} │ {content.size} │ {oilStat}</p>
+                        <p>{content.min_cc}~{content.max_cc}CC │ 복합연비 {content.min_fuel_efficiency}~{content.max_fuel_efficiency}km/L</p>
+                        <img src={carImageError(`car/${content.img}`)} alt="차량 이미지" />
                         <h4>세부 모델</h4>
                         <div className="infoSelectedListDiv">
                             <span>
@@ -76,7 +140,7 @@ const OptionPage = (props) => {
                         <h4>옵션</h4>
                         <div className="infoSelectedListDiv">
                             <span className="selectOptionListSpan">
-                                {options.map((item, idx) => (
+                                {options.map((item, _) => (
                                     <p>{item.name}</p>
                                 ))}
                             </span>
@@ -91,23 +155,23 @@ const OptionPage = (props) => {
                                 <span>
                                     {
                                         !infoSelect1
-                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨"/>
-                                            : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨"/>
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨" />
+                                            : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨" />
                                     }
                                     <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
                                 </span>
                                 <span>
                                     {
                                         !infoSelect2
-                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨"/>
-                                            : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨"/>
+                                            ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨" />
+                                            : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨" />
                                     }
                                     <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
                                 </span>
                             </span>
                         </div>
-                        {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && infoSelect1 && infoSelect2
-                            ? <p className="nextBtn" onClick={() => { setNextStat(true); document.body.style.overflow = 'hidden';}}>견적서 확인</p>
+                        {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect4 !== '' && useingSelect5 && useingSelect6 && useingSelect7 && useingSelect8 !== '' && useingSelect9.length >= 10 && infoSelect1 && infoSelect2
+                            ? <p className="nextBtn" onClick={clickFunction}>견적서 확인</p>
                             : <p className="nonNextBtn">견적서 확인</p>
                         }
 
@@ -121,11 +185,11 @@ const OptionPage = (props) => {
                                 <p>{colorStat.name}</p>
                             </span>
                             <span>
-                                {optionList.color.map((item, index) => (
+                                {content.color.map((item, _) => (
                                     colorStat !== item
                                         ? <span style={{ backgroundColor: item.rgb }} onClick={() => setColorStat(item)} />
                                         : <span className='colorBtn selected' style={{ backgroundColor: item.rgb }}>
-                                            <img src={optionClick} alt="색상 선택 됨"/>
+                                            <img src={optionClick} alt="색상 선택 됨" />
                                         </span>
                                 ))}
                             </span>
@@ -156,13 +220,13 @@ const OptionPage = (props) => {
                                 {trimSelect1 && trimStat !== 0 &&
                                     <span style={{ overflowY: 'hidden', height: 65 }}>
                                         <span className={'selected'}>
-                                            <img src={optionClick} alt="트림 선택 됨"/>
+                                            <img src={optionClick} alt="트림 선택 됨" />
                                             <p>{trimSelect1}</p>
                                         </span>
                                     </span>
                                 }
                                 <span style={{ display: trimStat === 0 ? 'block' : 'none', borderRight: '1px solid #ededed' }}>
-                                    {Array.from(new Set(optionList.trim.map(item => item.trim1))).map((item, index) => (
+                                    {Array.from(new Set(content.trim.map(item => item.trim1))).map((item, _) => (
                                         <span onClick={() => { setTrimSelect1(item); setTrimStat(1) }} className={trimSelect1 === item ? 'selected' : ''}>
                                             {trimSelect1 === item
                                                 ? <img src={optionClick} />
@@ -181,7 +245,7 @@ const OptionPage = (props) => {
                                     </span>
                                 }
                                 <span style={{ display: trimSelect1 && trimStat === 1 ? 'block' : 'none', borderLeft: '1px solid #ededed' }}>
-                                    {optionList.trim.filter((item) => item.trim1 === trimSelect1).map((item, index) => (
+                                    {content.trim.filter((item) => item.trim1 === trimSelect1).map((item, _) => (
                                         <span onClick={() => { setTrimSelect2(item.trim2); setTrimStat(null); setTrimPrice(item.price) }} className={trimSelect2 === item.trim2 ? 'selected' : ''}>
                                             {trimSelect2 === item.trim2
                                                 ? <img src={optionClick} />
@@ -195,7 +259,7 @@ const OptionPage = (props) => {
                             <h3 style={{ marginTop: 120 }}>옵션 추가하기</h3>
                             {trimSelect1 !== null && trimSelect2 !== null
                                 ? <div className="optionSelectDiv">
-                                    {optionList.option.map((item, idx) => (
+                                    {content.option.map((item, _) => (
                                         <div
                                             className={options.find(option => option.name === item.name) && "selected"}
                                             onClick={() => {
@@ -231,17 +295,17 @@ const OptionPage = (props) => {
                             </span>
                             <h4>이용기간</h4>
                             <span>
-                                <p className={useingSelect2 === 36 ? 'selected' : ''} onClick={() => setUseingSelect2(36)}>36개월</p>
-                                <p className={useingSelect2 === 48 ? 'selected' : ''} onClick={() => setUseingSelect2(48)}>48개월</p>
-                                <p className={useingSelect2 === 60 ? 'selected' : ''} onClick={() => setUseingSelect2(60)}>60개월</p>
+                                <p className={useingSelect2 === '36개월' ? 'selected' : ''} onClick={() => setUseingSelect2('36개월')}>36개월</p>
+                                <p className={useingSelect2 === '48개월' ? 'selected' : ''} onClick={() => setUseingSelect2('48개월')}>48개월</p>
+                                <p className={useingSelect2 === '60개월' ? 'selected' : ''} onClick={() => setUseingSelect2('60개월')}>60개월</p>
                             </span>
                             <h4>보증금</h4>
                             <span>
                                 <p className={useingSelect3 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect3('없음')}>없음</p>
-                                <p className={useingSelect3 === 10 ? 'selected' : ''} onClick={() => setUseingSelect3(10)}>10%</p>
-                                <p className={useingSelect3 === 20 ? 'selected' : ''} onClick={() => setUseingSelect3(20)}>20%</p>
-                                <p className={useingSelect3 === 30 ? 'selected' : ''} onClick={() => setUseingSelect3(30)}>30%</p>
-                                <p className={useingSelect3 === 40 ? 'selected' : ''} onClick={() => setUseingSelect3(40)}>40%</p>
+                                <p className={useingSelect3 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect3('10%')}>10%</p>
+                                <p className={useingSelect3 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect3('20%')}>20%</p>
+                                <p className={useingSelect3 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect3('30%')}>30%</p>
+                                <p className={useingSelect3 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect3('40%')}>40%</p>
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
@@ -250,22 +314,27 @@ const OptionPage = (props) => {
                             <h4>선납금</h4>
                             <span>
                                 <p className={useingSelect5 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect5('없음')}>없음</p>
-                                <p className={useingSelect5 === 10 ? 'selected' : ''} onClick={() => setUseingSelect5(10)}>10%</p>
-                                <p className={useingSelect5 === 20 ? 'selected' : ''} onClick={() => setUseingSelect5(20)}>20%</p>
-                                <p className={useingSelect5 === 30 ? 'selected' : ''} onClick={() => setUseingSelect5(30)}>30%</p>
-                                <p className={useingSelect5 === 40 ? 'selected' : ''} onClick={() => setUseingSelect5(40)}>40%</p>
+                                <p className={useingSelect5 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect5('10%')}>10%</p>
+                                <p className={useingSelect5 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect5('20%')}>20%</p>
+                                <p className={useingSelect5 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect5('30%')}>30%</p>
+                                <p className={useingSelect5 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect5('40%')}>40%</p>
                             </span>
                             <h4>보험연령</h4>
                             <span>
-                                <p className={useingSelect6 === 21 ? 'selected' : ''} onClick={() => setUseingSelect6(21)}>만 21세 이상</p>
-                                <p className={useingSelect6 === 26 ? 'selected' : ''} onClick={() => setUseingSelect6(26)}>만 26세 이상</p>
+                                <p className={useingSelect6 === '만 21세 이상' ? 'selected' : ''} onClick={() => setUseingSelect6('만 21세 이상')}>만 21세 이상</p>
+                                <p className={useingSelect6 === '만 26세 이상' ? 'selected' : ''} onClick={() => setUseingSelect6('만 26세 이상')}>만 26세 이상</p>
                             </span>
                             <h4>연간 주행거리</h4>
                             <span>
-                                <p className={useingSelect7 === 10000 ? 'selected' : ''} onClick={() => setUseingSelect7(10000)}>연간 1만km</p>
-                                <p className={useingSelect7 === 20000 ? 'selected' : ''} onClick={() => setUseingSelect7(20000)}>연간 2만km</p>
-                                <p className={useingSelect7 === 30000 ? 'selected' : ''} onClick={() => setUseingSelect7(30000)}>연간 3만km</p>
+                                <p className={useingSelect7 === '연간 1만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 1만km')}>연간 1만km</p>
+                                <p className={useingSelect7 === '연간 2만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 2만km')}>연간 2만km</p>
+                                <p className={useingSelect7 === '연간 3만km' ? 'selected' : ''} onClick={() => setUseingSelect7('연간 3만km')}>연간 3만km</p>
                                 <p className={useingSelect7 === '무제한' ? 'selected' : ''} onClick={() => setUseingSelect7('무제한')}>무제한</p>
+                            </span>
+                            <h4>개인 정보</h4>
+                            <span>
+                                <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10}/>
+                                <input placeholder="연락처를 적어주세요"value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} maxLength={11}/>
                             </span>
                         </div>
                     </div>

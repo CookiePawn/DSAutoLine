@@ -47,7 +47,7 @@ const FastFAQSticky = (props) => {
             await fastFAQAxios({
                 name: name,
                 phone: phone,
-                car: car,
+                car_name: car,
             })
             setNextStat(true);
             document.body.style.overflow = 'hidden';
