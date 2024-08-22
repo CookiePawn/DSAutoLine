@@ -3,7 +3,6 @@ import '../styles/PopUp.css'
 import { StarIcon } from './Icons'
 import imageUpload from '../assets/img/popup/imageUpload.png'
 import nonClick from '../assets/img/functionIcon/optionPage_nonSelectBox.png'
-import onClick from '../assets/img/functionIcon/optionPage_SelectBox.png'
 
 
 

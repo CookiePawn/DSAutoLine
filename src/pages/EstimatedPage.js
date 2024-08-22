@@ -11,23 +11,6 @@ import { estimatedAxios, estimatedAddAxios } from "../services/Request";
 
 
 
-
-const carImageError = (img) => {
-    let imageSrc;
-
-    try {
-        imageSrc = require(`../assets/img/${img}.png`);  // 동적으로 이미지 로드
-    } catch (error) {
-        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
-    }
-
-    return imageSrc
-}
-
-
-
-
-
 const OptionPage = (props) => {
     const { id } = useParams();
     const [content, setContent] = useState(null)
@@ -135,12 +118,26 @@ const OptionPage = (props) => {
                     <div>
                         <h1>옵션 및 이용조건</h1>
                         <span className="carTitle" style={{ alignItems: 'center' }}>
-                            <img src={carImageError(`logo/${content.logo_img}`)} alt="차량 브랜드 로고" />
+                            <img
+                                src={`${process.env.REACT_APP_IMG_URL}/${content.logo_img}.png`}
+                                alt="차량 브랜드 로고"
+                                onError={(e) => {
+                                    e.target.onerror = null; // 무한 루프 방지
+                                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                                }}
+                            />
                             <h3>{content.enter} {content.name}</h3>
                         </span>
                         <p>{content.year}.{content.month} │ {content.size} │ {oilStat}</p>
                         <p>{content.min_cc}~{content.max_cc}CC │ 복합연비 {content.min_fuel_efficiency}~{content.max_fuel_efficiency}km/L</p>
-                        <img src={carImageError(`car/${content.img}`)} alt="차량 이미지" />
+                        <img
+                            src={`${process.env.REACT_APP_IMG_URL}/${content.img}.png`}
+                            alt="차량 이미지"
+                            onError={(e) => {
+                                e.target.onerror = null; // 무한 루프 방지
+                                e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                            }}
+                        />
                         <h4>세부 모델</h4>
                         <div className="infoSelectedListDiv">
                             <span>
@@ -235,7 +232,15 @@ const OptionPage = (props) => {
                                 ? <div className="optionSelectDiv">
                                     {content.option.map((item, idx) => (
                                         <div>
-                                            <img src={carImageError(`option/${item.img}`)} />
+                                            <img
+                                                className='hotDealCardImg'
+                                                src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
+                                                alt="한정 특가 상품 이미지"
+                                                onError={(e) => {
+                                                    e.target.onerror = null; // 무한 루프 방지
+                                                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                                                }}
+                                            />
                                             <p>{item.name}</p>
                                             <h4>{(item.price / 10000).toLocaleString()}만원</h4>
                                         </div>
@@ -290,8 +295,8 @@ const OptionPage = (props) => {
                             </span>
                             <h4>개인 정보</h4>
                             <span>
-                                <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10}/>
-                                <input placeholder="연락처를 적어주세요"value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} maxLength={11}/>
+                                <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10} />
+                                <input placeholder="연락처를 적어주세요" value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} maxLength={11} />
                             </span>
                         </div>
                     </div>

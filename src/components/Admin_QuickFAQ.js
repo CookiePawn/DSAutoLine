@@ -6,19 +6,6 @@ import NoCardList from '../components/NoCardList'
 
 
 
-const imageError = (img) => {
-    let imageSrc;
-
-    try {
-        imageSrc = require(`../assets/img/${img}.png`);  // 동적으로 이미지 로드
-    } catch (error) {
-        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
-    }
-
-    return imageSrc
-}
-
-
 
 
 
@@ -66,7 +53,15 @@ export const Admin_QuickFAQEdit = (props) => {
                 {filteredList.length === 0 && <NoCardList card={'차량이'} />}
                 {filteredList.map((item, idx) => (
                     <div className="admin_content_HotdealItem" key={item.id}>
-                        <img src={imageError(`car/${item.img}`)} alt="item" className="admin_content_hotdeal-image" />
+                        <img 
+                            className="admin_content_hotdeal-image" 
+                            src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
+                            alt="차량 이미지"
+                            onError={(e) => {
+                                e.target.onerror = null; // 무한 루프 방지
+                                e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                            }}
+                        />
                         <div className="admin_content_hotdeal-info">
                             <h1>{item.name}</h1>
                             <div className='admin_content_hodeal_infosub'>
