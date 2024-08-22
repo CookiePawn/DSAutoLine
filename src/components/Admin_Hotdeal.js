@@ -92,7 +92,7 @@ export const Admin_HotdealAdd = (props) => {
                                 <p>{item.money}</p>
                             </div>
                             <div className="admin_content_hotdeal_buttonSection">
-                            <button className="admin_content_add-button" onClick={handleAddClick}>추가</button>
+                                <button className="admin_content_add-button" onClick={handleAddClick}>추가</button>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 .admin_content {
     position: relative;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: 1px solid #bbb;
 }
 
@@ -273,6 +273,7 @@
     height: 120px;
     object-fit: cover;
     margin-right: 20px;
+    margin-left: 20px;
     background-color: #ededed;
     border-radius: 0px;
 }
@@ -281,12 +282,11 @@
     flex-grow: 1;
     display: flex;
     margin: 0;
-    padding: 10px 0px;
     flex-direction: column;
 }
 
 .admin_content_hotdeal-info h1 {
-    margin: 0;
+    
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 25px;
@@ -309,6 +309,7 @@
     height: 35px;
     width: 70px;
     padding: 10px;
+    margin-bottom: 10px;
     color: white;
     border: none;
     border-radius: 45px;
@@ -329,6 +330,20 @@
     height: 35px;
     width: 70px;
     padding: 10px;
+    margin-bottom: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+}
+
+.admin_content_event_add-button {
+    height: 35px;
+    width: 70px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 1580px;
     background-color: #28a745;
     color: white;
     border: none;
@@ -375,7 +390,7 @@
 .admin_content_hotdeal_buttonSection{
     display: flex;
     flex-direction: row;
-    margin-left: 1400px;
+    margin-left: 1200px;
     gap: 10px;
 }
 
@@ -387,7 +402,20 @@
 }
 
 .admin_content_hotdeal-infosub > p {
-    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.admin_content_event_infosub {
+    margin-top: 8px;
+    height: 14px;
+    flex-direction: row;
+    display: flex;
+}
+
+.admin_content_event_infosub > p {
+
     font-size: 14px;
     font-weight: 500;
     color: #767676;
@@ -413,23 +441,12 @@
 }
 
 .admin_content_edit_text_form > p {
-    width: 70px;
+    width: 100px;
 }
 
-.admin_content_save_button {
-    width: 50px;
-    height: 23px;
-    align-items: center;
-    margin-left: 188px;
-    background-color: #000000;
-    color: #ffffff;
+.admin_content_edit_text_form > input {
+    width: 300px;
 }
-
-
-
-
-
-
 
 .admin_content_searchListInput {
     position: absolute;
@@ -443,13 +460,6 @@
     padding-right: 10px;
     outline: none;
 }
-
-
-
-
-
-
-
 
 /*유저 리스트*/
 .admin_content_UserListTitleSpan {
@@ -560,3 +570,182 @@
     color: #FF0000;
     font-size: 15px;
 }
+
+.admin_content_event_add_form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.admin_content_event_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.admin_content_event_button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.admin_content_event_button:hover {
+    background-color: #0056b3;
+}
+
+.admin_content_event_button.active {
+    background-color: #0056b3;
+}
+
+.admin_content_upload_section {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.admin_content_event_addSection {
+    position: fixed;
+    margin-top:10px;
+    width: 1510px;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 20px;
+}
+
+.admin_content_event_addSection_body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* 스크롤 생성 */
+    height: 69vh;
+}
+
+.admin_content_event_nameSection,
+.admin_content_event_dateSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_content_event_nameSection > input{
+    width: 287px;
+    height: 31px;
+    border-radius: 5px;
+}
+.admin_content_event_dateSection > h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.admin_content_event_nameSection > h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.admin_content_event_bannerSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_content_event_bannerSection > h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+.admin_content_event_bannerSection > img {
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.admin_content_event_bannerSection > span {
+    color: #ff0000
+}
+
+.admin_content_event_banner_img {
+    width: 407px;
+    height: 250px;
+    border: 1px solid #cacaca;
+    border-radius: 14px;
+    margin-top: 10px;
+}
+
+.admin_content_event_mainSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_content_event_mainSection > img {
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.admin_content_event_main_img {
+    width: 1280px;
+    height: 700px;
+    border: 1px solid #cacaca;
+    border-radius: 14px;
+    margin-top: 10px;
+}
+
+
+.admin_content_save_button {
+    padding: 5px 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin_content_close_button {
+    padding: 5px 10px;
+    background-color: #d9d9d9;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dimmed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.date-picker {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.date-picker select {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.admin_content_event_add_buttonSection {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-right: 140px;
+    justify-content: center;
+    gap: 30px;
+}
+
