@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import GNB from "../components/GNB";
 import Footer from "../components/Footer";
 import '../styles/EnterPage.css';
-import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png';
 import FastFAQSticky from '../components/FastFAQSticky'
 
 const EnterPage = () => {

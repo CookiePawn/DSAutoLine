@@ -308,6 +308,8 @@
 .admin_content_delete-button {
     height: 35px;
     width: 70px;
+    padding: 10px;
+    color: white;
     border: none;
     border-radius: 45px;
     cursor: pointer;
@@ -319,19 +321,18 @@
 }
 
 .admin_content_delete-button {
-    margin-right: 20px;
     background-color: #FF0000;
     color: white;
 }
 
 .admin_content_add-button {
-    width: 100px;
+    height: 35px;
+    width: 70px;
     padding: 10px;
-    margin: 20px auto;
     background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 45px;
     cursor: pointer;
 }
 
@@ -369,6 +370,13 @@
 .admin_content_add-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.admin_content_hotdeal_buttonSection{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1400px;
+    gap: 10px;
 }
 
 .admin_content_hodeal_infosub {
