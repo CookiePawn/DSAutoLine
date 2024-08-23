@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Admin_Content.css'
+import picture from '../assets/picture.png'
 
 
 
@@ -99,11 +100,9 @@ export function Admin_Option() {
     );
 
     const handleAddColor = () => {
-        if (colorName && colorRGB.slice(0,1) === '#' && (colorRGB.length === 7 || colorRGB.length === 4)) {
             setItems([...items, { name: colorName, rgb: colorRGB }]);
             setColorName(''); // 입력 필드 초기화
             setColorRGB(''); // 입력 필드 초기화
-        }
     };
 
     return (
@@ -112,14 +111,14 @@ export function Admin_Option() {
                 <div>
                     <h1>옵션</h1>
                     <input
-                        placeholder='색상을 검색해주세요'
+                        placeholder='옵션을 검색해주세요'
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
                     <div className='admin_content_colorCard title'>
-                        <p>색상</p>
-                        <p>색상명</p>
-                        <p>생상 코드</p>
+                        <p>이미지</p>
+                        <p>옵션명</p>
+                        <p>금액</p>
                     </div>
                     <span></span>
                     <div className='admin_content_colorCardList'>
@@ -133,15 +132,18 @@ export function Admin_Option() {
                     </div>
                 </div>
                 <div>
+                    <h3>이미지</h3>
+                    <img src={picture} alt="배너 미리보기" style={{width:'38px', height:'38px', padding:'0 20px'}} />
+                    <div className="admin_content_option_preview_img"></div>
                     <h3>옵션명</h3>
                     <input
-                        placeholder='ex) 아이스 블루'
-                        value={colorName}
-                        onChange={(e) => setColorName(e.target.value)}
+                        placeholder='ex) 파노라마 선루프'
+                        value={colorRGB}
+                        onChange={(e) => setColorRGB(e.target.value)}
                     />
                     <h3>금액</h3>
                     <input
-                        placeholder='ex) #ededed'
+                        placeholder='ex) 3256만원'
                         value={colorRGB}
                         onChange={(e) => setColorRGB(e.target.value)}
                     />
