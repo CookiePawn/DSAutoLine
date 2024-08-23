@@ -76,10 +76,11 @@ const OptionPage = (props) => {
                 car_code: id,
                 car_name: content.name,
                 enter: content.enter,
-                out_color: colorStat.name,
+                in_color: content.in_color,
+                out_color: content.out_color,
                 trim1: trimSelect1,
                 trim2: trimSelect2,
-                options: options.map(option => option.name),
+                options: content.option.map(option => option.name),
                 method: useingSelect1,
                 period: useingSelect2,
                 deposit: useingSelect3,
@@ -89,6 +90,8 @@ const OptionPage = (props) => {
                 annual_mileage: useingSelect7,
                 name: useingSelect8,
                 phone: useingSelect9,
+                price: trimPrice + optionPrice,
+                type: "빠른 간편 문의/ 한정 특가"
             })
             setNextStat(true);
             document.body.style.overflow = 'hidden';

@@ -7,7 +7,7 @@ import nonSelectBox from '../assets/img/functionIcon/optionPage_nonSelectBox.png
 import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
 import optionClick from '../assets/img/functionIcon/optionClick.png'
 import { OptionPagePopUp } from "../components/PopUp"
-import { estimatedAxios, estimatedAddAxios } from "../services/Request";
+import { quickDealEstimatedAxios, estimatedAddAxios } from "../services/Request";
 
 
 
@@ -17,7 +17,7 @@ const OptionPage = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await estimatedAxios(id)
+            const response = await quickDealEstimatedAxios(id)
             setContent(response)
         }
         fetchData()
@@ -67,11 +67,9 @@ const OptionPage = (props) => {
                 setOptionPrice(totalPrice);
             }
 
-            if (content.trim) {
-                setTrimSelect1(content.trim[0].trim1)
-                setTrimSelect2(content.trim[0].trim2)
-                setTrimPrice(content.trim[0].price)
-            }
+            setTrimSelect1(content.trim1)
+            setTrimSelect2(content.trim2)
+            setTrimPrice(content.price)
         }
     }, [content])
 
@@ -82,7 +80,8 @@ const OptionPage = (props) => {
                 car_code: id,
                 car_name: content.name,
                 enter: content.enter,
-                out_color: content.color[0].name,
+                in_color: content.in_color,
+                out_color: content.out_color,
                 trim1: trimSelect1,
                 trim2: trimSelect2,
                 options: content.option.map(option => option.name),
@@ -95,6 +94,8 @@ const OptionPage = (props) => {
                 annual_mileage: useingSelect7,
                 name: useingSelect8,
                 phone: useingSelect9,
+                price: trimPrice + optionPrice,
+                type: "즉시 출고"
             })
             setNextStat(true);
             document.body.style.overflow = 'hidden';
@@ -103,8 +104,7 @@ const OptionPage = (props) => {
 
 
 
-
-    if (!content || !content.option || !content.trim || !content.color) {
+    if (!content) {
         return null
     }
     return (
@@ -141,10 +141,10 @@ const OptionPage = (props) => {
                         <h4>세부 모델</h4>
                         <div className="infoSelectedListDiv">
                             <span>
-                                <p>{content.trim[0].trim1}</p>
-                                <p>{content.trim[0].trim2}</p>
+                                <p>{content.trim1}</p>
+                                <p>{content.trim2}</p>
                             </span>
-                            <p>{(content.trim[0].price / 10000).toLocaleString()} 만원</p>
+                            <p>{parseInt((content.price / 10000)).toLocaleString()} 만원</p>
                         </div>
                         <h4>옵션</h4>
                         <div className="infoSelectedListDiv">
@@ -153,11 +153,11 @@ const OptionPage = (props) => {
                                     <p>{item.name}</p>
                                 ))}
                             </span>
-                            <p>+ {(optionPrice / 10000).toLocaleString()} 만원</p>
+                            <p>+ {parseInt((optionPrice / 10000)).toLocaleString()} 만원</p>
                         </div>
                         <span className="priceTitle">
                             <p>합계</p>
-                            <h4>{((trimPrice + optionPrice) / 10000).toLocaleString()} 만원</h4>
+                            <h4>{parseInt(((trimPrice + optionPrice)) / 10000).toLocaleString()} 만원</h4>
                         </span>
                         <div>
                             <span>
@@ -191,10 +191,10 @@ const OptionPage = (props) => {
                         <div className="colorDiv">
                             <span>
                                 <h3>외장 색상</h3>
-                                <p>{content.color[0].name}</p>
+                                <p>{content.out_color}</p>
                             </span>
                             <span>
-                                <span className='colorBtn selected' style={{ backgroundColor: content.color[0].rgb }}>
+                                <span className='colorBtn selected' style={{ backgroundColor: content.rgb }}>
                                     <img src={optionClick} alt="색상 선택 됨" />
                                 </span>
                             </span>
@@ -214,7 +214,7 @@ const OptionPage = (props) => {
                                     <span style={{ overflowY: 'hidden', height: 65 }}>
                                         <span className={'selected'}>
                                             <img src={optionClick} alt="트림 선택 됨" />
-                                            <p>{content.trim[0].trim1}</p>
+                                            <p>{content.trim1}</p>
                                         </span>
                                     </span>
                                 }
@@ -222,7 +222,7 @@ const OptionPage = (props) => {
                                     <span style={{ overflowY: 'hidden', height: 65, borderLeft: trimStat !== 0 && '1px solid #ededed' }}>
                                         <span className={'selected'}>
                                             <img src={optionClick} />
-                                            <p>{content.trim[0].trim2} - {(trimPrice / 10000).toLocaleString()}만원</p>
+                                            <p>{content.trim2} - {parseInt((trimPrice / 10000)).toLocaleString()}만원</p>
                                         </span>
                                     </span>
                                 }
@@ -242,7 +242,7 @@ const OptionPage = (props) => {
                                                 }}
                                             />
                                             <p>{item.name}</p>
-                                            <h4>{(item.price / 10000).toLocaleString()}만원</h4>
+                                            <h4>{parseInt((item.price / 10000)).toLocaleString()}만원</h4>
                                         </div>
                                     ))}
                                 </div> : null

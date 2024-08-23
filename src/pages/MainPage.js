@@ -4,7 +4,7 @@ import GNB from '../components/GNB';
 import Footer from '../components/Footer';
 import partner1 from '../assets/img/partner/partner1.png'
 import partner2 from '../assets/img/partner/partner2.png'
-import { carmentoList, quickFAQList } from '../assets/item';
+import { carmentoList } from '../assets/item';
 import {
     HotDealCard,
     QuickDealCard,
@@ -13,7 +13,7 @@ import {
     PopularCarCard,
 } from '../components/Cards';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
-import { hotDealAxios, quickDealAxios, reviewAxios } from '../services/Request';
+import { hotDealAxios, quickDealAxios, reviewAxios, popularListAxios } from '../services/Request';
 import Slider from "react-slick";
 import '../styles/slick.css'
 import '../styles/slick-theme.css'
@@ -39,17 +39,6 @@ const MainPage = (props) => {
 
     //인기 차량 리스트
     const [popularEntryStat, setPopularEntryStat] = useState(0);
-    const [popularList, setPopularList] = useState(quickFAQList.filter(item => item.entry === '국산'))
-
-    useEffect(() => {
-        const popularFunction = () => {
-            popularEntryStat === 0
-                ? setPopularList(quickFAQList.filter(item => item.entry === '국산'))
-                : setPopularList(quickFAQList.filter(item => item.entry === '수입'))
-        }
-        popularFunction()
-    }, [popularEntryStat])
-
 
     //슬라이더
     const hotDealSliderRef = useRef(null);
@@ -61,6 +50,7 @@ const MainPage = (props) => {
     const [hotDealList, setHotDealList] = useState(null)
     const [quickDealList, setQuickDealList] = useState(null)
     const [reviewList, setReviewList] = useState(null)
+    const [popularList, setPopularList] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,8 +58,10 @@ const MainPage = (props) => {
             setHotDealList(response1)
             const response2 = await quickDealAxios(null, null, null)
             setQuickDealList(response2)
-            const response3 = await reviewAxios()
+            const response3 = await reviewAxios(0)
             setReviewList(response3)
+            const response4 = await popularListAxios()
+            setPopularList(response4)
         }
         fetchData()
     }, [])
@@ -77,13 +69,13 @@ const MainPage = (props) => {
 
 
 
-    if (!hotDealList || !quickDealList || !reviewList) {
+    if (!hotDealList || !quickDealList || !reviewList || !popularList) {
         return null
     }
     return (
         <div className='mainPage_container'>
             <GNB stat={false} />
-            <BannerSlider/>
+            <BannerSlider />
             <FastFAQSticky height={1300} />
             <section
                 className='hotDealSection'
@@ -161,23 +153,12 @@ const MainPage = (props) => {
                     <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
                 </span>
                 <div>
-                    {popularList.length >= 4
-                        ? popularList.slice(0, 4).map((item, idx) => (
-                            <PopularCarCard
-                                item={item}
-                                index={idx}
-                                carStat={null}
-                                setCarStat={() => window.location.href = "/Option"}
-                            />
-                        ))
-                        : popularList.map((item, idx) => (
-                            <PopularCarCard
-                                item={item}
-                                index={idx}
-                                carStat={null}
-                                setCarStat={() => window.location.href = "/Option"}
-                            />
-                        ))}
+                    {popularList.map((item, idx) => (
+                        <PopularCarCard
+                            item={item}
+                            index={idx}
+                        />
+                    ))}
                 </div>
             </section>
             <section

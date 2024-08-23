@@ -7,7 +7,7 @@ function Admin_Sidebar(props) {
 
     const pageStat = props.pageStat;
     const setPageStat = props.setPageStat;
-    
+
 
     return (
         <div className="admin_Sidebar_sidebar">
@@ -72,33 +72,33 @@ function Admin_Sidebar(props) {
                         <p className={pageStat === 4.2 && 'selected'} onClick={() => setPageStat(4.2)}>이벤트 수정 및 삭제</p>
                     </div>
                 }
-                <span onClick={() => setCategoryStat(categoryStat === 5 ? null : 5)}>
+                <span onClick={() => { setCategoryStat(null); setPageStat(5) }} className={pageStat === 5 && 'selected'}>
                     <p>리뷰</p>
                     <span>
-                        {categoryStat === 5
-                            ? <UpIcon size={20} color={'#bbb'} />
-                            : <DownIcon size={20} color={'#bbb'} />
-                        }
+                        <RightIcon size={25} color={'#bbb'} />
                     </span>
                 </span>
-                {categoryStat === 5 &&
-                    <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 5.1 && 'selected'} onClick={() => setPageStat(5.1)}>리뷰 승인</p>
-                        <p className={pageStat === 5.2 && 'selected'} onClick={() => setPageStat(5.2)}>리뷰 수정 및 삭제</p>
-                    </div>
-                }
-                <span onClick={() => {setCategoryStat(null); setPageStat(6)}} className={pageStat === 6 && 'selected'}>
+                <span onClick={() => { setCategoryStat(null); setPageStat(6) }} className={pageStat === 6 && 'selected'}>
                     <p>옵션 추가 및 수정</p>
                     <span>
                         <RightIcon size={25} color={'#bbb'} />
                     </span>
                 </span>
-                <span onClick={() => {setCategoryStat(null); setPageStat(7)}} className={pageStat === 7 && 'selected'}>
+                <span onClick={() => setCategoryStat(categoryStat === 7 ? null : 7)}>
                     <p>고객 리스트</p>
                     <span>
-                        <RightIcon size={25} color={'#bbb'} />
+                        {categoryStat === 7
+                            ? <UpIcon size={20} color={'#bbb'} />
+                            : <DownIcon size={20} color={'#bbb'} />
+                        }
                     </span>
                 </span>
+                {categoryStat === 7 &&
+                    <div className='admin_Sidebar_categoryDiv'>
+                        <p className={pageStat === 7.1 && 'selected'} onClick={() => setPageStat(7.1)}>완료 고객</p>
+                        <p className={pageStat === 7.2 && 'selected'} onClick={() => setPageStat(7.2)}>미완료 고객</p>
+                    </div>
+                }
             </div>
         </div>
     );

@@ -66,7 +66,7 @@ const GNB = (props) => {
                                 </div>}
                             {searchList.length > 0 && searchList.map((item, idx) => (
                                 <div className='GNBSearchListCard'>
-                                    <p>{item.name}</p>
+                                    <p onClick={() => window.location.href=`/Option/${item.car_code}`}>{item.name}</p>
                                 </div>
                             ))}
                             <span>

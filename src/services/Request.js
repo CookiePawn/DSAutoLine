@@ -54,9 +54,9 @@ export const quickDealAxios = async (entry, enter, category) => {
  * 리뷰 페이지
  * @returns 
  */
-export const reviewAxios = async () => {
+export const reviewAxios = async (stat) => {
     try {
-        const response = await axios.get(`${dbServerUrl}/review`)
+        const response = await axios.get(`${dbServerUrl}/review?type=${stat}`)
         return response.data
     } catch (error) {
         console.log(error)
@@ -167,7 +167,7 @@ export const fastFAQAxios = async (data) => {
 
 
 /**
- * 즉시 출고 - 견적서
+ * 옵션 선택 페이지 - 견적서
  * @returns 
  */
 export const estimatedAxios = async (id) => {
@@ -180,7 +180,7 @@ export const estimatedAxios = async (id) => {
 }
 
 /**
- * 즉시 출고 - 견적서 추가
+ * 옵션 선택 페이지 - 견적서 추가
  * @returns 
  */
 export const estimatedAddAxios = async (data) => {
@@ -192,6 +192,18 @@ export const estimatedAddAxios = async (data) => {
     }
 }
 
+/**
+ * 즉시 출고 - 견적서
+ * @returns 
+ */
+export const quickDealEstimatedAxios = async (id) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/quickEstimate/${id}`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 
@@ -236,4 +248,34 @@ export const imageUploadAxios = async (pngUrl, imgName) => {
         .catch((error) => {
             console.error('Error uploading image:', error);
         });
+}
+
+
+
+
+/**
+ * 메인 페이지 - 인기 차량 리스트 로드
+ * @returns 
+ */
+export const popularListAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/ranking`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+/**
+ * 메인 페이지 - 우수 카멘토 상담 신청 POST
+ * @returns 
+ */
+export const mentoringAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/mentoring`, data)
+    } catch (error) {
+        console.log(error)
+    }
 }

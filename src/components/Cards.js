@@ -227,16 +227,23 @@ export const PopularCarCard = (props) => {
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
             onClick={() => props.setCarStat(props.index)}
         >
-            <img src={require(`../assets/img/car/${props.item.img}.png`)} alt='2024 Ray' />
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                alt="차량 이미지"
+                onError={(e) => {
+                    e.target.onerror = null; // 무한 루프 방지
+                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                }}
+            />
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.leasePrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rentalPrice.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
         </div>
     )

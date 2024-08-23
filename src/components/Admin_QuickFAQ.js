@@ -53,8 +53,8 @@ export const Admin_QuickFAQEdit = (props) => {
                 {filteredList.length === 0 && <NoCardList card={'차량이'} />}
                 {filteredList.map((item, idx) => (
                     <div className="admin_content_HotdealItem" key={item.id}>
-                        <img 
-                            className="admin_content_hotdeal-image" 
+                        <img
+                            className="admin_content_hotdeal-image"
                             src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
                             alt="차량 이미지"
                             onError={(e) => {
@@ -92,7 +92,8 @@ export const Admin_QuickFAQEdit = (props) => {
 
 export const Admin_QuickFAQAdd = (props) => {
     return (
-        <>
-        </>
+        <div className="admin_content">
+            <h2>빠른 간편 문의 <span>- 차량 추가</span></h2>
+        </div>
     )
 }

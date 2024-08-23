@@ -6,7 +6,8 @@ import { Admin_HotdealAdd, Admin_HotdealEdit} from '../components/Admin_Hotdeal'
 import { Admin_QuickFAQAdd, Admin_QuickFAQEdit } from '../components/Admin_QuickFAQ';
 import { Admin_QuickDealAdd, Admin_QuickDealEdit } from '../components/Admin_QuickDeal';
 import { Admin_EventAdd, Admin_EventEdit } from '../components/Admin_Event';
-import Admin_UserList from '../components/Admin_UserList';
+import { Admin_UserCompletedList, Admin_UserIncompleteList } from '../components/Admin_UserList';
+import Admin_Review from '../components/Admin_Review';
 import '../styles/AdminPage.css'
 import { NoticeIcon } from '../components/Icons';
 
@@ -33,9 +34,10 @@ const AdminPage = () => {
                     {pageStat === 3.2 && <Admin_QuickDealEdit />}
                     {pageStat === 4.1 && <Admin_EventAdd />}
                     {pageStat === 4.2 && <Admin_EventEdit />}
+                    {pageStat === 5 && <Admin_Review />}
                     {pageStat === 6 && <Admin_Option />}
-                    {pageStat === 7 && <Admin_UserList />}
-                    
+                    {pageStat === 7.1 && <Admin_UserCompletedList />}
+                    {pageStat === 7.2 && <Admin_UserIncompleteList />}
                 </div>
             </div>
         </>

@@ -16,7 +16,7 @@ const ReviewPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await reviewAxios()
+            const response = await reviewAxios(0)
             setReviewList(response)
         }
         fetchData()
