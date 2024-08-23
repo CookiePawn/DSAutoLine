@@ -146,7 +146,7 @@ export const Admin_EventAdd = () => {
                             <img src={picture} alt="사진 미리보기" />
                             <div className="admin_content_event_main_img"></div>
                             <div className="admin_content_event_add_buttonSection">
-                                <button className="admin_content_save_button" >추가</button>
+                                <button className="admin_content_save_button">추가</button>
                                 <button className="admin_content_close_button" onClick={CloseEventClick}>취소</button>
                             </div>
                         </div>
