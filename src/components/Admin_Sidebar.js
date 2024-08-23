@@ -78,12 +78,23 @@ function Admin_Sidebar(props) {
                         <RightIcon size={25} color={'#bbb'} />
                     </span>
                 </span>
-                <span onClick={() => { setCategoryStat(null); setPageStat(6) }} className={pageStat === 6 && 'selected'}>
+                <span onClick={() => setCategoryStat(categoryStat === 6 ? null : 6)}>
                     <p>옵션 추가 및 수정</p>
                     <span>
-                        <RightIcon size={25} color={'#bbb'} />
+                    <span>
+                        {categoryStat === 6
+                            ? <UpIcon size={20} color={'#bbb'} />
+                            : <DownIcon size={20} color={'#bbb'} />
+                        }
+                    </span>
                     </span>
                 </span>
+                {categoryStat === 6 &&
+                    <div className='admin_Sidebar_categoryDiv'>
+                        <p className={pageStat === 6.1 && 'selected'} onClick={() => setPageStat(6.1)}>외장 색상</p>
+                        <p className={pageStat === 6.2 && 'selected'} onClick={() => setPageStat(6.2)}>옵션</p>
+                    </div>
+                }
                 <span onClick={() => setCategoryStat(categoryStat === 7 ? null : 7)}>
                     <p>고객 리스트</p>
                     <span>

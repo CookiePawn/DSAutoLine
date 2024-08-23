@@ -223,10 +223,7 @@ export const ReviewCard = (props) => {
  */
 export const PopularCarCard = (props) => {
     return (
-        <div
-            className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
-            onClick={() => props.setCarStat(props.index)}
-        >
+        <div className='carCard' onClick={() => window.location.href=`/Option/${props.item.car_code}`}>
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
                 alt="차량 이미지"

@@ -147,11 +147,11 @@ const MainPage = (props) => {
             </div>
 
             <section className='popularSection'>
-                <h1>가장 <span>인기 많은 차량</span></h1>
-                <span>
+                <h1 style={{marginBottom: 40}}>가장 <span>인기 많은 차량</span></h1>
+                {/* <span>
                     <p className={popularEntryStat === 0 && 'selected'} onClick={() => setPopularEntryStat(0)}>국산 차</p>
                     <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
-                </span>
+                </span> */}
                 <div>
                     {popularList.map((item, idx) => (
                         <PopularCarCard

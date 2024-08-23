@@ -36,7 +36,7 @@ const Admin_Review = (props) => {
     }
     return (
         <div className="admin_content">
-            <h2>리뷰 <span>- 총 2134개</span></h2>
+            <h2>리뷰 <span>- 총 {carList.length}개</span></h2>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
                 <span className="admin_content_eventStat_buttonDiv">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Admin_Sidebar from '../components/Admin_Sidebar';
 import Admin_Notice from '../components/Admin_Notice';
-import Admin_Option from '../components/Admin_Option';
+import { Admin_ColorOption, Admin_Option } from '../components/Admin_Option';
 import { Admin_HotdealAdd, Admin_HotdealEdit} from '../components/Admin_Hotdeal';
 import { Admin_QuickFAQAdd, Admin_QuickFAQEdit } from '../components/Admin_QuickFAQ';
 import { Admin_QuickDealAdd, Admin_QuickDealEdit } from '../components/Admin_QuickDeal';
@@ -35,7 +35,8 @@ const AdminPage = () => {
                     {pageStat === 4.1 && <Admin_EventAdd />}
                     {pageStat === 4.2 && <Admin_EventEdit />}
                     {pageStat === 5 && <Admin_Review />}
-                    {pageStat === 6 && <Admin_Option />}
+                    {pageStat === 6.1 && <Admin_ColorOption />}
+                    {pageStat === 6.2 && <Admin_Option />}
                     {pageStat === 7.1 && <Admin_UserCompletedList />}
                     {pageStat === 7.2 && <Admin_UserIncompleteList />}
                 </div>

@@ -5,6 +5,7 @@ import {
     IoIosArrowForward,
     IoMdStar,
     IoIosNotifications,
+    IoIosAlbums,
 } from 'react-icons/io'
 import { 
     SlArrowDown, 
@@ -113,6 +114,6 @@ export const StarIcon = (props) => {
  */
 export const NoticeIcon = (props) => {
     return (
-        <IoIosNotifications  size={props.size} color={props.color}/>
+        <IoIosAlbums   size={props.size} color={props.color}/>
     )
 }

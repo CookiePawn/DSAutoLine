@@ -47,7 +47,7 @@ export const Admin_EventAdd = () => {
 
     return (
         <div className="admin_content">
-            <h2>이벤트 관리 <span>- 이벤트 추가</span></h2>
+            <h2>이벤트 <span>- 이벤트 추가</span></h2>
             <div className="header-row">
                 <button
                     className={`admin_content_event_button ${selectedEvent === "메인" ? "active" : ""}`}
@@ -207,7 +207,7 @@ export const Admin_EventEdit = () => {
     }
     return (
         <div className="admin_content">
-            <h2>빠른 간편 문의 <span>- 이벤트 수정</span></h2>
+            <h2>이벤트 <span>- 이벤트 수정 및 삭제</span></h2>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
                 <span className="admin_content_eventStat_buttonDiv">
