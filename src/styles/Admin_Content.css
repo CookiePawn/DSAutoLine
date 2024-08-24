@@ -814,3 +814,155 @@
     margin-top: 10px;
     margin-left: 20px;
 }
+
+.admin_content_FAQ_add {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.admin_content_FAQ_add > h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.admin_content_FAQ_add >input {
+    width: 250px;
+    height: 37px;
+    border-radius: 18.5px;
+    border: 1px solid #DBDBDB;
+    margin-bottom: 20px;
+}
+
+.admin_content_FAQ_preview_img {
+    width: 300px;
+    height: 185px;
+    border: 1px solid #cacaca;
+    border-radius: 14px;
+    margin-top: 10px;
+
+}
+
+.admin_content_FAQ_newcar_bodySection{
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_content_FAQ_newcar_PriceSection {
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+}
+
+.admin_content_FAQ_newcar_PriceSection > h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.admin_content_FAQ_newcar_PriceSection_input {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_content_FAQ_newcar_PriceSection_input > input {
+    width: 250px;
+    height: 37px;
+    border-radius: 18.5px;
+    border: 1px solid #DBDBDB;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.admin_content_FAQ_newcar_PriceSection_input > p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.admin_content_FAQ_newcar_DateSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_content_FAQ_newcar_DateSection > h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.admin_content_FAQ_newcar_DateSection_input {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_content_FAQ_cartypeSection {
+    width: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.admin_content_FAQ_cartypeSection > button {
+    width: auto;
+    height: 28px;
+    border-radius: 18.5px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1.5px solid #DBDBDB;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    
+}
+
+.admin_content_FAQ_cartypeSection button.selected {
+    background-color: #007bff; /* 선택된 버튼의 배경색 */
+    color: white; /* 선택된 버튼의 글자색 */
+    border-color: #000000; /* 선택된 버튼의 테두리색 */
+}
+
+.admin_content_FAQ_cartypeSection .cartype-button:nth-child(5) {
+    margin-right: 0; /* 오른쪽 여백 제거 */
+}
+
+.admin_content_FAQ_MAXMINSection {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 40px;;
+}
+
+.admin_content_FAQ_MAXMINSection > p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 7px;
+}
+
+.admin_content_FAQ_MAXMINSection > input {
+    width: 106px;
+    height: 37px;
+    border-radius: 18.5px;
+    margin-right: 7px;
+}
+
+.admin_content_FAQ_detailSection {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.admin_content_FAQ_detailSection > h4 {
+    font-size: 18px;
+    color: #0064FF;
+}
+
+.admin_content_FAQ_detailSection > h4 > span {
+    font-size: 22px;
+    color: #000000;
+}
+
+.admin_content_FAQ_detail_Section_input {
+    display: flex;
+    flex-direction: row;
+}
