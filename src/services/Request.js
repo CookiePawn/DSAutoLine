@@ -126,9 +126,14 @@ export const quickFAQAxios = async (entry, enter, category) => {
  * 이벤트 페이지
  * @returns 
  */
-export const eventAxios = async (stat) => {
+export const eventAxios = async (type, active) => {
+    let response;
     try {
-        const response = await axios.get(`${dbServerUrl}/event?type=${stat}`)
+        if (type === null) {
+            response = await axios.get(`${dbServerUrl}/event?type=&active=${active}`)
+        } else {
+            response = await axios.get(`${dbServerUrl}/event?type=${type}&active=${active}`)
+        }
         return response.data
     } catch (error) {
         console.log(error)
@@ -142,6 +147,7 @@ export const eventAxios = async (stat) => {
  */
 export const eventInfoAxios = async (id) => {
     try {
+
         const response = await axios.get(`${dbServerUrl}/event/${id}`)
         return response.data
     } catch (error) {
