@@ -807,10 +807,10 @@
 }
 
 .admin_content_option_preview_img {
-    width: 407px;
+    width: 90%;
     height: 200px;
     border: 1px solid #cacaca;
     border-radius: 14px;
     margin-top: 10px;
-    margin-left: 20px;
+    margin: auto;
 }

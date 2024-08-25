@@ -181,7 +181,7 @@ export const Admin_EventEdit = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await eventAxios(0)
+            const response = await eventAxios(null, 0)
             setCarList(response)
         }
         fetchData()
@@ -193,7 +193,7 @@ export const Admin_EventEdit = () => {
         if (stat !== eventStat) {
             setEventStat(stat)
             const fetchData = async () => {
-                const response = await eventAxios(stat)
+                const response = await eventAxios(null, stat)
                 setCarList(response)
             }
             fetchData()
