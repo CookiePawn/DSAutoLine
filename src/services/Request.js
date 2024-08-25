@@ -430,3 +430,106 @@ export const optionDeleteAxios = async (data) => {
         console.log(error)
     }
 } 
+
+
+
+/**
+ * 관리자 페이지 - 고객 리스트 현황 GET
+ * @returns 
+ */
+export const currentSituationAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/currentSituation`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+/**
+ * 관리자 페이지 - 고객 리스트 로드 GET
+ * @returns 
+ */
+export const userListAxios = async (type, active) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/customerList?type=${type}&active=${active}`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 견적서 DELETE
+ * @returns 
+ */
+export const carInquiryDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/carInquiryDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 견적서 완료/미완료 POST
+ * @returns 
+ */
+export const carInquiryChangeAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/carInquiryChange`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 간편 상담 DELETE
+ * @returns 
+ */
+export const counselingInquiryDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/counselingInquiryDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 간편 상담 완료/미완료 POST
+ * @returns 
+ */
+export const counselingInquiryChangeAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/counselingInquiryChange`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 우수 카멘토 DELETE
+ * @returns 
+ */
+export const mentoInquiryDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/mentoInquiryDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 우수 카멘토 완료/미완료 POST
+ * @returns 
+ */
+export const mentoInquiryChangeAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/mentoInquiryChange`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 

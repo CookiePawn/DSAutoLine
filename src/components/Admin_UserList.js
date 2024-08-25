@@ -1,93 +1,161 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
+import {
+    currentSituationAxios,
+    userListAxios,
+    carInquiryDeleteAxios,
+    carInquiryChangeAxios,
+    counselingInquiryDeleteAxios,
+    counselingInquiryChangeAxios,
+    mentoInquiryDeleteAxios,
+    mentoInquiryChangeAxios,
+} from "../services/Request";
+import NoCardList from './NoCardList'
 
 
-
+//완료
 export const Admin_UserCompletedList = (props) => {
-    const [userStat, setUserStat] = useState(0)
+    const [userStat, setUserStat] = useState(4)
+    const [currentSituation, setCurrentSituation] = useState(null)
+    const [userList, setUserList] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response1 = await currentSituationAxios()
+            setCurrentSituation(response1)
+        }
+        fetchData()
+    }, [])
+
+    const onClickEvent = async (stat) => {
+        const response2 = await userListAxios(stat, 0)
+        setUserList(response2)
+        setUserStat(stat)
+    }
+
+    const onClickDelete = async (id) => {
+        if (userStat === 0) {
+            await carInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.order_num !== id))
+        } else if (userStat === 1) {
+            await carInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.order_num !== id))
+        } else if (userStat === 2) {
+            await counselingInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
+        } else if (userStat === 3) {
+            await mentoInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
+        }
+    }
+    const onClickChange = async (data) => {
+        if (userStat === 0) {
+            await carInquiryChangeAxios(data)
+            setUserList(userList.filter(list => list.order_num !== data.order_num))
+        } else if (userStat === 1) {
+            await carInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.order_num !== data.order_num))
+        } else if (userStat === 2) {
+            await counselingInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
+        } else if (userStat === 3) {
+            await mentoInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
+        }
+    }
+
 
     return (
         <div className="admin_content">
-            <h2>고객 리스트 <span>- 완료 120건</span></h2>
+            <h2>고객 리스트 <span>- 완료 {currentSituation && (parseInt(currentSituation.counsel_y) + parseInt(currentSituation.estimate_y) + parseInt(currentSituation.mento_y) + parseInt(currentSituation.quick_y))}건</span></h2>
             <span className="admin_content_eventStat_buttonDiv">
-                <button className={userStat === 0 && 'selected'} onClick={() => setUserStat(0)}>전체</button>
-                <button className={userStat === 1 && 'selected'} onClick={() => setUserStat(1)}>즉시 출고</button>
-                <button className={userStat === 2 && 'selected'} onClick={() => setUserStat(2)}>빠른 간편 문의 / 한정 특가</button>
-                <button className={userStat === 3 && 'selected'} onClick={() => setUserStat(3)}>간편 상담</button>
-                <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>우수 카멘토</button>
+                <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>현황</button>
+                <button className={userStat === 0 && 'selected'} onClick={() => onClickEvent(0)}>즉시 출고</button>
+                <button className={userStat === 1 && 'selected'} onClick={() => onClickEvent(1)}>빠른 간편 문의 / 한정 특가</button>
+                <button className={userStat === 2 && 'selected'} onClick={() => onClickEvent(2)}>간편 상담</button>
+                <button className={userStat === 3 && 'selected'} onClick={() => onClickEvent(3)}>우수 카멘토</button>
             </span>
-            <div className="header-row">
-                {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan">
-                    <p>이름</p>
-                    <p>연락처</p>
-                    <p>차종</p>
-                    <p>옵션</p>
-                    <p>이용조건</p>
-                    <p>담당 카멘토</p>
-                    <p>신청 방법</p>
-                </span>
-            </div>
-            <div className="admin_content_UserAllListDiv">
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>기아 K5</p>
-                        <span>
-                            <p>세레니티 화이트</p>
-                            <p>2024년형 전기 (롱레인지) 가격인하</p>
-                        </span>
-                        <span>
-                            <p>장기렌트</p>
-                            <p>36개월</p>
-                            <p>없음</p>
-                            <p>0원</p>
-                            <p>없음</p>
-                            <p>만 21세 이상</p>
-                            <p>연 1만km</p>
-                        </span>
-                        <p>-</p>
-                        <p>즉시 출고</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>기아 K5</p>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <p>-</p>
-                        <p>간편 상담</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>-</p>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <p>김태경 팀장</p>
-                        <p>우수 카멘토</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
-            </div>
+            {userStat === 4 && <CurrentSituation item={currentSituation !== null && currentSituation} />}
+            {userStat === 0 && <QuickDealList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 1 && <QuickFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 2 && <FastFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 3 && <CarmentoList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+
+        </div>
+    )
+}
+
+
+
+
+//미완료
+export const Admin_UserIncompleteList = (props) => {
+    const [userStat, setUserStat] = useState(4)
+    const [currentSituation, setCurrentSituation] = useState(null)
+    const [userList, setUserList] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response1 = await currentSituationAxios()
+            setCurrentSituation(response1)
+        }
+        fetchData()
+    }, [])
+
+    const onClickEvent = async (stat) => {
+        const response2 = await userListAxios(stat, 1)
+        setUserList(response2)
+        setUserStat(stat)
+    }
+
+
+    const onClickDelete = async (id) => {
+        if (userStat === 0) {
+            await carInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.order_num !== id))
+        } else if (userStat === 1) {
+            await carInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.order_num !== id))
+        } else if (userStat === 2) {
+            await counselingInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
+        } else if (userStat === 3) {
+            await mentoInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
+        }
+    }
+    const onClickChange = async (data) => {
+        if (userStat === 0) {
+            await carInquiryChangeAxios(data)
+            setUserList(userList.filter(list => list.order_num !== data.seq))
+        } else if (userStat === 1) {
+            await carInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.order_num !== data.seq))
+        } else if (userStat === 2) {
+            await counselingInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
+        } else if (userStat === 3) {
+            await mentoInquiryDeleteAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
+        }
+    }
+
+
+    return (
+        <div className="admin_content">
+            <h2>고객 리스트 <span>- 미완료 {currentSituation && (parseInt(currentSituation.counsel_n) + parseInt(currentSituation.estimate_n) + parseInt(currentSituation.mento_n) + parseInt(currentSituation.quick_n))}건</span></h2>
+            <span className="admin_content_eventStat_buttonDiv">
+                <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>현황</button>
+                <button className={userStat === 0 && 'selected'} onClick={() => onClickEvent(0)}>즉시 출고</button>
+                <button className={userStat === 1 && 'selected'} onClick={() => onClickEvent(1)}>빠른 간편 문의 / 한정 특가</button>
+                <button className={userStat === 2 && 'selected'} onClick={() => onClickEvent(2)}>간편 상담</button>
+                <button className={userStat === 3 && 'selected'} onClick={() => onClickEvent(3)}>우수 카멘토</button>
+            </span>
+            {userStat === 4 && <CurrentSituation item={currentSituation !== null && currentSituation} />}
+            {userStat === 0 && <QuickDealList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 1 && <QuickFAQList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 2 && <FastFAQList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 3 && <CarmentoList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
         </div>
     )
 }
@@ -96,91 +164,295 @@ export const Admin_UserCompletedList = (props) => {
 
 
 
-export const Admin_UserIncompleteList = (props) => {
-    const [userStat, setUserStat] = useState(0)
 
+
+
+
+
+
+
+
+
+
+
+
+const CurrentSituation = (props) => {
     return (
-        <div className="admin_content">
-            <h2>고객 리스트 <span>- 미완료 120건</span></h2>
-            <span className="admin_content_eventStat_buttonDiv">
-                <button className={userStat === 0 && 'selected'} onClick={() => setUserStat(0)}>전체</button>
-                <button className={userStat === 1 && 'selected'} onClick={() => setUserStat(1)}>즉시 출고</button>
-                <button className={userStat === 2 && 'selected'} onClick={() => setUserStat(2)}>빠른 간편 문의 / 한정 특가</button>
-                <button className={userStat === 3 && 'selected'} onClick={() => setUserStat(3)}>간편 상담</button>
-                <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>우수 카멘토</button>
-            </span>
+        <>
+            <div className="header-row">
+                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                    <p style={{ width: 250 }}>신청</p>
+                    <p>미완료</p>
+                    <p>완료</p>
+                </span>
+            </div>
+            <div className="admin_content_UserAllListDiv">
+                <div>
+                    <span style={{ justifyContent: 'space-between' }}>
+                        <p style={{ width: 250 }}>즉시 출고</p>
+                        <p>{props.item.quick_n}</p>
+                        <p>{props.item.quick_y}</p>
+                    </span>
+                </div>
+                <div>
+                    <span style={{ justifyContent: 'space-between' }}>
+                        <p style={{ width: 250 }}>빠른 간편 문의 / 한정 특가</p>
+                        <p>{props.item.estimate_n}</p>
+                        <p>{props.item.estimate_y}</p>
+                    </span>
+                </div>
+                <div>
+                    <span style={{ justifyContent: 'space-between' }}>
+                        <p style={{ width: 250 }}>간편 상담</p>
+                        <p>{props.item.counsel_n}</p>
+                        <p>{props.item.counsel_y}</p>
+                    </span>
+                </div>
+                <div>
+                    <span style={{ justifyContent: 'space-between' }}>
+                        <p style={{ width: 250 }}>우수 카멘토</p>
+                        <p>{props.item.mento_n}</p>
+                        <p>{props.item.mento_y}</p>
+                    </span>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+
+
+
+
+
+const QuickDealList = (props) => {
+    return (
+        <>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan">
+                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                    <p>신청일</p>
                     <p>이름</p>
                     <p>연락처</p>
                     <p>차종</p>
                     <p>옵션</p>
                     <p>이용조건</p>
-                    <p>담당 카멘토</p>
-                    <p>신청 방법</p>
+                    <p>금액</p>
                 </span>
             </div>
             <div className="admin_content_UserAllListDiv">
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>기아 K5</p>
-                        <span>
-                            <p>세레니티 화이트</p>
-                            <p>2024년형 전기 (롱레인지) 가격인하</p>
+                {props.item.length === 0 && <NoCardList card={'고객이'} />}
+                {props.item.map((item, idx) => (
+                    <div>
+                        <span style={{ justifyContent: 'space-between' }}>
+                            <p>{item.created_at.slice(0, 10)}</p>
+                            <p>{item.name}</p>
+                            <p>{item.phone}</p>
+                            <p>{item.enter} {item.car_name}</p>
+                            <span>
+                                <p>{item.trim1}</p>
+                                <p>{item.trim2}</p>
+                                {item.option.map((item, idx) => (
+                                    <p>{item.name}</p>
+                                ))}
+                            </span>
+                            <span>
+                                <p>{item.method}</p>
+                                <p>{item.period}</p>
+                                <p>{item.deposit}</p>
+                                <p>{item.deposit_price} 원</p>
+                                <p>{item.payment_price}</p>
+                                <p>{item.age}</p>
+                                <p>{item.annual_mileage}</p>
+                            </span>
+                            <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                         </span>
-                        <span>
-                            <p>장기렌트</p>
-                            <p>36개월</p>
-                            <p>없음</p>
-                            <p>0원</p>
-                            <p>없음</p>
-                            <p>만 21세 이상</p>
-                            <p>연 1만km</p>
-                        </span>
-                        <p>-</p>
-                        <p>즉시 출고</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>기아 K5</p>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <p>-</p>
-                        <p>간편 상담</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
-                <div>
-                    <span>
-                        <p>안준철</p>
-                        <p>01089152856</p>
-                        <p>-</p>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <span>
-                            <p>-</p>
-                        </span>
-                        <p>김태경 팀장</p>
-                        <p>우수 카멘토</p>
-                    </span>
-                    <button>완료</button>
-                    <button>삭제</button>
-                </div>
+                        <button
+                            onClick={async () => {
+                                await props.onClickChange({
+                                    seq: item.order_num,
+                                    allow: item.allow,
+                                })
+                            }}
+                        >
+                            {props.stat === 1 ? '완료' : '미완료'}
+                        </button>
+                        <button
+                            onClick={async () => {
+                                await props.onClickDelete(item.order_num)
+                            }}
+                        >
+                            삭제
+                        </button>
+                    </div>
+                ))}
             </div>
-        </div>
+        </>
+    )
+}
+
+
+
+const QuickFAQList = (props) => {
+    return (
+        <>
+            <div className="header-row">
+                {/* <input type="checkbox" /> */}
+                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                    <p>신청일</p>
+                    <p>이름</p>
+                    <p>연락처</p>
+                    <p>차종</p>
+                    <p>옵션</p>
+                    <p>이용조건</p>
+                    <p>금액</p>
+                </span>
+            </div>
+            <div className="admin_content_UserAllListDiv">
+                {props.item.length === 0 && <NoCardList card={'고객이'} />}
+                {props.item.map((item, idx) => (
+                    <div>
+                        <span style={{ justifyContent: 'space-between' }}>
+                            <p>{item.created_at.slice(0, 10)}</p>
+                            <p>{item.name}</p>
+                            <p>{item.phone}</p>
+                            <p>{item.enter} {item.car_name}</p>
+                            <span>
+                                <p>{item.trim1}</p>
+                                <p>{item.trim2}</p>
+                                {item.option.map((item, idx) => (
+                                    <p>{item.name}</p>
+                                ))}
+                            </span>
+                            <span>
+                                <p>이용 방법 - {item.method}</p>
+                                <p>이용 기간 - {item.period}</p>
+                                <p>보증금 - {item.deposit}</p>
+                                <p>보증금(원) - {item.deposit_price} 원</p>
+                                <p>선납금 - {item.payment_price}</p>
+                                <p>보험 연령 - {item.age}</p>
+                                <p>연간 주행거리 - {item.annual_mileage}</p>
+                            </span>
+                            <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
+                        </span>
+                        <button
+                            onClick={async () => {
+                                await props.onClickChange({
+                                    seq: item.order_num,
+                                    allow: item.allow,
+                                })
+                            }}
+                        >
+                            {props.stat === 1 ? '완료' : '미완료'}
+                        </button>
+                        <button
+                            onClick={() => props.onClickDelete(item.order_num)}
+                        >
+                            삭제
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+}
+
+
+
+
+
+
+const CarmentoList = (props) => {
+    return (
+        <>
+            <div className="header-row">
+                {/* <input type="checkbox" /> */}
+                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                    <p>신청일</p>
+                    <p>이름</p>
+                    <p>연락처</p>
+                    <p>담당 카멘토</p>
+                </span>
+            </div>
+            <div className="admin_content_UserAllListDiv">
+                {props.item.length === 0 && <NoCardList card={'고객이'} />}
+                {props.item.map((item, idx) => (
+                    <div>
+                        <span style={{ justifyContent: 'space-between' }}>
+                            <p>{item.created_at.slice(0, 10)}</p>
+                            <p>{item.name}</p>
+                            <p>{item.phone}</p>
+                            <p>{item.mento}</p>
+                        </span>
+                        <button
+                            onClick={async () => {
+                                await props.onClickChange({
+                                    seq: item.seq,
+                                    allow: item.allow,
+                                })
+                            }}
+                        >
+                            {props.stat === 1 ? '완료' : '미완료'}
+                        </button>
+                        <button
+                            onClick={() => props.onClickDelete(item.seq)}
+                        >
+                            삭제
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+}
+
+
+
+
+
+
+
+const FastFAQList = (props) => {
+    return (
+        <>
+            <div className="header-row">
+                {/* <input type="checkbox" /> */}
+                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                    <p>신청일</p>
+                    <p>이름</p>
+                    <p>연락처</p>
+                    <p>차종</p>
+                </span>
+            </div>
+            <div className="admin_content_UserAllListDiv">
+                {props.item.length === 0 && <NoCardList card={'고객이'} />}
+                {props.item.map((item, idx) => (
+                    <div>
+                        <span style={{ justifyContent: 'space-between' }}>
+                            <p>{item.created_at.slice(0, 10)}</p>
+                            <p>{item.name}</p>
+                            <p>{item.phone}</p>
+                            <p>{item.car_name}</p>
+                        </span>
+                        <button
+                            onClick={async () => {
+                                await props.onClickChange({
+                                    seq: item.seq,
+                                    allow: item.allow,
+                                })
+                            }}
+                        >
+                            {props.stat === 1 ? '완료' : '미완료'}
+                        </button>
+                        <button
+                            onClick={() => props.onClickDelete(item.seq)}
+                        >
+                            삭제
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
     )
 }
