@@ -3,31 +3,37 @@ import '../styles/HotDealPage.css'
 import GNB from '../components/GNB'
 import Footer from '../components/Footer'
 import { HotDealCarCard } from '../components/Cards'
-import { hotDealAxios } from '../services/Request'
+import { hotDealAxios, eventAxios } from '../services/Request'
 import FastFAQSticky from '../components/FastFAQSticky'
 import NoCardList from '../components/NoCardList'
 
 
 const HotDealPage = (props) => {
     const [hotDealList, setHotDealList] = useState(null)
+    const [banner, setBanner] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
-            const tmp = await hotDealAxios()
-            setHotDealList(tmp)
+            const tmp1 = await hotDealAxios()
+            setHotDealList(tmp1)
+            const tmp2 = await eventAxios(2, 0)
+            setBanner(tmp2)
         }
         fetchData()
     }, [])
 
-    if (!hotDealList) {
+
+    if (!hotDealList || !banner) {
         return null
     }
     return (
         <>
             <GNB stat={true} page={'한정 특가'} />
-            <div className='bannerSection'>
-                <img src={require('../assets/img/banner/eventBanner2.png')} />
-            </div>
+            {banner[0] &&
+                <div className='bannerSection'>
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
+                </div>
+            }
             <FastFAQSticky height={1150} />
             <div className='hotDealTitleSection'>
                 <h1>한정 <span>특가</span></h1>
@@ -35,7 +41,7 @@ const HotDealPage = (props) => {
             </div>
             <div className='carListSection'>
                 <div>
-                    {hotDealList.length === 0 && <NoCardList card={'차량이'}/>}
+                    {hotDealList.length === 0 && <NoCardList card={'차량이'} />}
                     {hotDealList && hotDealList.map((item, idx) => (
                         <HotDealCarCard item={item} />
                     ))}

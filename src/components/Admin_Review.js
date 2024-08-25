@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
-import { reviewAxios } from '../services/Request'
+import { reviewAxios, reviewChangeAxios, reviewDeleteAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
 
 
@@ -74,8 +74,32 @@ const Admin_Review = (props) => {
                             <p>{item.comment}</p>
                         </div>
                         <div className="admin_content_listButtonDiv">
-                            <button>승인</button>
-                            <button>삭제</button>
+                            {reviewStat === 0
+                                ? <button onClick={async () => {
+                                    await reviewChangeAxios({
+                                        seq: item.seq,
+                                        allow: item.allow,
+                                    });
+                                    setCarList(carList.filter(list => list.seq !== item.seq))
+                                }}>
+                                    미승인
+                                </button>
+                                : <button onClick={async () => {
+                                    await reviewChangeAxios({
+                                        seq: item.seq,
+                                        allow: item.allow,
+                                    });
+                                    setCarList(carList.filter(list => list.seq !== item.seq))
+                                }}>
+                                    승인
+                                </button>
+                            }
+                            <button onClick={async () => {
+                                await reviewDeleteAxios(item.seq);
+                                setCarList(carList.filter(list => list.seq !== item.seq))
+                            }}>
+                                삭제
+                            </button>
                         </div>
                     </div>
                 ))}

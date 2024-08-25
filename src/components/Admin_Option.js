@@ -1,6 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Admin_Content.css'
-import picture from '../assets/picture.png'
+import {
+    colorGetAxios,
+    colorAddAxios,
+    colorDeleteAxios,
+    optionGetAxios,
+    optionDeleteAxios,
+    optionAddAxios,
+    imageUploadAxios,
+} from '../services/Request';
+import { imageResize4_3, generateRandomString } from '../utils/imageResize'
+import NoCardList from './NoCardList'
 
 
 
@@ -8,31 +18,35 @@ export function Admin_ColorOption() {
     const [searchValue, setSearchValue] = useState('');
     const [colorName, setColorName] = useState('');
     const [colorRGB, setColorRGB] = useState('');
+    const [items, setItems] = useState(null)
 
-    const [items, setItems] = useState([
-        { name: '블랙', rgb: '#111' },
-        { name: '쥐색', rgb: '#bbb' },
-        { name: '화이트 실버', rgb: '#ededed' },
-        { name: '은갈치 에디션', rgb: '#dedede' },
-        { name: '라이트 실버', rgb: '#dbdbdb' },
-        { name: '프로덕트 레드', rgb: '#ff0000' },
-        { name: 'DS AutoLine 에디션', rgb: '#0064FF' },
-        { name: '스노우 화이트 펄 (SWP)', rgb: '#ffffff' },
-    ])
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await colorGetAxios()
+            setItems(response)
+        }
+        fetchData()
+    }, [])
 
 
-    // 검색어를 포함하는 항목 필터링
-    const filteredItems = items.filter(item =>
+    // 검색어를 포함하는 항목 필터링 (items가 null이 아닐 때만 실행)
+    const filteredItems = items ? items.filter(item =>
         item.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    ) : [];
 
-    const handleAddColor = () => {
-        if (colorName && colorRGB.slice(0,1) === '#' && (colorRGB.length === 7 || colorRGB.length === 4)) {
+
+    const handleAddColor = async () => {
+        if (colorName && colorRGB.slice(0, 1) === '#' && (colorRGB.length === 7 || colorRGB.length === 4)) {
+            await colorAddAxios({
+                name: colorName,
+                rgb: colorRGB,
+            })
             setItems([...items, { name: colorName, rgb: colorRGB }]);
             setColorName(''); // 입력 필드 초기화
             setColorRGB(''); // 입력 필드 초기화
         }
     };
+
 
     return (
         <>
@@ -51,11 +65,19 @@ export function Admin_ColorOption() {
                     </div>
                     <span></span>
                     <div className='admin_content_colorCardList'>
+                        {filteredItems.length === 0 && <NoCardList card={'색상이'} />}
                         {filteredItems.map((item, idx) => (
                             <div className='admin_content_colorCard'>
                                 <span style={{ backgroundColor: item.rgb }}></span>
                                 <p>{item.name}</p>
                                 <p>{item.rgb}</p>
+                                <button
+                                    onClick={async () => {
+                                        await colorDeleteAxios(item.seq)
+                                        setItems(items.filter(list => list.seq !== item.seq))
+                                    }}>
+                                    삭제
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -84,25 +106,40 @@ export function Admin_ColorOption() {
 
 export function Admin_Option() {
     const [searchValue, setSearchValue] = useState('');
-    const [colorName, setColorName] = useState('');
-    const [colorRGB, setColorRGB] = useState('');
+    const [optionName, setOptionName] = useState('');
+    const [optionPrice, setOptionPrice] = useState('');
+    const [img, setImg] = useState(null)
 
-    const [items, setItems] = useState([
-        { name: '블랙', rgb: '#111' },
-        { name: '쥐색', rgb: '#bbb' },
-        { name: '스노우 화이트 펄 (SWP)', rgb: '#ffffff' },
-    ])
+    const [items, setItems] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await optionGetAxios()
+            setItems(response)
+        }
+        fetchData()
+    }, [])
 
 
-    // 검색어를 포함하는 항목 필터링
-    const filteredItems = items.filter(item =>
+    // 검색어를 포함하는 항목 필터링 (items가 null이 아닐 때만 실행)
+    const filteredItems = items ? items.filter(item =>
         item.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    ) : [];
 
-    const handleAddColor = () => {
-            setItems([...items, { name: colorName, rgb: colorRGB }]);
-            setColorName(''); // 입력 필드 초기화
-            setColorRGB(''); // 입력 필드 초기화
+    const handleAddOption = async () => {
+        const random = generateRandomString(15)
+        if (optionName !== '' && optionPrice !== '' && img) {
+            await optionAddAxios({
+                name: optionName,
+                price: optionPrice,
+                img: `option_${random}`,
+            })
+            await imageUploadAxios(img, `option_${random}`)
+            setItems([...items, { name: optionName, price: optionPrice, img: img }]);
+            setOptionName(''); // 입력 필드 초기화
+            setOptionPrice(''); // 입력 필드 초기화
+            setImg(null)
+        }
     };
 
     return (
@@ -115,39 +152,68 @@ export function Admin_Option() {
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
-                    <div className='admin_content_colorCard title'>
+                    <div className='admin_content_optionCard title'>
                         <p>이미지</p>
                         <p>옵션명</p>
                         <p>금액</p>
                     </div>
                     <span></span>
-                    <div className='admin_content_colorCardList'>
+                    <div className='admin_content_optionCardList'>
                         {filteredItems.map((item, idx) => (
-                            <div className='admin_content_colorCard'>
-                                <span style={{ backgroundColor: item.rgb }}></span>
+                            <div className='admin_content_optionCard'>
+                                {item.img.slice(0, 1) === 'o' 
+                                    ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}/>
+                                    : <img src={item.img}/>
+                                }
+                                
                                 <p>{item.name}</p>
-                                <p>{item.rgb}</p>
+                                <p>{(item.price/10000).toLocaleString()} 만원</p>
+                                <button
+                                    onClick={async () => {
+                                        await optionDeleteAxios(item.seq)
+                                        setItems(items.filter(list => list.seq !== item.seq))
+                                    }}>
+                                    삭제
+                                </button>
                             </div>
                         ))}
                     </div>
                 </div>
                 <div>
                     <h3>이미지</h3>
-                    <img src={picture} alt="배너 미리보기" style={{width:'38px', height:'38px', padding:'0 20px'}} />
-                    <div className="admin_content_option_preview_img"></div>
+                    <img
+                        src={require('../assets/img/popup/imageUpload.png')}
+                        alt="이미지 업로드 이미지"
+                        style={{ width: '38px', height: '38px', padding: '0 20px', cursor: 'pointer' }}
+                        onClick={() => document.getElementById('fileInput3').click()}
+                    />
+                    <input
+                        id="fileInput3"
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={async (e) => {
+                            const response = await imageResize4_3(e)
+                            setImg(response)
+                        }}
+                    />
+                    <div className="admin_content_option_preview_img">
+                        <img src={img} style={{ width: '100%' }} />
+                    </div>
                     <h3>옵션명</h3>
                     <input
                         placeholder='ex) 파노라마 선루프'
-                        value={colorRGB}
-                        onChange={(e) => setColorRGB(e.target.value)}
+                        value={optionName}
+                        onChange={(e) => setOptionName(e.target.value)}
                     />
                     <h3>금액</h3>
                     <input
-                        placeholder='ex) 3256만원'
-                        value={colorRGB}
-                        onChange={(e) => setColorRGB(e.target.value)}
+                        placeholder='최소 만원 단위로 0 모두 붙여주세요'
+                        value={optionPrice}
+                        type='number'
+                        onChange={(e) => setOptionPrice(e.target.value)}
                     />
-                    <button onClick={handleAddColor}>추가하기</button>
+                    <button onClick={handleAddOption}>추가하기</button>
                 </div>
             </section>
         </>

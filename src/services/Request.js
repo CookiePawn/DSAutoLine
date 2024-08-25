@@ -285,3 +285,148 @@ export const mentoringAxios = async (data) => {
         console.log(error)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//관리자 페이지
+
+/**
+ * 관리자 페이지 - 이벤트 추가 POST
+ * @returns 
+ */
+export const eventAddAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/eventInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 이벤트 삭제 DELETE
+ * @returns 
+ */
+export const eventDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/eventDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+
+
+/**
+ * 관리자 페이지 - 리뷰 승인/미승인 POST
+ * @returns 
+ */
+export const reviewChangeAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/reviewChange`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 리뷰 삭제 DELETE
+ * @returns 
+ */
+export const reviewDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/reviewDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+
+
+/**
+ * 관리자 페이지 - 색상 로드 GET
+ * @returns 
+ */
+export const colorGetAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/allColor`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 색상 추가 POST
+ * @returns 
+ */
+export const colorAddAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/allColorInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 색상 삭제 DELETE
+ * @returns 
+ */
+export const colorDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/allColorDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+
+/**
+ * 관리자 페이지 - 옵션 로드 GET
+ * @returns 
+ */
+export const optionGetAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/alloption`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 색상 추가 POST
+ * @returns 
+ */
+export const optionAddAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/allOptionInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 색상 삭제 DELETE
+ * @returns 
+ */
+export const optionDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/allOptionDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 

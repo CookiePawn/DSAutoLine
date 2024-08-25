@@ -4,7 +4,7 @@ import Footer from "../components/Footer"
 import '../styles/QuickDealPage.css'
 import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickDealCarCard } from '../components/Cards'
-import { quickDealAxios } from "../services/Request"
+import { quickDealAxios, eventAxios } from "../services/Request"
 import FastFAQSticky from '../components/FastFAQSticky'
 import NoCardList from "../components/NoCardList"
 
@@ -15,12 +15,14 @@ const QuickDealPage = (props) => {
     const [brandStat, setBrandStat] = useState('all')
     const [listStat, setListStat] = useState('전체')
     const [quickDealList, setQuickDealList] = useState(null)
-
+    const [banner, setBanner] = useState(null)
 
 
     const fetchData = async (entry, enter, category) => {
         const response = await quickDealAxios(entry, enter, category)
         setQuickDealList(response)
+        const tmp2 = await eventAxios(3, 0)
+            setBanner(tmp2)
     }
 
     useEffect(() => {
@@ -32,15 +34,17 @@ const QuickDealPage = (props) => {
     }, [categoryStat, brandStat, listStat])
 
 
-    if (!quickDealList) {
+    if (!quickDealList || !banner) {
         return null
     }
     return (
         <>
             <GNB stat={true} page={'즉시 출고'} />
-            <div className='bannerSection'>
-                <img src={require('../assets/img/banner/eventBanner1.png')} alt="이벤트 베너" />
-            </div>
+            {banner[0] &&
+                <div className='bannerSection'>
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
+                </div>
+            }
             <FastFAQSticky height={1150} />
             <div className='categorySection'>
                 <h1>즉시 <span>출고</span></h1>

@@ -143,12 +143,10 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
-    const eventId = props.item.seq;
-
     return (
         <div
             className="eventCardlist"
-            onClick={() => window.location.href = `/Event/${eventId}`}
+            onClick={() => window.location.href = `/Event/${props.item.event_num}`}
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
                 <img

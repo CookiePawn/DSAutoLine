@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css';
-import picture from '../assets/picture.png'
 import NoCardList from "./NoCardList";
-import { eventAxios } from "../services/Request";
+import { eventAxios, eventAddAxios, eventDeleteAxios, imageUploadAxios } from "../services/Request";
+import {
+    imageResize1280_700,
+    imageResize1920_700,
+    imageResize1280_110,
+    imageResizeKeepAspectRatio,
+    generateRandomString
+} from "../utils/imageResize";
+import { EventAddPopUp } from '../components/PopUp'
 
-const imageError = (img) => {
-    let imageSrc;
 
-    try {
-        imageSrc = require(`../assets/img/${img}.png`);  // 동적으로 이미지 로드
-    } catch (error) {
-        imageSrc = require('../assets/img/dsautoline/DSAUTOLINE_car.png');  // 이미지가 없을 경우 대체 이미지 사용
-    }
-
-    return imageSrc;
-};
 
 export const Admin_EventAdd = () => {
-    const [selectedEvent, setSelectedEvent] = useState('메인');
+    const [selectedEvent, setSelectedEvent] = useState(0);
     const [selectedSize, setSelectedSize] = useState('1280 x 700');
     const [startDate, setStartDate] = useState({ year: "", month: "", day: "" });
     const [endDate, setEndDate] = useState({ year: "", month: "", day: "" });
@@ -26,10 +23,75 @@ export const Admin_EventAdd = () => {
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
     const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
+    const [nameStat, setNameStat] = useState('')
+    const [popupStat, setPopupStat] = useState(false)
+
+    //이미지 URL
+    const [bannerURL, setBannerURL] = useState(null)
+    const [mainURL, setMainURL] = useState(null)
+
     const handleEventClick = (eventType, eventSize) => {
         setSelectedEvent(eventType);
         setSelectedSize(eventSize);
+        setBannerURL(null)
+        setMainURL(null)
     };
+
+    const onClickAxios = async () => {
+        if (nameStat !== '' && startDate.year !== '' && startDate.month !== '' && startDate.day !== '' && endDate.year !== '' && endDate.month !== '' && endDate.day !== '' && bannerURL) {
+            const random1 = generateRandomString(20)
+            const random2 = generateRandomString(20)
+            if (selectedEvent === 4) {
+                await eventAddAxios([{
+                    title: nameStat,
+                    start_date: new Date(`${startDate.year}-${startDate.month}-${startDate.day}`),
+                    end_date: new Date(`${endDate.year}-${endDate.month}-${endDate.day}`),
+                    img: `event_${random1}`,
+                    type: selectedEvent,
+                    state: 'out',
+                    event_num: random1,
+                }])
+                await imageUploadAxios(bannerURL, `event_${random1}`)
+                setNameStat('')
+                setBannerURL(null)
+                setMainURL(null)
+                setEndDate({ year: "", month: "", day: "" })
+                setStartDate({ year: "", month: "", day: "" })
+                setSelectedEvent(0)
+                setSelectedSize("1280 x 700")
+                setPopupStat(true)
+            } else if (mainURL) {
+                await eventAddAxios([{
+                    title: nameStat,
+                    start_date: new Date(`${startDate.year}-${startDate.month}-${startDate.day}`),
+                    end_date: new Date(`${endDate.year}-${endDate.month}-${endDate.day}`),
+                    img: `event_${random1}`,
+                    type: selectedEvent,
+                    state: 'out',
+                    event_num: random1,
+                },
+                {
+                    title: nameStat,
+                    start_date: new Date(`${startDate.year}-${startDate.month}-${startDate.day}`),
+                    end_date: new Date(`${endDate.year}-${endDate.month}-${endDate.day}`),
+                    img: `event_${random2}`,
+                    type: selectedEvent,
+                    state: 'in',
+                    event_num: random1,
+                }])
+                await imageUploadAxios(bannerURL, `event_${random1}`)
+                await imageUploadAxios(mainURL, `event_${random2}`)
+                setNameStat('')
+                setBannerURL(null)
+                setMainURL(null)
+                setEndDate({ year: "", month: "", day: "" })
+                setStartDate({ year: "", month: "", day: "" })
+                setSelectedEvent(0)
+                setSelectedSize("1280 x 700")
+                setPopupStat(true)
+            }
+        }
+    }
 
     const handleStartDateChange = (e) => {
         const { name, value } = e.target;
@@ -41,41 +103,39 @@ export const Admin_EventAdd = () => {
         setEndDate({ ...endDate, [name]: value });
     };
 
-    const CloseEventClick = () => {
-        setSelectedEvent(null);
-    }
 
     return (
         <div className="admin_content">
+            {popupStat && <EventAddPopUp />}
             <h2>이벤트 <span>- 이벤트 추가</span></h2>
             <div className="header-row">
                 <button
-                    className={`admin_content_event_button ${selectedEvent === "메인" ? "active" : ""}`}
-                    onClick={() => handleEventClick("메인", "1280 x 700")}
+                    className={`admin_content_event_button ${selectedEvent === 0 ? "active" : ""}`}
+                    onClick={() => handleEventClick(0, "1280 x 700")}
                 >
                     메인 추가
                 </button>
                 <button
-                    className={`admin_content_event_button ${selectedEvent === "빠른 간편 문의" ? "active" : ""}`}
-                    onClick={() => handleEventClick("빠른 간편 문의", "1920 x 700")}
+                    className={`admin_content_event_button ${selectedEvent === 1 ? "active" : ""}`}
+                    onClick={() => handleEventClick(1, "1920 x 700")}
                 >
                     빠른 간편 문의 추가
                 </button>
                 <button
-                    className={`admin_content_event_button ${selectedEvent === "한정 특가" ? "active" : ""}`}
-                    onClick={() => handleEventClick("한정 특가", "1920 x 700")}
+                    className={`admin_content_event_button ${selectedEvent === 2 ? "active" : ""}`}
+                    onClick={() => handleEventClick(2, "1920 x 700")}
                 >
                     한정 특가 추가
                 </button>
                 <button
-                    className={`admin_content_event_button ${selectedEvent === "즉시 출고" ? "active" : ""}`}
-                    onClick={() => handleEventClick("즉시 출고", "1920 x 700")}
+                    className={`admin_content_event_button ${selectedEvent === 3 ? "active" : ""}`}
+                    onClick={() => handleEventClick(3, "1920 x 700")}
                 >
                     즉시 출고 추가
                 </button>
                 <button
-                    className={`admin_content_event_button ${selectedEvent === "메인 띠 배너" ? "active" : ""}`}
-                    onClick={() => handleEventClick("메인 띠 배너", "1280 x 100")}
+                    className={`admin_content_event_button ${selectedEvent === 4 ? "active" : ""}`}
+                    onClick={() => handleEventClick(4, "1280 x 100")}
                 >
                     메인 띠 배너 추가
                 </button>
@@ -86,6 +146,8 @@ export const Admin_EventAdd = () => {
                         <h1>이벤트명</h1>
                         <input
                             placeholder="이벤트 이름을 입력하세요"
+                            value={nameStat}
+                            onChange={(e) => setNameStat(e.target.value)}
                         />
                     </div>
                     <div className="admin_content_event_dateSection">
@@ -138,21 +200,64 @@ export const Admin_EventAdd = () => {
                     <div className="admin_content_event_bannerSection">
                         <h3>배너 사진 첨부하기</h3>
                         <span>{selectedSize} 사이즈 이미지를 넣어주세요!</span>
-                        <img src={picture} alt="배너 미리보기" />
-                        <div className="admin_content_event_banner_img"></div>
+                        <img
+                            src={require('../assets/img/popup/imageUpload.png')}
+                            alt="이미지 업로드 이미지"
+                            onClick={() => document.getElementById('fileInput1').click()}
+                        />
+                        <input
+                            id="fileInput1"
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            onChange={async (e) => {
+                                let resizedImage;
+                                if (selectedEvent === 0) {
+                                    resizedImage = await imageResize1280_700(e);
+                                } else if (selectedEvent === 4) {
+                                    resizedImage = await imageResize1280_110(e);
+                                } else {
+                                    resizedImage = await imageResize1920_700(e);
+                                }
+                                setBannerURL(resizedImage);
+                            }}
+                        />
+                        <div className="admin_content_event_banner_img">
+                            <img src={bannerURL} style={{ width: '100%' }} />
+                        </div>
                     </div>
 
                     <div className="admin_content_event_mainSection">
-                        {selectedEvent !== '메인 띠 배너' &&
+                        {selectedEvent !== 4 &&
                             <>
                                 <h3>메인 사진 첨부하기</h3>
-                                <img src={picture} alt="사진 미리보기" />
-                                <div className="admin_content_event_main_img"></div>
+                                <img
+                                    src={require('../assets/img/popup/imageUpload.png')}
+                                    alt="이미지 업로드 이미지"
+                                    onClick={() => document.getElementById('fileInput2').click()}
+                                />
+                                <input
+                                    id="fileInput2"
+                                    type="file"
+                                    accept="image/*"
+                                    style={{ display: 'none' }}
+                                    onChange={async (e) => {
+                                        const resizedImage = await imageResizeKeepAspectRatio(e, 1280);
+                                        setMainURL(resizedImage);
+                                    }}
+                                />
+                                <div className="admin_content_event_banner_img">
+                                    <img src={mainURL} style={{ width: '100%' }} />
+                                </div>
                             </>
                         }
                         <div className="admin_content_event_add_buttonSection">
-                            <button className="admin_content_save_button" >추가</button>
-                            <button className="admin_content_close_button" onClick={CloseEventClick}>취소</button>
+                            <button
+                                className="admin_content_save_button"
+                                onClick={onClickAxios}
+                            >
+                                추가
+                            </button>
                         </div>
                     </div>
 
@@ -189,7 +294,6 @@ export const Admin_EventEdit = () => {
 
 
     const onClickEvent = (stat) => {
-
         if (stat !== eventStat) {
             setEventStat(stat)
             const fetchData = async () => {
@@ -207,7 +311,7 @@ export const Admin_EventEdit = () => {
     }
     return (
         <div className="admin_content">
-            <h2>이벤트 <span>- 이벤트 수정 및 삭제</span></h2>
+            <h2>이벤트 <span>- 이벤트 관리</span></h2>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
                 <span className="admin_content_eventStat_buttonDiv">
@@ -243,7 +347,13 @@ export const Admin_EventEdit = () => {
                         </div>
                         <div className="admin_content_listButtonDiv">
                             <button style={{ display: 'none' }}></button>
-                            <button>삭제</button>
+                            <button
+                                onClick={async () => {
+                                    await eventDeleteAxios(item.event_num);
+                                    setCarList(carList.filter(list => list.event_num  !== item.event_num))
+                                }}>
+                                삭제
+                            </button>
                         </div>
                     </div>
                 ))}

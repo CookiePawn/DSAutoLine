@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import { KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { QuickCarCard } from '../components/Cards'
 import FastFAQSticky from '../components/FastFAQSticky'
-import { quickFAQAxios } from '../services/Request'
+import { quickFAQAxios, eventAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
 
 
@@ -15,11 +15,14 @@ const QuickFAQPage = (props) => {
     const [brandStat, setBrandStat] = useState('현대')
     const [listStat, setListStat] = useState('전체')
     const [quickFAQList, setQuickFAQList] = useState(null)
+    const [banner, setBanner] = useState(null)
 
 
     const fetchData = async (entry, enter, category) => {
-        const response = await quickFAQAxios(entry, enter, category)
-        setQuickFAQList(response)
+        const response1 = await quickFAQAxios(entry, enter, category)
+        setQuickFAQList(response1)
+        const response2 = await eventAxios(1, 0)
+        setBanner(response2)
     }
 
     useEffect(() => {
@@ -30,17 +33,19 @@ const QuickFAQPage = (props) => {
         fetchData(categoryStat, brandStat, listStat)
     }, [categoryStat, brandStat, listStat])
 
+    console.log(banner)
 
-
-    if (!quickFAQList) {
+    if (!quickFAQList || !banner) {
         return null
     }
     return (
         <>
             <GNB stat={true} page={'빠른 간편 문의'} />
-            <div className='bannerSection'>
-                <img src={require('../assets/img/banner/eventBanner2.png')} alt='이벤트 베너' />
-            </div>
+            {banner[0] &&
+                <div className='bannerSection'>
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
+                </div>
+            }
             <FastFAQSticky height={1150} />
             <div className='categorySection'>
                 <h1>빠른 <span>간편 문의</span></h1>
@@ -64,7 +69,7 @@ const QuickFAQPage = (props) => {
                     <p onClick={() => { setListStat('전기'); fetchData(categoryStat, brandStat, '전기') }} className={listStat === '전기' ? 'selected' : ''}>전기</p>
                 </div>
                 <div className='quickCarCardListDiv'>
-                    {quickFAQList.length === 0 && <NoCardList card={'차량이'}/>}
+                    {quickFAQList.length === 0 && <NoCardList card={'차량이'} />}
                     {quickFAQList.map((item, index) => (
                         <QuickCarCard
                             item={item}

@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Main_EventBanner.css';
+import { eventAxios } from '../services/Request';
 
 const BannerSlider = () => {
-    const images = [
-        require('../assets/img/banner/eventBanner1.png'),
-        require('../assets/img/banner/eventBanner2.png'),
-        require('../assets/img/banner/eventBanner3.png')
-    ];
+    const [eventList, setEventList] = useState(null);
 
-    const [currentIndex, setCurrentIndex] = useState(1);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await eventAxios(null, 0);
+            setEventList(response.filter((item) => item.type === 0));
+        };
+        fetchData();
+    }, []);
+
+    const [currentIndex, setCurrentIndex] = useState(1); // Starting at 1 to account for the first clone
     const [isTransitioning, setIsTransitioning] = useState(false);
     const sliderRef = useRef();
-
-    // Add clones of the first and last images
-    const extendedImages = [
-        images[images.length - 1], // Last image added at the start
-        ...images, // Original images
-        images[0]  // First image added at the end
-    ];
 
     const handlePrevClick = () => {
         if (!isTransitioning) {
@@ -36,18 +34,26 @@ const BannerSlider = () => {
     const handleTransitionEnd = () => {
         setIsTransitioning(false);
         if (currentIndex === 0) {
-            setCurrentIndex(images.length);
-        } else if (currentIndex === images.length + 1) {
+            // If we go to the left of the first image (clone of the last), jump to the real last image
+            setCurrentIndex(eventList.length);
+        } else if (currentIndex === eventList.length + 1) {
+            // If we go to the right of the last image (clone of the first), jump to the real first image
             setCurrentIndex(1);
         }
     };
 
     useEffect(() => {
-        sliderRef.current.addEventListener('transitionend', handleTransitionEnd);
-        return () => {
-            sliderRef.current.removeEventListener('transitionend', handleTransitionEnd);
-        };
-    }, [currentIndex]);
+        if (eventList) {
+            sliderRef.current.addEventListener('transitionend', handleTransitionEnd);
+            return () => {
+                sliderRef.current.removeEventListener('transitionend', handleTransitionEnd);
+            };
+        }
+    }, [currentIndex, eventList]);
+
+    if (!eventList) {
+        return null;
+    }
 
     return (
         <section className="mainPage_BannerSection">
@@ -62,21 +68,38 @@ const BannerSlider = () => {
                             transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none'
                         }}
                     >
-                        {extendedImages.map((image, index) => (
+                        {/* Clone of the last image placed at the start */}
+                        <img
+                            className='mainPage_BannerImage'
+                            src={`${process.env.REACT_APP_IMG_URL}/${eventList[eventList.length - 1].img}.png`}
+                            alt={`Banner ${eventList.length - 1}`}
+                            style={{ width: '1280px', marginRight: '80px' }}
+                        />
+
+                        {/* Original images */}
+                        {eventList.map((item, index) => (
                             <img
                                 key={index}
                                 className='mainPage_BannerImage'
-                                src={image}
+                                src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
                                 alt={`Banner ${index}`}
                                 style={{ width: '1280px', marginRight: '80px' }}
                             />
                         ))}
+
+                        {/* Clone of the first image placed at the end */}
+                        <img
+                            className='mainPage_BannerImage'
+                            src={`${process.env.REACT_APP_IMG_URL}/${eventList[0].img}.png`}
+                            alt={`Banner 0`}
+                            style={{ width: '1280px', marginRight: '80px' }}
+                        />
                     </div>
                 </div>
                 <button className="slider-arrow right" onClick={handleNextClick}>›</button>
             </div>
             <div className="slider-indicators">
-                {images.map((_, index) => (
+                {eventList.map((_, index) => (
                     <span
                         key={index}
                         className={`indicator ${index + 1 === currentIndex ? 'active' : ''}`}

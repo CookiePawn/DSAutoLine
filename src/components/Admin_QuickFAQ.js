@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
 import '../styles/QuickFAQPage.css'
-import picture from '../assets/picture.png'
+import picture from '../assets/img/popup/imageUpload.png'
 import { FAQ_KoreaLogo, IncomeLogo } from '../components/LogoList'
 import { quickFAQAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'

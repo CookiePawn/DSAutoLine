@@ -13,7 +13,7 @@ import {
     PopularCarCard,
 } from '../components/Cards';
 import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
-import { hotDealAxios, quickDealAxios, reviewAxios, popularListAxios } from '../services/Request';
+import { hotDealAxios, quickDealAxios, reviewAxios, popularListAxios, eventAxios } from '../services/Request';
 import Slider from "react-slick";
 import '../styles/slick.css'
 import '../styles/slick-theme.css'
@@ -37,9 +37,6 @@ const MainPage = (props) => {
     //리뷰 변수
     const [reviewHovered, setReviewHovered] = useState(false);
 
-    //인기 차량 리스트
-    const [popularEntryStat, setPopularEntryStat] = useState(0);
-
     //슬라이더
     const hotDealSliderRef = useRef(null);
     const quickDealSliderRef = useRef(null);
@@ -51,6 +48,7 @@ const MainPage = (props) => {
     const [quickDealList, setQuickDealList] = useState(null)
     const [reviewList, setReviewList] = useState(null)
     const [popularList, setPopularList] = useState(null)
+    const [eventList, setEvevntList] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,14 +60,15 @@ const MainPage = (props) => {
             setReviewList(response3)
             const response4 = await popularListAxios()
             setPopularList(response4)
+            const response5 = await eventAxios(4, 0)
+            setEvevntList(response5)
         }
         fetchData()
     }, [])
 
 
 
-
-    if (!hotDealList || !quickDealList || !reviewList || !popularList) {
+    if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventList ) {
         return null
     }
     return (
@@ -143,9 +142,8 @@ const MainPage = (props) => {
                 </a>
             </section>
             <div className='eventBannerImage'>
-                <img src={require('../assets/img/banner/lineBanner1.png')} />
+                <img src={`${process.env.REACT_APP_IMG_URL}/${eventList[0].img}.png`} />
             </div>
-
             <section className='popularSection'>
                 <h1 style={{marginBottom: 40}}>가장 <span>인기 많은 차량</span></h1>
                 {/* <span>
