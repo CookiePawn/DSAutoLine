@@ -100,9 +100,15 @@ export const Admin_QuickFAQAdd = (props) => {
     const [FAQ_MINmileage, setFAQ_MINmileage] = useState('');
     const [FAQ_MAXmileage, setFAQ_MAXmileage] = useState('');
     const [FAQ_carprice, setFAQ_carprice] = useState('');
-    const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "", month: ""});
+    const [FAQ_model, setFAQ_model] = useState('');
+    const [FAQ_detailmodel, setFAQ_detailmodel] = useState('');
+    const [FAQ_detailmodel_price, setFAQ_detailmodel_price] = useState('');
+    const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "", month: "" });
     const [selectedCartype, setSelectedCartype] = useState(null);
     const [selectedFueltype, setSelectedFueltype] = useState(null);
+    
+    // 모델 정보를 저장할 상태
+    const [models, setModels] = useState([]);
 
     const years = Array.from({ length: 20 }, (_, i) => (new Date().getFullYear() + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
@@ -122,10 +128,26 @@ export const Admin_QuickFAQAdd = (props) => {
         '수소'
     ];
 
+    const handleAddModel = () => {
+        setModels([
+            ...models,
+            {
+                model: FAQ_model,
+                detailmodel: FAQ_detailmodel,
+                price: FAQ_detailmodel_price
+            }
+        ]);
+
+        //초기화
+        setFAQ_model('');
+        setFAQ_detailmodel('');
+        setFAQ_detailmodel_price('');
+    };
+
     return (
         <div className="admin_content">
             <h2>빠른 간편 문의 <span>- 차량 추가</span></h2>
-            <div className="header-row"/>
+            <div className="header-row" />
             <div className="admin_content_FAQ_add">
                 <div className='categoryTitleDiv'>
                     <h3 onClick={() => setCategoryStat('국산')} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
@@ -142,7 +164,7 @@ export const Admin_QuickFAQAdd = (props) => {
                     onChange={(e) => setFAQ_carname(e.target.value)}
                 />
                 <h3>차량 사진 첨부하기</h3>
-                <img src={picture} alt="배너 미리보기" style={{width: '38px', height: '38px'}} />
+                <img src={picture} alt="배너 미리보기" style={{ width: '38px', height: '38px' }} />
                 <div className="admin_content_FAQ_preview_img"></div>
                 <div className="admin_content_FAQ_newcar_bodySection">
                     <div className="admin_content_FAQ_newcar_PriceSection">
@@ -238,14 +260,38 @@ export const Admin_QuickFAQAdd = (props) => {
                 </div>
                 <h3>세부모델 추가하기</h3>
                 <div className="admin_content_FAQ_detailSection">
-                    <h4>2024년형 가솔린 터보 1.6 하이브리드 2WD<span>/</span>트랜디(A/T) <span>-</span> 1390만원</h4>
+                    <div className="admin_content_FAQ_add_model">
+                        {models.map((model, index) => (
+                            <h4 key={index}>
+                                {model.model} <span>/</span> {model.detailmodel} <span>-</span> {model.price} 만원
+                            </h4>
+                        ))}
+                    </div>
                     <div className="admin_content_FAQ_detail_Section_input">
                         <input
                             placeholder='모델명을 입력해주세요.'
-                            value={FAQ_MINmileage}
-                            onChange={(e) => setFAQ_MINmileage(e.target.value)}
+                            value={FAQ_model}
+                            onChange={(e) => setFAQ_model(e.target.value)}
                         />
+                        <span>/</span>
+                        <input
+                            placeholder='세부모델명을 입력해주세요.'
+                            value={FAQ_detailmodel}
+                            onChange={(e) => setFAQ_detailmodel(e.target.value)}
+                        />
+                        <span>-</span>
+                        <input
+                            placeholder='가격을 입력해주세요.'
+                            value={FAQ_detailmodel_price}
+                            onChange={(e) => setFAQ_detailmodel_price(e.target.value)}
+                        />
+                        <p>만원</p>
                     </div>
+                    <button className="admin_content_FAQ_detailmodel_addbutton" onClick={handleAddModel}>추가하기</button>
+                </div>
+                <div className="admin_content_FAQ_alladd_buttonSection">
+                    <button className="admin_content_FAQ_alladd_addbutton">추가</button>
+                    <button className="admin_content_FAQ_alladd_cancelbutton">취소</button>
                 </div>
             </div>
         </div>
