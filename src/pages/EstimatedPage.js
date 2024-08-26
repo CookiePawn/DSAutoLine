@@ -128,7 +128,7 @@ const OptionPage = (props) => {
                             />
                             <h3>{content.enter} {content.name}</h3>
                         </span>
-                        <p>{content.year}.{content.month} │ {content.size} │ {oilStat}</p>
+                        <p>{content.year}.{content.month} │ {content.category} │ {oilStat}</p>
                         <p>{content.min_cc}~{content.max_cc}CC │ 복합연비 {content.min_fuel_efficiency}~{content.max_fuel_efficiency}km/L</p>
                         <img
                             src={`${process.env.REACT_APP_IMG_URL}/${content.img}.png`}

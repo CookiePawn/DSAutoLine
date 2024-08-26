@@ -42,6 +42,23 @@ export const EventAddPopUp = (props) => {
     )
 }
 
+export const CarAddPopUp = (props) => {
+    return (
+        <>
+            <div className="popupDimmed">
+                <div className="popupDiv">
+                    <img src={require('../assets/img/popup/popupIcon.png')} />
+                    <h2>차량이 추가되었습니다</h2>
+                    <p>메인 페이지, 관리자 페이지에서  확인 가능합니다.</p>
+                    <span onClick={() => window.location.href = '/'}>닫기</span>
+                </div>
+            </div>
+
+        </>
+
+    )
+}
+
 export const ReviewPagePopUp = (props) => {
     const [starStat, setStarStat] = useState(0)
 
