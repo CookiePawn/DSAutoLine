@@ -156,7 +156,7 @@ export const CarmentoPopUp = (props) => {
                         </span>
                         <span>
                             <h4>연락처</h4>
-                            <input type="number" max={11} value={phone} onChange={(e) => setPhone(e.target.value)} />
+                            <input type="number" maxLength={11} value={phone} onChange={(e) => setPhone(e.target.value)} />
                         </span>
                         <span>
                             {!isSelect1 ? <img src={nonClick} onClick={() => setIsSelect1(!isSelect1)} /> : <img src={onClick} onClick={() => setIsSelect1(!isSelect1)} />}

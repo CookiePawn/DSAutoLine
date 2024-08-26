@@ -51,15 +51,15 @@ export const Admin_UserCompletedList = (props) => {
     const onClickChange = async (data) => {
         if (userStat === 0) {
             await carInquiryChangeAxios(data)
-            setUserList(userList.filter(list => list.order_num !== data.order_num))
+            setUserList(userList.filter(list => list.order_num !== data.seq))
         } else if (userStat === 1) {
-            await carInquiryDeleteAxios(data)
-            setUserList(userList.filter(list => list.order_num !== data.order_num))
+            await carInquiryChangeAxios(data)
+            setUserList(userList.filter(list => list.order_num !== data.seq))
         } else if (userStat === 2) {
-            await counselingInquiryDeleteAxios(data)
+            await counselingInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.seq !== data.seq))
         } else if (userStat === 3) {
-            await mentoInquiryDeleteAxios(data)
+            await mentoInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.seq !== data.seq))
         }
     }
@@ -67,7 +67,15 @@ export const Admin_UserCompletedList = (props) => {
 
     return (
         <div className="admin_content">
-            <h2>고객 리스트 <span>- 완료 {currentSituation && (parseInt(currentSituation.counsel_y) + parseInt(currentSituation.estimate_y) + parseInt(currentSituation.mento_y) + parseInt(currentSituation.quick_y))}건</span></h2>
+            <h2>고객 리스트
+                <span>- 완료 
+                    {currentSituation && (
+                        parseInt(currentSituation.counsel_y ? currentSituation.counsel_y : 0) +
+                        parseInt(currentSituation.estimate_y ? currentSituation.estimate_y : 0) +
+                        parseInt(currentSituation.mento_y ? currentSituation.mento_y : 0) +
+                        parseInt(currentSituation.quick_y ? currentSituation.quick_y : 0))}건
+                </span>
+            </h2>
             <span className="admin_content_eventStat_buttonDiv">
                 <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>현황</button>
                 <button className={userStat === 0 && 'selected'} onClick={() => onClickEvent(0)}>즉시 출고</button>
@@ -80,7 +88,6 @@ export const Admin_UserCompletedList = (props) => {
             {userStat === 1 && <QuickFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 2 && <FastFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 3 && <CarmentoList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
-
         </div>
     )
 }
@@ -129,13 +136,13 @@ export const Admin_UserIncompleteList = (props) => {
             await carInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.order_num !== data.seq))
         } else if (userStat === 1) {
-            await carInquiryDeleteAxios(data)
+            await carInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.order_num !== data.seq))
         } else if (userStat === 2) {
-            await counselingInquiryDeleteAxios(data)
+            await counselingInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.seq !== data.seq))
         } else if (userStat === 3) {
-            await mentoInquiryDeleteAxios(data)
+            await mentoInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.seq !== data.seq))
         }
     }
@@ -143,7 +150,15 @@ export const Admin_UserIncompleteList = (props) => {
 
     return (
         <div className="admin_content">
-            <h2>고객 리스트 <span>- 미완료 {currentSituation && (parseInt(currentSituation.counsel_n) + parseInt(currentSituation.estimate_n) + parseInt(currentSituation.mento_n) + parseInt(currentSituation.quick_n))}건</span></h2>
+            <h2>고객 리스트
+                <span>- 미완료
+                    {currentSituation && (
+                        parseInt(currentSituation.counsel_n ? currentSituation.counsel_n : 0) +
+                        parseInt(currentSituation.estimate_n ? currentSituation.estimate_n : 0) +
+                        parseInt(currentSituation.mento_n ? currentSituation.mento_n : 0) +
+                        parseInt(currentSituation.quick_n ? currentSituation.quick_n : 0))}건
+                </span>
+            </h2>
             <span className="admin_content_eventStat_buttonDiv">
                 <button className={userStat === 4 && 'selected'} onClick={() => setUserStat(4)}>현황</button>
                 <button className={userStat === 0 && 'selected'} onClick={() => onClickEvent(0)}>즉시 출고</button>
@@ -190,29 +205,29 @@ const CurrentSituation = (props) => {
                 <div>
                     <span style={{ justifyContent: 'space-between' }}>
                         <p style={{ width: 250 }}>즉시 출고</p>
-                        <p>{props.item.quick_n}</p>
-                        <p>{props.item.quick_y}</p>
+                        <p>{props.item.quick_n ? props.item.quick_n : '0'}</p>
+                        <p>{props.item.quick_y ? props.item.quick_y : '0'}</p>
                     </span>
                 </div>
                 <div>
                     <span style={{ justifyContent: 'space-between' }}>
                         <p style={{ width: 250 }}>빠른 간편 문의 / 한정 특가</p>
-                        <p>{props.item.estimate_n}</p>
-                        <p>{props.item.estimate_y}</p>
+                        <p>{props.item.estimate_n ? props.item.estimate_n : '0'}</p>
+                        <p>{props.item.estimate_y ? props.item.estimate_y : '0'}</p>
                     </span>
                 </div>
                 <div>
                     <span style={{ justifyContent: 'space-between' }}>
                         <p style={{ width: 250 }}>간편 상담</p>
-                        <p>{props.item.counsel_n}</p>
-                        <p>{props.item.counsel_y}</p>
+                        <p>{props.item.counsel_n ? props.item.counsel_n : '0'}</p>
+                        <p>{props.item.counsel_y ? props.item.counsel_y : '0'}</p>
                     </span>
                 </div>
                 <div>
                     <span style={{ justifyContent: 'space-between' }}>
                         <p style={{ width: 250 }}>우수 카멘토</p>
-                        <p>{props.item.mento_n}</p>
-                        <p>{props.item.mento_y}</p>
+                        <p>{props.item.mento_n ? props.item.mento_n : '0'}</p>
+                        <p>{props.item.mento_y ? props.item.mento_y : '0'}</p>
                     </span>
                 </div>
             </div>

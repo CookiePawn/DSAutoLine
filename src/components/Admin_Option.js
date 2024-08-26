@@ -165,7 +165,6 @@ export function Admin_Option() {
                                     ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}/>
                                     : <img src={item.img}/>
                                 }
-                                
                                 <p>{item.name}</p>
                                 <p>{(item.price/10000).toLocaleString()} 만원</p>
                                 <button

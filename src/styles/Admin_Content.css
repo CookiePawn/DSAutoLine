@@ -7,13 +7,13 @@
 
 /*알림 페이지*/
 
-.admin_content > h2 {
+.admin_content>h2 {
     margin: 0;
     font-size: 30px;
     padding: 20px;
 }
 
-.admin_content > h2 > span {
+.admin_content>h2>span {
     font-size: 20px;
     color: #0064FF;
 }
@@ -24,7 +24,7 @@
     border-bottom: 1px solid #111;
 }
 
-.admin_content .header-row > input {
+.admin_content .header-row>input {
     margin: 20px;
 }
 
@@ -35,7 +35,7 @@
     border-bottom: 1px solid #dddddd;
 }
 
-.admin_content .notification > input {
+.admin_content .notification>input {
     margin-right: 30px;
 }
 
@@ -81,13 +81,13 @@
     gap: 15px;
 }
 
-.admin_content_colorAddSection > div {
+.admin_content_colorAddSection>div {
     margin: auto;
     background-color: white;
     border: 1px solid #bbb;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(1) {
+.admin_content_colorAddSection>div:nth-of-type(1) {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -96,14 +96,14 @@
     overflow: hidden;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(1) > h1 {
+.admin_content_colorAddSection>div:nth-of-type(1)>h1 {
     font-size: 28px;
     font-weight: 600;
     color: #111;
     margin-left: 20px;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(1) > input{
+.admin_content_colorAddSection>div:nth-of-type(1)>input {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -116,14 +116,14 @@
     outline: none;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(1) > span:nth-of-type(1) {
+.admin_content_colorAddSection>div:nth-of-type(1)>span:nth-of-type(1) {
     display: block;
     width: 100%;
     height: 1px;
     border-bottom: 1px solid #111;
 }
 
-.admin_content_colorAddSection > img {
+.admin_content_colorAddSection>img {
     width: 38px;
     height: 38px;
     cursor: pointer;
@@ -135,23 +135,28 @@
 
 /* 스크롤바 전체 */
 .admin_content_colorCardList::-webkit-scrollbar {
-    width: 7px; /* 너비 */
+    width: 7px;
+    /* 너비 */
 }
 
 /* 스크롤바 트랙 */
 .admin_content_colorCardList::-webkit-scrollbar-track {
-    background: #00ff0000; /* 배경색 */
+    background: #00ff0000;
+    /* 배경색 */
 }
 
 /* 스크롤바 핸들 */
 .admin_content_colorCardList::-webkit-scrollbar-thumb {
-    background-color: #c4c4c4; /* 색상 */
-    border: 2px solid #f0f0f0; /* 핸들 주위의 여백 */
+    background-color: #c4c4c4;
+    /* 색상 */
+    border: 2px solid #f0f0f0;
+    /* 핸들 주위의 여백 */
 }
 
 /* 스크롤바 핸들 호버 시 */
 .admin_content_colorCardList::-webkit-scrollbar-thumb:hover {
-    background-color: #b4b4b4; /* 호버 시 색상 */
+    background-color: #b4b4b4;
+    /* 호버 시 색상 */
 }
 
 
@@ -165,17 +170,17 @@
     align-items: center;
 }
 
-.admin_content_colorCard > p:nth-of-type(1) {
+.admin_content_colorCard>p:nth-of-type(1) {
     width: 250px;
     margin-left: 50px;
     margin-right: 50px;
 }
 
-.admin_content_colorCard > p:nth-of-type(2) {
+.admin_content_colorCard>p:nth-of-type(2) {
     width: 100px;
 }
 
-.admin_content_colorCard > button {
+.admin_content_colorCard>button {
     position: absolute;
     right: 0px;
     width: 55px;
@@ -192,7 +197,7 @@
 }
 
 
-.admin_content_colorCard > span {
+.admin_content_colorCard>span {
     margin-left: 20px;
     width: 33px;
     height: 33px;
@@ -200,24 +205,24 @@
     border-radius: 4px;
 }
 
-.admin_content_colorCard > p:nth-of-type(2) {
+.admin_content_colorCard>p:nth-of-type(2) {
     margin: 0;
     margin-right: 20px;
     width: 90px;
 }
 
-.admin_content_colorCard.title > p:nth-of-type(1) {
+.admin_content_colorCard.title>p:nth-of-type(1) {
     margin: 0;
     margin-left: 20px;
     width: 35px;
 }
 
-.admin_content_colorCard.title > p:nth-of-type(2) {
+.admin_content_colorCard.title>p:nth-of-type(2) {
     width: 250px;
     margin: 0px 50px;
 }
 
-.admin_content_colorCard.title > p:nth-of-type(3) {
+.admin_content_colorCard.title>p:nth-of-type(3) {
     width: 100px;
 }
 
@@ -227,14 +232,14 @@
 
 
 
-.admin_content_colorAddSection > div:nth-of-type(2) {
+.admin_content_colorAddSection>div:nth-of-type(2) {
     width: calc(30% - 15px);
     height: 700px;
     display: flex;
     flex-direction: column;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(2) > h3 {
+.admin_content_colorAddSection>div:nth-of-type(2)>h3 {
     width: 90%;
     margin: auto;
     font-size: 24px;
@@ -244,7 +249,7 @@
     margin-bottom: 10px;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(2) > input {
+.admin_content_colorAddSection>div:nth-of-type(2)>input {
     width: calc(90% - 20px);
     height: 40px;
     border: 1px solid #bbb;
@@ -256,7 +261,7 @@
     padding: 0px 10px;
 }
 
-.admin_content_colorAddSection > div:nth-of-type(2) > button {
+.admin_content_colorAddSection>div:nth-of-type(2)>button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -410,7 +415,7 @@
     justify-content: space-between;
 }
 
-.admin_content_hotdeal_buttonSection{
+.admin_content_hotdeal_buttonSection {
     display: flex;
     flex-direction: row;
     margin-left: 1200px;
@@ -424,7 +429,7 @@
     display: flex;
 }
 
-.admin_content_hotdeal-infosub > p {
+.admin_content_hotdeal-infosub>p {
     font-size: 14px;
     font-weight: 500;
     color: #767676;
@@ -437,7 +442,7 @@
     display: flex;
 }
 
-.admin_content_event_infosub > p {
+.admin_content_event_infosub>p {
 
     font-size: 14px;
     font-weight: 500;
@@ -463,11 +468,11 @@
     align-items: center;
 }
 
-.admin_content_edit_text_form > p {
+.admin_content_edit_text_form>p {
     width: 100px;
 }
 
-.admin_content_edit_text_form > input {
+.admin_content_edit_text_form>input {
     width: 300px;
 }
 
@@ -491,10 +496,9 @@
     padding: 0px 20px;
 }
 
-.admin_content_UserAllListDiv {
-}
+.admin_content_UserAllListDiv {}
 
-.admin_content_UserAllListDiv > div {
+.admin_content_UserAllListDiv>div {
     position: relative;
     width: 100%;
     border-bottom: 1px solid #dbdbdb;
@@ -502,7 +506,7 @@
     align-items: center;
 }
 
-.admin_content_UserAllListDiv > div > span {
+.admin_content_UserAllListDiv>div>span {
     width: 85%;
     margin-left: 10px;
     display: flex;
@@ -510,27 +514,27 @@
     padding: 5px 0px;
 }
 
-.admin_content_UserListTitleSpan > p {
+.admin_content_UserListTitleSpan>p {
     text-align: center;
     color: rgba(0, 0, 0, 0.6);
 }
 
-.admin_content_UserAllListDiv > div > span > p {
+.admin_content_UserAllListDiv>div>span>p {
     text-align: center;
 }
 
-.admin_content_UserAllListDiv > div > span > span > p {
+.admin_content_UserAllListDiv>div>span>span>p {
     text-align: center;
 }
 
-.admin_content_UserAllListDiv > div > button {
+.admin_content_UserAllListDiv>div>button {
     width: 55px;
     height: 100%;
     border: none;
     cursor: pointer;
 }
 
-.admin_content_UserAllListDiv > div > button:nth-of-type(1) {
+.admin_content_UserAllListDiv>div>button:nth-of-type(1) {
     position: absolute;
     right: 55px;
     border-left: 1px solid #dbdbdb;
@@ -539,7 +543,7 @@
     font-size: 15px;
 }
 
-.admin_content_UserAllListDiv > div > button:nth-of-type(2) {
+.admin_content_UserAllListDiv>div>button:nth-of-type(2) {
     position: absolute;
     right: 0px;
     color: #FF0000;
@@ -573,7 +577,8 @@
 
 .admin_content_event_button.active {
     background-color: #007BFF;
-    color: white;border: none;
+    color: white;
+    border: none;
 }
 
 .admin_content_upload_section {
@@ -582,8 +587,9 @@
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
 .admin_content_event_addSection {
-    margin-top:10px;
+    margin-top: 10px;
     height: auto;
     background-color: white;
     z-index: 1001;
@@ -592,7 +598,8 @@
 .admin_content_event_addSection_body {
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* 스크롤 생성 */
+    overflow-y: auto;
+    /* 스크롤 생성 */
     padding: 20px;
 }
 
@@ -602,16 +609,18 @@
     flex-direction: column;
 }
 
-.admin_content_event_nameSection > input{
+.admin_content_event_nameSection>input {
     width: 287px;
     height: 31px;
     border-radius: 5px;
 }
-.admin_content_event_dateSection > h1{
+
+.admin_content_event_dateSection>h1 {
     font-size: 20px;
     font-weight: 600;
 }
-.admin_content_event_nameSection > h1{
+
+.admin_content_event_nameSection>h1 {
     font-size: 20px;
     font-weight: 600;
 }
@@ -621,20 +630,20 @@
     flex-direction: column;
 }
 
-.admin_content_event_bannerSection > h3 {
+.admin_content_event_bannerSection>h3 {
     font-size: 20px;
     font-weight: 600;
 }
 
 
-.admin_content_event_bannerSection > img {
+.admin_content_event_bannerSection>img {
     width: 38px;
     height: 38px;
     cursor: pointer;
     margin-top: 10px;
 }
 
-.admin_content_event_bannerSection > span {
+.admin_content_event_bannerSection>span {
     color: #ff0000
 }
 
@@ -651,7 +660,7 @@
     flex-direction: column;
 }
 
-.admin_content_event_mainSection > img {
+.admin_content_event_mainSection>img {
     width: 38px;
     height: 38px;
     cursor: pointer;
@@ -713,7 +722,7 @@
     margin: 0px 0px 10px 20px;
 }
 
-.admin_content_eventStat_buttonDiv > button {
+.admin_content_eventStat_buttonDiv>button {
     width: 150px;
     height: 45px;
     border: 1px solid #767676;
@@ -724,7 +733,7 @@
     cursor: pointer;
 }
 
-.admin_content_eventStat_buttonDiv > button.selected {
+.admin_content_eventStat_buttonDiv>button.selected {
     color: white;
     background-color: #0064FF;
     border: none;
@@ -735,7 +744,7 @@
     margin-left: auto;
 }
 
-.admin_content_listButtonDiv > button {
+.admin_content_listButtonDiv>button {
     height: 120px;
     width: 55px;
     border: none;
@@ -744,7 +753,7 @@
     color: #ff0000;
 }
 
-.admin_content_listButtonDiv > button:nth-of-type(1) {
+.admin_content_listButtonDiv>button:nth-of-type(1) {
     color: #0064FF;
 }
 
@@ -755,7 +764,7 @@
     margin-left: 50px;
 }
 
-.admin_content_reviewListComment > p  {
+.admin_content_reviewListComment>p {
     color: #767676;
 }
 
@@ -774,29 +783,28 @@
     padding: 0 20px;
 }
 
-.admin_content_FAQ_add > h3 {
+.admin_content_FAQ_add>h3 {
     font-size: 22px;
     font-weight: 600;
 }
 
-.admin_content_FAQ_add >input {
+.admin_content_FAQ_add>input {
     width: 250px;
     height: 37px;
-    border-radius: 18.5px;
     border: 1px solid #DBDBDB;
     margin-bottom: 20px;
 }
 
 .admin_content_FAQ_preview_img {
-    width: 300px;
-    height: 185px;
+    display: flex;
+    width: 400px;
+    height: 300px;
     border: 1px solid #cacaca;
-    border-radius: 14px;
     margin-top: 10px;
 
 }
 
-.admin_content_FAQ_newcar_bodySection{
+.admin_content_FAQ_newcar_bodySection {
     display: flex;
     flex-direction: row;
 }
@@ -804,10 +812,10 @@
 .admin_content_FAQ_newcar_PriceSection {
     display: flex;
     flex-direction: column;
-    margin-right: 200px;
+    margin-right: 150px;
 }
 
-.admin_content_FAQ_newcar_PriceSection > h3 {
+.admin_content_FAQ_newcar_PriceSection>h3 {
     font-size: 22px;
     font-weight: 600;
 }
@@ -817,16 +825,15 @@
     flex-direction: row;
 }
 
-.admin_content_FAQ_newcar_PriceSection_input > input {
+.admin_content_FAQ_newcar_PriceSection_input>input {
     width: 250px;
     height: 37px;
-    border-radius: 18.5px;
     border: 1px solid #DBDBDB;
     margin-bottom: 20px;
     margin-right: 10px;
 }
 
-.admin_content_FAQ_newcar_PriceSection_input > p {
+.admin_content_FAQ_newcar_PriceSection_input>p {
     font-size: 18px;
     font-weight: 500;
 }
@@ -836,7 +843,7 @@
     flex-direction: column;
 }
 
-.admin_content_FAQ_newcar_DateSection > h3 {
+.admin_content_FAQ_newcar_DateSection>h3 {
     font-size: 22px;
     font-weight: 600;
 }
@@ -847,7 +854,6 @@
 }
 
 .admin_content_FAQ_cartypeSection {
-    width: 330px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -855,27 +861,30 @@
     margin-bottom: 40px;
 }
 
-.admin_content_FAQ_cartypeSection > button {
+.admin_content_FAQ_cartypeSection>button {
     width: auto;
-    height: 28px;
-    border-radius: 18.5px;
+    height: 35px;
     font-size: 16px;
     font-weight: 500;
     border: 1.5px solid #DBDBDB;
     background-color: #FFFFFF;
+    color: #767676;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
-    
+
 }
 
 .admin_content_FAQ_cartypeSection button.selected {
-    background-color: #007bff; /* 선택된 버튼의 배경색 */
-    color: white; /* 선택된 버튼의 글자색 */
-    border-color: #000000; /* 선택된 버튼의 테두리색 */
+    background-color: #007bff;
+    /* 선택된 버튼의 배경색 */
+    color: white;
+    /* 선택된 버튼의 글자색 */
+    border: none;
 }
 
 .admin_content_FAQ_cartypeSection .cartype-button:nth-child(5) {
-    margin-right: 0; /* 오른쪽 여백 제거 */
+    margin-right: 0;
+    /* 오른쪽 여백 제거 */
 }
 
 .admin_content_FAQ_MAXMINSection {
@@ -883,20 +892,22 @@
     flex-direction: row;
     text-align: center;
     align-items: center;
-    margin-bottom: 40px;;
+    margin-bottom: 40px;
+    ;
 }
 
-.admin_content_FAQ_MAXMINSection > p {
+.admin_content_FAQ_MAXMINSection>p {
+    width: 40px;
     font-size: 18px;
     font-weight: 500;
     margin-right: 7px;
 }
 
-.admin_content_FAQ_MAXMINSection > input {
+.admin_content_FAQ_MAXMINSection>input {
     width: 106px;
     height: 37px;
-    border-radius: 18.5px;
     margin-right: 7px;
+    border: 1px solid #dbdbdb;
 }
 
 .admin_content_FAQ_detailSection {
@@ -910,13 +921,27 @@
     margin-bottom: 10px;
 }
 
-.admin_content_FAQ_add_model > h4 {
+.admin_content_FAQ_add_model>div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.admin_content_FAQ_add_model>div>button {
+    border: 1px solid #dbdbdb;
+    background-color: transparent;
+    color: tomato;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.admin_content_FAQ_add_model>div>h4 {
     margin: 0;
     font-size: 18px;
     color: #0064FF;
 }
 
-.admin_content_FAQ_add_model > h4 > span {
+.admin_content_FAQ_add_model>div>h4>span {
     font-size: 22px;
     color: #000000;
 }
@@ -927,21 +952,20 @@
     gap: 10px;
 }
 
-.admin_content_FAQ_detail_Section_input > span {
+.admin_content_FAQ_detail_Section_input>span {
     font-size: 37px;
     color: #000000;
 }
 
-.admin_content_FAQ_detail_Section_input > input {
+.admin_content_FAQ_detail_Section_input>input {
     width: 244px;
     height: 37px;
-    border-radius: 18.5px;
+    border: 1px solid #dbdbdb;
 }
 
 .admin_content_FAQ_detailmodel_addbutton {
     width: 92px;
     height: 37px;
-    border-radius: 18.5px;
     cursor: pointer;
     background-color: #0064FF;
     color: #FFFFFF;
@@ -955,18 +979,18 @@
     flex-direction: row;
 }
 
-.admin_content_optionCard.title > p:nth-of-type(1) {
+.admin_content_optionCard.title>p:nth-of-type(1) {
     width: 100px;
     margin-left: 20px;
 }
 
-.admin_content_optionCard.title > p:nth-of-type(2) {
+.admin_content_optionCard.title>p:nth-of-type(2) {
     width: 250px;
     margin-left: 50px;
     margin-right: 50px;
 }
 
-.admin_content_optionCard.title > p:nth-of-type(3) {
+.admin_content_optionCard.title>p:nth-of-type(3) {
     width: 100px;
 }
 
@@ -976,23 +1000,28 @@
 
 /* 스크롤바 전체 */
 .admin_content_optionCardList::-webkit-scrollbar {
-    width: 7px; /* 너비 */
+    width: 7px;
+    /* 너비 */
 }
 
 /* 스크롤바 트랙 */
 .admin_content_optionCardList::-webkit-scrollbar-track {
-    background: #00ff0000; /* 배경색 */
+    background: #00ff0000;
+    /* 배경색 */
 }
 
 /* 스크롤바 핸들 */
 .admin_content_optionCardList::-webkit-scrollbar-thumb {
-    background-color: #c4c4c4; /* 색상 */
-    border: 2px solid #f0f0f0; /* 핸들 주위의 여백 */
+    background-color: #c4c4c4;
+    /* 색상 */
+    border: 2px solid #f0f0f0;
+    /* 핸들 주위의 여백 */
 }
 
 /* 스크롤바 핸들 호버 시 */
 .admin_content_optionCardList::-webkit-scrollbar-thumb:hover {
-    background-color: #b4b4b4; /* 호버 시 색상 */
+    background-color: #b4b4b4;
+    /* 호버 시 색상 */
 }
 
 .admin_content_optionCard {
@@ -1004,21 +1033,21 @@
     box-sizing: border-box;
 }
 
-.admin_content_optionCard > img {
+.admin_content_optionCard>img {
     width: 120px;
 }
 
-.admin_content_optionCard > p:nth-of-type(1) {
+.admin_content_optionCard>p:nth-of-type(1) {
     margin-left: 50px;
     width: 250px;
 }
 
-.admin_content_optionCard > p:nth-of-type(2) {
+.admin_content_optionCard>p:nth-of-type(2) {
     margin-left: 50px;
     width: 100px;
 }
 
-.admin_content_optionCard > button {
+.admin_content_optionCard>button {
     position: absolute;
     right: 0px;
     width: 55px;
@@ -1040,13 +1069,13 @@
 
 .admin_content_FAQ_alladd_addbutton {
     margin: 0;
-    width: 80px;
+    width: 100%;
     height: 40px;
-    border-radius: 29px;
     background-color: #0064FF;
     color: #FFFFFF;
     border: 1px solid #0064FF;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .admin_content_FAQ_alladd_cancelbutton {
@@ -1057,5 +1086,91 @@
     background-color: #ffffff;
     color: #000000;
     border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.admin_content_FAQ_ColorAddDiv {
+    margin-top: 50px;
+}
+
+.admin_content_FAQ_ColorAddDiv>span {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(1) {
+    width: 500px;
+    height: 600px;
+    border: 1px solid #dbdbdb;
+    margin-right: 10px;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(1) > div:nth-of-type(2) {
+    overflow-y: auto;
+    height: 498px;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(1)>input {
+    float: right;
+    width: 220px;
+    height: 35px;
+    border-radius: 20px;
+    border: 1px solid #bbb;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px 10px 0px 0px;
+    outline: none;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(1)>span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2) {
+    width: 500px;
+    height: 600px;
+    border: 1px solid #DBDBDB;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2) > span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2)>div:nth-of-type(1) {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2) > div:nth-of-type(3) {
+    overflow-y: auto;
+    max-height: 498px;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2)>div>input {
+    float: left;
+    width: 150px;
+    height: 35px;
+    border-radius: 20px;
+    border: 1px solid #bbb;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px 0px 0px 10px;
+    outline: none;
+}
+
+.admin_content_FAQ_ColorAddDiv>span>div:nth-of-type(2)>div>button {
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 100px;
+    border: none;
+    background-color: #0064FF;
+    color: white;
     cursor: pointer;
 }

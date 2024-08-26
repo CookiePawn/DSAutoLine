@@ -119,7 +119,7 @@ export const Admin_HotdealEdit = (props) => {
     }
     return (
         <div className="admin_content">
-            <h2>한정 특가 <span>- 차량 수정 및 삭제</span></h2>
+            <h2>한정 특가 <span>- 차량 관리</span></h2>
             <input
                 className="admin_content_searchListInput"
                 placeholder='차량을 검색해주세요'
