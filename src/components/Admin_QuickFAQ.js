@@ -44,6 +44,20 @@ export const Admin_QuickFAQEdit = (props) => {
     }, [carList, searchValue])
 
 
+    const oilFunction = (item) => {
+        const oil = [
+            item.lpg === 1 && 'LPG',
+            item.gasoline === 1 && '가솔린',
+            item.diesel === 1 && '디젤',
+            item.hybrid === 1 && '하이브리드',
+            item.electric === 1 && '전기',
+            item.h2 === 1 && '수소',
+        ].filter(Boolean).join(', ');
+        return oil
+    }
+
+
+
 
 
     if (!filteredList) {
@@ -75,22 +89,21 @@ export const Admin_QuickFAQEdit = (props) => {
                             }}
                         />
                         <div className="admin_content_hotdeal-info">
-                            <h1>{item.name}</h1>
+                            <h1>{item.enter} {item.name}</h1>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.date}</p>
+                                <p>{item.year}.{item.month}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.size}</p>
+                                <p>{item.category}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.fuel}</p>
+                                <p>{oilFunction(item)}</p>
                             </div>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.cc}</p>
+                                <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.mileage}</p>
-                                <div className='admin_content_hodeal_line' />
-                                <p>{item.money}</p>
+                                <p>복합연비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}km/L</p>
                             </div>
                         </div>
+                        <button className="admin_content_carListDeleteButton">삭제</button>
                     </div>
                 ))}
             </div>

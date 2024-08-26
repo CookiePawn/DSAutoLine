@@ -58,7 +58,9 @@ const OptionPage = (props) => {
                 content.lpg === 1 && 'LPG',
                 content.gasoline === 1 && '가솔린',
                 content.diesel === 1 && '디젤',
-                content.hybrid === 1 && '하이브리드'
+                content.hybrid === 1 && '하이브리드',
+                content.electric === 1 && '전기',
+                content.h2 === 1 && '수소',
             ].filter(Boolean).join(', ');
             setOilStat(oil)
 

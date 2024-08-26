@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
-import { quickDealAxios } from '../services/Request'
-import { quickFAQAxios } from '../services/Request'
+import { quickFAQAxios, quickDealAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
 
 
@@ -95,7 +94,8 @@ export const Admin_QuickDealEdit = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await quickFAQAxios(null, null, null)
+            const response = await quickDealAxios(null, null, null)
+            console.log(response)
             setCarList(response)
         }
         fetchData()
@@ -109,6 +109,19 @@ export const Admin_QuickDealEdit = (props) => {
             ))
         }
     }, [carList, searchValue])
+
+
+    const oilFunction = (item) => {
+        const oil = [
+            item.lpg === 1 && 'LPG',
+            item.gasoline === 1 && '가솔린',
+            item.diesel === 1 && '디젤',
+            item.hybrid === 1 && '하이브리드',
+            item.electric === 1 && '전기',
+            item.h2 === 1 && '수소',
+        ].filter(Boolean).join(', ');
+        return oil
+    }
 
 
 
@@ -142,22 +155,34 @@ export const Admin_QuickDealEdit = (props) => {
                             }}
                         />
                         <div className="admin_content_hotdeal-info">
-                            <h1>{item.name}</h1>
+                            <h1>{item.enter} {item.name}</h1>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.date}</p>
+                                <p>{item.year}.{item.month}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.size}</p>
+                                <p>{item.category}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.fuel}</p>
+                                <p>{oilFunction(item)}</p>
                             </div>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.cc}</p>
+                                <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>{item.mileage}</p>
-                                <div className='admin_content_hodeal_line' />
-                                <p>{item.money}</p>
+                                <p>복합연비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}km/L</p>
                             </div>
                         </div>
+                        <div>
+                            <p>내장 색상: {item.in_color}</p>
+                            <p>외장 색상: {item.out_color}</p>
+                        </div>
+                        <div>
+                            {item.option.map((item, idx) => (
+                                <p>{item.name}</p>
+                            ))}
+                        </div>
+                        <div>
+                            <p>트림1: {item.trim1}</p>
+                            <p>트림2: {item.trim2}</p>
+                        </div>
+                        <button className="admin_content_carListDeleteButton">삭제</button>
                     </div>
                 ))}
             </div>
