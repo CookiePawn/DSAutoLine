@@ -122,7 +122,7 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard' onClick={() => { props.setCarmentoPopup(true); document.body.style.overflow = 'hidden' }}>
+        <div className='eventCard' onClick={() => { props.setCarmentoPopup(true); props.setMento(`${props.item.name} ${props.item.position}`); document.body.style.overflow = 'hidden' }}>
             <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)} />
             <div>
                 <span>

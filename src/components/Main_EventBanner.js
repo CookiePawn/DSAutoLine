@@ -51,6 +51,13 @@ const BannerSlider = () => {
         }
     }, [currentIndex, eventList]);
 
+    const handleIndicatorClick = (index) => {
+        if (!isTransitioning) {
+            setIsTransitioning(true);
+            setCurrentIndex(index + 1);
+        }
+    };
+
     if (!eventList) {
         return null;
     }
@@ -103,7 +110,7 @@ const BannerSlider = () => {
                     <span
                         key={index}
                         className={`indicator ${index + 1 === currentIndex ? 'active' : ''}`}
-                        onClick={() => setCurrentIndex(index + 1)}
+                        onClick={() => handleIndicatorClick(index)} // 클릭 시 해당 인덱스로 이동
                     ></span>
                 ))}
             </div>

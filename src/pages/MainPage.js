@@ -33,6 +33,7 @@ const MainPage = (props) => {
     //우수카멘토 변수
     const [carmentPopup, setCarmentoPopup] = useState(false);
     const [checkPopup, setCheckPopup] = useState(false);
+    const [mento, setMento] = useState('');
 
     //리뷰 변수
     const [reviewHovered, setReviewHovered] = useState(false);
@@ -193,7 +194,7 @@ const MainPage = (props) => {
                 </a>
             </section>
             {carmentPopup &&
-                <CarmentoPopUp setCarmentoPopup={setCarmentoPopup} setCheckPopup={setCheckPopup} />
+                <CarmentoPopUp setCarmentoPopup={setCarmentoPopup} mento={mento} setCheckPopup={setCheckPopup} />
             }
             {checkPopup &&
                 <OptionPagePopUp />
@@ -204,7 +205,7 @@ const MainPage = (props) => {
                 <h1>가장 좋은<br /><span>후기를 받은 우수카멘토</span></h1>
                 <div className='eventListDiv'>
                     {carmentoList.slice(0, 4).map((item, idx) => (
-                        <EventCard item={item} setCarmentoPopup={setCarmentoPopup} />
+                        <EventCard item={item} setMento={setMento} setCarmentoPopup={setCarmentoPopup} />
                     ))}
                 </div>
             </section>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/PopUp.css'
 import { mentoringAxios } from '../services/Request'
 import { StarIcon } from './Icons'
@@ -114,10 +114,16 @@ export const ReviewPagePopUp = (props) => {
 export const CarmentoPopUp = (props) => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
-    const [mento, setMento] = useState('이주빈 팀장')
+    const [mento, setMento] = useState('')
 
     const [isSelect1, setIsSelect1] = useState(false)
     const [isSelect2, setIsSelect2] = useState(false)
+
+    useEffect(() => {
+        if (props.mento) {
+            setMento(props.mento);
+        }
+    }, [props.mento]);
 
     const onClickYes = async () => {
         if (isSelect1 && isSelect2 && name !== '' && phone.length >= 10 && mento !== '') {
@@ -144,7 +150,7 @@ export const CarmentoPopUp = (props) => {
                             <img src={require('../assets/img/carmento/carmento1.jpg')} />
                         </span>
                         <span>
-                            <h2>이주빈 팀장</h2>
+                            <h2>{mento}</h2>
                             <p>고객님들이 항상 만족하실 수 있도록 <br />최선을 다하겠습니다.</p>
                         </span>
                     </div>
