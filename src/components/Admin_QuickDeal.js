@@ -118,7 +118,7 @@ export const Admin_QuickDealEdit = (props) => {
     }
     return (
         <div className="admin_content">
-            <h2>즉시 출고 <span>- 차량 수정 및 삭제</span></h2>
+            <h2>즉시 출고 <span>- 차량 관리</span></h2>
             <input
                 className="admin_content_searchListInput"
                 placeholder='차량을 검색해주세요'

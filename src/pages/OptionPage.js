@@ -280,7 +280,7 @@ const OptionPage = (props) => {
                                                 }
                                             }}
                                         >
-                                            <img src={require(`../assets/img/option/${item.img}.png`)} />
+                                            <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} />
                                             <p>{item.name}</p>
                                             <h4>{(item.price / 10000).toLocaleString()}만원</h4>
                                             {options.find(option => option.name === item.name) &&

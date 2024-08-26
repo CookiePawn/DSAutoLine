@@ -532,4 +532,17 @@ export const mentoInquiryChangeAxios = async (data) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 우수 카멘토 완료/미완료 POST
+ * @returns 
+ */
+export const carInsertAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/carInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
 } 
