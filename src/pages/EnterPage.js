@@ -157,27 +157,32 @@ const EnterPage = () => {
                     </div>
                     <div className='Enter_Process'>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
-                            <p>렌트, 리스 상담을 통한 견적서 발송</p>
+                            <img src='/1.png' alt='Process Check' className='process-icon1'/>
+                            <p>견적서 발송</p>
                         </div>
+                        <img src='/7.png' alt='Process Check' className='process-icon7'/>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
+                            <img src='/2.png' alt='Process Check' className='process-icon2'/>
                             <p>필요 서류 준비</p>
                         </div>
+                        <img src='/7.png' alt='Process Check' className='process-icon7'/>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
+                            <img src='/3.png' alt='Process Check' className='process-icon3'/>
                             <p>심사 및 승인</p>
                         </div>
+                        <img src='/7.png' alt='Process Check' className='process-icon7'/>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
+                            <img src='/4.png' alt='Process Check' className='process-icon4'/>
                             <p>계약 완료</p>
                         </div>
+                        <img src='/7.png' alt='Process Check' className='process-icon7'/>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
+                            <img src='/5.png' alt='Process Check' className='process-icon5'/>
                             <p>인도지 출고</p>
                         </div>
+                        <img src='/7.png' alt='Process Check' className='process-icon7'/>
                         <div className='process-item'>
-                            <img src='/processcheck.png' alt='Process Check' className='process-icon'/>
+                            <img src='/6.png' alt='Process Check' className='process-icon6'/>
                             <p>사후 관리</p>
                         </div>
                     </div>
