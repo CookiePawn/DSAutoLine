@@ -13,6 +13,7 @@ import {
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
+import { CarAddPopUp } from "./PopUp";
 
 
 
@@ -130,7 +131,7 @@ export const Admin_QuickFAQAdd = (props) => {
 
 
     // 모델 정보를 저장할 상태
-    const [models, setModels] = useState([]);
+    const [trims, setTrims] = useState([]);
 
     //색상, 옵션 배열
     const [colorList, setColorList] = useState(null)
@@ -144,6 +145,8 @@ export const Admin_QuickFAQAdd = (props) => {
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
     const [optionImg, setOptionImg] = useState(null)
+
+    const [popupStat, setPopupStat] = useState(false)
 
     const years = Array.from({ length: 20 }, (_, i) => (new Date().getFullYear() + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
@@ -183,8 +186,8 @@ export const Admin_QuickFAQAdd = (props) => {
 
 
     const handleAddModel = () => {
-        setModels([
-            ...models,
+        setTrims([
+            ...trims,
             {
                 trim1: FAQ_model,
                 trim2: FAQ_detailmodel,
@@ -203,6 +206,7 @@ export const Admin_QuickFAQAdd = (props) => {
     }
     return (
         <div className="admin_content">
+            {popupStat && <CarAddPopUp />}
             <h2>빠른 간편 문의 <span>- 차량 추가</span></h2>
             <div className="header-row" />
             <div className="admin_content_FAQ_add">
@@ -387,11 +391,11 @@ export const Admin_QuickFAQAdd = (props) => {
                 <h3>세부모델 추가하기</h3>
                 <div className="admin_content_FAQ_detailSection">
                     <div className="admin_content_FAQ_add_model">
-                        {models.map((model, index) => (
+                        {trims.map((model, index) => (
                             <div>
-                                <button onClick={() => setModels(models.filter((_, i) => i !== index))}>삭제</button>
+                                <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>삭제</button>
                                 <h4 key={index}>
-                                    {model.model} <span>/</span> {model.detailmodel} <span>-</span> {model.price} 원
+                                    {model.trim1} <span>/</span> {model.trim2} <span>-</span> {model.price} 원
                                 </h4>
                             </div>
                         ))}
@@ -632,10 +636,9 @@ export const Admin_QuickFAQAdd = (props) => {
                         onClick={async () => {
                             if (FAQ_carname !== '' && minFuel !== '' && maxFuel !== ''
                                 && maxCC !== '' && minCC !== '' && FAQ_carprice !== ''
-                                && FAQ_model !== '' && FAQ_detailmodel !== '' && FAQ_detailmodel_price !== ''
-                                && FAQ_startDate.year !== '' && FAQ_startDate.month !== ''
-                                && selectedCartype && imgURL && models.length !== 0
-                                && colorSelectedList && optionSelectedList) {
+                                && FAQ_startDate.year !== "" && FAQ_startDate.month !== ""
+                                && selectedCartype && imgURL && trims.length !== 0
+                                && colorSelectedList.length !== 0 && rentalPrice !== '' && leasePrice !== '') {
                                 const random = generateRandomString(20)
                                 await carInsertAxios({
                                     entry: categoryStat,
@@ -643,6 +646,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                     car_name: FAQ_carname,
                                     img: `car_${random}`,
                                     price: FAQ_carprice,
+                                    info: `${FAQ_startDate.year}년형 ${trims[0].trim1}${trims[0].trim2}`,
                                     category: selectedCartype,
                                     size: selectedCartype,
                                     rental_price: rentalPrice,
@@ -660,10 +664,11 @@ export const Admin_QuickFAQAdd = (props) => {
                                     min_fuel_efficiency: minFuel,
                                     max_fuel_efficiency: maxFuel,
                                     color: colorSelectedList,
-                                    trim: models,
+                                    trim: trims,
                                     option: optionSelectedList,
                                 })
-                                await imageUploadAxios(imgURL, `car${random}`)
+                                await imageUploadAxios(imgURL, `car_${random}`)
+                                setPopupStat(true)
                             }
                         }}
                     >
@@ -675,44 +680,4 @@ export const Admin_QuickFAQAdd = (props) => {
     );
 };
 
-// const [categoryStat, setCategoryStat] = useState('국산');
-// const [brandStat, setBrandStat] = useState('현대');
-// const [FAQ_carname, setFAQ_carname] = useState('');
-// const [minFuel, setMinFuel] = useState('');
-// const [maxFuel, setMaxFuel] = useState('');
-// const [maxCC, setMaxCC] = useState('')
-// const [minCC, setMinCC] = useState('')
-// const [FAQ_carprice, setFAQ_carprice] = useState('');
-// const [FAQ_model, setFAQ_model] = useState('');
-// const [FAQ_detailmodel, setFAQ_detailmodel] = useState('');
-// const [FAQ_detailmodel_price, setFAQ_detailmodel_price] = useState('');
-// const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "", month: "" });
 
-// const [selectedCartype, setSelectedCartype] = useState(null);
-// const [imgURL, setImgURL] = useState(null)
-
-// //연료
-// const [gasoline, setGasoline] = useState(0)
-// const [diesel, setDiesel] = useState(0)
-// const [lpg, setLpg] = useState(0)
-// const [hybrid, setHybrid] = useState(0)
-// const [electric, setElectric] = useState(0)
-// const [h2, setH2] = useState(0)
-
-
-
-// // 모델 정보를 저장할 상태
-// const [models, setModels] = useState([]);
-
-// //색상, 옵션 배열
-// const [colorList, setColorList] = useState(null)
-// const [colorSelectedList, setColorSelectedList] = useState([])
-// const [optionList, setOptionList] = useState(null)
-// const [optionSelectedList, setOptionSelectedList] = useState([])
-// const [searchColor, setSearchColor] = useState('');
-// const [searchOption, setSearchOption] = useState('');
-// const [colorName, setColorName] = useState('')
-// const [colorRGB, setColorRGB] = useState('')
-// const [optionName, setOptionName] = useState('')
-// const [optionPrice, setOptionPrice] = useState('')
-// const [optionImg, setOptionImg] = useState(null)
