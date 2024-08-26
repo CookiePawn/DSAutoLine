@@ -58,9 +58,20 @@ const BannerSlider = () => {
         }
     };
 
+    const getdimmedImage = (index) => {
+        const leftIndex = currentIndex === 1 ? eventList.length : currentIndex - 1;
+        const rightIndex = currentIndex === eventList.length ? 1 : currentIndex + 1;
+
+        if (index === leftIndex || index === rightIndex) {
+            return 'dimmed';
+        }
+        return '';
+    };
+
     if (!eventList) {
         return null;
     }
+
 
     return (
         <section className="mainPage_BannerSection">
@@ -77,7 +88,7 @@ const BannerSlider = () => {
                     >
                         {/* Clone of the last image placed at the start */}
                         <img
-                            className='mainPage_BannerImage'
+                            className={`mainPage_BannerImage ${getdimmedImage(eventList.length)}`}
                             src={`${process.env.REACT_APP_IMG_URL}/${eventList[eventList.length - 1].img}.png`}
                             alt={`Banner ${eventList.length - 1}`}
                             style={{ width: '1280px', marginRight: '80px' }}
@@ -87,16 +98,17 @@ const BannerSlider = () => {
                         {eventList.map((item, index) => (
                             <img
                                 key={index}
-                                className='mainPage_BannerImage'
+                                className={`mainPage_BannerImage ${getdimmedImage(index + 1)}`}
                                 src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
                                 alt={`Banner ${index}`}
                                 style={{ width: '1280px', marginRight: '80px' }}
+                                onClick={() => window.location.href = `/Event/${item.event_num}`}
                             />
                         ))}
 
                         {/* Clone of the first image placed at the end */}
                         <img
-                            className='mainPage_BannerImage'
+                            className={`mainPage_BannerImage ${getdimmedImage(1)}`}
                             src={`${process.env.REACT_APP_IMG_URL}/${eventList[0].img}.png`}
                             alt={`Banner 0`}
                             style={{ width: '1280px', marginRight: '80px' }}
@@ -110,7 +122,7 @@ const BannerSlider = () => {
                     <span
                         key={index}
                         className={`indicator ${index + 1 === currentIndex ? 'active' : ''}`}
-                        onClick={() => handleIndicatorClick(index)} // 클릭 시 해당 인덱스로 이동
+                        onClick={() => handleIndicatorClick(index)}
                     ></span>
                 ))}
             </div>

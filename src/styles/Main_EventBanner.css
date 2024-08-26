@@ -24,6 +24,12 @@
 .mainPage_BannerImage {
     width: 1280px;
     height: auto;
+    cursor: pointer;
+}
+
+.mainPage_BannerImage.dimmed {
+    filter: brightness(50%);
+    transition: filter 1s ease-in-out;
 }
 
 .slider-arrow {
