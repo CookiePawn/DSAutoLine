@@ -234,7 +234,7 @@ const OptionPage = (props) => {
                                     </span>
                                 }
                                 <span style={{ display: trimStat === 0 ? 'block' : 'none', borderRight: '1px solid #ededed' }}>
-                                    {Array.from(new Set(content.trim.map(item => item.trim1))).map((item, _) => (
+                                    {Array.from(new Set(content.trim.map(item => item.trim1.trim()))).map((item, _) => (
                                         <span onClick={() => { setTrimSelect1(item); setTrimStat(1) }} className={trimSelect1 === item ? 'selected' : ''}>
                                             {trimSelect1 === item
                                                 ? <img src={optionClick} />
@@ -253,7 +253,7 @@ const OptionPage = (props) => {
                                     </span>
                                 }
                                 <span style={{ display: trimSelect1 && trimStat === 1 ? 'block' : 'none', borderLeft: '1px solid #ededed' }}>
-                                    {content.trim.filter((item) => item.trim1 === trimSelect1).map((item, _) => (
+                                    {content.trim.filter((item) => item.trim1.trim() === trimSelect1.trim()).map((item, _) => (
                                         <span onClick={() => { setTrimSelect2(item.trim2); setTrimStat(null); setTrimPrice(item.price) }} className={trimSelect2 === item.trim2 ? 'selected' : ''}>
                                             {trimSelect2 === item.trim2
                                                 ? <img src={optionClick} />

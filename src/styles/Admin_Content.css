@@ -1185,3 +1185,45 @@
     cursor: pointer;
     color: tomato;
 }
+
+.admin_content_carListAddButton {
+    display: inline-block;
+    height: 120px;
+    margin-left: auto;
+    width: 55px;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    cursor: pointer;
+    color: blue;
+}
+
+.admin_content_hotDealList_EditDiv {
+    width: 100%;
+    height: 70px;
+    background-color: #DBDBDB;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.admin_content_hotDealList_EditDiv > p {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.admin_content_hotDealList_EditDiv > input {
+    margin: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.admin_content_hotDealList_EditDiv > button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: white;
+    background-color: #0064FF;
+    cursor: pointer;
+}

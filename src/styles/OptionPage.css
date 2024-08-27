@@ -271,6 +271,7 @@ body {
     margin-top: 40px;
     margin-right: 40px;
     cursor: pointer;
+    border: 1px solid#ededed;
 }
 
 .colorBtn.selected {
