@@ -57,6 +57,7 @@ function App() {
 
 					{/* 관리자 페이지 */}
 					<Route path='/Admin' element={<AdminPage />} />
+
 				</Routes>
 			</div>
 		</Router>
