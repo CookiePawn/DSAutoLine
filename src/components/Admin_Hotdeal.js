@@ -15,6 +15,8 @@ export const Admin_HotdealAdd = (props) => {
     const [searchValue, setSearchValue] = useState('');
     const [lease, setLease] = useState('')
     const [rental, setRental] = useState('')
+    const [leasePercent, setLeasePercent] = useState('')
+    const [rentalPercent, setRentalPercent] = useState('')
     const [payment, setPayment] = useState(null)
     const [deposit, setDeposit] = useState(null)
     const [editStat, setEditStat] = useState(null)
@@ -111,6 +113,12 @@ export const Admin_HotdealAdd = (props) => {
                                 <input placeholder="할인 된 금액 입력" value={lease} type="number" onChange={(e) => setLease(e.target.value)} />
                             </span>
                             <span>
+                                <p>렌트 할인율</p>
+                                <input placeholder='할인 된 % 입력' value={rentalPercent} type="number" onChange={(e) => setRentalPercent(e.target.value)} style={{width: 90}}/>
+                                <p>리스 할인율</p>
+                                <input placeholder="할인 된 % 입력" value={leasePercent} type="number" onChange={(e) => setLeasePercent(e.target.value)} style={{width: 90}}/>
+                            </span>
+                            <span>
                                 <p>할부 (개월)</p>
                                 <span>
                                     <button onClick={() => setPayment('12개월')} className={payment === '12개월' && 'selected'}>12개월</button>
@@ -128,10 +136,23 @@ export const Admin_HotdealAdd = (props) => {
 
                             <button
                                 onClick={() => {
-                                    if (lease !== '' && rental !== '') {
+                                    if (lease !== '' && rental !== '' && leasePercent !== '' && rentalPercent !== '' && payment && deposit) {
+                                        // console.log({
+                                        //     car_code: item.car_code, 
+                                        //     rental_price: rental,
+                                        //     lease_price: lease,
+                                        //     rental_percent: rentalPercent,
+                                        //     lease_percent: leasePercent,
+                                        //     payment: payment,
+                                        //     deposit: deposit,
+                                        // })
                                         setCarList(carList.filter((_, index) => index !== idx))
                                         setLease('')
                                         setRental('')
+                                        setLeasePercent('')
+                                        setRentalPercent('')
+                                        setDeposit(null)
+                                        setPayment(null)
                                         setEditStat(null)
                                         setPopupStat(true)
                                     }

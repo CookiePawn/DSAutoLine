@@ -243,7 +243,7 @@ export const TermsofUsePopUp = (props) => {
                     <span>
                         <TermsofUse />
                     </span>
-                    <button onClick={() => {props.onClose(false); document.body.style.overflowY='auto'}}>닫기</button>
+                    <button onClick={() => { props.onClose(false); document.body.style.overflowY = 'auto' }}>닫기</button>
                 </div>
             </div>
         </>
@@ -257,77 +257,98 @@ export const TermsofInformationPopup = (props) => {
                 <span>
                     <TermsofInformation />
                 </span>
-                <button onClick={() => {props.onClose(false); document.body.style.overflowY='auto'}}>닫기</button>
+                <button onClick={() => { props.onClose(false); document.body.style.overflowY = 'auto' }}>닫기</button>
             </div>
         </div>
     );
 };
 
+
+
 export const QuickDealCarCard_Popup = (props) => {
-    const [Popupname, setPopupName] = useState('')
-    const [Popupnumber, setPopupnumber] = useState('')
+    const [popupName, setPopupName] = useState('')
+    const [popupNumber, setPopupnumber] = useState('')
     // 간편 문의 변수
     const [infoSelect1, setInfoSelect1] = useState(false);
     const [infoSelect2, setInfoSelect2] = useState(false);
 
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
-    
+    const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(false);
 
-        return (
-            <div className='QuickDeal_Dimmed'>
-                {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
-                <div className='QuickDeal_Section'>
-                    <div className='QuickDeal_Title'>
-                        <h1>즉시 출고 문의</h1>
-                    </div>
-                    <div className='QuickDeal_line'/>
-                    <div className='QuickDeal_info'>
-                        <div className='QuickDeal_input'>
-                            <p>성함</p>
-                            <input
+
+    return (
+        <div className='QuickDeal_Dimmed'>
+            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
+            {isUsePopupVisible1 && <OptionPagePopUp/>}
+            <div className='QuickDeal_Section'>
+                <div className='QuickDeal_Title'>
+                    <h1>즉시 출고 문의</h1>
+                </div>
+                <div className='QuickDeal_line' />
+                <div className='QuickDeal_info'>
+                    <div className='QuickDeal_input'>
+                        <p>이름</p>
+                        <input
                             placeholder=''
-                            value={Popupname}
+                            value={popupName}
                             onChange={(e) => setPopupName(e.target.value)}
-                            />
-                        </div>
-                        <div className='QuickDeal_input'>
-                            <p>연락처</p>
-                            <input
+                        />
+                    </div>
+                    <div className='QuickDeal_input'>
+                        <p>연락처</p>
+                        <input
                             placeholder=''
-                            value={Popupnumber}
+                            value={popupNumber}
                             type='number'
                             onChange={(e) => setPopupnumber(e.target.value)}
-                            />
-                        </div>
-                        <div className='QuickDeal_agree'>
-                            <span style={{ marginTop: 16 }}>
-                                {
-                                    !infoSelect1
-                                        ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                        : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                }
-                                <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
-                            </span>
-                            
-                        </div>
-                        <div className='QuickDeal_agree'>
-                            <span>
-                                {
-                                    !infoSelect1
-                                        ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                        : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                }
-                                <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
-                            </span>
-                            
-                        </div>
+                        />
                     </div>
-                    <div className='QuickDeal_button_Section'>
-                        <button className='Quick_apply'>신청하기</button>
-                        <button className='Quick_close' onClick={() => {props.onClose(false); document.body.style.overflowY='auto'}}>닫기</button>
+                    <div className='QuickDeal_agree'>
+                        <span style={{ marginTop: 16 }}>
+                            {
+                                !infoSelect1
+                                    ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                                    : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                            }
+                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
+                        </span>
+
+                    </div>
+                    <div className='QuickDeal_agree'>
+                        <span>
+                            {
+                                !infoSelect2
+                                    ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                                    : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                            }
+                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
+                        </span>
+
                     </div>
                 </div>
-                
+                <div className='QuickDeal_button_Section'>
+                    <button
+                        className='Quick_apply'
+                        onClick={() => {
+                            if (popupName !== '' && popupNumber !== '' && infoSelect1 && infoSelect2) {
+                                // console.log({
+                                //     car_code: props.id,
+                                //     name: popupName,
+                                //     phone: popupNumber,
+                                //     type: "즉시 출고",
+                                // })
+                                setPopupName('')
+                                setPopupnumber('')
+                                setIsUsePopupVisible1(true)
+                            }
+                        }}
+                    >
+                        신청하기
+                    </button>
+                    <button className='Quick_close' onClick={() => { props.setPopup(null); document.body.style.overflowY = 'auto' }}>닫기</button>
+                </div>
             </div>
-        );
+
+        </div>
+    );
 }

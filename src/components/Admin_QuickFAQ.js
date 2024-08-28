@@ -130,8 +130,6 @@ export const Admin_QuickFAQAdd = (props) => {
     const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "", month: "" });
     const [selectedCartype, setSelectedCartype] = useState(null);
     const [imgURL, setImgURL] = useState(null)
-    const [rentalPrice, setRentalPrice] = useState('')
-    const [leasePrice, setLeasePrice] = useState('')
 
     //연료
     const [gasoline, setGasoline] = useState(0)
@@ -292,20 +290,6 @@ export const Admin_QuickFAQAdd = (props) => {
                         </div>
                     </div>
                 </div>
-                <h3>월 렌트비</h3>
-                <input
-                    placeholder='만원 단위로 0을 모두 입력'
-                    value={rentalPrice}
-                    type="number"
-                    onChange={(e) => setRentalPrice(e.target.value)}
-                />
-                <h3>월 리스비</h3>
-                <input
-                    placeholder='만원 단위로 0을 모두 입력'
-                    value={leasePrice}
-                    type="number"
-                    onChange={(e) => setLeasePrice(e.target.value)}
-                />
                 <h3>차종</h3>
                 <div className="admin_content_FAQ_cartypeSection">
                     {cartypeButtons.map((type, index) => (
@@ -536,8 +520,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                 onChange={(e) => setSearchOption(e.target.value)}
                             />
                             <div className='admin_content_colorCard title'>
-                                <p style={{ width: 50 }}>이미지</p>
-                                <p>옵션명</p>
+                                <p style={{width: 50}}>옵션명</p>
                                 <p>금액</p>
                             </div>
                             <span></span>
@@ -545,10 +528,6 @@ export const Admin_QuickFAQAdd = (props) => {
                                 {filteredOption.length === 0 && <NoCardList card={'옵션이'} />}
                                 {filteredOption.map((item, idx) => (
                                     <div className='admin_content_colorCard'>
-                                        {item.img.slice(0, 1) === 'o'
-                                            ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} style={{ height: '100%' }} />
-                                            : <img src={item.img} style={{ height: '100%' }} />
-                                        }
                                         <p>{item.name}</p>
                                         <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                                         <button
@@ -656,7 +635,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                 && maxCC !== '' && minCC !== '' && FAQ_carprice !== ''
                                 && FAQ_startDate.year !== "" && FAQ_startDate.month !== ""
                                 && selectedCartype && imgURL && trims.length !== 0
-                                && colorSelectedList.length !== 0 && rentalPrice !== '' && leasePrice !== '') {
+                                && colorSelectedList.length !== 0) {
                                 const random = generateRandomString(20)
                                 await carInsertAxios({
                                     entry: categoryStat,
@@ -667,8 +646,8 @@ export const Admin_QuickFAQAdd = (props) => {
                                     info: `${FAQ_startDate.year}년형 ${lowestPriceItem.trim1} ${lowestPriceItem.trim2}`,
                                     category: selectedCartype,
                                     size: selectedCartype,
-                                    rental_price: rentalPrice,
-                                    lease_price: leasePrice,
+                                    rental_price: 0,
+                                    lease_price: 0,
                                     year: FAQ_startDate.year,
                                     month: FAQ_startDate.month,
                                     gasoline: gasoline,

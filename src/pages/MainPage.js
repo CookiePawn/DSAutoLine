@@ -12,7 +12,7 @@ import {
     ReviewCard,
     PopularCarCard,
 } from '../components/Cards';
-import { CarmentoPopUp, OptionPagePopUp } from '../components/PopUp';
+import { CarmentoPopUp, OptionPagePopUp, QuickDealCarCard_Popup } from '../components/PopUp';
 import { hotDealAxios, quickDealAxios, reviewAxios, popularListAxios, eventAxios } from '../services/Request';
 import Slider from "react-slick";
 import '../styles/slick.css'
@@ -29,6 +29,7 @@ const MainPage = (props) => {
 
     //즉시 출고 변수
     const [quickHovered, setQuickHovered] = useState(false);
+    const [quickDealPopup, setQuickDealPopup] = useState(false)
 
     //우수카멘토 변수
     const [carmentPopup, setCarmentoPopup] = useState(false);
@@ -74,6 +75,7 @@ const MainPage = (props) => {
     }
     return (
         <div className='mainPage_container'>
+            {quickDealPopup && <QuickDealCarCard_Popup setPopup={setQuickDealPopup} id={quickDealPopup}/>}
             <GNB stat={false} />
             <BannerSlider />
             <FastFAQSticky height={1300} />
@@ -132,7 +134,7 @@ const MainPage = (props) => {
                 >
                     <Slider {...hotDealSlicerSettings} ref={quickDealSliderRef}>
                         {quickDealList.map((item, idx) => (
-                            <QuickDealCard item={item} idx={idx} />
+                            <QuickDealCard item={item} idx={idx} setPopup={setQuickDealPopup}/>
                         ))}
                     </Slider>
                 </div>
