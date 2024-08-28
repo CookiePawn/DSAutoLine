@@ -602,7 +602,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                                 price: optionPrice,
                                                 img: `option_${random}`,
                                             })
-                                            await imageUploadAxios(optionImg, `option_${random}`)
+                                            //await imageUploadAxios(optionImg, `option_${random}`)
                                             setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice, img: optionImg }]);
                                             setOptionName(''); // 입력 필드 초기화
                                             setOptionPrice(''); // 입력 필드 초기화

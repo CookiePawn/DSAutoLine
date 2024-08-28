@@ -134,7 +134,7 @@ export function Admin_Option() {
                 price: optionPrice,
                 img: `option_${random}`,
             })
-            await imageUploadAxios(img, `option_${random}`)
+            //await imageUploadAxios(img, `option_${random}`)
             setItems([...items, { name: optionName, price: optionPrice, img: img }]);
             setOptionName(''); // 입력 필드 초기화
             setOptionPrice(''); // 입력 필드 초기화
