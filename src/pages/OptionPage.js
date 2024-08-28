@@ -8,9 +8,8 @@ import selectBox from '../assets/img/functionIcon/optionPage_SelectBox.png'
 import optionClick from '../assets/img/functionIcon/optionClick.png'
 import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
-import { OptionPagePopUp } from "../components/PopUp"
+import { OptionPagePopUp, TermsofInformationPopup } from "../components/PopUp"
 import { estimatedAxios, estimatedAddAxios } from "../services/Request";
-import { TermsofInformationPopup, TermsofUsePopUp } from '../components/PopUp';
 
 
 
@@ -118,9 +117,9 @@ const OptionPage = (props) => {
     }
     return (
         <>
-            {nextStat &&
-                <OptionPagePopUp />
-            }
+            {nextStat && <OptionPagePopUp />}
+            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
+            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
             <GNB stat={true} />
             <div className="flexSection">
                 <div className="infoSection">
@@ -177,8 +176,7 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 수집·이용·제공 동의 <span onClick={handleOpenUsePopup}>(보기)</span></p>
-                                    {isUsePopupVisible && <TermsofUsePopUp onClose={handleCloseUsePopup} />}
+                                    <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
                                 </span>
                                 <span>
                                     {
@@ -186,8 +184,7 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 제 3자 제공 동의 <span onClick={handleOpenUsePopup}>(보기)</span></p>
-                                    {isUsePopupVisible && <TermsofInformationPopup onClose={handleCloseUsePopup} />}
+                                    <p>개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
                                 </span>
                             </span>
                         </div>
@@ -266,7 +263,7 @@ const OptionPage = (props) => {
                                     </span>
                                 }
                                 <span style={{ display: trimSelect1 && trimStat === 1 ? 'block' : 'none', borderLeft: '1px solid #ededed' }}>
-                                    {content.trim.filter((item) => item.trim1.trim() === trimSelect1.trim()).map((item, _) => (
+                                    {content.trim.filter((item) => item.trim1.trim() === trimSelect1).map((item, _) => (
                                         <span onClick={() => { setTrimSelect2(item.trim2); setTrimStat(null); setTrimPrice(item.price) }} className={trimSelect2 === item.trim2 ? 'selected' : ''}>
                                             {trimSelect2 === item.trim2
                                                 ? <img src={optionClick} />

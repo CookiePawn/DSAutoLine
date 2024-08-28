@@ -9,7 +9,6 @@
 .Terms_Script {
     display: flex;
     flex-direction: column;
-    border: 1px solid #777777;
     padding: 20px;
     margin-bottom: 10px;
 }

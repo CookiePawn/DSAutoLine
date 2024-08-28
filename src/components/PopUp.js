@@ -239,8 +239,10 @@ export const TermsofUsePopUp = (props) => {
         <>
             <div className="terms_infoDimmed">
                 <div className="terms_infoDiv">
-                    <TermsofUse />
-                    <button onClick={props.onClose}>닫기</button>
+                    <span>
+                        <TermsofUse />
+                    </span>
+                    <button onClick={() => {props.onClose(false); document.body.style.overflowY='auto'}}>닫기</button>
                 </div>
             </div>
         </>
@@ -251,8 +253,10 @@ export const TermsofInformationPopup = (props) => {
     return (
         <div className="terms_infoDimmed">
             <div className="terms_infoDiv">
-                <TermsofInformation />
-                <button onClick={props.onClose}>닫기</button>
+                <span>
+                    <TermsofInformation />
+                </span>
+                <button onClick={() => {props.onClose(false); document.body.style.overflowY='auto'}}>닫기</button>
             </div>
         </div>
     );

@@ -88,11 +88,11 @@
 }
 
 
-.reviewPopupDiv > div:nth-of-type(1) {
+.reviewPopupDiv>div:nth-of-type(1) {
     margin-left: 42px;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > h1 {
+.reviewPopupDiv>div:nth-of-type(1)>h1 {
     font-size: 40px;
     font-weight: 600;
     color: #111;
@@ -101,7 +101,7 @@
     margin-bottom: 20px;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > p {
+.reviewPopupDiv>div:nth-of-type(1)>p {
     font-size: 16px;
     font-weight: 500;
     color: #767676;
@@ -109,13 +109,13 @@
     margin-bottom: 60px;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > span {
+.reviewPopupDiv>div:nth-of-type(1)>span {
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > span > h3 {
+.reviewPopupDiv>div:nth-of-type(1)>span>h3 {
     margin: 0;
     width: 53px;
     height: 53px;
@@ -129,7 +129,7 @@
     font-weight: 600;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > span > p {
+.reviewPopupDiv>div:nth-of-type(1)>span>p {
     font-size: 20px;
     font-weight: 600;
     color: #111;
@@ -138,7 +138,7 @@
     margin-left: 16px;
 }
 
-.reviewPopupDiv > div:nth-of-type(1) > span > p > span {
+.reviewPopupDiv>div:nth-of-type(1)>span>p>span {
     font-size: 14px;
     font-weight: 500;
     color: #767676;
@@ -147,23 +147,23 @@
 
 
 
-.reviewPopupDiv > div:nth-of-type(2) {
+.reviewPopupDiv>div:nth-of-type(2) {
     width: 582px;
     margin-left: 120px;
     margin-top: 40px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span {
+.reviewPopupDiv>div:nth-of-type(2)>span {
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span > span:nth-of-type(2) {
+.reviewPopupDiv>div:nth-of-type(2)>span>span:nth-of-type(2) {
     margin-left: auto;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span > span > p {
+.reviewPopupDiv>div:nth-of-type(2)>span>span>p {
     font-size: 20px;
     font-weight: 500;
     color: #111;
@@ -171,7 +171,7 @@
     margin-bottom: 16px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) >span > span > input{
+.reviewPopupDiv>div:nth-of-type(2)>span>span>input {
     width: 276px;
     height: 37px;
     box-sizing: border-box;
@@ -182,23 +182,23 @@
     padding-right: 10px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span > span > input::placeholder {
+.reviewPopupDiv>div:nth-of-type(2)>span>span>input::placeholder {
     font-size: 14px;
     font-weight: 400;
     color: #bbb;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span > span > span {
+.reviewPopupDiv>div:nth-of-type(2)>span>span>span {
     cursor: pointer;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span > span > img {
+.reviewPopupDiv>div:nth-of-type(2)>span>span>img {
     width: 40px;
     height: 40px;
     cursor: pointer;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > h2 {
+.reviewPopupDiv>div:nth-of-type(2)>h2 {
     font-size: 20px;
     font-weight: 500;
     color: #111;
@@ -206,7 +206,7 @@
     margin-bottom: 16px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > textarea {
+.reviewPopupDiv>div:nth-of-type(2)>textarea {
     width: 582px;
     height: 199px;
     box-sizing: border-box;
@@ -218,27 +218,32 @@
 
 
 /* 스크롤바 전체 */
-.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar {
-    width: 8px; /* 너비 */
+.reviewPopupDiv>div:nth-of-type(2)>textarea::-webkit-scrollbar {
+    width: 8px;
+    /* 너비 */
 }
 
 /* 스크롤바 트랙 */
-.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-track {
-    background: #00ff0000; /* 배경색 */
+.reviewPopupDiv>div:nth-of-type(2)>textarea::-webkit-scrollbar-track {
+    background: #00ff0000;
+    /* 배경색 */
 }
 
 /* 스크롤바 핸들 */
-.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-thumb {
-    background-color: #bbb; /* 색상 */
-    border: 2px solid #f0f0f0; /* 핸들 주위의 여백 */
+.reviewPopupDiv>div:nth-of-type(2)>textarea::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    /* 색상 */
+    border: 2px solid #f0f0f0;
+    /* 핸들 주위의 여백 */
 }
 
 /* 스크롤바 핸들 호버 시 */
-.reviewPopupDiv > div:nth-of-type(2) > textarea::-webkit-scrollbar-thumb:hover {
-    background-color: #b4b4b4; /* 호버 시 색상 */
+.reviewPopupDiv>div:nth-of-type(2)>textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4;
+    /* 호버 시 색상 */
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p {
+.reviewPopupDiv>div:nth-of-type(2)>span:nth-of-type(3)>p {
     font-size: 18px;
     font-weight: 500;
     width: 155px;
@@ -251,13 +256,13 @@
     cursor: pointer;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p:nth-of-type(1) {
+.reviewPopupDiv>div:nth-of-type(2)>span:nth-of-type(3)>p:nth-of-type(1) {
     color: #767676;
     border: 1px solid #bbb;
     margin-right: 20px;
 }
 
-.reviewPopupDiv > div:nth-of-type(2) > span:nth-of-type(3) > p:nth-of-type(2) {
+.reviewPopupDiv>div:nth-of-type(2)>span:nth-of-type(3)>p:nth-of-type(2) {
     color: white;
     background-color: #0064FF;
 }
@@ -278,7 +283,7 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.carmentoDimmed > div {
+.carmentoDimmed>div {
     width: 431px;
     height: 509px;
     box-sizing: border-box;
@@ -290,7 +295,7 @@
     transform: translate(-50%, -50%);
 }
 
-.carmentoDimmed > div > div:nth-of-type(1){
+.carmentoDimmed>div>div:nth-of-type(1) {
     display: flex;
     flex-direction: row;
     width: 87%;
@@ -300,7 +305,7 @@
     padding-bottom: 30px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(1) {
+.carmentoDimmed>div>div:nth-of-type(1)>span:nth-of-type(1) {
     display: flex;
     justify-content: center;
     width: 71px;
@@ -311,15 +316,15 @@
     overflow: hidden;
 }
 
-.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(1) > img {
+.carmentoDimmed>div>div:nth-of-type(1)>span:nth-of-type(1)>img {
     height: 71px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) {
+.carmentoDimmed>div>div:nth-of-type(1)>span:nth-of-type(2) {
     margin-left: 20px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) > h2 {
+.carmentoDimmed>div>div:nth-of-type(1)>span:nth-of-type(2)>h2 {
     font-size: 20px;
     font-weight: 600;
     color: #111;
@@ -327,7 +332,7 @@
     margin-bottom: 10px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(1) > span:nth-of-type(2) > p {
+.carmentoDimmed>div>div:nth-of-type(1)>span:nth-of-type(2)>p {
     width: 280px;
     text-wrap: wrap;
     font-size: 14px;
@@ -337,13 +342,13 @@
 }
 
 
-.carmentoDimmed > div > div:nth-of-type(2) {
+.carmentoDimmed>div>div:nth-of-type(2) {
     width: 87%;
     margin: auto;
     margin-top: 30px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > h2 {
+.carmentoDimmed>div>div:nth-of-type(2)>h2 {
     font-size: 20px;
     font-weight: 600;
     color: #111;
@@ -351,37 +356,37 @@
     margin-bottom: 24px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span {
+.carmentoDimmed>div>div:nth-of-type(2)>span {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > h4 {
+.carmentoDimmed>div>div:nth-of-type(2)>span>h4 {
     font-size: 16px;
     font-weight: 500;
     color: #111;
     margin: 0;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > input {
+.carmentoDimmed>div>div:nth-of-type(2)>span>input {
     margin-left: auto;
     margin-right: 20px;
     width: 254px;
     height: 37px;
     border-radius: 4px;
     border: 1px solid #bbb;
-    outline: none; 
+    outline: none;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > img {
+.carmentoDimmed>div>div:nth-of-type(2)>span>img {
     cursor: pointer;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > p {
+.carmentoDimmed>div>div:nth-of-type(2)>span>p {
     font-size: 14px;
     font-weight: 500;
     color: #111;
@@ -389,12 +394,12 @@
     margin-left: 11px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > p > span {
+.carmentoDimmed>div>div:nth-of-type(2)>span>p>span {
     color: #767676;
     cursor: pointer;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > span {
+.carmentoDimmed>div>div:nth-of-type(2)>span>span {
     height: 47px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -405,7 +410,7 @@
     margin-top: 10px;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > span:nth-of-type(1) {
+.carmentoDimmed>div>div:nth-of-type(2)>span>span:nth-of-type(1) {
     width: 90px;
     border: 1px solid #bbb;
     font-size: 18px;
@@ -413,7 +418,7 @@
     color: #767676;
 }
 
-.carmentoDimmed > div > div:nth-of-type(2) > span > span:nth-of-type(2) {
+.carmentoDimmed>div>div:nth-of-type(2)>span>span:nth-of-type(2) {
     width: 265px;
     background-color: #0064FF;
     font-size: 18px;
@@ -428,35 +433,65 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1100;
+    z-index: 2100;
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.terms_infoDiv > button{
-    width: 80px;
-    height: 38px;
-    color: #000000;
-    margin-top: 10px;
-    margin: auto;
-    border-radius: 6px;
 }
 
 .terms_infoDiv {
     width: 1000px;
-    height: 87vh;
+    height: 60vh;
     background-color: white;
     padding: 20px;
     opacity: 100%;
     margin: auto;
     position: fixed;
-    top: 8.5%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    border-radius: 12px;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+}
+
+.terms_infoDiv>button {
+    width: 100%;
+    height: 55px;
+    color: white;
+    background-color: #0064FF;
+    border: none;
+    margin-top: 10px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.terms_infoDiv>span {
+    height: 90%;
     overflow-y: auto;
-    z-index: 1101;
+    border: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+
+/* 스크롤바 전체 */
+.terms_infoDiv>span::-webkit-scrollbar {
+    width: 10px;
+    /* 너비 */
+}
+
+/* 스크롤바 트랙 */
+.terms_infoDiv>span::-webkit-scrollbar-track {
+    background: #00ff0000;
+    /* 배경색 */
+}
+
+/* 스크롤바 핸들 */
+.terms_infoDiv>span::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    /* 색상 */
+    border: 2px solid #f0f0f0;
+    /* 핸들 주위의 여백 */
+}
+
+/* 스크롤바 핸들 호버 시 */
+.terms_infoDiv>span::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4;
+    /* 호버 시 색상 */
 }

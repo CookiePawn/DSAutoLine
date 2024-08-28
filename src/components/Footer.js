@@ -11,25 +11,19 @@ import React, { useState } from 'react';
  * @returns 
  */
 const Footer = (props) => {
-    const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
+    const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(false);
+    const [isUsePopupVisible2, setIsUsePopupVisible2] = useState(false);
 
-    const handleOpenUsePopup = () => {
-        setIsUsePopupVisible(true);
-    };
-
-    const handleCloseUsePopup = () => {
-        setIsUsePopupVisible(false);
-    };
 
     return (
         <footer className='footerSection'>
             <div>
                 <span>
-                    <p onClick={handleOpenUsePopup}>이용약관</p>
-                    {isUsePopupVisible && <TermsofUsePopUp onClose={handleCloseUsePopup} />}
+                    <p onClick={() => {setIsUsePopupVisible1(true); document.body.style.overflowY='hidden'}}>이용약관</p>
+                    {isUsePopupVisible1 && <TermsofUsePopUp onClose={setIsUsePopupVisible1} />}
                     <span></span>
-                    <p onClick={handleOpenUsePopup}>개인정보처리방침</p>
-                    {isUsePopupVisible && <TermsofInformationPopup onClose={handleCloseUsePopup} />}
+                    <p onClick={() => {setIsUsePopupVisible2(true); document.body.style.overflowY='hidden'}}>개인정보처리방침</p>
+                    {isUsePopupVisible2 && <TermsofInformationPopup onClose={setIsUsePopupVisible2} />}
                 </span>
             </div>
             <div>

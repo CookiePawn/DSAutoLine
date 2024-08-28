@@ -69,6 +69,7 @@ body {
 
 .infoSection>div>img {
     width: 480px;
+    height: 300px;
     margin-bottom: 40px;
 }
 
@@ -192,6 +193,7 @@ body {
 .infoSection>div>div>span>span>p>span {
     color: #767676;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .infoSection>div>.nextBtn {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/FastFAQSticky.css';
-import { OptionPagePopUp, TermsofUsePopUp } from '../components/PopUp';
+import { OptionPagePopUp, TermsofInformationPopup } from '../components/PopUp';
 import { fastFAQAxios } from '../services/Request';
 
 const FastFAQSticky = (props) => {
@@ -19,13 +19,6 @@ const FastFAQSticky = (props) => {
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
     const [isInformationPopupVisible, setIsInformationPopupVisible] = useState(false);
 
-    const handleOpenUsePopup = () => {
-        setIsUsePopupVisible(true);
-    };
-
-    const handleCloseUsePopup = () => {
-        setIsUsePopupVisible(false);
-    };
 
     const handleOpenInformationPopup = () => {
         setIsInformationPopupVisible(true);
@@ -100,8 +93,8 @@ const FastFAQSticky = (props) => {
                                     ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={handleOpenUsePopup}>(보기)</span></p>
-                            {isUsePopupVisible && <TermsofUsePopUp onClose={handleCloseUsePopup} />}
+                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
                         </span>
                         <span style={{ marginTop: 16 }}>
                             {
@@ -109,8 +102,8 @@ const FastFAQSticky = (props) => {
                                     ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={handleOpenInformationPopup}>(보기)</span></p>
-                            {isInformationPopupVisible && <TermsofUsePopUp onClose={handleCloseInformationPopup} />}
+                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                            {isInformationPopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
                         </span>
                         <div
                             style={(infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') ? null : { backgroundColor: '#dbdbdb', cursor: 'auto' }}
