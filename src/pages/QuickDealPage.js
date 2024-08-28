@@ -61,11 +61,11 @@ const QuickDealPage = (props) => {
             <div className='quickCarListSection'>
                 <h2>출고가능 차량 <span>{quickDealList ? quickDealList.length : '0'}대</span></h2>
                 <div className='quickCarListSelectDiv'>
-                    <p onClick={() => { setListStat('전체'); fetchData(categoryStat, brandStat, '전체') }} className={listStat === '전체' ? 'selected' : ''}>전체</p>
+                <p onClick={() => { setListStat('전체'); fetchData(categoryStat, brandStat, '전체') }} className={listStat === '전체' ? 'selected' : ''}>전체</p>
+                    <p onClick={() => { setListStat('경차'); fetchData(categoryStat, brandStat, '경차') }} className={listStat === '경차' ? 'selected' : ''}>경차</p>
                     <p onClick={() => { setListStat('소형/승용'); fetchData(categoryStat, brandStat, '소형/승용') }} className={listStat === '소형/승용' ? 'selected' : ''}>소형/승용</p>
-                    <p onClick={() => { setListStat('세단'); fetchData(categoryStat, brandStat, '세단') }} className={listStat === '세단' ? 'selected' : ''}>세단</p>
                     <p onClick={() => { setListStat('SUV'); fetchData(categoryStat, brandStat, 'SUV') }} className={listStat === 'SUV' ? 'selected' : ''}>SUV</p>
-                    <p onClick={() => { setListStat('전기'); fetchData(categoryStat, brandStat, '전기') }} className={listStat === '전기' ? 'selected' : ''}>전기</p>
+                    <p onClick={() => { setListStat('화물'); fetchData(categoryStat, brandStat, '화물') }} className={listStat === '화물' ? 'selected' : ''}>화물</p>
                 </div>
                 <div className='quickCarCardListDiv'>
                     {quickDealList.length === 0 && <NoCardList card={'차량이'}/>}

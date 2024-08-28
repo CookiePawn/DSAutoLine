@@ -71,8 +71,6 @@ const BannerSlider = () => {
     if (!eventList) {
         return null;
     }
-
-
     return (
         <section className="mainPage_BannerSection">
             <div className="slider-container" style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>
