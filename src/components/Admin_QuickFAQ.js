@@ -432,7 +432,7 @@ export const Admin_QuickFAQAdd = (props) => {
                             value={FAQ_detailmodel_price}
                             onChange={(e) => setFAQ_detailmodel_price(e.target.value)}
                         />
-                        <p>만원</p>
+                        <p>원</p>
                     </div>
                     <button className="admin_content_FAQ_detailmodel_addbutton" onClick={handleAddModel}>추가하기</button>
                 </div>

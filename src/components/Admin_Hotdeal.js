@@ -15,6 +15,8 @@ export const Admin_HotdealAdd = (props) => {
     const [searchValue, setSearchValue] = useState('');
     const [lease, setLease] = useState('')
     const [rental, setRental] = useState('')
+    const [payment, setPayment] = useState(null)
+    const [deposit, setDeposit] = useState(null)
     const [editStat, setEditStat] = useState(null)
     const [popupStat, setPopupStat] = useState(false)
 
@@ -54,7 +56,7 @@ export const Admin_HotdealAdd = (props) => {
     }
     return (
         <div className="admin_content">
-            {popupStat && <HotDealCarAddPopUp setPopupStat={setPopupStat}/>}
+            {popupStat && <HotDealCarAddPopUp setPopupStat={setPopupStat} />}
             <h2>한정 특가 <span>- 차량 추가</span></h2>
             <input
                 className="admin_content_searchListInput"
@@ -102,10 +104,28 @@ export const Admin_HotdealAdd = (props) => {
                             </button>
                         </div>
                         <div className="admin_content_hotDealList_EditDiv" style={editStat !== idx ? { display: 'none' } : null}>
-                            <p>월 렌트비</p>
-                            <input placeholder='할인 된 금액 입력' value={rental} type="number" onChange={(e) => setRental(e.target.value)} />
-                            <p>월 리스비</p>
-                            <input placeholder="할인 된 금액 입력" value={lease} type="number" onChange={(e) => setLease(e.target.value)} />
+                            <span>
+                                <p>월 렌트비</p>
+                                <input placeholder='할인 된 금액 입력' value={rental} type="number" onChange={(e) => setRental(e.target.value)} />
+                                <p>월 리스비</p>
+                                <input placeholder="할인 된 금액 입력" value={lease} type="number" onChange={(e) => setLease(e.target.value)} />
+                            </span>
+                            <span>
+                                <p>할부 (개월)</p>
+                                <span>
+                                    <button onClick={() => setPayment('12개월')} className={payment === '12개월' && 'selected'}>12개월</button>
+                                    <button onClick={() => setPayment('24개월')} className={payment === '24개월' && 'selected'}>24개월</button>
+                                    <button onClick={() => setPayment('36개월')} className={payment === '36개월' && 'selected'}>36개월</button>
+                                    <button onClick={() => setPayment('48개월')} className={payment === '48개월' && 'selected'}>48개월</button>
+                                    <button onClick={() => setPayment('60개월')} className={payment === '60개월' && 'selected'}>60개월</button>
+                                </span>
+                                <p>선납금 / 보증금</p>
+                                <span>
+                                    <button onClick={() => setDeposit('선납금')} className={deposit === '선납금' && 'selected'}>선납금</button>
+                                    <button onClick={() => setDeposit('보증금')} className={deposit === '보증금' && 'selected'}>보증금</button>
+                                </span>
+                            </span>
+
                             <button
                                 onClick={() => {
                                     if (lease !== '' && rental !== '') {

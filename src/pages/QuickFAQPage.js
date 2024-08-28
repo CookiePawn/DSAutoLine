@@ -33,7 +33,6 @@ const QuickFAQPage = (props) => {
         fetchData(categoryStat, brandStat, listStat)
     }, [categoryStat, brandStat, listStat])
 
-    console.log(banner)
 
     if (!quickFAQList || !banner) {
         return null
