@@ -314,13 +314,14 @@ body, html {
   font-weight: 500;
   margin: 0;
   margin-left: auto;
+  white-space: pre-wrap;
 }
 
 
 
 
 
-.quickDealCardInfoDiv>p:nth-of-type(2) {
+.quickDealCardInfoMore {
   min-width: 20px;
   font-size: 14px;
   font-weight: 500;

@@ -139,7 +139,6 @@ const OptionPage = (props) => {
                         <p>{content.year}.{content.month} │ {content.category} │ {oilStat}</p>
                         <p>{content.min_cc}~{content.max_cc}CC │ 복합연비 {content.min_fuel_efficiency}~{content.max_fuel_efficiency}km/L</p>
                         <img
-                            className='hotDealCardImg'
                             src={`${process.env.REACT_APP_IMG_URL}/${content.img}.png`}
                             alt="차량 이미지"
                             onError={(e) => {

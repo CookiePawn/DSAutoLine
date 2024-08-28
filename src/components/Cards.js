@@ -31,7 +31,7 @@ export const HotDealCard = (props) => {
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
@@ -57,7 +57,6 @@ export const HotDealCard = (props) => {
  * @returns 
  */
 export const QuickDealCard = (props) => {
-
     return (
         <div className='quickDealCard'>
             <img
@@ -84,26 +83,27 @@ export const QuickDealCard = (props) => {
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>옵션</p>
                 <div className='quickDealCardInfoDiv'>
-                    {props.item.option.length === 1
+                    {props.item.option.length <= 3
                         ? <>
-                            <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
+                            {props.item.option.map((item, idx) => (
+                                <p className='quickDealCardInfo2'>{item.name}{idx === 0 && props.item.option.length === 2 && ', '}</p>
+                            ))}
                         </>
                         : <>
                             <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
-                            <p>외 {props.item.option.length}건</p>
+                            <p className='quickDealCardInfoMore'>외 {props.item.option.length - 2}건</p>
                         </>
                     }
-
                 </div>
             </span>
             <div className='quickDealCardBorder' />
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPriceTitle'>차량가</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price.toLocaleString()}</span> 원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
+                <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span> 원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -222,7 +222,7 @@ export const ReviewCard = (props) => {
  */
 export const PopularCarCard = (props) => {
     return (
-        <div className='carCard' onClick={() => window.location.href=`/Option/${props.item.car_code}`}>
+        <div className='carCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
                 alt="차량 이미지"
@@ -234,7 +234,7 @@ export const PopularCarCard = (props) => {
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
@@ -271,7 +271,7 @@ export const QuickCarCard = (props) => {
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
@@ -308,7 +308,7 @@ export const HotDealCarCard = (props) => {
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
             </span>
@@ -340,7 +340,7 @@ export const QuickDealCarCard = (props) => {
     return (
         <>
             {isUsePopupVisible1 && <QuickDealCarCard_Popup onClose={setIsUsePopupVisible1} />}
-            <div className='quickDealCard' onClick={() => {setIsUsePopupVisible1(true); document.body.style.overflowY='hidden'}}> 
+            <div className='quickDealCard' onClick={() => { setIsUsePopupVisible1(true); document.body.style.overflowY = 'hidden' }}>
                 <img
                     className='hotDealCardImg'
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -365,16 +365,17 @@ export const QuickDealCarCard = (props) => {
                 <span className='quickDealCardOptionDiv'>
                     <p className='quickDealCardTitle1'>옵션</p>
                     <div className='quickDealCardInfoDiv'>
-                        {props.item.option.length === 1
+                        {props.item.option.length <= 3
                             ? <>
-                                <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
+                                {props.item.option.map((item, idx) => (
+                                    <p className='quickDealCardInfo2'>{item.name}{idx === 0 && props.item.option.length === 2 && ', '}</p>
+                                ))}
                             </>
                             : <>
                                 <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
-                                <p>외 {props.item.option.length}건</p>
+                                <p className='quickDealCardInfoMore'>외 {props.item.option.length - 2}건</p>
                             </>
                         }
-
                     </div>
                 </span>
                 <div className='quickDealCardBorder' />

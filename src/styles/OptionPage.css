@@ -68,8 +68,9 @@ body {
 }
 
 .infoSection>div>img {
-    width: 480px;
+    width: 400px;
     height: 300px;
+    margin-left: 30px;
     margin-bottom: 40px;
 }
 
