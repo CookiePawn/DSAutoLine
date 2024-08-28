@@ -233,8 +233,7 @@ export const Admin_QuickDealAdd = (props) => {
                                 onChange={(e) => setSearchOption(e.target.value)}
                             />
                             <div className='admin_content_colorCard title'>
-                                <p style={{ width: 50 }}>이미지</p>
-                                <p>옵션명</p>
+                                <p style={{width: 50}}>옵션명</p>
                                 <p>금액</p>
                             </div>
                             <span></span>
@@ -242,10 +241,6 @@ export const Admin_QuickDealAdd = (props) => {
                                 {filteredOption.length === 0 && <NoCardList card={'옵션이'} />}
                                 {filteredOption.map((item, idx) => (
                                     <div className='admin_content_colorCard'>
-                                        {item.img.slice(0, 1) === 'o'
-                                            ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} style={{ height: '100%' }} />
-                                            : <img src={item.img} style={{ height: '100%' }} />
-                                        }
                                         <p>{item.name}</p>
                                         <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                                         <button

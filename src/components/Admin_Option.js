@@ -153,7 +153,6 @@ export function Admin_Option() {
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
                     <div className='admin_content_optionCard title'>
-                        <p>이미지</p>
                         <p>옵션명</p>
                         <p>금액</p>
                     </div>
@@ -161,10 +160,6 @@ export function Admin_Option() {
                     <div className='admin_content_optionCardList'>
                         {filteredItems.map((item, idx) => (
                             <div className='admin_content_optionCard'>
-                                {item.img.slice(0, 1) === 'o' 
-                                    ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}/>
-                                    : <img src={item.img}/>
-                                }
                                 <p>{item.name}</p>
                                 <p>{(item.price/10000).toLocaleString()} 만원</p>
                                 <button
