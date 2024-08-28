@@ -10,6 +10,7 @@ import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
 import { OptionPagePopUp } from "../components/PopUp"
 import { estimatedAxios, estimatedAddAxios } from "../services/Request";
+import { TermsofInformationPopup, TermsofUsePopUp } from '../components/PopUp';
 
 
 
@@ -56,6 +57,16 @@ const OptionPage = (props) => {
 
     //최종 버튼
     const [nextStat, setNextStat] = useState(false)
+
+    const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
+
+    const handleOpenUsePopup = () => {
+        setIsUsePopupVisible(true);
+    };
+
+    const handleCloseUsePopup = () => {
+        setIsUsePopupVisible(false);
+    };
 
     useEffect(() => {
         if (content) {
@@ -166,7 +177,8 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 수집·이용·제공 동의 <span>(보기)</span></p>
+                                    <p>개인정보 수집·이용·제공 동의 <span onClick={handleOpenUsePopup}>(보기)</span></p>
+                                    {isUsePopupVisible && <TermsofUsePopUp onClose={handleCloseUsePopup} />}
                                 </span>
                                 <span>
                                     {
@@ -174,7 +186,8 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
+                                    <p>개인정보 제 3자 제공 동의 <span onClick={handleOpenUsePopup}>(보기)</span></p>
+                                    {isUsePopupVisible && <TermsofInformationPopup onClose={handleCloseUsePopup} />}
                                 </span>
                             </span>
                         </div>

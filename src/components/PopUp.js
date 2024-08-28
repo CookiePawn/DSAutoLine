@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/PopUp.css'
 import { mentoringAxios } from '../services/Request'
 import { StarIcon } from './Icons'
+import { TermsofUse, TermsofInformation } from '../components/TermsScript';
 import imageUpload from '../assets/img/popup/imageUpload.png'
 import nonClick from '../assets/img/functionIcon/optionPage_nonSelectBox.png'
 import onClick from '../assets/img/functionIcon/optionPage_SelectBox.png'
@@ -232,3 +233,27 @@ export const ReviewAddPagePopUp = (props) => {
         </>
     )
 }
+
+export const TermsofUsePopUp = (props) => {
+    return (
+        <>
+            <div className="terms_infoDimmed">
+                <div className="terms_infoDiv">
+                    <TermsofUse />
+                    <button onClick={props.onClose}>닫기</button>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export const TermsofInformationPopup = (props) => {
+    return (
+        <div className="terms_infoDimmed">
+            <div className="terms_infoDiv">
+                <TermsofInformation />
+                <button onClick={props.onClose}>닫기</button>
+            </div>
+        </div>
+    );
+};

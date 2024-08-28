@@ -1,5 +1,7 @@
 import '../styles/Footer.css'
 import dsautoline_white from '../assets/img/dsautoline/dsautoline_white.png'
+import { TermsofInformationPopup, TermsofUsePopUp } from '../components/PopUp';
+import React, { useState } from 'react';
 
 
 
@@ -9,13 +11,25 @@ import dsautoline_white from '../assets/img/dsautoline/dsautoline_white.png'
  * @returns 
  */
 const Footer = (props) => {
+    const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
+
+    const handleOpenUsePopup = () => {
+        setIsUsePopupVisible(true);
+    };
+
+    const handleCloseUsePopup = () => {
+        setIsUsePopupVisible(false);
+    };
+
     return (
         <footer className='footerSection'>
             <div>
                 <span>
-                    <p>이용약관</p>
+                    <p onClick={handleOpenUsePopup}>이용약관</p>
+                    {isUsePopupVisible && <TermsofUsePopUp onClose={handleCloseUsePopup} />}
                     <span></span>
-                    <p>개인정보처리방침</p>
+                    <p onClick={handleOpenUsePopup}>개인정보처리방침</p>
+                    {isUsePopupVisible && <TermsofInformationPopup onClose={handleCloseUsePopup} />}
                 </span>
             </div>
             <div>
