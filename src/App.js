@@ -8,7 +8,6 @@ import QuickFAQPage from './pages/QuickFAQPage';
 import HotDealPage from './pages/HotDealPage';
 import QuickDealPage from './pages/QuickDealPage';
 import OptionPage from './pages/OptionPage';
-import EstimatedPage from './pages/EstimatedPage'
 import ReviewPage from './pages/ReviewPage';
 import ReviewMorePage from './pages/ReviewMorePage';
 import ReviewAddPage from './pages/ReviewAddPage';
@@ -48,7 +47,6 @@ function App() {
 
 					{/* 옵션 선택 페이지 */}
 					<Route path='/Option/:id' element={<OptionPage />} />
-					<Route path='/Estimated/:id' element={<EstimatedPage />} />
 
 					{/* 리뷰 페이지 */}
 					<Route path='/Review' element={<ReviewPage />} />

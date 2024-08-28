@@ -22,7 +22,7 @@ const QuickDealPage = (props) => {
         const response = await quickDealAxios(entry, enter, category)
         setQuickDealList(response)
         const tmp2 = await eventAxios(3, 0)
-            setBanner(tmp2)
+        setBanner(tmp2)
     }
 
     useEffect(() => {
@@ -50,25 +50,25 @@ const QuickDealPage = (props) => {
                 <h1>즉시 <span>출고</span></h1>
                 <p>지금 바로 출고 할 수 있는 차량을 확인해보세요</p>
                 <div className='categoryTitleDiv'>
-                    <h3 onClick={() => setCategoryStat('국산')} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
-                    <h3 onClick={() => setCategoryStat('수입')} className={categoryStat === '수입' ? 'selected' : ''}>수입 브랜드</h3>
+                    <h3 onClick={() => { setCategoryStat('국산'); setBrandStat('all'); }} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
+                    <h3 onClick={() => { setCategoryStat('수입'); setBrandStat('all'); }} className={categoryStat === '수입' ? 'selected' : ''}>수입 브랜드</h3>
                 </div>
                 {categoryStat === '국산' ?
                     <KoreaLogo setStat={setBrandStat} brandStat={brandStat} all={true} />
-                    : <IncomeLogo />
+                    : <IncomeLogo setStat={setBrandStat} brandStat={brandStat} all={true} />
                 }
             </div>
             <div className='quickCarListSection'>
                 <h2>출고가능 차량 <span>{quickDealList ? quickDealList.length : '0'}대</span></h2>
                 <div className='quickCarListSelectDiv'>
-                <p onClick={() => { setListStat('전체'); fetchData(categoryStat, brandStat, '전체') }} className={listStat === '전체' ? 'selected' : ''}>전체</p>
+                    <p onClick={() => { setListStat('전체'); fetchData(categoryStat, brandStat, '전체') }} className={listStat === '전체' ? 'selected' : ''}>전체</p>
                     <p onClick={() => { setListStat('경차'); fetchData(categoryStat, brandStat, '경차') }} className={listStat === '경차' ? 'selected' : ''}>경차</p>
                     <p onClick={() => { setListStat('소형/승용'); fetchData(categoryStat, brandStat, '소형/승용') }} className={listStat === '소형/승용' ? 'selected' : ''}>소형/승용</p>
                     <p onClick={() => { setListStat('SUV'); fetchData(categoryStat, brandStat, 'SUV') }} className={listStat === 'SUV' ? 'selected' : ''}>SUV</p>
                     <p onClick={() => { setListStat('화물'); fetchData(categoryStat, brandStat, '화물') }} className={listStat === '화물' ? 'selected' : ''}>화물</p>
                 </div>
                 <div className='quickCarCardListDiv'>
-                    {quickDealList.length === 0 && <NoCardList card={'차량이'}/>}
+                    {quickDealList.length === 0 && <NoCardList card={'차량이'} />}
                     {quickDealList && quickDealList.map((item, index) => (
                         <QuickDealCarCard
                             index={index}

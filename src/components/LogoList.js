@@ -76,7 +76,152 @@ export const KoreaLogo = (props) => {
 
 
 export const IncomeLogo = (props) => {
+    const stat = props.brandStat;
+
     return (
-        <></>
+        <div className='koreaLogoDiv'>
+            {props.all && (
+                <div
+                    onClick={() => props.setStat('all')}
+                    className={stat === 'all' ? 'selectedLogo' : ''}
+                >
+                    <img src={allLogo} alt="전체" />
+                    <p>전체</p>
+                </div>
+            )}
+            <div
+                onClick={() => props.setStat('BMW')}
+                className={stat === 'BMW' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/bmwLogo.png')} alt="BMW 로고" />
+                <p>BMW</p>
+            </div>
+            <div
+                onClick={() => props.setStat('벤츠')}
+                className={stat === '벤츠' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/benzLogo.png')} alt="벤츠 로고" />
+                <p>벤츠</p>
+            </div>
+            <div
+                onClick={() => props.setStat('아우디')}
+                className={stat === '아우디' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/audiLogo.png')} alt="아우디 로고" />
+                <p>아우디</p>
+            </div>
+            <div
+                onClick={() => props.setStat('폴스타')}
+                className={stat === '폴스타' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/polestarLogo.png')} alt="폴스타 로고" />
+                <p>폴스타</p>
+            </div>
+            <div
+                onClick={() => props.setStat('볼보')}
+                className={stat === '볼보' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/vlovoLogo.png')} alt="볼보 로고" />
+                <p>볼보</p>
+            </div>
+            <div
+                onClick={() => props.setStat('폭스바겐')}
+                className={stat === '폭스바겐' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/volkswagenLogo.png')} alt="폭스바겐 로고" />
+                <p>폭스바겐</p>
+            </div>
+            <div
+                onClick={() => props.setStat('토요타')}
+                className={stat === '토요타' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/toyotaLogo.png')} alt="토요타 로고" />
+                <p>토요타</p>
+            </div>
+            <div
+                onClick={() => props.setStat('렉서스')}
+                className={stat === '렉서스' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/lexusLogo.png')} alt="렉서스 로고" />
+                <p>렉서스</p>
+            </div>
+            <div
+                onClick={() => props.setStat('포드')}
+                className={stat === '포드' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/fordLogo.png')} alt="포드 로고" />
+                <p>포드</p>
+            </div>
+            <div
+                onClick={() => props.setStat('미니')}
+                className={stat === '미니' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/miniLogo.png')} alt="미니 로고" />
+                <p>미니</p>
+            </div>
+            <div
+                onClick={() => props.setStat('포르쉐')}
+                className={stat === '포르쉐' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/porscheLogo.png')} alt="포르쉐 로고" />
+                <p>포르쉐</p>
+            </div>
+            <div
+                onClick={() => props.setStat('혼다')}
+                className={stat === '혼다' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/hondaLogo.png')} alt="혼다 로고" />
+                <p>혼다</p>
+            </div>
+            <div
+                onClick={() => props.setStat('지프')}
+                className={stat === '지프' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/jeepLogo.png')} alt="지프 로고" />
+                <p>지프</p>
+            </div>
+            <div
+                onClick={() => props.setStat('랜드로버')}
+                className={stat === '랜드로버' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/landroverLogo.png')} alt="랜드로버 로고" />
+                <p>랜드로버</p>
+            </div>
+            <div
+                onClick={() => props.setStat('푸조')}
+                className={stat === '푸조' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/peugeotLogo.png')} alt="푸조 로고" />
+                <p>푸조</p>
+            </div>
+            <div
+                onClick={() => props.setStat('테슬라')}
+                className={stat === '테슬라' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/teslaLogo.png')} alt="테슬라 로고" />
+                <p>테슬라</p>
+            </div>
+            <div
+                onClick={() => props.setStat('링컨')}
+                className={stat === '링컨' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/lincolnLogo.png')} alt="링컨 로고" />
+                <p>링컨</p>
+            </div>
+            <div
+                onClick={() => props.setStat('캐딜락')}
+                className={stat === '캐딜락' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/cadillacLogo.png')} alt="캐딜락 로고" />
+                <p>캐딜락</p>
+            </div>
+            <div
+                onClick={() => props.setStat('마세라티')}
+                className={stat === '마세라티' ? 'selectedLogo' : ''}
+            >
+                <img src={require('../assets/img/logo/maseratiLogo.png')} alt="마세라티 로고" />
+                <p>마세라티</p>
+            </div>
+        </div>
     )
 }

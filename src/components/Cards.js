@@ -30,14 +30,14 @@ export const HotDealCard = (props) => {
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -71,7 +71,7 @@ export const QuickDealCard = (props) => {
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}adfsvsvsdavsdvsdvsdvasdasdasdasdasdsa</p>
+            <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
                 <p className='quickDealCardInfo1'>{props.item.out_color}</p>
@@ -97,12 +97,12 @@ export const QuickDealCard = (props) => {
             </span>
             <div className='quickDealCardBorder' />
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -233,12 +233,12 @@ export const PopularCarCard = (props) => {
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
         </div>
     )
@@ -270,12 +270,12 @@ export const QuickCarCard = (props) => {
             <h2>{props.item.name}</h2>
             <p>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv' style={{ marginBottom: 40 }}>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
         </div>
     )
@@ -307,14 +307,14 @@ export const HotDealCarCard = (props) => {
             </span>
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -334,7 +334,7 @@ export const HotDealCarCard = (props) => {
  */
 export const QuickDealCarCard = (props) => {
     return (
-        <div className='quickDealCard' onClick={() => window.location.href = `/Estimated/${props.item.car_code}`}>
+        <div className='quickDealCard'>
             <img
                 className='hotDealCardImg'
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -347,7 +347,7 @@ export const QuickDealCarCard = (props) => {
             <span className='hotDealCardTitleDiv'>
                 <h2>{props.item.enter} {props.item.name}</h2>
             </span>
-            <p className='hotDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
+            <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
             <span className='quickDealCardOptionDiv'>
                 <p className='quickDealCardTitle1'>외장</p>
                 <p className='quickDealCardInfo1'>{props.item.out_color}</p>
@@ -373,12 +373,12 @@ export const QuickDealCarCard = (props) => {
             </span>
             <div className='quickDealCardBorder' />
             <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+            </span>
+            <span className='hotDealCardMonthPriceDiv'>
+                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>

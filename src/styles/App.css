@@ -105,6 +105,22 @@ body, html {
   overflow: hidden;
 }
 
+.quickDealCardModel {
+  width: 90%;
+  min-height: 20px;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+}
+
 .hotDealCardMonthPriceDiv {
   position: relative;
   width: 90%;

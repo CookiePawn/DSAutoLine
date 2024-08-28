@@ -117,7 +117,7 @@ export const Admin_QuickFAQEdit = (props) => {
 
 export const Admin_QuickFAQAdd = (props) => {
     const [categoryStat, setCategoryStat] = useState('국산');
-    const [brandStat, setBrandStat] = useState('현대');
+    const [brandStat, setBrandStat] = useState(null);
     const [FAQ_carname, setFAQ_carname] = useState('');
     const [minFuel, setMinFuel] = useState('');
     const [maxFuel, setMaxFuel] = useState('');
@@ -229,7 +229,7 @@ export const Admin_QuickFAQAdd = (props) => {
                 </div>
                 {categoryStat === '국산' ?
                     <KoreaLogo setStat={setBrandStat} brandStat={brandStat} />
-                    : <IncomeLogo />
+                    : <IncomeLogo setStat={setBrandStat} brandStat={brandStat} />
                 }
                 <h3>차량 이름</h3>
                 <input
@@ -647,6 +647,11 @@ export const Admin_QuickFAQAdd = (props) => {
                     <button
                         className="admin_content_FAQ_alladd_addbutton"
                         onClick={async () => {
+                            // 가장 금액이 낮은 item 찾기
+                            const lowestPriceItem = trims.reduce((lowest, item) => {
+                                return item.price < lowest.price ? item : lowest;
+                            }, trims[0]);
+                            
                             if (FAQ_carname !== '' && minFuel !== '' && maxFuel !== ''
                                 && maxCC !== '' && minCC !== '' && FAQ_carprice !== ''
                                 && FAQ_startDate.year !== "" && FAQ_startDate.month !== ""
@@ -659,7 +664,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                     car_name: FAQ_carname,
                                     img: `car_${random}`,
                                     price: FAQ_carprice,
-                                    info: `${FAQ_startDate.year}년형 ${trims[0].trim1}${trims[0].trim2}`,
+                                    info: `${FAQ_startDate.year}년형 ${lowestPriceItem.trim1} ${lowestPriceItem.trim2}`,
                                     category: selectedCartype,
                                     size: selectedCartype,
                                     rental_price: rentalPrice,
