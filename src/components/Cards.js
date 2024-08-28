@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/App.css'
 import '../styles/QuickFAQPage.css'
 import '../styles/EventPage.css';
 import { IoMdStar } from "react-icons/io";
 import { RightIcon } from './Icons';
+import { QuickDealCarCard_Popup } from '../components/PopUp';
 
 
 
@@ -333,60 +334,66 @@ export const HotDealCarCard = (props) => {
  * @returns 
  */
 export const QuickDealCarCard = (props) => {
-    return (
-        <div className='quickDealCard'>
-            <img
-                className='hotDealCardImg'
-                src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
-                alt="즉시 출고 카드 이미지"
-                onError={(e) => {
-                    e.target.onerror = null; // 무한 루프 방지
-                    e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
-                }}
-            />
-            <span className='hotDealCardTitleDiv'>
-                <h2>{props.item.enter} {props.item.name}</h2>
-            </span>
-            <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
-            <span className='quickDealCardOptionDiv'>
-                <p className='quickDealCardTitle1'>외장</p>
-                <p className='quickDealCardInfo1'>{props.item.out_color}</p>
-            </span>
-            <span className='quickDealCardOptionDiv'>
-                <p className='quickDealCardTitle1'>내장</p>
-                <p className='quickDealCardInfo1'>{props.item.in_color}</p>
-            </span>
-            <span className='quickDealCardOptionDiv'>
-                <p className='quickDealCardTitle1'>옵션</p>
-                <div className='quickDealCardInfoDiv'>
-                    {props.item.option.length === 1
-                        ? <>
-                            <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
-                        </>
-                        : <>
-                            <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
-                            <p>외 {props.item.option.length}건</p>
-                        </>
-                    }
+    const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(false);
 
-                </div>
-            </span>
-            <div className='quickDealCardBorder' />
-            <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
-            </span>
-            <span className='hotDealCardMonthPriceDiv'>
-                <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
-            </span>
-            <div className='infoPaddingDiv'>
-                <span>
-                    <p>48개월</p>
-                    <p>선납금 30%</p>
+
+    return (
+        <>
+            {isUsePopupVisible1 && <QuickDealCarCard_Popup onClose={setIsUsePopupVisible1} />}
+            <div className='quickDealCard' onClick={() => {setIsUsePopupVisible1(true); document.body.style.overflowY='hidden'}}> 
+                <img
+                    className='hotDealCardImg'
+                    src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
+                    alt="즉시 출고 카드 이미지"
+                    onError={(e) => {
+                        e.target.onerror = null; // 무한 루프 방지
+                        e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
+                    }}
+                />
+                <span className='hotDealCardTitleDiv'>
+                    <h2>{props.item.enter} {props.item.name}</h2>
                 </span>
+                <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{props.item.info}</p>
+                <span className='quickDealCardOptionDiv'>
+                    <p className='quickDealCardTitle1'>외장</p>
+                    <p className='quickDealCardInfo1'>{props.item.out_color}</p>
+                </span>
+                <span className='quickDealCardOptionDiv'>
+                    <p className='quickDealCardTitle1'>내장</p>
+                    <p className='quickDealCardInfo1'>{props.item.in_color}</p>
+                </span>
+                <span className='quickDealCardOptionDiv'>
+                    <p className='quickDealCardTitle1'>옵션</p>
+                    <div className='quickDealCardInfoDiv'>
+                        {props.item.option.length === 1
+                            ? <>
+                                <p className='quickDealCardInfo2'>{props.item.option[0].name}</p>
+                            </>
+                            : <>
+                                <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
+                                <p>외 {props.item.option.length}건</p>
+                            </>
+                        }
+
+                    </div>
+                </span>
+                <div className='quickDealCardBorder' />
+                <span className='hotDealCardMonthPriceDiv'>
+                    <p className='hotDealCardMonthPriceTitle'>렌탈 (월)</p>
+                    <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.rental_price.toLocaleString()}</span>원</p>
+                </span>
+                <span className='hotDealCardMonthPriceDiv'>
+                    <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                    <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.lease_price.toLocaleString()}</span>원</p>
+                </span>
+                <div className='infoPaddingDiv'>
+                    <span>
+                        <p>48개월</p>
+                        <p>선납금 30%</p>
+                    </span>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

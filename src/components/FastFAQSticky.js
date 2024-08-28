@@ -68,6 +68,8 @@ const FastFAQSticky = (props) => {
     return (
         <section className="mainPage_QuickFAQSection">
             {nextStat && <OptionPagePopUp />}
+            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
+            {isInformationPopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
             <span>
                 <span style={load !== 0 ? { height: document.body.clientHeight - props.height } : null}>
                     <div>
@@ -94,7 +96,6 @@ const FastFAQSticky = (props) => {
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                             }
                             <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
-                            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
                         </span>
                         <span style={{ marginTop: 16 }}>
                             {
@@ -103,7 +104,6 @@ const FastFAQSticky = (props) => {
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                             }
                             <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
-                            {isInformationPopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
                         </span>
                         <div
                             style={(infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') ? null : { backgroundColor: '#dbdbdb', cursor: 'auto' }}
