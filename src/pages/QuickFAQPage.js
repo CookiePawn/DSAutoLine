@@ -12,7 +12,7 @@ import NoCardList from '../components/NoCardList'
 const QuickFAQPage = (props) => {
     const [carStat, setCarStat] = useState(null)
     const [categoryStat, setCategoryStat] = useState('국산')
-    const [brandStat, setBrandStat] = useState('현대')
+    const [brandStat, setBrandStat] = useState('기아')
     const [listStat, setListStat] = useState('전체')
     const [quickFAQList, setQuickFAQList] = useState(null)
     const [banner, setBanner] = useState(null)

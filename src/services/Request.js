@@ -561,7 +561,41 @@ export const quickInquiryChangeAxios = async (data) => {
 }
 
 
+/**
+ * 관리자 페이지 - 빠른 간편 문의 차량 삭제 DELETE
+ * @returns 
+ */
+export const carFaqDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/carFaqDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
 
+/**
+ * 관리자 페이지 - 한정 특가 차량 삭제 DELETE
+ * @returns 
+ */
+export const hotDealDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/hotDealDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 즉시 출고 차량 삭제 DELETE
+ * @returns 
+ */
+export const quickDealDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/quickDealDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
 
 
 

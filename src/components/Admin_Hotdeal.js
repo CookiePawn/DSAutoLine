@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
-import { faqFilterAxios, hotDealAxios, hotDealInsertAxios } from '../services/Request'
+import { faqFilterAxios, hotDealAxios, hotDealInsertAxios, hotDealDeleteAxios, } from '../services/Request'
 import NoCardList from '../components/NoCardList'
 import { HotDealCarAddPopUp } from "./PopUp";
 
@@ -93,9 +93,9 @@ export const Admin_HotdealAdd = (props) => {
                                     <p>{oilFunction(item)}</p>
                                 </div>
                                 <div className='admin_content_hodeal_infosub'>
-                                    <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
+                                    <p>{item.electric === 1 ? `총주행거리 ${item.max_cc.toLocaleString()} Km` : `${item.min_cc.toLocaleString()}~${item.max_cc.toLocaleString()}CC`}</p>
                                     <div className='admin_content_hodeal_line' />
-                                    <p>복합연비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}km/L</p>
+                                    <p>복합 {item.electric === 1 ? `전비 ${item.max_fuel_efficiency} Km/kWh` : `연비 ${item.min_fuel_efficiency}~${item.max_fuel_efficiency} Km/L`}</p>
                                 </div>
                             </div>
                             <button
@@ -114,9 +114,9 @@ export const Admin_HotdealAdd = (props) => {
                             </span>
                             <span>
                                 <p>렌트 할인율</p>
-                                <input placeholder='할인 된 % 입력' value={rentalPercent} type="number" onChange={(e) => setRentalPercent(e.target.value)} style={{width: 90}}/>
+                                <input placeholder='할인 된 % 입력' value={rentalPercent} type="number" onChange={(e) => setRentalPercent(e.target.value)} style={{ width: 90 }} />
                                 <p>리스 할인율</p>
-                                <input placeholder="할인 된 % 입력" value={leasePercent} type="number" onChange={(e) => setLeasePercent(e.target.value)} style={{width: 90}}/>
+                                <input placeholder="할인 된 % 입력" value={leasePercent} type="number" onChange={(e) => setLeasePercent(e.target.value)} style={{ width: 90 }} />
                             </span>
                             <span>
                                 <p>할부 (개월)</p>
@@ -138,7 +138,7 @@ export const Admin_HotdealAdd = (props) => {
                                 onClick={async () => {
                                     if (lease !== '' && rental !== '' && leasePercent !== '' && rentalPercent !== '' && payment && deposit) {
                                         await hotDealInsertAxios({
-                                            car_code: item.car_code, 
+                                            car_code: item.car_code,
                                             rental_price: rental,
                                             lease_price: lease,
                                             rental_percent: rentalPercent,
@@ -245,12 +245,20 @@ export const Admin_HotdealEdit = (props) => {
                                 <p>{oilFunction(item)}</p>
                             </div>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
+                                <p>{item.electric === 1 ? `총주행거리 ${item.max_cc.toLocaleString()} Km` : `${item.min_cc.toLocaleString()}~${item.max_cc.toLocaleString()}CC`}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>복합연비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}km/L</p>
+                                <p>복합 {item.electric === 1 ? `전비 ${item.max_fuel_efficiency} Km/kWh` : `연비 ${item.min_fuel_efficiency}~${item.max_fuel_efficiency} Km/L`}</p>
                             </div>
                         </div>
-                        <button className="admin_content_carListDeleteButton">삭제</button>
+                        <button
+                            className="admin_content_carListDeleteButton"
+                            onClick={async () => {
+                                setCarList(carList.filter((_, index) => index !== idx))
+                                await hotDealDeleteAxios(item.seq)
+                            }}
+                        >
+                            삭제
+                        </button>
                     </div>
                 ))}
             </div>

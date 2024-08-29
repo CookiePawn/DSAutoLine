@@ -137,7 +137,7 @@ const OptionPage = (props) => {
                             <h3>{content.enter} {content.name}</h3>
                         </span>
                         <p>{content.year}.{content.month} │ {content.category} │ {oilStat}</p>
-                        <p>{content.min_cc}~{content.max_cc}CC │ 복합연비 {content.min_fuel_efficiency}~{content.max_fuel_efficiency}km/L</p>
+                        <p>{content.electric === 1 ? `총주행거리 ${content.max_cc.toLocaleString()} Km` : `${content.min_cc.toLocaleString()}~${content.max_cc.toLocaleString()}CC`} │ 복합 {content.electric === 1 ? `전비 ${content.max_fuel_efficiency} Km/kWh` : `연비 ${content.min_fuel_efficiency}~${content.max_fuel_efficiency} Km/L`}</p>
                         <img
                             src={`${process.env.REACT_APP_IMG_URL}/${content.img}.png`}
                             alt="차량 이미지"

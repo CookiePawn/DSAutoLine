@@ -10,6 +10,7 @@ import {
     optionAddAxios,
     imageUploadAxios,
     carInsertAxios,
+    carFaqDeleteAxios,
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
@@ -98,12 +99,20 @@ export const Admin_QuickFAQEdit = (props) => {
                                 <p>{oilFunction(item)}</p>
                             </div>
                             <div className='admin_content_hodeal_infosub'>
-                                <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
+                                <p>{item.electric === 1 ? `총주행거리 ${item.max_cc.toLocaleString()} Km` : `${item.min_cc.toLocaleString()}~${item.max_cc.toLocaleString()}CC`}</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>복합 연비/전비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}</p>
+                                <p>복합 {item.electric === 1 ? `전비 ${item.max_fuel_efficiency} Km/kWh` : `연비 ${item.min_fuel_efficiency}~${item.max_fuel_efficiency} Km/L`}</p>
                             </div>
                         </div>
-                        <button className="admin_content_carListDeleteButton">삭제</button>
+                        <button
+                            className="admin_content_carListDeleteButton"
+                            onClick={async () => {
+                                setCarList(carList.filter((_, index) => index !== idx))
+                                await carFaqDeleteAxios(item.car_code)
+                            }}
+                        >
+                            삭제
+                        </button>
                     </div>
                 ))}
             </div>
@@ -229,8 +238,8 @@ export const Admin_QuickFAQAdd = (props) => {
                     : <IncomeLogo setStat={setBrandStat} brandStat={brandStat} />
                 }
 
-                <div style={{position: 'relative'}}>
-                    <div className='carCard' style={{ border: '1px solid #dbdbdb', position: 'absolute', right: 0}}>
+                <div style={{ position: 'relative' }}>
+                    <div className='carCard' style={{ border: '1px solid #dbdbdb', position: 'absolute', right: 0 }}>
                         <img
                             src={imgURL ? imgURL : `${process.env.REACT_APP_IMG_URL}/error.png`}
                             alt="차량 이미지"
@@ -249,7 +258,7 @@ export const Admin_QuickFAQAdd = (props) => {
                     value={FAQ_carname}
                     onChange={(e) => setFAQ_carname(e.target.value)}
                 />
-                <h3 style={{marginTop: 100}}>차량 사진 첨부하기</h3>
+                <h3 style={{ marginTop: 100 }}>차량 사진 첨부하기</h3>
                 <img
                     src={require('../assets/img/popup/imageUpload.png')}
                     alt="이미지 업로드 이미지"
@@ -266,7 +275,7 @@ export const Admin_QuickFAQAdd = (props) => {
                         setImgURL(response)
                     }}
                 />
-                <div className="admin_content_FAQ_newcar_bodySection" style={{marginTop: 100}}>
+                <div className="admin_content_FAQ_newcar_bodySection" style={{ marginTop: 100 }}>
                     <div className="admin_content_FAQ_newcar_PriceSection">
                         <h3>신차 출고가</h3>
                         <div className="admin_content_FAQ_newcar_PriceSection_input">
@@ -354,48 +363,77 @@ export const Admin_QuickFAQAdd = (props) => {
                         </button>
                     ))}
                 </div>
-                <div className="admin_content_FAQ_newcar_bodySection">
-                    <div className="admin_content_FAQ_newcar_PriceSection">
-                        <h3>연비</h3>
-                        <div className="admin_content_FAQ_MAXMINSection">
-                            <p>최소</p>
-                            <input
-                                placeholder='입력해주세요.'
-                                type="number"
-                                value={minFuel}
-                                onChange={(e) => setMinFuel(e.target.value)}
-                            />
-                            <p>~</p>
-                            <p>최대</p>
-                            <input
-                                placeholder='입력해주세요.'
-                                type="number"
-                                value={maxFuel}
-                                onChange={(e) => setMaxFuel(e.target.value)}
-                            />
-                            <p>km/L</p>
+                {electric === 1
+                    ? <div className="admin_content_FAQ_newcar_bodySection">
+                        <div className="admin_content_FAQ_newcar_PriceSection">
+                            <h3>전비</h3>
+                            <div className="admin_content_FAQ_MAXMINSection">
+                                <input
+                                    placeholder='입력해주세요.'
+                                    type="number"
+                                    value={maxFuel}
+                                    onChange={(e) => setMaxFuel(e.target.value)}
+                                />
+                                <p>km/kWh</p>
+                            </div>
+                        </div>
+                        <div className="admin_content_FAQ_newcar_PriceSection">
+                            <h3>총주행거리</h3>
+                            <div className="admin_content_FAQ_MAXMINSection">
+                                <input
+                                    placeholder='입력해주세요.'
+                                    value={maxCC}
+                                    onChange={(e) => setMaxCC(e.target.value)}
+                                    style={{width: 150}}
+                                />
+                                <p>Km</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="admin_content_FAQ_newcar_PriceSection">
-                        <h3>배기</h3>
-                        <div className="admin_content_FAQ_MAXMINSection">
-                            <p>최소 </p>
-                            <input
-                                placeholder='입력해주세요.'
-                                value={minCC}
-                                onChange={(e) => setMinCC(e.target.value)}
-                            />
-                            <p>~ </p>
-                            <p>최대 </p>
-                            <input
-                                placeholder='입력해주세요.'
-                                value={maxCC}
-                                onChange={(e) => setMaxCC(e.target.value)}
-                            />
-                            <p> CC</p>
+                    : <div className="admin_content_FAQ_newcar_bodySection">
+                        <div className="admin_content_FAQ_newcar_PriceSection">
+                            <h3>연비</h3>
+                            <div className="admin_content_FAQ_MAXMINSection">
+                                <p>최소</p>
+                                <input
+                                    placeholder='입력해주세요.'
+                                    type="number"
+                                    value={minFuel}
+                                    onChange={(e) => setMinFuel(e.target.value)}
+                                />
+                                <p>~</p>
+                                <p>최대</p>
+                                <input
+                                    placeholder='입력해주세요.'
+                                    type="number"
+                                    value={maxFuel}
+                                    onChange={(e) => setMaxFuel(e.target.value)}
+                                />
+                                <p>km/L</p>
+                            </div>
+                        </div>
+                        <div className="admin_content_FAQ_newcar_PriceSection">
+                            <h3>배기</h3>
+                            <div className="admin_content_FAQ_MAXMINSection">
+                                <p>최소 </p>
+                                <input
+                                    placeholder='입력해주세요.'
+                                    value={minCC}
+                                    onChange={(e) => setMinCC(e.target.value)}
+                                />
+                                <p>~ </p>
+                                <p>최대 </p>
+                                <input
+                                    placeholder='입력해주세요.'
+                                    value={maxCC}
+                                    onChange={(e) => setMaxCC(e.target.value)}
+                                />
+                                <p> CC</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+
                 <h3>세부모델 추가하기</h3>
                 <div className="admin_content_FAQ_detailSection">
                     <div className="admin_content_FAQ_add_model">
@@ -575,7 +613,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                                 price: optionPrice,
                                                 img: null,
                                             })
-                                            setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice}]);
+                                            setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice }]);
                                             setOptionName(''); // 입력 필드 초기화
                                             setOptionPrice(''); // 입력 필드 초기화
                                         }
@@ -623,8 +661,8 @@ export const Admin_QuickFAQAdd = (props) => {
                                 return item.price < lowest.price ? item : lowest;
                             }, trims[0]);
 
-                            if (FAQ_carname !== '' && minFuel !== '' && maxFuel !== ''
-                                && maxCC !== '' && minCC !== '' && FAQ_carprice !== ''
+                            if (FAQ_carname !== '' && maxFuel !== ''
+                                && maxCC !== '' && FAQ_carprice !== ''
                                 && FAQ_startDate.year !== "" && FAQ_startDate.month !== ""
                                 && selectedCartype && imgURL && trims.length !== 0
                                 && colorSelectedList.length !== 0) {

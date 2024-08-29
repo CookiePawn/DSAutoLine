@@ -6,9 +6,9 @@ import {
     optionGetAxios,
     optionAddAxios,
     imageUploadAxios,
-    carInsertAxios,
     quickDealAxios,
     quickDealInsertAxios,
+    quickDealDeleteAxios,
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
@@ -427,7 +427,6 @@ export const Admin_QuickDealEdit = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await quickDealAxios(null, null, null)
-            console.log(response)
             setCarList(response)
         }
         fetchData()
@@ -509,7 +508,15 @@ export const Admin_QuickDealEdit = (props) => {
                                 <p>{item.name}</p>
                             ))}
                         </div>
-                        <button className="admin_content_carListDeleteButton">삭제</button>
+                        <button
+                            className="admin_content_carListDeleteButton"
+                            onClick={async () => {
+                                setCarList(carList.filter((_, index) => index !== idx))
+                                await quickDealDeleteAxios(item.seq)
+                            }}
+                        >
+                            삭제
+                        </button>
                     </div>
                 ))}
             </div>

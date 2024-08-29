@@ -107,7 +107,6 @@ export function Admin_Option() {
     const [searchValue, setSearchValue] = useState('');
     const [optionName, setOptionName] = useState('');
     const [optionPrice, setOptionPrice] = useState('');
-    const [img, setImg] = useState(null)
 
     const [items, setItems] = useState(null)
 
@@ -136,7 +135,6 @@ export function Admin_Option() {
             setItems([...items, { name: optionName, price: optionPrice }]);
             setOptionName(''); // 입력 필드 초기화
             setOptionPrice(''); // 입력 필드 초기화
-            setImg(null)
         }
     };
 
