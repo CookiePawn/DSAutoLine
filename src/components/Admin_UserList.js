@@ -9,6 +9,8 @@ import {
     counselingInquiryChangeAxios,
     mentoInquiryDeleteAxios,
     mentoInquiryChangeAxios,
+    quickInquiryChangeAxios,
+    quickInquiryDeleteAxios,
 } from "../services/Request";
 import NoCardList from './NoCardList'
 
@@ -35,8 +37,8 @@ export const Admin_UserCompletedList = (props) => {
 
     const onClickDelete = async (id) => {
         if (userStat === 0) {
-            await carInquiryDeleteAxios(id)
-            setUserList(userList.filter(list => list.order_num !== id))
+            await quickInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
         } else if (userStat === 1) {
             await carInquiryDeleteAxios(id)
             setUserList(userList.filter(list => list.order_num !== id))
@@ -50,8 +52,8 @@ export const Admin_UserCompletedList = (props) => {
     }
     const onClickChange = async (data) => {
         if (userStat === 0) {
-            await carInquiryChangeAxios(data)
-            setUserList(userList.filter(list => list.order_num !== data.seq))
+            await quickInquiryChangeAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
         } else if (userStat === 1) {
             await carInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.order_num !== data.seq))
@@ -118,8 +120,8 @@ export const Admin_UserIncompleteList = (props) => {
 
     const onClickDelete = async (id) => {
         if (userStat === 0) {
-            await carInquiryDeleteAxios(id)
-            setUserList(userList.filter(list => list.order_num !== id))
+            await quickInquiryDeleteAxios(id)
+            setUserList(userList.filter(list => list.seq !== id))
         } else if (userStat === 1) {
             await carInquiryDeleteAxios(id)
             setUserList(userList.filter(list => list.order_num !== id))
@@ -133,8 +135,8 @@ export const Admin_UserIncompleteList = (props) => {
     }
     const onClickChange = async (data) => {
         if (userStat === 0) {
-            await carInquiryChangeAxios(data)
-            setUserList(userList.filter(list => list.order_num !== data.seq))
+            await quickInquiryChangeAxios(data)
+            setUserList(userList.filter(list => list.seq !== data.seq))
         } else if (userStat === 1) {
             await carInquiryChangeAxios(data)
             setUserList(userList.filter(list => list.order_num !== data.seq))
@@ -252,7 +254,6 @@ const QuickDealList = (props) => {
                     <p>연락처</p>
                     <p>차종</p>
                     <p>옵션</p>
-                    <p>이용조건</p>
                     <p>금액</p>
                 </span>
             </div>
@@ -266,27 +267,17 @@ const QuickDealList = (props) => {
                             <p>{item.phone}</p>
                             <p>{item.enter} {item.car_name}</p>
                             <span>
-                                <p>{item.trim1}</p>
-                                <p>{item.trim2}</p>
+                                <p>{item.info}</p>
                                 {item.option.map((item, idx) => (
                                     <p>{item.name}</p>
                                 ))}
-                            </span>
-                            <span>
-                                <p>{item.method}</p>
-                                <p>{item.period}</p>
-                                <p>{item.deposit}</p>
-                                <p>{item.deposit_price} 원</p>
-                                <p>{item.payment_price}</p>
-                                <p>{item.age}</p>
-                                <p>{item.annual_mileage}</p>
                             </span>
                             <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                         </span>
                         <button
                             onClick={async () => {
                                 await props.onClickChange({
-                                    seq: item.order_num,
+                                    seq: item.seq,
                                     allow: item.allow,
                                 })
                             }}
@@ -295,7 +286,7 @@ const QuickDealList = (props) => {
                         </button>
                         <button
                             onClick={async () => {
-                                await props.onClickDelete(item.order_num)
+                                await props.onClickDelete(item.seq)
                             }}
                         >
                             삭제

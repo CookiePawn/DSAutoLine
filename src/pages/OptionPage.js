@@ -127,7 +127,7 @@ const OptionPage = (props) => {
                         <h1>옵션 및 이용조건</h1>
                         <span className="carTitle" style={{ alignItems: 'center' }}>
                             <img
-                                src={`${process.env.REACT_APP_IMG_URL}/${content.logo_img}.png`} 
+                                src={`${process.env.REACT_APP_IMG_URL}/${content.logo_img}.png`}
                                 alt="차량 브랜드 로고"
                                 onError={(e) => {
                                     e.target.onerror = null; // 무한 루프 방지
@@ -175,7 +175,7 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect1(!infoSelect1)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                                    <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                                 </span>
                                 <span>
                                     {
@@ -183,7 +183,7 @@ const OptionPage = (props) => {
                                             ? <img src={nonSelectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 안됨" />
                                             : <img src={selectBox} onClick={() => setInfoSelect2(!infoSelect2)} alt="선택 됨" />
                                     }
-                                    <p>개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                                    <p>개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                                 </span>
                             </span>
                         </div>
@@ -312,6 +312,8 @@ const OptionPage = (props) => {
                             </span>
                             <h4>이용기간</h4>
                             <span>
+                                <p className={useingSelect2 === '12개월' ? 'selected' : ''} onClick={() => setUseingSelect2('12개월')}>12개월</p>
+                                <p className={useingSelect2 === '24개월' ? 'selected' : ''} onClick={() => setUseingSelect2('24개월')}>24개월</p>
                                 <p className={useingSelect2 === '36개월' ? 'selected' : ''} onClick={() => setUseingSelect2('36개월')}>36개월</p>
                                 <p className={useingSelect2 === '48개월' ? 'selected' : ''} onClick={() => setUseingSelect2('48개월')}>48개월</p>
                                 <p className={useingSelect2 === '60개월' ? 'selected' : ''} onClick={() => setUseingSelect2('60개월')}>60개월</p>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
-import { quickFAQAxios, hotDealAxios } from '../services/Request'
+import { faqFilterAxios, hotDealAxios, hotDealInsertAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
 import { HotDealCarAddPopUp } from "./PopUp";
 
@@ -24,7 +24,7 @@ export const Admin_HotdealAdd = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await quickFAQAxios(null, null, null)
+            const response = await faqFilterAxios()
             setCarList(response)
         }
         fetchData()
@@ -135,17 +135,17 @@ export const Admin_HotdealAdd = (props) => {
                             </span>
 
                             <button
-                                onClick={() => {
+                                onClick={async () => {
                                     if (lease !== '' && rental !== '' && leasePercent !== '' && rentalPercent !== '' && payment && deposit) {
-                                        // console.log({
-                                        //     car_code: item.car_code, 
-                                        //     rental_price: rental,
-                                        //     lease_price: lease,
-                                        //     rental_percent: rentalPercent,
-                                        //     lease_percent: leasePercent,
-                                        //     payment: payment,
-                                        //     deposit: deposit,
-                                        // })
+                                        await hotDealInsertAxios({
+                                            car_code: item.car_code, 
+                                            rental_price: rental,
+                                            lease_price: lease,
+                                            rental_percent: rentalPercent,
+                                            lease_percent: leasePercent,
+                                            payment: payment,
+                                            deposit: deposit,
+                                        })
                                         setCarList(carList.filter((_, index) => index !== idx))
                                         setLease('')
                                         setRental('')

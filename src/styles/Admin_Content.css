@@ -723,8 +723,7 @@
 }
 
 .admin_content_eventStat_buttonDiv>button {
-    width: 150px;
-    height: 45px;
+    padding: 10px;
     border: 1px solid #767676;
     background-color: transparent;
     font-size: 16px;

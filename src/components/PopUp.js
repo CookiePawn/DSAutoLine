@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/PopUp.css'
-import { mentoringAxios } from '../services/Request'
+import { mentoringAxios, quickCounselingInsertAxios } from '../services/Request'
 import { StarIcon } from './Icons'
 import { TermsofUse, TermsofInformation } from '../components/TermsScript';
 import imageUpload from '../assets/img/popup/imageUpload.png'
@@ -275,7 +275,6 @@ export const QuickDealCarCard_Popup = (props) => {
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
     const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(false);
 
-
     return (
         <div className='QuickDeal_Dimmed'>
             {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
@@ -329,14 +328,14 @@ export const QuickDealCarCard_Popup = (props) => {
                 <div className='QuickDeal_button_Section'>
                     <button
                         className='Quick_apply'
-                        onClick={() => {
+                        onClick={async () => {
                             if (popupName !== '' && popupNumber !== '' && infoSelect1 && infoSelect2) {
-                                // console.log({
-                                //     car_code: props.id,
-                                //     name: popupName,
-                                //     phone: popupNumber,
-                                //     type: "즉시 출고",
-                                // })
+                                await quickCounselingInsertAxios({
+                                    car_code: props.id,
+                                    name: popupName,
+                                    phone: popupNumber,
+                                    type: "즉시 출고",
+                                })
                                 setPopupName('')
                                 setPopupnumber('')
                                 setIsUsePopupVisible1(true)

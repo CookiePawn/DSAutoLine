@@ -7,9 +7,8 @@ import {
     optionGetAxios,
     optionDeleteAxios,
     optionAddAxios,
-    imageUploadAxios,
 } from '../services/Request';
-import { imageResize4_3, generateRandomString } from '../utils/imageResize'
+import { generateRandomString } from '../utils/imageResize'
 import NoCardList from './NoCardList'
 
 
@@ -127,15 +126,14 @@ export function Admin_Option() {
     ) : [];
 
     const handleAddOption = async () => {
-        const random = generateRandomString(15)
-        if (optionName !== '' && optionPrice !== '' && img) {
+        if (optionName !== '' && optionPrice !== '') {
             await optionAddAxios({
                 name: optionName,
                 price: optionPrice,
-                img: `option_${random}`,
+                img: null,
             })
             //await imageUploadAxios(img, `option_${random}`)
-            setItems([...items, { name: optionName, price: optionPrice, img: img }]);
+            setItems([...items, { name: optionName, price: optionPrice }]);
             setOptionName(''); // 입력 필드 초기화
             setOptionPrice(''); // 입력 필드 초기화
             setImg(null)
@@ -174,26 +172,6 @@ export function Admin_Option() {
                     </div>
                 </div>
                 <div>
-                    <h3>이미지</h3>
-                    <img
-                        src={require('../assets/img/popup/imageUpload.png')}
-                        alt="이미지 업로드 이미지"
-                        style={{ width: '38px', height: '38px', padding: '0 20px', cursor: 'pointer' }}
-                        onClick={() => document.getElementById('fileInput3').click()}
-                    />
-                    <input
-                        id="fileInput3"
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={async (e) => {
-                            const response = await imageResize4_3(e)
-                            setImg(response)
-                        }}
-                    />
-                    <div className="admin_content_option_preview_img">
-                        <img src={img} style={{ width: '100%' }} />
-                    </div>
                     <h3>옵션명</h3>
                     <input
                         placeholder='ex) 파노라마 선루프'

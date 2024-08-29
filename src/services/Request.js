@@ -535,6 +535,42 @@ export const mentoInquiryChangeAxios = async (data) => {
 }
 
 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 즉시출고 DELETE
+ * @returns 
+ */
+export const quickInquiryDeleteAxios = async (data) => {
+    try {
+        await axios.delete(`${dbServerUrl}/quickInquiryDelete/${data}`)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 고객 리스트 - 즉시출고 완료/미완료 POST
+ * @returns 
+ */
+export const quickInquiryChangeAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/quickInquiryChange`, data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * 관리자 페이지 - 고객 리스트 - 우수 카멘토 완료/미완료 POST
  * @returns 
@@ -546,3 +582,83 @@ export const carInsertAxios = async (data) => {
         console.log(error)
     }
 } 
+
+
+
+/**
+ * 관리자 페이지 - 빠른 간편 문의 한정 특가 제외 리스트 로드 GET
+ * @returns 
+ */
+export const faqFilterAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/faqFilter`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+/**
+ * 관리자 페이지 - 한정특가 추가 POST
+ * @returns 
+ */
+export const hotDealInsertAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/hotDealInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+/**
+ * 관리자 페이지 - 즉시출고 추가 POST
+ * @returns 
+ */
+export const quickDealInsertAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/quickInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 즉시 출고 차량 상담 신청 추가 POST
+ * @returns 
+ */
+export const quickCounselingInsertAxios = async (data) => {
+    try {
+        await axios.post(`${dbServerUrl}/quickCounselingInsert`, data)
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+
+
+
+
+/**
+ * 기업 로고 -  리스트 로드 GET
+ * @returns 
+ */
+export const enterListAxios = async () => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/enter`)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 
+

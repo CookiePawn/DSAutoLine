@@ -100,7 +100,7 @@ export const Admin_QuickFAQEdit = (props) => {
                             <div className='admin_content_hodeal_infosub'>
                                 <p>{item.min_cc.toLocaleString()}CC~{item.max_cc.toLocaleString()}CC</p>
                                 <div className='admin_content_hodeal_line' />
-                                <p>복합연비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}km/L</p>
+                                <p>복합 연비/전비 {item.min_fuel_efficiency}~{item.max_fuel_efficiency}</p>
                             </div>
                         </div>
                         <button className="admin_content_carListDeleteButton">삭제</button>
@@ -155,11 +155,10 @@ export const Admin_QuickFAQAdd = (props) => {
     const [colorRGB, setColorRGB] = useState('')
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
-    const [optionImg, setOptionImg] = useState(null)
 
     const [popupStat, setPopupStat] = useState(false)
 
-    const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() -10 + i).toString());
+    const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() - 10 + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
     useEffect(() => {
@@ -229,13 +228,28 @@ export const Admin_QuickFAQAdd = (props) => {
                     <KoreaLogo setStat={setBrandStat} brandStat={brandStat} />
                     : <IncomeLogo setStat={setBrandStat} brandStat={brandStat} />
                 }
+
+                <div style={{position: 'relative'}}>
+                    <div className='carCard' style={{ border: '1px solid #dbdbdb', position: 'absolute', right: 0}}>
+                        <img
+                            src={imgURL ? imgURL : `${process.env.REACT_APP_IMG_URL}/error.png`}
+                            alt="차량 이미지"
+                        />
+                        <h2>{brandStat} {FAQ_carname}</h2>
+                        <p>{`${FAQ_startDate.year}년형 ${trims[0] && trims[0].trim1} ${trims[0] && trims[0].trim2}`}</p>
+                        <span className='hotDealCardMonthPriceDiv'>
+                            <p className='hotDealCardMonthPriceTitle'>차량가</p>
+                            <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{FAQ_carprice.toLocaleString()}</span>원</p>
+                        </span>
+                    </div>
+                </div>
                 <h3>차량 이름</h3>
                 <input
                     placeholder='ex) K5'
                     value={FAQ_carname}
                     onChange={(e) => setFAQ_carname(e.target.value)}
                 />
-                <h3>차량 사진 첨부하기</h3>
+                <h3 style={{marginTop: 100}}>차량 사진 첨부하기</h3>
                 <img
                     src={require('../assets/img/popup/imageUpload.png')}
                     alt="이미지 업로드 이미지"
@@ -252,10 +266,7 @@ export const Admin_QuickFAQAdd = (props) => {
                         setImgURL(response)
                     }}
                 />
-                <div className="admin_content_FAQ_preview_img">
-                    <img src={imgURL} style={{ width: '100%' }} />
-                </div>
-                <div className="admin_content_FAQ_newcar_bodySection">
+                <div className="admin_content_FAQ_newcar_bodySection" style={{marginTop: 100}}>
                     <div className="admin_content_FAQ_newcar_PriceSection">
                         <h3>신차 출고가</h3>
                         <div className="admin_content_FAQ_newcar_PriceSection_input">
@@ -520,7 +531,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                 onChange={(e) => setSearchOption(e.target.value)}
                             />
                             <div className='admin_content_colorCard title'>
-                                <p style={{width: 50}}>옵션명</p>
+                                <p style={{ width: 50 }}>옵션명</p>
                                 <p>금액</p>
                             </div>
                             <span></span>
@@ -556,36 +567,17 @@ export const Admin_QuickFAQAdd = (props) => {
                                     type="number"
                                     onChange={(e) => setOptionPrice(e.target.value)}
                                 />
-                                <img
-                                    src={require('../assets/img/popup/imageUpload.png')}
-                                    alt="이미지 업로드 이미지"
-                                    style={{ width: '38px', height: '38px', padding: '0 20px', marginTop: 10, cursor: 'pointer' }}
-                                    onClick={() => document.getElementById('fileInput4').click()}
-                                />
-                                <input
-                                    id="fileInput4"
-                                    type="file"
-                                    accept="image/*"
-                                    style={{ display: 'none' }}
-                                    onChange={async (e) => {
-                                        const response = await imageResize4_3(e)
-                                        setOptionImg(response)
-                                    }}
-                                />
                                 <button
                                     onClick={async () => {
-                                        if (optionName !== '' && optionPrice !== '' && optionImg) {
-                                            const random = generateRandomString(20)
+                                        if (optionName !== '' && optionPrice !== '') {
                                             await optionAddAxios({
                                                 name: optionName,
                                                 price: optionPrice,
-                                                img: `option_${random}`,
+                                                img: null,
                                             })
-                                            //await imageUploadAxios(optionImg, `option_${random}`)
-                                            setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice, img: optionImg }]);
+                                            setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice}]);
                                             setOptionName(''); // 입력 필드 초기화
                                             setOptionPrice(''); // 입력 필드 초기화
-                                            setOptionImg(null)
                                         }
                                     }}
                                 >
@@ -630,7 +622,7 @@ export const Admin_QuickFAQAdd = (props) => {
                             const lowestPriceItem = trims.reduce((lowest, item) => {
                                 return item.price < lowest.price ? item : lowest;
                             }, trims[0]);
-                            
+
                             if (FAQ_carname !== '' && minFuel !== '' && maxFuel !== ''
                                 && maxCC !== '' && minCC !== '' && FAQ_carprice !== ''
                                 && FAQ_startDate.year !== "" && FAQ_startDate.month !== ""
