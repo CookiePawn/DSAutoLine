@@ -11,6 +11,7 @@ import '../styles/slick.css'
 import '../styles/slick-theme.css'
 import { handleNext, handlePrev, reviewSlicerSettings } from '../utils/SliderMove';
 import FastFAQSticky from '../components/FastFAQSticky';
+import NoCardList from '../components/NoCardList'
 
 
 
@@ -70,6 +71,7 @@ const ReviewMorePage = () => {
             </section>
             <section className="reviewMoreListSection">
                 <h1>관련 리뷰</h1>
+                {reviewInfo.order.length === 0 && <NoCardList card={'리뷰가'}/>}
                 <div
                     className='reviewMoreListDiv'
                     onMouseEnter={() => setReviewHovered(true)}

@@ -85,7 +85,7 @@ export const QuickDealCard = (props) => {
                 <span className='quickDealCardOptionDiv'>
                     <p className='quickDealCardTitle1'>옵션</p>
                     <div className='quickDealCardInfoDiv'>
-                        {props.item.option.length <= 3
+                        {props.item.option.length <= 2
                             ? <>
                                 {props.item.option.map((item, idx) => (
                                     <p className='quickDealCardInfo2'>{item.name}{idx === 0 && props.item.option.length === 2 && ', '}</p>
@@ -109,8 +109,8 @@ export const QuickDealCard = (props) => {
                 </span>
                 <div className='infoPaddingDiv'>
                     <span>
-                        <p>48개월</p>
-                        <p>선납금 30%</p>
+                        <p>{props.item.payment}</p>
+                        <p>{props.item.deposit} 30%</p>
                     </span>
                 </div>
             </div>
@@ -315,8 +315,8 @@ export const HotDealCarCard = (props) => {
             </span>
             <div className='infoPaddingDiv'>
                 <span>
-                    <p>48개월</p>
-                    <p>선납금 30%</p>
+                    <p>{props.item.payment}</p>
+                    <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
         </div>
@@ -335,7 +335,7 @@ export const QuickDealCarCard = (props) => {
 
     return (
         <>
-            {isUsePopupVisible1 !== null && <QuickDealCarCard_Popup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1}/>}
+            {isUsePopupVisible1 !== null && <QuickDealCarCard_Popup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
             <div className='quickDealCard' onClick={() => { setIsUsePopupVisible1(props.item.car_code); document.body.style.overflowY = 'hidden' }}>
                 <img
                     className='hotDealCardImg'
@@ -361,7 +361,7 @@ export const QuickDealCarCard = (props) => {
                 <span className='quickDealCardOptionDiv'>
                     <p className='quickDealCardTitle1'>옵션</p>
                     <div className='quickDealCardInfoDiv'>
-                        {props.item.option.length <= 3
+                        {props.item.option.length <= 2
                             ? <>
                                 {props.item.option.map((item, idx) => (
                                     <p className='quickDealCardInfo2'>{item.name}{idx === 0 && props.item.option.length === 2 && ', '}</p>
@@ -385,8 +385,8 @@ export const QuickDealCarCard = (props) => {
                 </span>
                 <div className='infoPaddingDiv'>
                     <span>
-                        <p>48개월</p>
-                        <p>선납금 30%</p>
+                        <p>{props.item.payment}</p>
+                        <p>{props.item.deposit} 30%</p>
                     </span>
                 </div>
             </div>

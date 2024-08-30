@@ -128,10 +128,10 @@ export const Admin_QuickFAQAdd = (props) => {
     const [categoryStat, setCategoryStat] = useState('국산');
     const [brandStat, setBrandStat] = useState(null);
     const [FAQ_carname, setFAQ_carname] = useState('');
-    const [minFuel, setMinFuel] = useState('');
-    const [maxFuel, setMaxFuel] = useState('');
-    const [maxCC, setMaxCC] = useState('')
-    const [minCC, setMinCC] = useState('')
+    const [minFuel, setMinFuel] = useState(0);
+    const [maxFuel, setMaxFuel] = useState(0);
+    const [maxCC, setMaxCC] = useState(0)
+    const [minCC, setMinCC] = useState(0)
     const [FAQ_carprice, setFAQ_carprice] = useState('');
     const [FAQ_model, setFAQ_model] = useState('');
     const [FAQ_detailmodel, setFAQ_detailmodel] = useState('');
@@ -152,6 +152,7 @@ export const Admin_QuickFAQAdd = (props) => {
 
     // 모델 정보를 저장할 상태
     const [trims, setTrims] = useState([]);
+    const [trimStat, setTrimStat] = useState(false)
 
     //색상, 옵션 배열
     const [colorList, setColorList] = useState(null)
@@ -205,19 +206,26 @@ export const Admin_QuickFAQAdd = (props) => {
 
 
     const handleAddModel = () => {
-        setTrims([
-            ...trims,
-            {
-                trim1: FAQ_model,
-                trim2: FAQ_detailmodel,
-                price: FAQ_detailmodel_price,
-            }
-        ]);
-
-        //초기화
-        setFAQ_model('');
-        setFAQ_detailmodel('');
-        setFAQ_detailmodel_price('');
+        if (FAQ_model !== '' && FAQ_detailmodel !== '' && FAQ_detailmodel_price !== '') {
+            setTrims([
+                ...trims,
+                {
+                    trim1: FAQ_model,
+                    trim2: FAQ_detailmodel,
+                    price: FAQ_detailmodel_price,
+                    option: optionSelectedList,
+                }
+            ]);
+            //초기화
+            setOptionList((prevOptionList) => {
+                return [...(prevOptionList || []), ...optionSelectedList];
+            });
+            setOptionSelectedList([])
+            setFAQ_model('');
+            setFAQ_detailmodel('');
+            setFAQ_detailmodel_price('');
+            setTrimStat(false)
+        }
     };
 
     if (!colorList || !optionList) {
@@ -384,7 +392,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                     placeholder='입력해주세요.'
                                     value={maxCC}
                                     onChange={(e) => setMaxCC(e.target.value)}
-                                    style={{width: 150}}
+                                    style={{ width: 150 }}
                                 />
                                 <p>Km</p>
                             </div>
@@ -433,42 +441,6 @@ export const Admin_QuickFAQAdd = (props) => {
                         </div>
                     </div>
                 }
-
-                <h3>세부모델 추가하기</h3>
-                <div className="admin_content_FAQ_detailSection">
-                    <div className="admin_content_FAQ_add_model">
-                        {trims.map((model, index) => (
-                            <div>
-                                <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>삭제</button>
-                                <h4 key={index}>
-                                    {model.trim1} <span>/</span> {model.trim2} <span>-</span> {model.price} 원
-                                </h4>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="admin_content_FAQ_detail_Section_input">
-                        <input
-                            placeholder='모델명을 입력해주세요.'
-                            value={FAQ_model}
-                            onChange={(e) => setFAQ_model(e.target.value)}
-                        />
-                        <span>/</span>
-                        <input
-                            placeholder='세부모델명을 입력해주세요.'
-                            value={FAQ_detailmodel}
-                            onChange={(e) => setFAQ_detailmodel(e.target.value)}
-                        />
-                        <span>-</span>
-                        <input
-                            placeholder='가격을 입력해주세요.'
-                            type="number"
-                            value={FAQ_detailmodel_price}
-                            onChange={(e) => setFAQ_detailmodel_price(e.target.value)}
-                        />
-                        <p>원</p>
-                    </div>
-                    <button className="admin_content_FAQ_detailmodel_addbutton" onClick={handleAddModel}>추가하기</button>
-                </div>
                 <div className="admin_content_FAQ_ColorAddDiv">
                     <h3>외장 색상</h3>
                     <span>
@@ -559,99 +531,138 @@ export const Admin_QuickFAQAdd = (props) => {
                         </div>
                     </span>
                 </div>
-                <div className="admin_content_FAQ_ColorAddDiv">
-                    <h3>옵션</h3>
-                    <span>
-                        <div>
-                            <input
-                                placeholder='옵션을 검색해주세요'
-                                value={searchOption}
-                                onChange={(e) => setSearchOption(e.target.value)}
-                            />
-                            <div className='admin_content_colorCard title'>
-                                <p style={{ width: 50 }}>옵션명</p>
-                                <p>금액</p>
-                            </div>
-                            <span></span>
-                            <div className='admin_content_colorCardList'>
-                                {filteredOption.length === 0 && <NoCardList card={'옵션이'} />}
-                                {filteredOption.map((item, idx) => (
-                                    <div className='admin_content_colorCard'>
-                                        <p>{item.name}</p>
-                                        <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
-                                        <button
-                                            onClick={async () => {
-                                                setOptionSelectedList([...optionSelectedList, { name: item.name, price: item.price, img: item.img }])
-                                                setOptionList(optionList.filter((_, index) => index !== idx))
-                                            }}
-                                            style={{ color: 'blue' }}
-                                        >
-                                            추가
-                                        </button>
-                                    </div>
+                <h3 style={{ marginTop: 150 }}>세부모델 및 옵션 추가하기</h3>
+                <div className="admin_content_FAQ_add_model">
+                    {trims.map((model, index) => (
+                        <div style={{ borderBottom: '1px solid #dbdbdb', maxWidth: 1000, padding: '10px 0' }}>
+                            <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>삭제</button>
+                            <h4 key={index}>
+                                {model.trim1} <span>/</span> {model.trim2} <span>-</span> {model.price} 원
+                            </h4>
+                            <span>
+                                {model.option.map((item, _) => (
+                                    <p>{item.name}</p>
                                 ))}
-                            </div>
+                            </span>
                         </div>
-                        <div>
-                            <div>
-                                <input
-                                    placeholder='옵션명을 입력해주세요'
-                                    value={optionName}
-                                    onChange={(e) => setOptionName(e.target.value)}
-                                />
-                                <input
-                                    placeholder='만원 단위로 0 모두 입력'
-                                    value={optionPrice}
-                                    type="number"
-                                    onChange={(e) => setOptionPrice(e.target.value)}
-                                />
-                                <button
-                                    onClick={async () => {
-                                        if (optionName !== '' && optionPrice !== '') {
-                                            await optionAddAxios({
-                                                name: optionName,
-                                                price: optionPrice,
-                                                img: null,
-                                            })
-                                            setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice }]);
-                                            setOptionName(''); // 입력 필드 초기화
-                                            setOptionPrice(''); // 입력 필드 초기화
-                                        }
-                                    }}
-                                >
-                                    추가
-                                </button>
-                            </div>
-                            <div className='admin_content_colorCard title'>
-                                <p style={{ width: 50 }}>이미지</p>
-                                <p>옵션명</p>
-                                <p>금액</p>
-                            </div>
-                            <span></span>
-                            <div className='admin_content_colorCardList'>
-                                {optionSelectedList.length === 0 && <NoCardList card={'선택 된 옵션이'} />}
-                                {optionSelectedList.map((item, idx) => (
-                                    <div className='admin_content_colorCard'>
-                                        {item.img.slice(0, 1) === 'o'
-                                            ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} style={{ height: '100%' }} />
-                                            : <img src={item.img} style={{ height: '100%' }} />
-                                        }
-                                        <p>{item.name}</p>
-                                        <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
-                                        <button
-                                            onClick={async () => {
-                                                setOptionList([...optionList, { name: item.name, price: item.price, img: item.img }])
-                                                setOptionSelectedList(optionSelectedList.filter((_, index) => index !== idx))
-                                            }}
-                                        >
-                                            삭제
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </span>
+                    ))}
                 </div>
+                <button className="admin_content_FAQ_add_modelOptionList" onClick={() => setTrimStat(true)}>세부 모델 및 옵션 추가하기</button>
+                {trimStat &&
+                    <>
+                        <h3 style={{ marginTop: 150 }}>세부모델</h3>
+                        <div className="admin_content_FAQ_detail_Section_input">
+                            <input
+                                placeholder='모델명을 입력해주세요.'
+                                value={FAQ_model}
+                                onChange={(e) => setFAQ_model(e.target.value)}
+                            />
+                            <span>/</span>
+                            <input
+                                placeholder='세부모델명을 입력해주세요.'
+                                value={FAQ_detailmodel}
+                                onChange={(e) => setFAQ_detailmodel(e.target.value)}
+                            />
+                            <span>-</span>
+                            <input
+                                placeholder='가격을 입력해주세요.'
+                                type="number"
+                                value={FAQ_detailmodel_price}
+                                onChange={(e) => setFAQ_detailmodel_price(e.target.value)}
+                            />
+                            <p>원</p>
+                        </div>
+                        <div className="admin_content_FAQ_ColorAddDiv">
+                            <h3>옵션</h3>
+                            <span>
+                                <div>
+                                    <input
+                                        placeholder='옵션을 검색해주세요'
+                                        value={searchOption}
+                                        onChange={(e) => setSearchOption(e.target.value)}
+                                    />
+                                    <div className='admin_content_colorCard title'>
+                                        <p style={{ width: 50 }}>옵션명</p>
+                                        <p>금액</p>
+                                    </div>
+                                    <span></span>
+                                    <div className='admin_content_colorCardList'>
+                                        {filteredOption.length === 0 && <NoCardList card={'옵션이'} />}
+                                        {filteredOption.map((item, idx) => (
+                                            <div className='admin_content_colorCard'>
+                                                <p>{item.name}</p>
+                                                <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
+                                                <button
+                                                    onClick={async () => {
+                                                        setOptionSelectedList([...optionSelectedList, { name: item.name, price: item.price, img: item.img }])
+                                                        setOptionList(optionList.filter((_, index) => index !== idx))
+                                                    }}
+                                                    style={{ color: 'blue' }}
+                                                >
+                                                    추가
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <input
+                                            placeholder='옵션명을 입력해주세요'
+                                            value={optionName}
+                                            onChange={(e) => setOptionName(e.target.value)}
+                                        />
+                                        <input
+                                            placeholder='만원 단위로 0 모두 입력'
+                                            value={optionPrice}
+                                            type="number"
+                                            onChange={(e) => setOptionPrice(e.target.value)}
+                                        />
+                                        <button
+                                            onClick={async () => {
+                                                if (optionName !== '' && optionPrice !== '') {
+                                                    await optionAddAxios({
+                                                        name: optionName,
+                                                        price: optionPrice,
+                                                        img: null,
+                                                    })
+                                                    setOptionSelectedList([...optionSelectedList, { name: optionName, price: optionPrice }]);
+                                                    setOptionName(''); // 입력 필드 초기화
+                                                    setOptionPrice(''); // 입력 필드 초기화
+                                                }
+                                            }}
+                                        >
+                                            옵션 추가
+                                        </button>
+                                    </div>
+                                    <div className='admin_content_colorCard title'>
+                                        <p style={{ width: 50 }}>옵션명</p>
+                                        <p>금액</p>
+                                    </div>
+                                    <span></span>
+                                    <div className='admin_content_colorCardList'>
+                                        {optionSelectedList.length === 0 && <NoCardList card={'선택 된 옵션이'} />}
+                                        {optionSelectedList.map((item, idx) => (
+                                            <div className='admin_content_colorCard'>
+                                                <p>{item.name}</p>
+                                                <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
+                                                <button
+                                                    onClick={async () => {
+                                                        setOptionList([...optionList, { name: item.name, price: item.price, img: item.img }])
+                                                        setOptionSelectedList(optionSelectedList.filter((_, index) => index !== idx))
+                                                    }}
+                                                >
+                                                    삭제
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </span>
+                            <button className="admin_content_FAQ_add_modelOptionList" onClick={handleAddModel}>세부모델 추가하기</button>
+                        </div>
+                    </>
+                }
                 <div className="admin_content_FAQ_alladd_buttonSection">
                     <button
                         className="admin_content_FAQ_alladd_addbutton"
@@ -673,7 +684,7 @@ export const Admin_QuickFAQAdd = (props) => {
                                     car_name: FAQ_carname,
                                     img: `car_${random}`,
                                     price: FAQ_carprice,
-                                    info: `${FAQ_startDate.year}년형 ${lowestPriceItem.trim1} ${lowestPriceItem.trim2}`,
+                                    info: `${lowestPriceItem.trim1} ${lowestPriceItem.trim2}`,
                                     category: selectedCartype,
                                     size: selectedCartype,
                                     rental_price: 0,
@@ -692,7 +703,6 @@ export const Admin_QuickFAQAdd = (props) => {
                                     max_fuel_efficiency: maxFuel,
                                     color: colorSelectedList,
                                     trim: trims,
-                                    option: optionSelectedList,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
                                 setPopupStat(true)

@@ -10,6 +10,7 @@ import optionNonClick from '../assets/img/functionIcon/optionNonClick.png'
 import { UpIcon, DownIcon } from "../components/Icons"
 import { OptionPagePopUp, TermsofInformationPopup } from "../components/PopUp"
 import { estimatedAxios, estimatedAddAxios } from "../services/Request";
+import NoCardList from "../components/NoCardList";
 
 
 
@@ -42,6 +43,7 @@ const OptionPage = (props) => {
     //옵션
     const [options, setOptions] = useState([])
     const [optionPrice, setOptionPrice] = useState(0)
+    const [optionStat, setOptionStat] = useState([])
 
     //이용방법
     const [useingSelect1, setUseingSelect1] = useState(null)
@@ -59,12 +61,26 @@ const OptionPage = (props) => {
 
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
 
-    const handleOpenUsePopup = () => {
-        setIsUsePopupVisible(true);
+    const handleUseingSelect3 = (value) => {
+        const sum = parsePercentage(value) + parsePercentage(!useingSelect5 ? 0 : useingSelect5);
+        if (sum > 40) {
+            alert('보증금과 선납금의 합은 40%를 넘을 수 없습니다.');
+        } else {
+            setUseingSelect3(value);
+        }
     };
 
-    const handleCloseUsePopup = () => {
-        setIsUsePopupVisible(false);
+    const handleUseingSelect5 = (value) => {
+        const sum = parsePercentage(value) + parsePercentage(!useingSelect3 ? 0 : useingSelect3);
+        if (sum > 40) {
+            alert('보증금과 선납금의 합은 40%를 넘을 수 없습니다.');
+        } else {
+            setUseingSelect5(value);
+        }
+    };
+
+    const parsePercentage = (value) => {
+        return (value === '없음' || !value) ? 0 : parseInt(value.replace('%', ''), 10);
     };
 
     useEffect(() => {
@@ -112,7 +128,7 @@ const OptionPage = (props) => {
 
 
 
-    if (!content || !content.option || !content.trim || !content.color) {
+    if (!content || !content.trim || !content.color) {
         return null
     }
     return (
@@ -210,6 +226,7 @@ const OptionPage = (props) => {
                                         </span>
                                 ))}
                             </span>
+                            <p>! 일부 외장색상의 경우 별도의 요금이 발생되오니 문의 바랍니다</p>
                         </div>
                         <div className="optionDiv">
                             <h3>세부모델 선택</h3>
@@ -244,7 +261,7 @@ const OptionPage = (props) => {
                                 }
                                 <span style={{ display: trimStat === 0 ? 'block' : 'none', borderRight: '1px solid #ededed' }}>
                                     {Array.from(new Set(content.trim.map(item => item.trim1.trim()))).map((item, _) => (
-                                        <span onClick={() => { setTrimSelect1(item); setTrimStat(1) }} className={trimSelect1 === item ? 'selected' : ''}>
+                                        <span onClick={() => { setTrimSelect1(item); setTrimStat(1); setOptions([]); }} className={trimSelect1 === item ? 'selected' : ''}>
                                             {trimSelect1 === item
                                                 ? <img src={optionClick} />
                                                 : <img src={optionNonClick} />
@@ -263,7 +280,15 @@ const OptionPage = (props) => {
                                 }
                                 <span style={{ display: trimSelect1 && trimStat === 1 ? 'block' : 'none', borderLeft: '1px solid #ededed' }}>
                                     {content.trim.filter((item) => item.trim1.trim() === trimSelect1).map((item, _) => (
-                                        <span onClick={() => { setTrimSelect2(item.trim2); setTrimStat(null); setTrimPrice(item.price) }} className={trimSelect2 === item.trim2 ? 'selected' : ''}>
+                                        <span
+                                            onClick={() => {
+                                                setTrimSelect2(item.trim2);
+                                                setTrimStat(null);
+                                                setTrimPrice(item.price);
+                                                setOptions([]);
+                                                setOptionStat((content.trim.filter(list => list.trim1.trim() === trimSelect1 && list.trim2.trim() === item.trim2))[0].option)
+                                            }}
+                                            className={trimSelect2 === item.trim2 ? 'selected' : ''}>
                                             {trimSelect2 === item.trim2
                                                 ? <img src={optionClick} />
                                                 : <img src={optionNonClick} />
@@ -274,9 +299,10 @@ const OptionPage = (props) => {
                                 </span>
                             </div>
                             <h3 style={{ marginTop: 120 }}>옵션 추가하기</h3>
+                            {optionStat.length === 0 && <NoCardList card={'옵션이'}/>}
                             {trimSelect1 !== null && trimSelect2 !== null
                                 ? <div className="optionSelectDiv">
-                                    {content.option.map((item, _) => (
+                                    {optionStat.map((item, _) => (
                                         <div
                                             className={options.find(option => option.name === item.name) && "selected"}
                                             onClick={() => {
@@ -291,7 +317,6 @@ const OptionPage = (props) => {
                                                 }
                                             }}
                                         >
-                                            <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} />
                                             <p>{item.name}</p>
                                             <h4>{(item.price / 10000).toLocaleString()}만원</h4>
                                             {options.find(option => option.name === item.name) &&
@@ -320,11 +345,11 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금</h4>
                             <span>
-                                <p className={useingSelect3 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect3('없음')}>없음</p>
-                                <p className={useingSelect3 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect3('10%')}>10%</p>
-                                <p className={useingSelect3 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect3('20%')}>20%</p>
-                                <p className={useingSelect3 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect3('30%')}>30%</p>
-                                <p className={useingSelect3 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect3('40%')}>40%</p>
+                                <p className={useingSelect3 === '없음' ? 'selected' : ''} onClick={() => handleUseingSelect3('없음')}>없음</p>
+                                <p className={useingSelect3 === '10%' ? 'selected' : ''} onClick={() => handleUseingSelect3('10%')}>10%</p>
+                                <p className={useingSelect3 === '20%' ? 'selected' : ''} onClick={() => handleUseingSelect3('20%')}>20%</p>
+                                <p className={useingSelect3 === '30%' ? 'selected' : ''} onClick={() => handleUseingSelect3('30%')}>30%</p>
+                                <p className={useingSelect3 === '40%' ? 'selected' : ''} onClick={() => handleUseingSelect3('40%')}>40%</p>
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
@@ -332,11 +357,11 @@ const OptionPage = (props) => {
                             </span>
                             <h4>선납금</h4>
                             <span>
-                                <p className={useingSelect5 === '없음' ? 'selected' : ''} onClick={() => setUseingSelect5('없음')}>없음</p>
-                                <p className={useingSelect5 === '10%' ? 'selected' : ''} onClick={() => setUseingSelect5('10%')}>10%</p>
-                                <p className={useingSelect5 === '20%' ? 'selected' : ''} onClick={() => setUseingSelect5('20%')}>20%</p>
-                                <p className={useingSelect5 === '30%' ? 'selected' : ''} onClick={() => setUseingSelect5('30%')}>30%</p>
-                                <p className={useingSelect5 === '40%' ? 'selected' : ''} onClick={() => setUseingSelect5('40%')}>40%</p>
+                                <p className={useingSelect5 === '없음' ? 'selected' : ''} onClick={() => handleUseingSelect5('없음')}>없음</p>
+                                <p className={useingSelect5 === '10%' ? 'selected' : ''} onClick={() => handleUseingSelect5('10%')}>10%</p>
+                                <p className={useingSelect5 === '20%' ? 'selected' : ''} onClick={() => handleUseingSelect5('20%')}>20%</p>
+                                <p className={useingSelect5 === '30%' ? 'selected' : ''} onClick={() => handleUseingSelect5('30%')}>30%</p>
+                                <p className={useingSelect5 === '40%' ? 'selected' : ''} onClick={() => handleUseingSelect5('40%')}>40%</p>
                             </span>
                             <h4>보험연령</h4>
                             <span>

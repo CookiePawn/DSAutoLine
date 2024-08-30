@@ -87,7 +87,7 @@ export const Admin_QuickDealAdd = (props) => {
                     : <IncomeLogo setStat={setBrandStat} brandStat={brandStat} />
                 }
                 <div style={{ position: 'relative' }}>
-                    <div className='quickDealCard' style={{border: '1px solid #dbdbdb', position: 'absolute', right: 0}}>
+                    <div className='quickDealCard' style={{ border: '1px solid #dbdbdb', position: 'absolute', right: 0 }}>
                         <img
                             className='hotDealCardImg'
                             src={imgURL ? imgURL : `${process.env.REACT_APP_IMG_URL}/error.png`}
@@ -153,7 +153,7 @@ export const Admin_QuickDealAdd = (props) => {
                         <button onClick={() => setCarType('화물')} className={carType === '화물' && 'selected'}>화물</button>
                     </div>
                 </div>
-                <h3 style={{marginTop: 150}}>차량 사진 첨부하기</h3>
+                <h3 style={{ marginTop: 150 }}>차량 사진 첨부하기</h3>
                 <img
                     src={require('../assets/img/popup/imageUpload.png')}
                     alt="이미지 업로드 이미지"
@@ -170,7 +170,7 @@ export const Admin_QuickDealAdd = (props) => {
                         setImgURL(response)
                     }}
                 />
-                <div className="admin_content_FAQ_newcar_bodySection" style={{marginTop: 150}}>
+                <div className="admin_content_FAQ_newcar_bodySection" style={{ marginTop: 150 }}>
                     <div className="admin_content_FAQ_newcar_PriceSection">
                         <h3>차량 금액</h3>
                         <div className="admin_content_FAQ_newcar_PriceSection_input">
@@ -344,8 +344,7 @@ export const Admin_QuickDealAdd = (props) => {
                                 </button>
                             </div>
                             <div className='admin_content_colorCard title'>
-                                <p style={{ width: 50 }}>이미지</p>
-                                <p>옵션명</p>
+                                <p style={{width: 50}}>옵션명</p>
                                 <p>금액</p>
                             </div>
                             <span></span>
@@ -353,10 +352,6 @@ export const Admin_QuickDealAdd = (props) => {
                                 {optionSelectedList.length === 0 && <NoCardList card={'선택 된 옵션이'} />}
                                 {optionSelectedList.map((item, idx) => (
                                     <div className='admin_content_colorCard'>
-                                        {item.img.slice(0, 1) === 'o'
-                                            ? <img src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`} style={{ height: '100%' }} />
-                                            : <img src={item.img} style={{ height: '100%' }} />
-                                        }
                                         <p>{item.name}</p>
                                         <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                                         <button
@@ -383,7 +378,7 @@ export const Admin_QuickDealAdd = (props) => {
                                 && FAQ_model !== '' && FAQ_detailmodel !== ''
                                 && inColor !== '' && outColor !== ''
                                 && payment && deposit
-                                ) {
+                            ) {
                                 const random = generateRandomString(20)
                                 await quickDealInsertAxios({
                                     entry: categoryStat,                  //국내
@@ -392,7 +387,7 @@ export const Admin_QuickDealAdd = (props) => {
                                     img: `car_${random}`,                 //car_gjanjrbnnbbb23
                                     category: carType,
                                     price: FAQ_carprice,                  //23000000
-                                    info: `${FAQ_startDate.year}년형 ${FAQ_model} ${FAQ_detailmodel}`,
+                                    info: `${FAQ_model} ${FAQ_detailmodel}`,
                                     month_price: rentalPrice,             //월 리스/렌트 비용
                                     year: FAQ_startDate.year,             //
                                     month: FAQ_startDate.month,           //
@@ -401,7 +396,7 @@ export const Admin_QuickDealAdd = (props) => {
                                     deposit: deposit,                     //선납금/보증금
                                     month_use: monthStat,                 //렌트/리스
                                     in_color: inColor,
-                                    out_Color: outColor,
+                                    out_color: outColor,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
                                 setPopupStat(true)
@@ -455,8 +450,6 @@ export const Admin_QuickDealEdit = (props) => {
     }
 
 
-
-
     if (!filteredList) {
         return null
     }
@@ -495,15 +488,14 @@ export const Admin_QuickDealEdit = (props) => {
                                 <p>{oilFunction(item)}</p>
                             </div>
                         </div>
-                        <div style={{marginLeft: 30}}>
+                        <div style={{ marginLeft: 30 }}>
                             <p>내장 색상: {item.in_color}</p>
                             <p>외장 색상: {item.out_color}</p>
                         </div>
-                        <div style={{marginLeft: 30}}>
-                            <p>트림1: {item.trim1}</p>
-                            <p>트림2: {item.trim2}</p>
+                        <div style={{ marginLeft: 30 }}>
+                            <p>세부모델: {item.info}</p>
                         </div>
-                        <div style={{marginLeft: 30}}>
+                        <div style={{ marginLeft: 30 }}>
                             {item.option.map((item, idx) => (
                                 <p>{item.name}</p>
                             ))}

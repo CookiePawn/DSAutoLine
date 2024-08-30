@@ -923,7 +923,6 @@
 .admin_content_FAQ_add_model>div {
     display: flex;
     flex-direction: row;
-    margin-bottom: 5px;
 }
 
 .admin_content_FAQ_add_model>div>button {
@@ -943,6 +942,14 @@
 .admin_content_FAQ_add_model>div>h4>span {
     font-size: 22px;
     color: #000000;
+}
+
+.admin_content_FAQ_add_model > div > span {
+    padding-left: 30px;
+}
+
+.admin_content_FAQ_add_model > div > span > p {
+    margin: 0;
 }
 
 .admin_content_FAQ_detail_Section_input {
@@ -1261,5 +1268,16 @@
     border: none;
     color: white;
     background-color: #0064FF;
+    cursor: pointer;
+}
+
+.admin_content_FAQ_add_modelOptionList {
+    max-width: 1000px;
+    height: 50px;
+    background-color: #0064FF;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
     cursor: pointer;
 }

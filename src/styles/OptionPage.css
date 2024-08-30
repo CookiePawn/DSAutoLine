@@ -247,6 +247,11 @@ body {
     height: 100%;
 }
 
+.colorDiv > p {
+    color: #b4b4b4;
+    margin-top: 30px;
+}
+
 .colorDiv>span {
     display: flex;
     flex-direction: row;
@@ -497,8 +502,8 @@ body {
 
 .optionSelectDiv > div {
     position: relative;
-    min-width: calc(25% - 30px);
-    max-width: calc(25% - 30px);
+    min-width: calc(50% - 30px);
+    max-width: calc(50% - 30px);
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
     border-radius: 12px;
@@ -532,8 +537,8 @@ body {
 .optionSelectDiv > div > h4 {
     width: 90%;
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     font-size: 18px;
     font-weight: 500;
     color: #111;

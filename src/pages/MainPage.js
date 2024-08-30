@@ -20,6 +20,7 @@ import '../styles/slick-theme.css'
 import { handleNext, handlePrev, hotDealSlicerSettings, reviewSlicerSettings } from '../utils/SliderMove';
 import FastFAQSticky from '../components/FastFAQSticky';
 import BannerSlider from '../components/Main_EventBanner';
+import NoCardList from '../components/NoCardList'
 
 
 
@@ -99,6 +100,7 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>한정 <span>특가</span></h1>
+                {hotDealList.length === 0 && <NoCardList card={'차량이'}/>}
                 <Slider {...hotDealSlicerSettings} ref={hotDealSliderRef}>
                     {hotDealList.map((item, idx) => (
                         <HotDealCard item={item} idx={idx} />
@@ -129,6 +131,7 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>즉시 <span>출고</span></h1>
+                {quickDealList.length === 0 && <NoCardList card={'차량이'}/>}
                 <div
                     className='hotDealListDiv'
                 >
@@ -153,6 +156,7 @@ const MainPage = (props) => {
                     <p className={popularEntryStat === 0 && 'selected'} onClick={() => setPopularEntryStat(0)}>국산 차</p>
                     <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
                 </span> */}
+                {popularList.length === 0 && <NoCardList card={'차량이'}/>}
                 <div>
                     {popularList.map((item, idx) => (
                         <PopularCarCard
@@ -182,6 +186,7 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>많은 고객님들이 <span>만족하신 후기</span></h1>
+                {reviewList.length === 0 && <NoCardList card={'리뷰가'}/>}
                 <div className='reviewCardDiv'>
                     <Slider {...reviewSlicerSettings} ref={reviewSliderRef}>
                         {reviewList.map((item, idx) => (

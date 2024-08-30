@@ -154,10 +154,11 @@ export function Admin_Option() {
                     </div>
                     <span></span>
                     <div className='admin_content_optionCardList'>
+                        {filteredItems.length === 0 && <NoCardList card={'옵션이'} />}
                         {filteredItems.map((item, idx) => (
                             <div className='admin_content_optionCard'>
                                 <p>{item.name}</p>
-                                <p>{(item.price/10000).toLocaleString()} 만원</p>
+                                <p>{(item.price / 10000).toLocaleString()} 만원</p>
                                 <button
                                     onClick={async () => {
                                         await optionDeleteAxios(item.seq)
