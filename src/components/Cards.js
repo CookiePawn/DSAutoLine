@@ -15,7 +15,6 @@ import { QuickDealCarCard_Popup } from '../components/PopUp';
  * @returns 
  */
 export const HotDealCard = (props) => {
-    console.log(props.item)
     return (
         <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
             <img
@@ -254,7 +253,6 @@ export const PopularCarCard = (props) => {
  * @returns 
  */
 export const QuickCarCard = (props) => {
-    console.log(props.item.price)
     return (
         <div
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}

@@ -253,7 +253,7 @@ export const Admin_QuickFAQAdd = (props) => {
                             alt="차량 이미지"
                         />
                         <h2>{brandStat} {FAQ_carname}</h2>
-                        <p>{`${FAQ_startDate.year}년형 ${trims[0] && trims[0].trim1} ${trims[0] && trims[0].trim2}`}</p>
+                        <p>{`${trims[0] && trims[0].trim1} ${trims[0] && trims[0].trim2}`}</p>
                         <span className='hotDealCardMonthPriceDiv'>
                             <p className='hotDealCardMonthPriceTitle'>차량가</p>
                             <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{FAQ_carprice.toLocaleString()}</span>원</p>
@@ -537,7 +537,7 @@ export const Admin_QuickFAQAdd = (props) => {
                         <div style={{ borderBottom: '1px solid #dbdbdb', maxWidth: 1000, padding: '10px 0' }}>
                             <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>삭제</button>
                             <h4 key={index}>
-                                {model.trim1} <span>/</span> {model.trim2} <span>-</span> {model.price} 원
+                                {model.trim1} <span>/</span> {model.trim2} <br/><span>-</span> {model.price} 원
                             </h4>
                             <span>
                                 {model.option.map((item, _) => (

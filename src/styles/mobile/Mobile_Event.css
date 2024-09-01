@@ -1,0 +1,139 @@
+.mobile_event_eventListSection {
+    width: 90%;
+    min-height: 600px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.mobile_event_eventListSection > h3 {
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+}
+
+.mobile_event_eventListSection > p {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.mobile_event_eventListSection > button {
+    width: 50%;
+    height: 34px;
+    border: 1px solid #bbb;
+    background-color: white;
+    color: #767676;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.mobile_event_eventListSection > button.selected {
+    border: none;
+    background-color: #0064FF;
+    color: white;
+}
+
+.mobile_eventPageCard {
+    width: 100%;
+}
+
+.mobile_eventPageCard > img {
+    width: 100%;
+    border-radius: 12px;
+    background-color: #c4c4c4;
+    cursor: pointer;
+}
+
+.mobile_eventPageCard > h4 {
+    margin: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+}
+
+.mobile_eventPageCard > p {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #AEAEAE;
+}
+
+.mobile_eventPageCard > span {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.mobile_eventPageCard > span > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile_eventPageCard > span > span > p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+
+.mobile_eventPageCard > span > img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+.mobile_eventMore_contentSection {
+    width: 90%;
+    margin: auto;
+    min-height: 600px;
+}
+
+.mobile_eventMore_contentSection > h3 {
+    margin: 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+}
+
+.mobile_eventMore_contentSection > p {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #767676;
+}
+
+.mobile_eventMore_contentSection > span {
+    width: 100%;
+}
+
+.mobile_eventMore_contentSection > span > img {
+    width: 100%;
+}

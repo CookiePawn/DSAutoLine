@@ -20,13 +20,14 @@ const QuickFAQPage = (props) => {
 
     const fetchData = async (entry, enter, category) => {
         const response1 = await quickFAQAxios(entry, enter, category)
+        console.log(entry, enter, category, response1)
         setQuickFAQList(response1)
         const response2 = await eventAxios(1, 0)
         setBanner(response2)
     }
 
     useEffect(() => {
-        fetchData(null, '현대', null)
+        fetchData('국산', '기아', '전체')
     }, [])
 
     useEffect(() => {
@@ -50,7 +51,7 @@ const QuickFAQPage = (props) => {
                 <h1>빠른 <span>간편 문의</span></h1>
                 <p>쉽고 간편하게 문의 해보세요</p>
                 <div className='categoryTitleDiv'>
-                    <h3 onClick={() => { setCategoryStat('국산'); setBrandStat('현대');}} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
+                    <h3 onClick={() => { setCategoryStat('국산'); setBrandStat('기아');}} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
                     <h3 onClick={() => { setCategoryStat('수입'); setBrandStat('BMW');}} className={categoryStat === '수입' ? 'selected' : ''}>수입 브랜드</h3>
                 </div>
                 {categoryStat === '국산' ?

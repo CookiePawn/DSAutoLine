@@ -8,7 +8,6 @@ import {
     optionDeleteAxios,
     optionAddAxios,
 } from '../services/Request';
-import { generateRandomString } from '../utils/imageResize'
 import NoCardList from './NoCardList'
 
 

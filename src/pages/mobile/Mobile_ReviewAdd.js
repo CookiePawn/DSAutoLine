@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
-import GNB from "../components/GNB";
-import Footer from "../components/Footer";
-import FastFAQSticky from '../components/FastFAQSticky'
-import '../styles/ReviewAddPage.css'
-import { StarIcon } from "../components/Icons";
-import { ReviewAddPagePopUp } from "../components/PopUp";
-import { reviewAddAxios, carEnterListAxios, imageUploadAxios } from "../services/Request";
-import { imageResize4_3, generateRandomString } from "../utils/imageResize";
+import '../../styles/mobile/Mobile_Review.css'
+import Mobile_GNB from "../../components/mobile/Mobile_GNB";
+import Mobile_Footer from "../../components/mobile/Mobile_Footer";
+import { reviewAddAxios, carEnterListAxios, imageUploadAxios } from "../../services/Request";
+import { imageResize4_3, generateRandomString } from "../../utils/imageResize";
 import Select from "react-select";
+import { StarIcon } from "../../components/Icons";
 
 
 
-
-
-const ReviewAddPage = () => {
-    const [popupStat, setPopupStat] = useState(false)
-
+const Mobile_ReviewAdd = (props) => {
     //insert
     const [name, setName] = useState('')
     const [car, setCar] = useState('')
@@ -52,8 +46,6 @@ const ReviewAddPage = () => {
         fetchData()
     }, [])
 
-
-
     const clickFunction = async () => {
         if (name !== '' && car !== '' && enter !== '' && img !== null && starStat >= 1 && comment !== '') {
             const random = generateRandomString(15)
@@ -66,8 +58,8 @@ const ReviewAddPage = () => {
                 comment: comment,
             })
             await imageUploadAxios(img, `review_${random}`)
-            setPopupStat(true);
-            document.body.style.overflowY = 'hidden'
+            alert('리뷰 작성이 완료되었습니다.')
+            window.location.href='/Review'
         }
     }
 
@@ -78,15 +70,11 @@ const ReviewAddPage = () => {
         return null
     }
     return (
-        <>
-            {popupStat &&
-                <ReviewAddPagePopUp />
-            }
-            <GNB page={'고객 리뷰'} />
-            <FastFAQSticky height={450} />
-            <section className="reviewAdd_inputSection">
-                <h1>리뷰 작성</h1>
-                <p>서비스가 어떠셨나요?? 리뷰로 알려주세요</p>
+        <div className="mobile_container">
+            <Mobile_GNB page={'고객 리뷰'} />
+            <section className="mobile_reviewAdd_section">
+                <h3>리뷰 작성</h3>
+                <p>서비스가 어떠셨는지 리뷰로 알려주세요.</p>
                 <span>
                     <h3>이름</h3>
                     <input maxLength={10} value={name} onChange={(e) => setName(e.target.value)} />
@@ -102,7 +90,7 @@ const ReviewAddPage = () => {
                             return option.value === enter;
                         })}
                     />
-                    <h3 style={{ marginLeft: 50 }}>차량</h3>
+                    <h3>차량</h3>
                     <Select
                         className="selectItem"
                         onChange={(e) => setCar(e.value)}
@@ -127,22 +115,24 @@ const ReviewAddPage = () => {
                 </span>
                 <span>
                     <h3>사진</h3>
-                    <img
-                        src={require('../assets/img/popup/imageUpload.png')}
-                        alt="이미지 업로드 이미지"
-                        onClick={() => document.getElementById('fileInput').click()}
-                    />
-                    <input
-                        id="fileInput"
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={async (e) => {
-                            const resizedImage = await imageResize4_3(e);
-                            setImg(resizedImage);
-                        }}
-                    />
-                    <p style={{marginLeft: 50}}>{img && `${img.slice(5, 50)}...`}</p>
+                    <div>
+                        <img
+                            src={require('../../assets/img/popup/imageUpload.png')}
+                            alt="이미지 업로드 이미지"
+                            onClick={() => document.getElementById('fileInput').click()}
+                        />
+                        <input
+                            id="fileInput"
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            onChange={async (e) => {
+                                const resizedImage = await imageResize4_3(e);
+                                setImg(resizedImage);
+                            }}
+                        />
+                        <p>{img && `${img.slice(5, 30)}...`}</p>
+                    </div>
                 </span>
                 <span>
                     <h3>내용</h3>
@@ -150,10 +140,9 @@ const ReviewAddPage = () => {
                 </span>
                 <button onClick={clickFunction}>작성 완료</button>
             </section>
-            <Footer />
-        </>
+            <Mobile_Footer />
+        </div>
     )
 }
 
-
-export default ReviewAddPage
+export default Mobile_ReviewAdd
