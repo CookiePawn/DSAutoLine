@@ -59,7 +59,6 @@ const GNB = (props) => {
                     </span>
                     {searchValue !== '' &&
                         <div className='GNBSearchListDiv'>
-
                             {searchList.length === 0 &&
                                 <div className='GNBSearchListCard'>
                                     <p style={{color: '#bbb'}}>검색 결과가 없습니다</p>

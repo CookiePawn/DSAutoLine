@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import '../../styles/mobile/Mobile_Popup.css'
-import { mentoringAxios, quickCounselingInsertAxios } from '../../services/Request'
+import { mentoringAxios, quickCounselingInsertAxios, quickFAQAxios } from '../../services/Request'
 import nonClick from '../../assets/img/functionIcon/optionPage_nonSelectBox.png'
 import onClick from '../../assets/img/functionIcon/optionPage_SelectBox.png'
 import { TermsofUse, TermsofInformation } from '../TermsScript'
+import { LeftIcon, SearchIcon } from '../Icons'
 
 
 
@@ -182,4 +183,164 @@ export const Mobile_QuickDealCardPopup = (props) => {
 
         </div>
     );
+}
+
+
+export const Mobile_OptionInfoPopup = (props) => {
+    return (
+        <div className="mobile_popupDimmed">
+            <div className="mobile_optionPopupDiv">
+                <h3>선택 옵션</h3>
+                <p>세부 모델 - <span>{(props.trimPrice / 10000).toLocaleString()}</span> 만원</p>
+                <p>{props.trimSelect1}</p>
+                <p>{props.trimSelect2}</p>
+                <div></div>
+                <p>옵션 - <span>{(props.optionPrice / 10000).toLocaleString()}</span> 만원</p>
+                <span>
+                    {props.options.length > 0 && props.options.map((item, _) => (
+                        <p>{item.name}</p>
+                    ))}
+                </span>
+                <div></div>
+                <span>
+                    <p>총 가격</p>
+                    <p>{(props.totalPrice / 10000).toLocaleString()} 만원</p>
+                </span>
+                <span onClick={() => props.setPopup(false)}>Ⅹ</span>
+            </div>
+        </div>
+    )
+}
+
+
+export const Mobile_SearchPopup = (props) => {
+    const [search, setSearch] = useState('')
+    const [searchList, setSearchList] = useState([])
+    const [GNBSearchList, setGNBSearchList] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await quickFAQAxios(null, null, null)
+            setGNBSearchList(response)
+        }
+        fetchData()
+    }, [])
+
+
+    useEffect(() => {
+        const fetchData = () => {
+            if (GNBSearchList) {
+                setSearchList(
+                    GNBSearchList.filter(item =>
+                        item.name.toLowerCase().includes(search.toLowerCase())
+                    )
+                );
+            }
+        };
+        fetchData();
+    }, [search, GNBSearchList]);
+
+    return (
+        <div className="mobile_searchPopup">
+            <span>
+                <span onClick={() => { props.setPopup(false); document.body.style.overflowY = 'auto' }}><LeftIcon size={25} color={'#111'} /></span>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='검색할 내용을 입력해주세요' />
+                <span><SearchIcon size={25} color={'#111'} /></span>
+            </span>
+            <div>
+                {searchList.length === 0 &&
+                    <div className='GNBSearchListCard'>
+                        <p style={{ color: '#bbb' }}>검색 결과가 없습니다</p>
+                    </div>}
+                {searchList.length > 0 && searchList.map((item, idx) => (
+                    <div className='GNBSearchListCard'>
+                        <p onClick={() => window.location.href = `/Option/${item.car_code}`}>{item.enter} {item.name}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+
+
+
+export const Mobile_Admin_UserList_Popup = (props) => {
+    console.log(props.item)
+    return (
+        <div className="mobile_popupDimmed">
+            <div className="mobile_AdminPopupDiv">
+                <h3>상세 정보</h3>
+                <div></div>
+                <span>
+                    <span>
+                        <p>신청일</p>
+                        <h4>{props.item.created_at.slice(0, 10)}</h4>
+                    </span>
+                    <span>
+                        <p>이름</p>
+                        <h4>{props.item.name}</h4>
+                    </span>
+                    <span>
+                        <p>연락처</p>
+                        <h4>{props.item.phone}</h4>
+                    </span>
+                    {props.item.mento === undefined &&
+                        <span>
+                            <p>차종</p>
+                            <h4>{props.item.enter} {props.item.car_name}</h4>
+                        </span>
+                    }
+                    {props.item.mento !== undefined &&
+                        <span>
+                            <p>담당 카멘토</p>
+                            <h4>{props.item.mento}</h4>
+                        </span>
+                    }
+                    {(props.item.type === '빠른 간편 문의/ 한정 특가' || props.item.type === '즉시 출고') &&
+                        <span>
+                            <p>세부 모델</p>
+                            {props.item.type === '빠른 간편 문의/ 한정 특가'
+                                ? <h4>{props.item.trim1} {props.item.trim2}</h4>
+                                : <h4>{props.item.info}</h4>
+                            }
+
+                        </span>
+                    }
+                    {props.item.type === '빠른 간편 문의/ 한정 특가' &&
+                        <span>
+                            <p>옵션</p>
+                            {props.item.option.length === 0 && <h4>기본가/오토</h4>}
+                            <span>
+                                {props.item.option.map((item, _) => (
+                                    <h4>{item.name}</h4>
+                                ))}
+                            </span>
+                        </span>
+                    }
+                    {props.item.type === '빠른 간편 문의/ 한정 특가' &&
+                        <span>
+                            <p>이용조건</p>
+                            <span>
+                                <h4><span>이용 방법 -</span> {props.item.method}</h4>
+                                <h4><span>이용 기간 -</span> {props.item.period}</h4>
+                                <h4><span>보증금 -</span> {props.item.deposit}</h4>
+                                <h4><span>보증금(원) -</span> {props.item.deposit_price} 원</h4>
+                                <h4><span>선납금 -</span> {props.item.payment_price}</h4>
+                                <h4><span>보험 연령 -</span> {props.item.age}</h4>
+                                <h4><span>연간 주행거리 -</span> {props.item.annual_mileage}</h4>
+                            </span>
+                        </span>
+                    }
+                    {(props.item.type === '빠른 간편 문의/ 한정 특가' || props.item.type === '즉시 출고') &&
+                        <span>
+                            <p>금액</p>
+                            <h4>{(props.item.price / 10000).toLocaleString()} 만원</h4>
+                        </span>
+                    }
+                </span>
+                <h5 onClick={() => props.setPopup(null)}>Ⅹ</h5>
+            </div>
+        </div>
+    )
 }

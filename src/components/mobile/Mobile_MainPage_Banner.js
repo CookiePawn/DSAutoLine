@@ -44,6 +44,7 @@ const Mobile_MainPage_Banner = (props) => {
                         key={banner.id}
                         className="event-banner"
                         src={`${process.env.REACT_APP_IMG_URL}/${banner.img}.png`}
+                        onClick={() => window.location.href=`/event/${banner.event_num}`}
                     />
                 ))}
             </div>

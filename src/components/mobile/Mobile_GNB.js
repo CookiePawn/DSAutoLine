@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../styles/mobile/Mobile_GNB.css'
 import { SearchIcon } from '../Icons'
+import { Mobile_SearchPopup } from "./Mobile_Popup";
 
 const Mobile_GNB = (props) => {
+    const [searchStat, setSearchStat] = useState(false)
+
     return (
         <>
+            {searchStat && <Mobile_SearchPopup setPopup={setSearchStat}/>}
             <section className="mobile_GNB_section">
                 <div>
                     <img onClick={() => window.location.href='/'} src={require('../../assets/img/dsautoline/DSAUTOLINE.png')} />
-                    <span><SearchIcon size={25} color={'#111'} /></span>
+                    <span onClick={() => {setSearchStat(true); document.body.style.overflowY='hidden';}}><SearchIcon size={25} color={'#111'} /></span>
                 </div>
                 <div>
                     <span>

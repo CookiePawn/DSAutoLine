@@ -718,16 +718,16 @@
 
 .admin_content_eventStat_buttonDiv {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     margin: 0px 0px 10px 20px;
 }
 
 .admin_content_eventStat_buttonDiv>button {
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #767676;
     background-color: transparent;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 400;
     color: #767676;
     cursor: pointer;
 }

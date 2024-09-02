@@ -61,6 +61,7 @@
     max-height: 28px;
     margin: 0;
     margin-bottom: 8px;
+    min-height: 28px;
     font-size: 12px;
     font-weight: 400;
     color: #767676;

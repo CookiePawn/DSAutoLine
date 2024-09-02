@@ -26,6 +26,9 @@ import Mobile_ReviewAdd from './pages/mobile/Mobile_ReviewAdd';
 import Mobile_ReviewMore from './pages/mobile/Mobile_ReviewMore';
 import Mobile_QuickFAQ from './pages/mobile/Mobile_QuickFAQ';
 import Mobile_QuickDeal from './pages/mobile/Mobile_QuickDeal';
+import Mobile_Option from './pages/mobile/Mobile_Option'
+import Mobile_Enter from './pages/mobile/Mobile_Enter';
+import Mobile_Admin from './pages/mobile/Mobile_Admin';
 
 function App() {
 	useEffect(() => {
@@ -46,7 +49,7 @@ function App() {
 					<Route path="/Event/:id" element={isMobile ? <Mobile_EventMore /> : <EventDetailPage />} />
 
 					{/* 회사소개 페이지 */}
-					<Route path="/Enter" element={<EnterPage />} />
+					<Route path="/Enter" element={isMobile ? <Mobile_Enter /> : <EnterPage />} />
 
 					{/* 빠른 간편 문의 페이지 */}
 					<Route path='/QuickFAQ' element={isMobile ? <Mobile_QuickFAQ /> : <QuickFAQPage />} />
@@ -58,7 +61,7 @@ function App() {
 					<Route path='/QuickDeal' element={isMobile ? <Mobile_QuickDeal /> : <QuickDealPage />} />
 
 					{/* 옵션 선택 페이지 */}
-					<Route path='/Option/:id' element={<OptionPage />} />
+					<Route path='/Option/:id' element={isMobile ? <Mobile_Option /> : <OptionPage />} />
 
 					{/* 리뷰 페이지 */}
 					<Route path='/Review' element={isMobile ? <Mobile_Review /> : <ReviewPage />} />
@@ -66,7 +69,7 @@ function App() {
 					<Route path='/ReviewAdd' element={isMobile ? <Mobile_ReviewAdd /> : <ReviewAddPage />} />
 
 					{/* 관리자 페이지 */}
-					<Route path='/Admin' element={<AdminPage />} />
+					<Route path='/Admin' element={isMobile ? <Mobile_Admin /> : <AdminPage />} />
 
 				</Routes>
 			</div>

@@ -3,8 +3,8 @@ import {
     IoIosSearch,
     IoMdClose,
     IoIosArrowForward,
+    IoIosArrowBack,
     IoMdStar,
-    IoIosNotifications,
     IoIosAlbums,
 } from 'react-icons/io'
 import { 
@@ -78,6 +78,16 @@ export const DownIcon = (props) => {
     )
 }
 
+/**
+ * left 아이콘
+ * @param {*} props 
+ * @returns 
+ */
+export const LeftIcon = (props) => {
+    return (
+        <IoIosArrowBack size={props.size} color={props.color}/>
+    )
+}
 
 
 /**

@@ -267,7 +267,7 @@ export const QuickCarCard = (props) => {
                 }}
             />
             <h2>{props.item.name}</h2>
-            <p>{props.item.info}</p>
+            <p>{props.item.year}.{props.item.month} 년식 · {props.item.category} · {props.item.electric === 1 ? props.item.max_cc + 'Km' : props.item.min_fuel_efficiency + '~' + props.item.max_fuel_efficiency + 'Km/L'}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
