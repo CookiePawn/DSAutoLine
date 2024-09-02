@@ -109,7 +109,7 @@ const OptionPage = (props) => {
                 out_color: content.out_color,
                 trim1: trimSelect1,
                 trim2: trimSelect2,
-                options: content.option.map(option => option.name),
+                options: options.map(option => option.name),
                 method: useingSelect1,
                 period: useingSelect2,
                 deposit: useingSelect3,
@@ -126,7 +126,6 @@ const OptionPage = (props) => {
             document.body.style.overflow = 'hidden';
         }
     }
-
 
 
     if (!content || !content.trim || !content.color) {

@@ -24,6 +24,8 @@ import Mobile_EventMore from './pages/mobile/Mobile_EventMore';
 import Mobile_Review from './pages/mobile/Mobile_Review';
 import Mobile_ReviewAdd from './pages/mobile/Mobile_ReviewAdd';
 import Mobile_ReviewMore from './pages/mobile/Mobile_ReviewMore';
+import Mobile_QuickFAQ from './pages/mobile/Mobile_QuickFAQ';
+import Mobile_QuickDeal from './pages/mobile/Mobile_QuickDeal';
 
 function App() {
 	useEffect(() => {
@@ -47,13 +49,13 @@ function App() {
 					<Route path="/Enter" element={<EnterPage />} />
 
 					{/* 빠른 간편 문의 페이지 */}
-					<Route path='/QuickFAQ' element={<QuickFAQPage />} />
+					<Route path='/QuickFAQ' element={isMobile ? <Mobile_QuickFAQ /> : <QuickFAQPage />} />
 
 					{/* 한정 특가 페이지 */}
 					<Route path='/HotDeal' element={isMobile ? <Mobile_HotDeal /> : <HotDealPage />} />
 
 					{/* 즉시 출고 페이지 */}
-					<Route path='/QuickDeal' element={<QuickDealPage />} />
+					<Route path='/QuickDeal' element={isMobile ? <Mobile_QuickDeal /> : <QuickDealPage />} />
 
 					{/* 옵션 선택 페이지 */}
 					<Route path='/Option/:id' element={<OptionPage />} />

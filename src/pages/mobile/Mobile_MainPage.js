@@ -5,6 +5,11 @@ import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import Mobile_MainPage_Banner from "../../components/mobile/Mobile_MainPage_Banner";
 import Mobile_MainPage_FastFAQ from "../../components/mobile/Mobile_MainPage_FastFAQ";
 import { 
+    Mobile_CarmentoPopup,
+    Mobile_TermsofInformationPopup,
+    Mobile_TermsofUsePopup,
+} from "../../components/mobile/Mobile_Popup";
+import { 
     Mobile_HotDealCard, 
     Mobile_QuickDealCard, 
     Mobile_PopularCard,
@@ -29,6 +34,9 @@ const Mobile_MainPage = (props) => {
     const [popularList, setPopularList] = useState(null)
     const [eventLine, setEventLine] = useState(null)
 
+    //팝업 State
+    const [carmentoPopup, setCarmentoPopup] = useState(null)
+    const [termsInfoPopup, setTermsInfoPopup] = useState(false)
 
 
     useEffect(() => {
@@ -52,11 +60,13 @@ const Mobile_MainPage = (props) => {
     }
     return (
         <div className="mobile_container">
+            {carmentoPopup !== null && <Mobile_CarmentoPopup mento={carmentoPopup} setPopup={setCarmentoPopup} setTerms={setTermsInfoPopup}/> }
+            {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup}/>}
             <Mobile_GNB page={'메인'} />
             <section className="mobile_main_eventBannerSection">
                 <Mobile_MainPage_Banner />
             </section>
-            <Mobile_MainPage_FastFAQ />
+            <Mobile_MainPage_FastFAQ setTerms={setTermsInfoPopup}/>
             <section className="mobile_main_hotDealSection">
                 <h3>한정 특가</h3>
                 <span>
@@ -102,10 +112,10 @@ const Mobile_MainPage = (props) => {
             <section className="mobile_main_carmentoSection">
                 <h3>우수 카멘토</h3>
                 <span>
-                    <Mobile_CarmentoCard name={'김태경 팀장'}/>
-                    <Mobile_CarmentoCard name={'허종현 대리'}/>
-                    <Mobile_CarmentoCard name={'최진욱 대리'}/>
-                    <Mobile_CarmentoCard name={'정의석 과장'}/>
+                    <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup}/>
+                    <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup}/>
+                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup}/>
+                    <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup}/>
                 </span>
             </section>
             <section className="mobile_main_partnerSection">

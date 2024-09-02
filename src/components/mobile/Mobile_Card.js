@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StarIcon } from '../../components/Icons'
+import { Mobile_QuickDealCardPopup } from './Mobile_Popup'
 
 
 export const Mobile_HotDealCard = (props) => {
@@ -25,30 +26,35 @@ export const Mobile_HotDealCard = (props) => {
 
 
 export const Mobile_QuickDealCard = (props) => {
+    const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(null);
+
     return (
-        <div className="mobile_quickDealCard">
-            <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
-            <h4>{props.item.enter} {props.item.name}</h4>
-            <p>{props.item.info}</p>
-            <span>
-                <p>외장</p><p><span></span><span>{props.item.out_color}</span></p>
-            </span>
-            <span>
-                <p>내장</p><p><span></span><span>{props.item.in_color}</span></p>
-            </span>
-            <span>
-                {props.item.option.length === 0 && <p>옵션</p>}
-                {props.item.option.length === 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p></>}
-                {props.item.option.length > 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p><p>외 {props.item.option.length - 1}건</p></>}
-            </span>
-            <span>
-                <p>월</p><p><span></span>{props.item.month_price.toLocaleString()}<span>원</span></p>
-            </span>
-            <span>
-                <p>{props.item.payment}</p>
-                <p>{props.item.deposit} 30%</p>
-            </span>
-        </div>
+        <>
+            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
+            <div className="mobile_quickDealCard" onClick={() => setIsUsePopupVisible1(props.item.car_code)}>
+                <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
+                <h4>{props.item.enter} {props.item.name}</h4>
+                <p>{props.item.info}</p>
+                <span>
+                    <p>외장</p><p><span></span><span>{props.item.out_color}</span></p>
+                </span>
+                <span>
+                    <p>내장</p><p><span></span><span>{props.item.in_color}</span></p>
+                </span>
+                <span>
+                    {props.item.option.length === 0 && <><p>옵션</p><p><span></span><span>기본가/오토</span></p></>}
+                    {props.item.option.length === 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p></>}
+                    {props.item.option.length > 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p><p>외 {props.item.option.length - 1}건</p></>}
+                </span>
+                <span>
+                    <p>월</p><p><span></span>{props.item.month_price.toLocaleString()}<span>원</span></p>
+                </span>
+                <span>
+                    <p>{props.item.payment}</p>
+                    <p>{props.item.deposit} 30%</p>
+                </span>
+            </div>
+        </>
     )
 }
 
@@ -87,13 +93,26 @@ export const Mobile_ReviewCard = (props) => {
 
 export const Mobile_CarmentoCard = (props) => {
     return (
-        <div className="mobile_CarmentoCard">
+        <div className="mobile_CarmentoCard" onClick={() => props.setPopup(props.name)}>
             <div>
                 <span></span>
                 <img src={require('../../assets/img/carmento/carmento1.jpg')} />
             </div>
             <h4>{props.name}</h4>
             <p>{props.name}에게 상담   〉</p>
+        </div>
+    )
+}
+
+export const Mobile_QuickFAQPageCard = (props) => {
+    return (
+        <div className="mobile_hotDealPageCard" onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
+            <h4>{props.item.name}</h4>
+            <p>{props.item.info}</p>
+            <span>
+                <p>차량가</p><p><span></span> {props.item.price.toLocaleString()}<span>원</span></p>
+            </span>
         </div>
     )
 }
@@ -116,6 +135,42 @@ export const Mobile_HotDealPageCard = (props) => {
                 <p>{props.item.deposit} 30%</p>
             </span>
         </div>
+    )
+}
+
+export const Mobile_QuickDealPageCard = (props) => {
+    const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(null);
+
+    return (
+        <>
+            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
+            <div className="mobile_quickDealPageCard" onClick={() => setIsUsePopupVisible1(props.item.car_code)}>
+                <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
+                <h4>{props.item.enter} {props.item.name}</h4>
+                <p>{props.item.info}</p>
+                <span>
+                    <p>외장</p><p><span></span><span>{props.item.out_color}</span></p>
+                </span>
+                <span>
+                    <p>내장</p><p><span></span><span>{props.item.in_color}</span></p>
+                </span>
+                <span>
+                    {props.item.option.length === 0 && <><p>옵션</p><p><span></span><span>기본가/오토</span></p></>}
+                    {props.item.option.length === 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p></>}
+                    {props.item.option.length > 1 && <><p>옵션</p><p><span></span><span>{props.item.option[0].name}</span></p><p>외 {props.item.option.length - 1}건</p></>}
+                </span>
+                <span>
+                    <p>차량가</p><p><span></span>{props.item.price.toLocaleString()}<span>원</span></p>
+                </span>
+                <span>
+                    <p>{props.item.month_use} (월)</p><p><span></span>{props.item.month_price.toLocaleString()}<span>원</span></p>
+                </span>
+                <span>
+                    <p>{props.item.payment}</p>
+                    <p>{props.item.deposit} 30%</p>
+                </span>
+            </div>
+        </>
     )
 }
 

@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import '../../styles/mobile/Mobile_Footer.css'
+import { Mobile_TermsofUsePopup, Mobile_TermsofInformationPopup } from "./Mobile_Popup";
 
 
 const Mobile_Footer = (props) => {
+    const [termsUsePopup, setTermsUsePopup] = useState(false)
+    const [termsInfoPopup, setTermsInfoPopup] = useState(false)
+
     return (
         <>
+            {termsUsePopup && <Mobile_TermsofUsePopup setPopup={setTermsUsePopup}/>}
+            {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup}/>}
             <section className="mobile_footer_section">
                 <div className="mobile_footer_useInfoDiv">
                     <span>
-                        <p>이용약관</p>
+                        <p onClick={() => setTermsUsePopup(true)}>이용약관</p>
                         <p>|</p>
-                        <p>개인정보처리방침</p>
+                        <p onClick={() => setTermsInfoPopup(true)}>개인정보처리방침</p>
                     </span>
                 </div>
                 <div className="mobile_footer_infoDiv">
