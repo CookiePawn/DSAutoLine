@@ -205,7 +205,7 @@ export const Admin_QuickFAQAdd = (props) => {
     ];
 
 
-    const handleAddModel = () => {
+    const handleAddModel = async () => {
         if (FAQ_model !== '' && FAQ_detailmodel !== '' && FAQ_detailmodel_price !== '') {
             setTrims([
                 ...trims,
@@ -217,9 +217,8 @@ export const Admin_QuickFAQAdd = (props) => {
                 }
             ]);
             //초기화
-            setOptionList((prevOptionList) => {
-                return [...(prevOptionList || []), ...optionSelectedList];
-            });
+            const response = await optionGetAxios()
+            setOptionList(response)
             setOptionSelectedList([])
             setFAQ_model('');
             setFAQ_detailmodel('');

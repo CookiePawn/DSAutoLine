@@ -84,6 +84,7 @@ export const QuickDealCard = (props) => {
                 <span className='quickDealCardOptionDiv'>
                     <p className='quickDealCardTitle1'>옵션</p>
                     <div className='quickDealCardInfoDiv'>
+                        {props.item.option.length === 0 && <p className='quickDealCardInfo2'>기본가/오토</p>}
                         {props.item.option.length <= 2
                             ? <>
                                 {props.item.option.map((item, idx) => (
@@ -359,6 +360,7 @@ export const QuickDealCarCard = (props) => {
                 <span className='quickDealCardOptionDiv'>
                     <p className='quickDealCardTitle1'>옵션</p>
                     <div className='quickDealCardInfoDiv'>
+                        {props.item.option.length === 0 && <p className='quickDealCardInfo2'>기본가/오토</p>}
                         {props.item.option.length <= 2
                             ? <>
                                 {props.item.option.map((item, idx) => (

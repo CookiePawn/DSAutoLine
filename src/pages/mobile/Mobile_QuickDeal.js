@@ -12,7 +12,7 @@ import NoCardList from '../../components/NoCardList'
 
 const Mobile_QuickDeal = (props) => {
     const [categoryStat, setCategoryStat] = useState('국산')
-    const [brandStat, setBrandStat] = useState('기아')
+    const [brandStat, setBrandStat] = useState('all')
     const [listStat, setListStat] = useState('전체')
     const [quickDealList, setQuickDealList] = useState(null)
     const [banner, setBanner] = useState(null)
@@ -42,7 +42,7 @@ const Mobile_QuickDeal = (props) => {
     }
     return (
         <div className="mobile_container">
-            <Mobile_GNB page={'빠른 간편 문의'} />
+            <Mobile_GNB page={'즉시 출고'} />
             <section className="mobile_hotDeal_eventBannerSection">
                 <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
             </section>
