@@ -24,8 +24,8 @@ const Mobile_Admin = (props) => {
                 : <section className="mobile_admin_listSection">
                     <button onClick={() => setListStat(1)} className={listStat === 1 && 'selected'}>미완료 고객</button>
                     <button onClick={() => setListStat(2)} className={listStat === 2 && 'selected'}>완료 고객</button>
-                    {listStat === 0 && <Mobile_Admin_UserIncompleteList />}
-                    {listStat === 1 && <Mobile_Admin_UserCompletedList />}
+                    {listStat === 1 && <Mobile_Admin_UserIncompleteList />}
+                    {listStat === 2 && <Mobile_Admin_UserCompletedList />}
                 </section>
             }
         </div>

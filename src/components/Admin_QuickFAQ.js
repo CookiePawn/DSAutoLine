@@ -14,7 +14,6 @@ import {
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
-import { CarAddPopUp } from "./PopUp";
 
 
 
@@ -166,8 +165,6 @@ export const Admin_QuickFAQAdd = (props) => {
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
 
-    const [popupStat, setPopupStat] = useState(false)
-
     const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() - 10 + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
@@ -232,7 +229,6 @@ export const Admin_QuickFAQAdd = (props) => {
     }
     return (
         <div className="admin_content">
-            {popupStat && <CarAddPopUp />}
             <h2>빠른 간편 문의 <span>- 차량 추가</span></h2>
             <div className="header-row" />
             <div className="admin_content_FAQ_add">
@@ -536,7 +532,7 @@ export const Admin_QuickFAQAdd = (props) => {
                         <div style={{ borderBottom: '1px solid #dbdbdb', maxWidth: 1000, padding: '10px 0' }}>
                             <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>삭제</button>
                             <h4 key={index}>
-                                {model.trim1} <span>/</span> {model.trim2} <br/><span>-</span> {model.price} 원
+                                {model.trim1} <span>/</span> {model.trim2} <br /><span>-</span> {model.price} 원
                             </h4>
                             <span>
                                 {model.option.map((item, _) => (
@@ -704,7 +700,39 @@ export const Admin_QuickFAQAdd = (props) => {
                                     trim: trims,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
-                                setPopupStat(true)
+
+                                setCategoryStat('국산');
+                                setBrandStat(null);
+                                setFAQ_carname('');
+                                setMinFuel(0);
+                                setMaxFuel(0);
+                                setMaxCC(0)
+                                setMinCC(0)
+                                setFAQ_carprice('');
+                                setFAQ_model('');
+                                setFAQ_detailmodel('');
+                                setFAQ_detailmodel_price('');
+                                setFAQ_StartDate({ year: "", month: "" });
+                                setSelectedCartype(null);
+                                setImgURL(null)
+                                setGasoline(0)
+                                setDiesel(0)
+                                setLpg(0)
+                                setHybrid(0)
+                                setElectric(0)
+                                setH2(0)
+                                setTrims([]);
+                                setTrimStat(false)
+                                setColorSelectedList([])
+                                setOptionSelectedList([])
+                                setSearchColor('');
+                                setSearchOption('');
+                                setColorName('')
+                                setColorRGB('')
+                                setOptionName('')
+                                setOptionPrice('')
+
+                                alert('빠른 간편 문의 차량이 추가되었습니다.')
                             }
                         }}
                     >

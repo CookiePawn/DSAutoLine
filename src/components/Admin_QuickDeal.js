@@ -12,7 +12,6 @@ import {
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
-import { CarAddPopUp } from "./PopUp";
 
 
 
@@ -44,9 +43,7 @@ export const Admin_QuickDealAdd = (props) => {
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
 
-    const [popupStat, setPopupStat] = useState(false)
-
-    const years = Array.from({ length: 20 }, (_, i) => (new Date().getFullYear() + i).toString());
+    const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() - 10 + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
     useEffect(() => {
@@ -74,7 +71,6 @@ export const Admin_QuickDealAdd = (props) => {
     }
     return (
         <div className="admin_content">
-            {popupStat && <CarAddPopUp />}
             <h2>즉시 출고 <span>- 차량 추가</span></h2>
             <div className="header-row" />
             <div className="admin_content_FAQ_add">
@@ -344,7 +340,7 @@ export const Admin_QuickDealAdd = (props) => {
                                 </button>
                             </div>
                             <div className='admin_content_colorCard title'>
-                                <p style={{width: 50}}>옵션명</p>
+                                <p style={{ width: 50 }}>옵션명</p>
                                 <p>금액</p>
                             </div>
                             <span></span>
@@ -399,7 +395,26 @@ export const Admin_QuickDealAdd = (props) => {
                                     out_color: outColor,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
-                                setPopupStat(true)
+                                setCategoryStat('국산');
+                                setBrandStat(null);
+                                setFAQ_carname('');
+                                setFAQ_carprice('');
+                                setFAQ_model('');
+                                setFAQ_detailmodel('');
+                                setFAQ_StartDate({ year: "", month: "" });
+                                setImgURL(null)
+                                setRentalPrice('')
+                                setMonthStat('렌트')
+                                setPayment(null)
+                                setDeposit(null)
+                                setInColor('')
+                                setOutColor('')
+                                setCarType(null)
+                                setOptionSelectedList([])
+                                setSearchOption('');
+                                setOptionName('')
+                                setOptionPrice('')
+                                alert('즉시 출고 차량이 추가되었습니다.')
                             }
                         }}
                     >

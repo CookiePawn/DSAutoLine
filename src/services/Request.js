@@ -696,3 +696,20 @@ export const enterListAxios = async () => {
     }
 } 
 
+
+
+
+
+
+/**
+ * 관리자 페이지 로그인 POST
+ * @returns 
+ */
+export const loginAxios = async (data) => {
+    try {
+        const response = await axios.post(`${dbServerUrl}/admin-hash/secure-entry-point/login`, data)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+} 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
 import { faqFilterAxios, hotDealAxios, hotDealInsertAxios, hotDealDeleteAxios, } from '../services/Request'
 import NoCardList from '../components/NoCardList'
-import { HotDealCarAddPopUp } from "./PopUp";
 
 
 
@@ -20,7 +19,6 @@ export const Admin_HotdealAdd = (props) => {
     const [payment, setPayment] = useState(null)
     const [deposit, setDeposit] = useState(null)
     const [editStat, setEditStat] = useState(null)
-    const [popupStat, setPopupStat] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,7 +56,6 @@ export const Admin_HotdealAdd = (props) => {
     }
     return (
         <div className="admin_content">
-            {popupStat && <HotDealCarAddPopUp setPopupStat={setPopupStat} />}
             <h2>한정 특가 <span>- 차량 추가</span></h2>
             <input
                 className="admin_content_searchListInput"
@@ -154,7 +151,7 @@ export const Admin_HotdealAdd = (props) => {
                                         setDeposit(null)
                                         setPayment(null)
                                         setEditStat(null)
-                                        setPopupStat(true)
+                                        alert('한정 특가 차량이 추가되었습니다.')
                                     }
                                 }}
                             >
