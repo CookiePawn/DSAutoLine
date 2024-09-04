@@ -5,7 +5,7 @@
 }
 
 
-/*알림 페이지*/
+/*로그인 페이지*/
 
 .admin_content>h2 {
     margin: 0;
@@ -28,47 +28,70 @@
     margin: 20px;
 }
 
-.admin_content .notification {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #dddddd;
-}
-
-.admin_content .notification>input {
-    margin-right: 30px;
-}
-
-.admin_content .notification-text {
-    display: flex;
-    align-items: center;
-}
-
-.admin_content .notification-text .icon {
-    background-color: #f4f4f4;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+.admin_content_loginSection {
+    width: 100%;
+    height: calc(100vh - 82px);
+    background-color: #ededed;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
-    font-size: 20px;
-    color: #ff0000;
 }
 
-.admin_content .delete-button {
-    width: 60px;
-    color: #ff0000;
-    border: none;
+.admin_content_loginDiv {
+    background-color: white;
+    box-sizing: border-box;
     border-radius: 12px;
-    padding: 8px;
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.admin_content_loginDiv > h2 {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #111;
+    border-bottom: 1px solid #bbb;
+}
+
+.admin_content_loginDiv > input {
+    width: 90%;
+    height: 50px;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    outline: none;
+    font-size: 20px;
+}
+
+.admin_content_loginDiv > h3 {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #767676;
+}
+
+.admin_content_loginDiv > button {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    background-color: #0064FF;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
     cursor: pointer;
 }
-
-
-
 
 
 
