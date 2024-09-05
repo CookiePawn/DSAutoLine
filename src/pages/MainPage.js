@@ -71,12 +71,17 @@ const MainPage = (props) => {
 
 
 
-    if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventList ) {
-        return null
+    if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventList) {
+        return (
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
+                style={{width: '100%', height: '100%'}}
+            />
+        )
     }
     return (
         <div className='mainPage_container'>
-            {quickDealPopup && <QuickDealCarCard_Popup setPopup={setQuickDealPopup} id={quickDealPopup}/>}
+            {quickDealPopup && <QuickDealCarCard_Popup setPopup={setQuickDealPopup} id={quickDealPopup} />}
             <GNB stat={false} />
             <BannerSlider />
             <FastFAQSticky height={1300} />
@@ -100,7 +105,7 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>한정 <span>특가</span></h1>
-                {hotDealList.length === 0 && <NoCardList card={'차량이'}/>}
+                {hotDealList.length === 0 && <NoCardList card={'차량이'} />}
                 <Slider {...hotDealSlicerSettings} ref={hotDealSliderRef}>
                     {hotDealList.map((item, idx) => (
                         <HotDealCard item={item} idx={idx} />
@@ -131,13 +136,13 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>즉시 <span>출고</span></h1>
-                {quickDealList.length === 0 && <NoCardList card={'차량이'}/>}
+                {quickDealList.length === 0 && <NoCardList card={'차량이'} />}
                 <div
                     className='hotDealListDiv'
                 >
                     <Slider {...hotDealSlicerSettings} ref={quickDealSliderRef}>
                         {quickDealList.map((item, idx) => (
-                            <QuickDealCard item={item} idx={idx} setPopup={setQuickDealPopup}/>
+                            <QuickDealCard item={item} idx={idx} setPopup={setQuickDealPopup} />
                         ))}
                     </Slider>
                 </div>
@@ -151,12 +156,12 @@ const MainPage = (props) => {
                 <img src={`${process.env.REACT_APP_IMG_URL}/${eventList[0].img}.png`} />
             </div>
             <section className='popularSection'>
-                <h1 style={{marginBottom: 40}}>가장 <span>인기 많은 차량</span></h1>
+                <h1 style={{ marginBottom: 40 }}>가장 <span>인기 많은 차량</span></h1>
                 {/* <span>
                     <p className={popularEntryStat === 0 && 'selected'} onClick={() => setPopularEntryStat(0)}>국산 차</p>
                     <p className={popularEntryStat === 1 && 'selected'} onClick={() => setPopularEntryStat(1)}>수입 차</p>
                 </span> */}
-                {popularList.length === 0 && <NoCardList card={'차량이'}/>}
+                {popularList.length === 0 && <NoCardList card={'차량이'} />}
                 <div>
                     {popularList.map((item, idx) => (
                         <PopularCarCard
@@ -186,7 +191,7 @@ const MainPage = (props) => {
                     </>
                 )}
                 <h1>많은 고객님들이 <span>만족하신 후기</span></h1>
-                {reviewList.length === 0 && <NoCardList card={'리뷰가'}/>}
+                {reviewList.length === 0 && <NoCardList card={'리뷰가'} />}
                 <div className='reviewCardDiv'>
                     <Slider {...reviewSlicerSettings} ref={reviewSliderRef}>
                         {reviewList.map((item, idx) => (

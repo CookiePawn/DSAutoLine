@@ -98,8 +98,15 @@ body {
   border-radius: 100px;
   background-color: #dbdbdb;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.footerSection > div:nth-of-type(2) > span > div > span > img {
+  width: 60%;
+  height: 60%;
+}
 
 
 
