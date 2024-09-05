@@ -89,7 +89,7 @@ export const Admin_QuickDealAdd = (props) => {
                         <span className='hotDealCardTitleDiv'>
                             <h2>{brandStat} {FAQ_carname}</h2>
                         </span>
-                        <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{`${FAQ_startDate.year}년형 ${FAQ_model} ${FAQ_detailmodel}`}</p>
+                        <p className='quickDealCardModel' style={{ marginBottom: 20 }}>{`${FAQ_model} ${FAQ_detailmodel}`}</p>
                         <span className='quickDealCardOptionDiv'>
                             <p className='quickDealCardTitle1'>외장</p>
                             <p className='quickDealCardInfo1'>{outColor}</p>
