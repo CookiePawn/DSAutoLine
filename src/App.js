@@ -69,7 +69,7 @@ function App() {
 					<Route path='/ReviewAdd' element={isMobile ? <Mobile_ReviewAdd /> : <ReviewAddPage />} />
 
 					{/* 관리자 페이지 */}
-					<Route path='/Admin' element={isMobile ? <Mobile_Admin /> : <AdminPage />} />
+					<Route path='/zyNQVJcTYyiNwS4or4oJ' element={isMobile ? <Mobile_Admin /> : <AdminPage />} />
 
 				</Routes>
 			</div>

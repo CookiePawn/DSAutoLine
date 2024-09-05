@@ -12,7 +12,6 @@ const dbServerUrl = process.env.REACT_APP_DB_SERVER_URL;
 export const hotDealAxios = async () => {
     try {
         const response = await axios.get(`${dbServerUrl}/hotDeal`)
-        console.log(response.data, dbServerUrl)
         return response.data
     } catch (error) {
         // console.log(error)

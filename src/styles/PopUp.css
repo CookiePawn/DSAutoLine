@@ -507,7 +507,8 @@
 }
 
 .QuickDeal_Section {
-    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
     height: 45vh;
     background-color: white;
     opacity: 100%;
@@ -564,7 +565,7 @@
 
 .QuickDeal_input > input{
     margin: 0;
-    width: 360px;
+    min-width: 360px;
     height: 37px;
     padding: 0px 10px;
 }
