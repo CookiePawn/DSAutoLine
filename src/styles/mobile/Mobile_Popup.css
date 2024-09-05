@@ -391,9 +391,9 @@
 }
 
 .mobile_searchPopup > div {
+    display: block;
     height: calc(100% - 77px);
     overflow-y: auto;
-    margin-bottom: 50px;
 }
 
 /* 스크롤바 전체 */
