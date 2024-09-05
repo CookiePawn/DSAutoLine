@@ -64,7 +64,7 @@ export const Admin_QuickFAQEdit = (props) => {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
@@ -233,7 +233,7 @@ export const Admin_QuickFAQAdd = (props) => {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
@@ -710,7 +710,10 @@ export const Admin_QuickFAQAdd = (props) => {
                                     trim: trims,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
-
+                                const response1 = await optionGetAxios()
+                                setOptionList(response1)
+                                const response2 = await colorGetAxios()
+                                setColorList(response2)
                                 setCategoryStat('국산');
                                 setBrandStat(null);
                                 setFAQ_carname('');
@@ -741,7 +744,6 @@ export const Admin_QuickFAQAdd = (props) => {
                                 setColorRGB('')
                                 setOptionName('')
                                 setOptionPrice('')
-
                                 alert('빠른 간편 문의 차량이 추가되었습니다.')
                             }
                         }}

@@ -62,7 +62,7 @@ export const Admin_QuickDealAdd = (props) => {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
@@ -371,6 +371,8 @@ export const Admin_QuickDealAdd = (props) => {
                                     out_color: outColor,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
+                                const response = await optionGetAxios()
+                                setOptionList(response)
                                 setCategoryStat('국산');
                                 setBrandStat(null);
                                 setFAQ_carname('');
@@ -444,7 +446,7 @@ export const Admin_QuickDealEdit = (props) => {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
