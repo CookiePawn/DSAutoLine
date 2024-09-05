@@ -155,6 +155,8 @@ export const CarmentoPopUp = (props) => {
     const [isSelect1, setIsSelect1] = useState(false)
     const [isSelect2, setIsSelect2] = useState(false)
 
+    const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
+
     useEffect(() => {
         if (props.mento) {
             setMento(props.mento);
@@ -179,6 +181,7 @@ export const CarmentoPopUp = (props) => {
 
     return (
         <>
+            {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
             <div className='carmentoDimmed'>
                 <div>
                     <div>
@@ -202,11 +205,11 @@ export const CarmentoPopUp = (props) => {
                         </span>
                         <span>
                             {!isSelect1 ? <img src={nonClick} onClick={() => setIsSelect1(!isSelect1)} /> : <img src={onClick} onClick={() => setIsSelect1(!isSelect1)} />}
-                            <p>개인정보 수집 · 이용 · 제공 동의 <span>(보기)</span></p>
+                            <p>개인정보 수집 · 이용 · 제공 동의 <span onClick={() => setIsUsePopupVisible(true) } >(보기)</span></p>
                         </span>
                         <span>
-                            {!isSelect2 ? <img src={nonClick} onClick={() => setIsSelect2(!isSelect2)} /> : <img src={onClick} onClick={() => setIsSelect2(!isSelect2)} />}
-                            <p>개인정보 제 3자 제공 동의 <span>(보기)</span></p>
+                            {!isSelect2 ? <img src={nonClick} onClick={() => setIsSelect2(!isSelect2) } /> : <img src={onClick} onClick={() => setIsSelect2(!isSelect2)} />}
+                            <p>개인정보 제 3자 제공 동의 <span onClick={() => setIsUsePopupVisible(true)}>(보기)</span></p>
                         </span>
                         <span>
                             <span onClick={onClickNo}>취소</span>
