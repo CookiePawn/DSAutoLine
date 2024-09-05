@@ -358,7 +358,7 @@ const OptionPage = (props) => {
                             </span>
                             <h4>보증금(원)</h4>
                             <span>
-                                <input placeholder="0" type="number" value={useingSelect4} onChange={event => setUseingSelect4(event.target.value)} />
+                                <input placeholder="금액 입력" type="number" value={useingSelect4} onChange={event => setUseingSelect4(event.target.value)} />
                             </span>
                             <h4>선납금</h4>
                             <span>

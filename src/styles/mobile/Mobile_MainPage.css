@@ -605,10 +605,12 @@ body {
     max-width: 127px;
     height: 210px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .mobile_CarmentoCard > div {
     width: 100%;
+    height: 156px;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -618,13 +620,14 @@ body {
     position: absolute;
     top: 0;
     width: 127px;
-    height: 156px;
+    height: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.03));
 }
 
 .mobile_CarmentoCard > div > img {
-    width: 127px;
-    height: 156px;
+    display: flex;
+    height: 100%;
+    transform: translateX(-10%);
 }
 
 .mobile_CarmentoCard > h4 {

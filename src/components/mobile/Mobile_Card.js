@@ -96,7 +96,7 @@ export const Mobile_CarmentoCard = (props) => {
         <div className="mobile_CarmentoCard" onClick={() => props.setPopup(props.name)}>
             <div>
                 <span></span>
-                <img src={require('../../assets/img/carmento/carmento1.jpg')} />
+                <img src={require(`../../assets/img/carmento/${props.img}.jpg`)} />
             </div>
             <h4>{props.name}</h4>
             <p>{props.name}에게 상담   〉</p>

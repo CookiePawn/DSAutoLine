@@ -117,10 +117,10 @@ const Mobile_MainPage = (props) => {
             <section className="mobile_main_carmentoSection">
                 <h3>우수 카멘토</h3>
                 <span>
-                    <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup}/>
-                    <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup}/>
-                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup}/>
-                    <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup}/>
+                    <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup} img={'carmento1'}/>
+                    <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup} img={'carmento2'}/>
+                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup} img={'carmento1'}/>
+                    <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup} img={'carmento4'}/>
                 </span>
             </section>
             <section className="mobile_main_partnerSection">
