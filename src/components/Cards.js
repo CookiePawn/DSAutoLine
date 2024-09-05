@@ -104,7 +104,7 @@ export const QuickDealCard = (props) => {
                     <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
                 </span>
                 <span className='hotDealCardMonthPriceDiv'>
-                    <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
+                    <p className='hotDealCardMonthPriceTitle'>{props.item.month_use} (월)</p>
                     <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.month_price && props.item.month_price.toLocaleString()}</span> 원</p>
                 </span>
                 <div className='infoPaddingDiv'>
@@ -380,7 +380,7 @@ export const QuickDealCarCard = (props) => {
                     <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
                 </span>
                 <span className='hotDealCardMonthPriceDiv'>
-                    <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
+                    <p className='hotDealCardMonthPriceTitle'>{props.item.month_use} (월)</p>
                     <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.month_price && props.item.month_price.toLocaleString()}</span> 원</p>
                 </span>
                 <div className='infoPaddingDiv'>
