@@ -50,7 +50,6 @@ const Mobile_MainPage = (props) => {
             setPopularList(response4)
             const response5 = await eventAxios(4, 0)
             setEventLine(response5)
-            document.body.style.overflowX='hidden'
         }
         fetchData()
     }, [])

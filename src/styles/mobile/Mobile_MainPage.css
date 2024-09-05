@@ -3,6 +3,7 @@ body {
     max-width: 100%;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 /* 스마트폰용 (작은 기기) */
