@@ -67,7 +67,12 @@ export const Admin_QuickDealAdd = (props) => {
 
 
     if (!optionList) {
-        return null
+        return (
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
+                style={{width: '100%', height: '100%'}}
+            />
+        )
     }
     return (
         <div className="admin_content">
@@ -466,7 +471,12 @@ export const Admin_QuickDealEdit = (props) => {
 
 
     if (!filteredList) {
-        return null
+        return (
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
+                style={{width: '100%', height: '100%'}}
+            />
+        )
     }
     return (
         <div className="admin_content">

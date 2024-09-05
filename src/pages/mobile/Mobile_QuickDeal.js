@@ -38,7 +38,12 @@ const Mobile_QuickDeal = (props) => {
 
 
     if (!quickDealList || !banner) {
-        return null
+        return (
+            <img
+                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
+                style={{width: '100%', height: '100%'}}
+            />
+        )
     }
     return (
         <div className="mobile_container">

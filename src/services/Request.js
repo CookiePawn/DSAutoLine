@@ -14,7 +14,7 @@ export const hotDealAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/hotDeal`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -42,7 +42,7 @@ export const quickDealAxios = async (entry, enter, category) => {
         }
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -59,7 +59,7 @@ export const reviewAxios = async (stat) => {
         const response = await axios.get(`${dbServerUrl}/review?type=${stat}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -75,7 +75,7 @@ export const reviewInfoAxios = async (nid) => {
         const response = await axios.get(`${dbServerUrl}/review/${nid}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -88,7 +88,7 @@ export const reviewAddAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/reviewInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -116,7 +116,7 @@ export const quickFAQAxios = async (entry, enter, category) => {
         }
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -136,7 +136,7 @@ export const eventAxios = async (type, active) => {
         }
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -151,7 +151,7 @@ export const eventInfoAxios = async (id) => {
         const response = await axios.get(`${dbServerUrl}/event/${id}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -165,7 +165,7 @@ export const fastFAQAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/counseling`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -181,7 +181,7 @@ export const estimatedAxios = async (id) => {
         const response = await axios.get(`${dbServerUrl}/estimate/${id}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -194,7 +194,7 @@ export const estimatedAddAxios = async (data) => {
         const response = await axios.post(`${dbServerUrl}/estimateInsert`, data)
         console.log(response)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -207,7 +207,7 @@ export const quickDealEstimatedAxios = async (id) => {
         const response = await axios.get(`${dbServerUrl}/quickEstimate/${id}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -222,7 +222,7 @@ export const carEnterListAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/reviewSelect`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -268,7 +268,7 @@ export const popularListAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/ranking`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -282,7 +282,7 @@ export const mentoringAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/mentoring`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -309,7 +309,7 @@ export const eventAddAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/eventInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -321,7 +321,7 @@ export const eventDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/eventDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -336,7 +336,7 @@ export const reviewChangeAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/reviewChange`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -348,7 +348,7 @@ export const reviewDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/reviewDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -364,7 +364,7 @@ export const colorGetAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/allColor`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -376,7 +376,7 @@ export const colorAddAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/allColorInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -388,7 +388,7 @@ export const colorDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/allColorDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -403,7 +403,7 @@ export const optionGetAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/alloption`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -415,7 +415,7 @@ export const optionAddAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/allOptionInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -427,7 +427,7 @@ export const optionDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/allOptionDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -442,7 +442,7 @@ export const currentSituationAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/currentSituation`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -456,7 +456,7 @@ export const userListAxios = async (type, active) => {
         const response = await axios.get(`${dbServerUrl}/customerList?type=${type}&active=${active}`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -468,7 +468,7 @@ export const carInquiryDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/carInquiryDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -480,7 +480,7 @@ export const carInquiryChangeAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/carInquiryChange`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -493,7 +493,7 @@ export const counselingInquiryDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/counselingInquiryDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -505,7 +505,7 @@ export const counselingInquiryChangeAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/counselingInquiryChange`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -518,7 +518,7 @@ export const mentoInquiryDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/mentoInquiryDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -530,7 +530,7 @@ export const mentoInquiryChangeAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/mentoInquiryChange`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -544,7 +544,7 @@ export const quickInquiryDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/quickInquiryDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -556,7 +556,7 @@ export const quickInquiryChangeAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/quickInquiryChange`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -569,7 +569,7 @@ export const carFaqDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/carFaqDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -581,7 +581,7 @@ export const hotDealDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/hotDealDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -593,7 +593,7 @@ export const quickDealDeleteAxios = async (data) => {
     try {
         await axios.delete(`${dbServerUrl}/quickDealDelete/${data}`)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -613,7 +613,7 @@ export const carInsertAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/carInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -628,7 +628,7 @@ export const faqFilterAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/faqFilter`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -640,7 +640,7 @@ export const hotDealInsertAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/hotDealInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -653,7 +653,7 @@ export const quickDealInsertAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/quickInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -675,7 +675,7 @@ export const quickCounselingInsertAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/quickCounselingInsert`, data)
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -692,7 +692,7 @@ export const enterListAxios = async () => {
         const response = await axios.get(`${dbServerUrl}/enter`)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
 
@@ -710,6 +710,6 @@ export const loginAxios = async (data) => {
         const response = await axios.post(`${dbServerUrl}/admin-hash/secure-entry-point/login`, data)
         return response.data
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 } 
