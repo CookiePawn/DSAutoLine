@@ -7,7 +7,6 @@ import Mobile_MainPage_FastFAQ from "../../components/mobile/Mobile_MainPage_Fas
 import { 
     Mobile_CarmentoPopup,
     Mobile_TermsofInformationPopup,
-    Mobile_TermsofUsePopup,
 } from "../../components/mobile/Mobile_Popup";
 import { 
     Mobile_HotDealCard, 
@@ -51,6 +50,7 @@ const Mobile_MainPage = (props) => {
             setPopularList(response4)
             const response5 = await eventAxios(4, 0)
             setEventLine(response5)
+            document.body.style.overflowX='hidden'
         }
         fetchData()
     }, [])
