@@ -24,7 +24,7 @@ export const Admin_QuickDealAdd = (props) => {
     const [FAQ_carprice, setFAQ_carprice] = useState('');
     const [FAQ_model, setFAQ_model] = useState('');
     const [FAQ_detailmodel, setFAQ_detailmodel] = useState('');
-    const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "", month: "" });
+    const [FAQ_startDate, setFAQ_StartDate] = useState({ year: "2024", month: "11" });
     const [imgURL, setImgURL] = useState(null)
     const [rentalPrice, setRentalPrice] = useState('')
 
@@ -43,9 +43,6 @@ export const Admin_QuickDealAdd = (props) => {
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
 
-    const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() - 10 + i).toString());
-    const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
-
     useEffect(() => {
         const fetchData = async () => {
             const response1 = await optionGetAxios()
@@ -59,11 +56,6 @@ export const Admin_QuickDealAdd = (props) => {
     const filteredOption = optionList ? optionList.filter(item =>
         item.name.toLowerCase().includes(searchOption.toLowerCase())
     ) : [];
-
-    const FAQ_handleStartDateChange = (e) => {
-        const { name, value } = e.target;
-        setFAQ_StartDate({ ...FAQ_startDate, [name]: value });
-    };
 
 
     if (!optionList) {
@@ -182,27 +174,6 @@ export const Admin_QuickDealAdd = (props) => {
                                 onChange={(e) => setFAQ_carprice(e.target.value)}
                             />
                             <p>원</p>
-                        </div>
-                    </div>
-                    <div className="admin_content_FAQ_newcar_DateSection">
-                        <h3>신차 출시일</h3>
-                        <div className="admin_content_FAQ_newcar_DateSection_input">
-                            <div className="date-picker">
-                                <select name="year" value={FAQ_startDate.year} onChange={FAQ_handleStartDateChange}>
-                                    <option value="">년</option>
-                                    {years.map(year => (
-                                        <option key={year} value={year}>{year}</option>
-                                    ))}
-                                </select>
-                                <p>년</p>
-                                <select name="month" value={FAQ_startDate.month} onChange={FAQ_handleStartDateChange}>
-                                    <option value="">월</option>
-                                    {months.map(month => (
-                                        <option key={month} value={month}>{month}</option>
-                                    ))}
-                                </select>
-                                <p>월</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -406,7 +377,6 @@ export const Admin_QuickDealAdd = (props) => {
                                 setFAQ_carprice('');
                                 setFAQ_model('');
                                 setFAQ_detailmodel('');
-                                setFAQ_StartDate({ year: "", month: "" });
                                 setImgURL(null)
                                 setRentalPrice('')
                                 setMonthStat('렌트')
