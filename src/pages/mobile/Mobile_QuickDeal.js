@@ -20,10 +20,15 @@ const Mobile_QuickDeal = (props) => {
     //팝업 State
     const [popupStat, setPopupStat] = useState(null)
 
+    // 우선 순위를 정의
+    const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
+
 
     const fetchData = async (entry, enter, category) => {
         const response1 = await quickDealAxios(entry, enter, category)
-        setQuickDealList(response1)
+        setQuickDealList(response1.sort((a, b) => {
+            return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+        }))
         const response2 = await eventAxios(3, 0)
         setBanner(response2)
     }

@@ -17,11 +17,14 @@ const QuickFAQPage = (props) => {
     const [quickFAQList, setQuickFAQList] = useState(null)
     const [banner, setBanner] = useState(null)
 
+    // 우선 순위를 정의
+    const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
 
     const fetchData = async (entry, enter, category) => {
         const response1 = await quickFAQAxios(entry, enter, category)
-        console.log(entry, enter, category, response1)
-        setQuickFAQList(response1)
+        setQuickFAQList(response1.sort((a, b) => {
+            return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+        }))
         const response2 = await eventAxios(1, 0)
         setBanner(response2)
     }
@@ -49,7 +52,7 @@ const QuickFAQPage = (props) => {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
@@ -66,8 +69,8 @@ const QuickFAQPage = (props) => {
                 <h1>빠른 <span>간편 문의</span></h1>
                 <p>쉽고 간편하게 문의 해보세요</p>
                 <div className='categoryTitleDiv'>
-                    <h3 onClick={() => { setCategoryStat('국산'); setBrandStat('기아');}} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
-                    <h3 onClick={() => { setCategoryStat('수입'); setBrandStat('BMW');}} className={categoryStat === '수입' ? 'selected' : ''}>수입 브랜드</h3>
+                    <h3 onClick={() => { setCategoryStat('국산'); setBrandStat('기아'); }} className={categoryStat === '국산' ? 'selected' : ''}>국산 브랜드</h3>
+                    <h3 onClick={() => { setCategoryStat('수입'); setBrandStat('BMW'); }} className={categoryStat === '수입' ? 'selected' : ''}>수입 브랜드</h3>
                 </div>
                 {categoryStat === '국산' ?
                     <KoreaLogo setStat={setBrandStat} brandStat={brandStat} />

@@ -12,10 +12,15 @@ const Mobile_HotDeal = (props) => {
     const [hotDealList, setHotDealList] = useState(null)
     const [banner, setBanner] = useState(null)
 
+    // 우선 순위를 정의
+    const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
+
     useEffect(() => {
         const fetchData = async () => {
             const tmp1 = await hotDealAxios()
-            setHotDealList(tmp1)
+            setHotDealList(tmp1.sort((a, b) => {
+                return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+            }))
             const tmp2 = await eventAxios(2, 0)
             setBanner(tmp2)
         }

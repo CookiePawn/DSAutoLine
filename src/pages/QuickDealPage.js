@@ -17,10 +17,14 @@ const QuickDealPage = (props) => {
     const [quickDealList, setQuickDealList] = useState(null)
     const [banner, setBanner] = useState(null)
 
+    // 우선 순위를 정의
+    const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
 
     const fetchData = async (entry, enter, category) => {
         const response = await quickDealAxios(entry, enter, category)
-        setQuickDealList(response)
+        setQuickDealList(response.sort((a, b) => {
+            return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+        }))
         const tmp2 = await eventAxios(3, 0)
         setBanner(tmp2)
     }

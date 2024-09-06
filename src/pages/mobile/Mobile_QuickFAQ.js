@@ -16,10 +16,14 @@ const Mobile_QuickFAQ = (props) => {
     const [quickFAQList, setQuickFAQList] = useState(null)
     const [banner, setBanner] = useState(null)
 
+    // 우선 순위를 정의
+    const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
 
     const fetchData = async (entry, enter, category) => {
         const response1 = await quickFAQAxios(entry, enter, category)
-        setQuickFAQList(response1)
+        setQuickFAQList(response1.sort((a, b) => {
+            return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+        }))
         const response2 = await eventAxios(1, 0)
         setBanner(response2)
     }
