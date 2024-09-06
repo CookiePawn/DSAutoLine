@@ -199,7 +199,7 @@ export const Admin_QuickFAQAdd = (props) => {
     };
 
     const cartypeButtons = [
-        '경차', '소형/승용', 'SUV', '화물'
+        '경차', '소형/승용', 'SUV', '스포츠카', '화물'
     ];
 
     const fueltypeButtons = [

@@ -143,6 +143,7 @@ export const Admin_QuickDealAdd = (props) => {
                         <button onClick={() => setCarType('경차')} className={carType === '경차' && 'selected'}>경차</button>
                         <button onClick={() => setCarType('소형/승용')} className={carType === '소형/승용' && 'selected'}>소형/승용</button>
                         <button onClick={() => setCarType('SUV')} className={carType === 'SUV' && 'selected'}>SUV</button>
+                        <button onClick={() => setCarType('스포츠카')} className={carType === '스포츠카' && 'selected'}>스포츠카</button>
                         <button onClick={() => setCarType('화물')} className={carType === '화물' && 'selected'}>화물</button>
                     </div>
                 </div>

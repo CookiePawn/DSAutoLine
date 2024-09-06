@@ -71,6 +71,7 @@ const QuickFAQPage = (props) => {
                     <p onClick={() => { setListStat('경차'); fetchData(categoryStat, brandStat, '경차') }} className={listStat === '경차' ? 'selected' : ''}>경차</p>
                     <p onClick={() => { setListStat('소형/승용'); fetchData(categoryStat, brandStat, '소형/승용') }} className={listStat === '소형/승용' ? 'selected' : ''}>소형/승용</p>
                     <p onClick={() => { setListStat('SUV'); fetchData(categoryStat, brandStat, 'SUV') }} className={listStat === 'SUV' ? 'selected' : ''}>SUV</p>
+                    <p onClick={() => { setListStat('스포츠카'); fetchData(categoryStat, brandStat, '스포츠카') }} className={listStat === '스포츠카' ? 'selected' : ''}>스포츠카</p>
                     <p onClick={() => { setListStat('화물'); fetchData(categoryStat, brandStat, '화물') }} className={listStat === '화물' ? 'selected' : ''}>화물</p>
                 </div>
                 <div className='quickCarCardListDiv'>
