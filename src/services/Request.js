@@ -257,8 +257,6 @@ export const imageUploadAxios = async (pngUrl, imgName) => {
 }
 
 
-
-
 /**
  * 메인 페이지 - 인기 차량 리스트 로드
  * @returns 
