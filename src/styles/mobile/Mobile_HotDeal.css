@@ -4,6 +4,7 @@
 
 .mobile_hotDeal_eventBannerSection > img {
     width: 100%;
+    cursor: pointer;
 }
 
 .mobile_hotDeal_hotDealListSection {

@@ -41,7 +41,7 @@ const HotDealPage = (props) => {
             <GNB stat={true} page={'한정 특가'} />
             {banner[0] &&
                 <div className='bannerSection'>
-                    <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너'  onClick={() => window.location.href=`/event/${banner[0].event_num}`}/>
                 </div>
             }
             <FastFAQSticky height={1150} />

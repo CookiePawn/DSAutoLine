@@ -11,10 +11,8 @@ body {
     justify-content: center;
 }
 
-.bannerSection > p {
-    color: white;
-    font-size: 50px;
-    font-weight: 600;
+.bannerSection > img {
+    cursor: pointer;
 }
 
 .categorySection > h1 {

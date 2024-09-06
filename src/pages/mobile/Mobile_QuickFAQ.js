@@ -49,7 +49,7 @@ const Mobile_QuickFAQ = (props) => {
         <div className="mobile_container">
             <Mobile_GNB page={'빠른 간편 문의'} />
             <section className="mobile_hotDeal_eventBannerSection">
-                <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너' />
+                <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너'  onClick={() => window.location.href=`/event/${banner[0].event_num}`}/>
             </section>
             <section className="mobile_hotDeal_hotDealListSection">
                 <h3>빠른 간편 문의</h3>
