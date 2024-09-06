@@ -424,9 +424,8 @@ body, html {
 
 .eventCard>img {
   display: flex;
-  height: 100%;
+  width: 100%;
   margin: auto;
-  transform:translateX(-14%);
 }
 
 .eventCard>div {

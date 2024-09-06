@@ -1,7 +1,7 @@
 export const carmentoList = [
     { name: '김태경', position: '팀장', img: 'carmento1' },
     { name: '허종현', position: '대리', img: 'carmento2' },
-    { name: '최진욱', position: '대리', img: 'carmento1' },
+    { name: '최진욱', position: '대리', img: 'carmento3' },
     { name: '정의석', position: '과장', img: 'carmento4' },
 ]
 

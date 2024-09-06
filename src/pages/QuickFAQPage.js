@@ -34,6 +34,16 @@ const QuickFAQPage = (props) => {
         fetchData(categoryStat, brandStat, listStat)
     }, [categoryStat, brandStat, listStat])
 
+    useEffect(() => {
+        if (carStat !== null) {
+            // 스크롤을 최하단으로 이동
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth' // 부드럽게 스크롤
+            });
+        }
+    }, [carStat]); // carStat이 변경될 때마다 실행
+
 
     if (!quickFAQList || !banner) {
         return (

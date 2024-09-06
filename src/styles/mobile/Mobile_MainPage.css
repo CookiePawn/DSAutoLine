@@ -628,8 +628,7 @@ body {
 
 .mobile_CarmentoCard > div > img {
     display: flex;
-    height: 100%;
-    transform: translateX(-10%);
+    width: 100%;
 }
 
 .mobile_CarmentoCard > h4 {

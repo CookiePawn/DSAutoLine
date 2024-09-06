@@ -118,7 +118,7 @@ const Mobile_MainPage = (props) => {
                 <span>
                     <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup} img={'carmento1'}/>
                     <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup} img={'carmento2'}/>
-                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup} img={'carmento1'}/>
+                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup} img={'carmento3'}/>
                     <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup} img={'carmento4'}/>
                 </span>
             </section>
