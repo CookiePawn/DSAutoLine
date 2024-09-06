@@ -6,10 +6,9 @@ import {
     imageResize1280_700,
     imageResize1920_700,
     imageResize1280_110,
-    imageResizeKeepAspectRatio,
+    imageKeepOriginal,
     generateRandomString
 } from "../utils/imageResize";
-import { EventAddPopUp } from '../components/PopUp'
 
 
 
@@ -24,7 +23,6 @@ export const Admin_EventAdd = () => {
     const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
     const [nameStat, setNameStat] = useState('')
-    const [popupStat, setPopupStat] = useState(false)
 
     //이미지 URL
     const [bannerURL, setBannerURL] = useState(null)
@@ -59,7 +57,7 @@ export const Admin_EventAdd = () => {
                 setStartDate({ year: "", month: "", day: "" })
                 setSelectedEvent(0)
                 setSelectedSize("1280 x 700")
-                setPopupStat(true)
+                alert('이벤트가 추가되었습니다.')
             } else if (mainURL) {
                 await eventAddAxios([{
                     title: nameStat,
@@ -88,7 +86,7 @@ export const Admin_EventAdd = () => {
                 setStartDate({ year: "", month: "", day: "" })
                 setSelectedEvent(0)
                 setSelectedSize("1280 x 700")
-                setPopupStat(true)
+                alert('이벤트가 추가되었습니다.')
             }
         }
     }
@@ -106,7 +104,6 @@ export const Admin_EventAdd = () => {
 
     return (
         <div className="admin_content">
-            {popupStat && <EventAddPopUp />}
             <h2>이벤트 <span>- 이벤트 추가</span></h2>
             <div className="header-row">
                 <button
@@ -242,7 +239,7 @@ export const Admin_EventAdd = () => {
                                     accept="image/*"
                                     style={{ display: 'none' }}
                                     onChange={async (e) => {
-                                        const resizedImage = await imageResizeKeepAspectRatio(e, 1280);
+                                        const resizedImage = await imageKeepOriginal(e);
                                         setMainURL(resizedImage);
                                     }}
                                 />
