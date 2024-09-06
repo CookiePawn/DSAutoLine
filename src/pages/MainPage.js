@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import '../styles/App.css';
 import GNB from '../components/GNB';
 import Footer from '../components/Footer';
-import partner1 from '../assets/img/partner/partner1.png'
-import partner2 from '../assets/img/partner/partner2.png'
+import { PartnerSection } from '../components/Partner';
 import { carmentoList } from '../assets/item';
 import {
     HotDealCard,
@@ -69,13 +68,13 @@ const MainPage = (props) => {
         fetchData()
     }, [])
 
-
+    
 
     if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventList) {
         return (
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
+                style={{ width: '100%', height: '100%' }}
             />
         )
     }
@@ -221,11 +220,7 @@ const MainPage = (props) => {
                     ))}
                 </div>
             </section>
-            <section className='partnerSection'>
-                <h1>제휴 <span>파트너사</span></h1>
-                <img src={partner1} style={{ width: '100%' }} />
-                <img src={partner2} style={{ width: '100%' }} />
-            </section>
+            <PartnerSection />
             <Footer />
         </div>
 

@@ -4,6 +4,7 @@ import Mobile_GNB from "../../components/mobile/Mobile_GNB";
 import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import Mobile_MainPage_Banner from "../../components/mobile/Mobile_MainPage_Banner";
 import Mobile_MainPage_FastFAQ from "../../components/mobile/Mobile_MainPage_FastFAQ";
+import { Mobile_PartnerSection } from '../../components/Partner'
 import { 
     Mobile_CarmentoPopup,
     Mobile_TermsofInformationPopup,
@@ -122,11 +123,7 @@ const Mobile_MainPage = (props) => {
                     <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup} img={'carmento4'}/>
                 </span>
             </section>
-            <section className="mobile_main_partnerSection">
-                <h3>제휴 파트너사</h3>
-                <img src={require('../../assets/img/partner/mobile_partner1.png')}/>
-                <img src={require('../../assets/img/partner/mobile_partner2.png')}/>
-            </section>
+            <Mobile_PartnerSection />
             <Mobile_Footer />
         </div>
     )
