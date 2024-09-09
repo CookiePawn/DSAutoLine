@@ -107,7 +107,7 @@
   font-weight: 500;
   color: #7D7D7D;
   margin: 0;
-  white-space: pre-wrap;
+  white-space: nowrap;
 }
 
 .mainPage_QuickFAQSection>span>span>div>span>p>span:nth-of-type(1) {
