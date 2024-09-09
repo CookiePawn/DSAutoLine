@@ -25,6 +25,8 @@ export const Mobile_CarmentoPopup = (props) => {
             })
             alert('상담 신청이 완료되었습니다')
             props.setPopup(null);
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
     const onClickNo = () => {
@@ -172,6 +174,8 @@ export const Mobile_QuickDealCardPopup = (props) => {
                                 setNumber('')
                                 alert('상담 신청이 완료되었습니다')
                                 props.setPopup(null)
+                            } else {
+                                alert('내용이 입력되지 않았습니다')
                             }
                         }}
                     >

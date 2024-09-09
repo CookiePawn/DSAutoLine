@@ -393,6 +393,8 @@ export const Admin_QuickDealAdd = (props) => {
                                 setOptionName('')
                                 setOptionPrice('')
                                 alert('즉시 출고 차량이 추가되었습니다.')
+                            } else {
+                                alert('내용이 입력되지 않았습니다')
                             }
                         }}
                     >

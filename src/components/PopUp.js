@@ -172,6 +172,8 @@ export const CarmentoPopUp = (props) => {
             })
             props.setCheckPopup(true);
             props.setCarmentoPopup(false);
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
     const onClickNo = () => {
@@ -342,6 +344,8 @@ export const QuickDealCarCard_Popup = (props) => {
                                 setPopupName('')
                                 setPopupnumber('')
                                 setIsUsePopupVisible1(true)
+                            } else {
+                                alert('내용이 입력되지 않았습니다')
                             }
                         }}
                     >

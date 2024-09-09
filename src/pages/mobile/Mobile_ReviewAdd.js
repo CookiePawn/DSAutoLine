@@ -60,6 +60,8 @@ const Mobile_ReviewAdd = (props) => {
             await imageUploadAxios(img, `review_${random}`)
             alert('리뷰 작성이 완료되었습니다.')
             window.location.href='/Review'
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
 

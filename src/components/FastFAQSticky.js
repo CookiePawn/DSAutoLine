@@ -62,6 +62,8 @@ const FastFAQSticky = (props) => {
             });
             setNextStat(true);
             document.body.style.overflow = 'hidden';
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     };
 

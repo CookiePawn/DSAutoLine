@@ -745,6 +745,8 @@ export const Admin_QuickFAQAdd = (props) => {
                                 setOptionName('')
                                 setOptionPrice('')
                                 alert('빠른 간편 문의 차량이 추가되었습니다.')
+                            } else {
+                                alert('내용이 입력되지 않았습니다')
                             }
                         }}
                     >

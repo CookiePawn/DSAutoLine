@@ -69,6 +69,8 @@ const ReviewAddPage = () => {
             await imageUploadAxios(img, `review_${random}`)
             setPopupStat(true);
             document.body.style.overflowY = 'hidden'
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
 

@@ -115,6 +115,8 @@ const Mobile_Option = (props) => {
             })
             alert('견적서 신청이 완료되었습니다')
             window.location.href='/'
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
 

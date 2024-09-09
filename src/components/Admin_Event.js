@@ -89,6 +89,8 @@ export const Admin_EventAdd = () => {
                 setSelectedSize("1280 x 700")
                 alert('이벤트가 추가되었습니다.')
             }
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     }
 

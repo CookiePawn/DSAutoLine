@@ -157,6 +157,8 @@ export const Admin_HotdealAdd = (props) => {
                                         setPayment(null)
                                         setEditStat(null)
                                         alert('한정 특가 차량이 추가되었습니다.')
+                                    } else {
+                                        alert('내용이 입력되지 않았습니다')
                                     }
                                 }}
                             >

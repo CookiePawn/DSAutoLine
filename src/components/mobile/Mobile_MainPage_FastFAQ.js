@@ -20,6 +20,8 @@ const Mobile_MainPage_FastFAQ = (props) => {
             setCar('')
             setName('')
             setPhone('')
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     };
 

@@ -42,6 +42,8 @@ export function Admin_ColorOption() {
             setItems([...items, { name: colorName, rgb: colorRGB }]);
             setColorName(''); // 입력 필드 초기화
             setColorRGB(''); // 입력 필드 초기화
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     };
 
@@ -134,6 +136,8 @@ export function Admin_Option() {
             setItems([...items, { name: optionName, price: optionPrice }]);
             setOptionName(''); // 입력 필드 초기화
             setOptionPrice(''); // 입력 필드 초기화
+        } else {
+            alert('내용이 입력되지 않았습니다')
         }
     };
 
