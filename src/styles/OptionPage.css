@@ -457,7 +457,7 @@ body {
 
 .trimInfoDiv > span > span {
     width: 90%;
-    height: 60px;
+    height: auto;
     border: 1px solid #dbdbdb;
     border-radius: 12px;
     display: flex;
@@ -465,18 +465,21 @@ body {
     align-items: center;
     margin: auto;
     margin-bottom: 30px;
+    padding: 10px 20px;
     box-sizing: border-box;
     cursor: pointer;
 }
 
 .trimInfoDiv > span > span.selected {
     border: 1px solid #0064FF;
+    margin: 0;
 }
 
 .trimInfoDiv > span > span > p {
     font-size: 18px;
     font-weight: 500;
     color: #767676;
+    margin: 0;
 }
 
 .trimInfoDiv > span > span.selected > p {
@@ -487,7 +490,6 @@ body {
 .trimInfoDiv > span > span > img {
     width: 25px;
     height: 25px;
-    margin-left: 20px;
     margin-right: 20px;
 }
 

@@ -710,40 +710,40 @@ export const Admin_QuickFAQAdd = (props) => {
                                     trim: trims,
                                 })
                                 await imageUploadAxios(imgURL, `car_${random}`)
-                                const response1 = await optionGetAxios()
-                                setOptionList(response1)
-                                const response2 = await colorGetAxios()
-                                setColorList(response2)
-                                setCategoryStat('국산');
-                                setBrandStat(null);
-                                setFAQ_carname('');
-                                setMinFuel(0);
-                                setMaxFuel(0);
-                                setMaxCC(0)
-                                setMinCC(0)
-                                setFAQ_carprice('');
-                                setFAQ_model('');
-                                setFAQ_detailmodel('');
-                                setFAQ_detailmodel_price('');
-                                setFAQ_StartDate({ year: "", month: "" });
-                                setSelectedCartype(null);
-                                setImgURL(null)
-                                setGasoline(0)
-                                setDiesel(0)
-                                setLpg(0)
-                                setHybrid(0)
-                                setElectric(0)
-                                setH2(0)
-                                setTrims([]);
-                                setTrimStat(false)
-                                setColorSelectedList([])
-                                setOptionSelectedList([])
-                                setSearchColor('');
-                                setSearchOption('');
-                                setColorName('')
-                                setColorRGB('')
-                                setOptionName('')
-                                setOptionPrice('')
+                                // const response1 = await optionGetAxios()
+                                // setOptionList(response1)
+                                // const response2 = await colorGetAxios()
+                                // setColorList(response2)
+                                // setCategoryStat('국산');
+                                // setBrandStat(null);
+                                // setFAQ_carname('');
+                                // setMinFuel(0);
+                                // setMaxFuel(0);
+                                // setMaxCC(0)
+                                // setMinCC(0)
+                                // setFAQ_carprice('');
+                                // setFAQ_model('');
+                                // setFAQ_detailmodel('');
+                                // setFAQ_detailmodel_price('');
+                                // setFAQ_StartDate({ year: "", month: "" });
+                                // setSelectedCartype(null);
+                                // setImgURL(null)
+                                // setGasoline(0)
+                                // setDiesel(0)
+                                // setLpg(0)
+                                // setHybrid(0)
+                                // setElectric(0)
+                                // setH2(0)
+                                // setTrims([]);
+                                // setTrimStat(false)
+                                // setColorSelectedList([])
+                                // setOptionSelectedList([])
+                                // setSearchColor('');
+                                // setSearchOption('');
+                                // setColorName('')
+                                // setColorRGB('')
+                                // setOptionName('')
+                                // setOptionPrice('')
                                 alert('빠른 간편 문의 차량이 추가되었습니다.')
                             } else {
                                 alert('내용이 입력되지 않았습니다')

@@ -259,7 +259,7 @@ const OptionPage = (props) => {
                             </div>
                             <div className="trimInfoDiv">
                                 {trimSelect1 && trimStat !== 0 &&
-                                    <span style={{ overflowY: 'hidden', height: 65 }}>
+                                    <span style={{ overflowY: 'hidden', height: 'auto' }}>
                                         <span className={'selected'}>
                                             <img src={optionClick} alt="트림 선택 됨" />
                                             <p>{trimSelect1}</p>
@@ -278,7 +278,7 @@ const OptionPage = (props) => {
                                     ))}
                                 </span>
                                 {trimSelect2 && trimStat !== 1 &&
-                                    <span style={{ overflowY: 'hidden', height: 65, borderLeft: trimStat !== 0 && '1px solid #ededed' }}>
+                                    <span style={{ overflowY: 'hidden', height: 'auto', borderLeft: trimStat !== 0 && '1px solid #ededed' }}>
                                         <span className={'selected'}>
                                             <img src={optionClick} />
                                             <p>{trimSelect2} - {(trimPrice / 10000).toLocaleString()}만원</p>
