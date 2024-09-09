@@ -73,44 +73,42 @@ const FastFAQSticky = (props) => {
             <span>
                 <span style={load !== 0 ? { height: document.body.clientHeight - props.height } : null}>
                     <div>
-                        <span style={{ marginTop: 23, marginBottom: 25 }}>
-                            <img src={require('../assets/img/popup/quickFAQIcon.png')} alt="Quick FAQ Icon" />
-                            <h3>간편하게 문의해보세요</h3>
-                        </span>
-                        <span>
+                        <img src={require('../assets/img/dsautoline/DSAUTOLINE.png')} alt="Quick FAQ Icon" />
+                        <h1>간편 견적서 상담</h1>
+                        <h3>빠르고 간편하게 견적서을 확인해보세요.</h3>
+                        <div>
+                            <h4>모델</h4>
+                            <input value={car} onChange={(e) => setCar(e.target.value)} placeholder='ex) 현대 디 올 뉴 그랜저'/>
+                        </div>
+                        <div>
                             <h4>이름</h4>
-                            <input value={name} onChange={(e) => setName(e.target.value)} />
-                        </span>
-                        <span>
+                            <input value={name} onChange={(e) => setName(e.target.value)} placeholder='ex) 홍길동'/>
+                        </div>
+                        <div>
                             <h4>연락처</h4>
-                            <input value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={11} />
-                        </span>
-                        <span>
-                            <h4>차종</h4>
-                            <input value={car} onChange={(e) => setCar(e.target.value)} />
-                        </span>
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={11} placeholder='ex) 01012345678'/>
+                        </div>
                         <span>
                             {
                                 !infoSelect1
                                     ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                            <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
                         </span>
-                        <span style={{ marginTop: 16 }}>
+                        <span>
                             {
                                 !infoSelect2
                                     ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => {setIsUsePopupVisible(true); document.body.style.overflowY='hidden'}}>(보기)</span></p>
+                            <p><span>(필수)</span> 개인정보 수집ㆍ이용ㆍ제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
                         </span>
-                        <div
-                            style={(infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') ? null : { backgroundColor: '#dbdbdb', cursor: 'auto' }}
+                        <button
                             onClick={clickFunction}
                         >
                             상담신청하기
-                        </div>
+                        </button>
                     </div>
                 </span>
             </span>
