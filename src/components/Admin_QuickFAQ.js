@@ -170,7 +170,7 @@ export const Admin_QuickFAQAdd = (props) => {
     const [optionName, setOptionName] = useState('')
     const [optionPrice, setOptionPrice] = useState('')
 
-    const years = Array.from({ length: 30 }, (_, i) => (new Date().getFullYear() - 10 + i).toString());
+    const years = Array.from({ length: 40 }, (_, i) => (new Date().getFullYear() - 20 + i).toString());
     const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0'));
 
     useEffect(() => {
