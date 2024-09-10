@@ -32,13 +32,21 @@ export const HotDealCard = (props) => {
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.rental_price && props.item.rental_price.toLocaleString()}</span> 원</p>
+                <p className='hotDealCardMonthPricePercent'>
+                    {props.item.rental_percent !== 0 &&
+                        <><span>{props.item.rental_percent}%</span> · </>
+                    }
+                </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span> 원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
-                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price && props.item.lease_price.toLocaleString()}</span> 원</p>
+                <p className='hotDealCardMonthPricePercent'>
+                    {props.item.lease_percent !== 0 &&
+                        <><span>{props.item.lease_percent}%</span> · </>
+                    }
+                </p>
+                <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span> 원</p>
             </span>
             <div className='infoPaddingDiv'>
                 <span>
@@ -304,12 +312,20 @@ export const HotDealCarCard = (props) => {
             <p className='hotDealCardModel'>{props.item.info}</p>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>렌트 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.rental_percent}%</span> · </p>
+                <p className='hotDealCardMonthPricePercent'>
+                    {props.item.rental_percent !== 0 &&
+                        <><span>{props.item.rental_percent}%</span> · </>
+                    }
+                </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.rental_price.toLocaleString()}</span> 원</p>
             </span>
             <span className='hotDealCardMonthPriceDiv'>
                 <p className='hotDealCardMonthPriceTitle'>리스 (월)</p>
-                <p className='hotDealCardMonthPricePercent'><span>{props.item.lease_percent}%</span> · </p>
+                <p className='hotDealCardMonthPricePercent'>
+                    {props.item.lease_percent !== 0 &&
+                        <><span>{props.item.lease_percent}%</span> · </>
+                    }
+                </p>
                 <p className='hotDealCardMonthPrice'><span>{props.item.lease_price.toLocaleString()}</span> 원</p>
             </span>
             <div className='infoPaddingDiv'>
