@@ -19,7 +19,7 @@ export const Mobile_CarmentoPopup = (props) => {
     const onClickYes = async () => {
         if (isSelect1 && isSelect2 && name !== '' && phone.length >= 10) {
             await mentoringAxios({
-                mento: props.mento,
+                mento: props.mento.name,
                 name: name,
                 phone: phone,
             })
@@ -39,10 +39,10 @@ export const Mobile_CarmentoPopup = (props) => {
             <div className="mobile_carmentoPopupDiv">
                 <div>
                     <span>
-                        <img src={require('../../assets/img/carmento/carmento1.jpg')} />
+                        <img src={require(`../../assets/img/carmento/${props.mento.img}.jpg`)} />
                     </span>
                     <span>
-                        <h2>{props.mento}</h2>
+                        <h2>{props.mento.name}</h2>
                         <p>고객님들이 항상 만족하실 수 있도록 <br />최선을 다하겠습니다.</p>
                     </span>
                 </div>

@@ -93,7 +93,7 @@ export const Mobile_ReviewCard = (props) => {
 
 export const Mobile_CarmentoCard = (props) => {
     return (
-        <div className="mobile_CarmentoCard" onClick={() => props.setPopup(props.name)}>
+        <div className="mobile_CarmentoCard" onClick={() => props.setPopup({name: props.name, img: props.img})}>
             <div>
                 <span></span>
                 <img src={require(`../../assets/img/carmento/${props.img}.jpg`)} />

@@ -313,6 +313,7 @@
     box-sizing: border-box;
     border: 1px solid #ededed;
     border-radius: 100px;
+    background-color: #DBE0E4;
     overflow: hidden;
 }
 
