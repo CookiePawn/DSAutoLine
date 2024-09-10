@@ -6,6 +6,7 @@ import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import { estimatedAxios, estimatedAddAxios } from '../../services/Request'
 import { Mobile_TermsofInformationPopup, Mobile_OptionInfoPopup } from '../../components/mobile/Mobile_Popup'
 import NoCardList from '../../components/NoCardList'
+import Loading from "../../components/Loading";
 
 
 
@@ -123,10 +124,7 @@ const Mobile_Option = (props) => {
 
     if (!content || !content.trim || !content.color) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

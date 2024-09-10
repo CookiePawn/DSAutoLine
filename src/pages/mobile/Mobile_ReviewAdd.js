@@ -6,6 +6,7 @@ import { reviewAddAxios, carEnterListAxios, imageUploadAxios } from "../../servi
 import { imageResize4_3, generateRandomString } from "../../utils/imageResize";
 import Select from "react-select";
 import { StarIcon } from "../../components/Icons";
+import Loading from "../../components/Loading";
 
 
 
@@ -70,10 +71,7 @@ const Mobile_ReviewAdd = (props) => {
 
     if (!axiosList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

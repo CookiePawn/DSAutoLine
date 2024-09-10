@@ -11,6 +11,7 @@ import { UpIcon, DownIcon } from "../components/Icons"
 import { OptionPagePopUp, TermsofInformationPopup } from "../components/PopUp"
 import { estimatedAxios, estimatedAddAxios } from "../services/Request";
 import NoCardList from "../components/NoCardList";
+import Loading from "../components/Loading";
 
 
 
@@ -132,10 +133,7 @@ const OptionPage = (props) => {
 
     if (!content || !content.trim || !content.color) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

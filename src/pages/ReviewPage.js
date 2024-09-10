@@ -6,6 +6,7 @@ import { ReviewPageCard } from '../components/Cards'
 import FastFAQSticky from '../components/FastFAQSticky'
 import { reviewAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
+import Loading from 'react-loading'
 
 
 const ReviewPage = () => {
@@ -33,10 +34,7 @@ const ReviewPage = () => {
 
     if (!reviewList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

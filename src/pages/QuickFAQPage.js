@@ -7,6 +7,7 @@ import { QuickCarCard } from '../components/Cards'
 import FastFAQSticky from '../components/FastFAQSticky'
 import { quickFAQAxios, eventAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
+import Loading from '../components/Loading'
 
 
 const QuickFAQPage = (props) => {
@@ -59,10 +60,7 @@ const QuickFAQPage = (props) => {
 
     if (!quickFAQList || !banner) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{ width: '100%', height: '100%' }}
-            />
+            <Loading />
         )
     }
     return (

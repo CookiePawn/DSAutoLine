@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/LogoList.css'
 import { enterListAxios } from '../services/Request'
+import Loading from "../components/Loading";
 
 
 
@@ -24,10 +25,7 @@ export const KoreaLogo = (props) => {
 
     if (!enterList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (
@@ -74,10 +72,7 @@ export const IncomeLogo = (props) => {
 
     if (!enterList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

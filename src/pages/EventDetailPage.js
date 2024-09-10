@@ -5,6 +5,7 @@ import GNB from "../components/GNB";
 import '../styles/EventDetailPage.css';
 import FastFAQSticky from '../components/FastFAQSticky';
 import { eventInfoAxios } from '../services/Request';
+import Loading from "../components/Loading";
 
 
 
@@ -24,10 +25,7 @@ const EventDetailPage = () => {
 
     if (!content) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

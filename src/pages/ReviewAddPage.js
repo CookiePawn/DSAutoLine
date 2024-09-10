@@ -8,6 +8,7 @@ import { ReviewAddPagePopUp } from "../components/PopUp";
 import { reviewAddAxios, carEnterListAxios, imageUploadAxios } from "../services/Request";
 import { imageResize4_3, generateRandomString } from "../utils/imageResize";
 import Select from "react-select";
+import Loading from "../components/Loading";
 
 
 
@@ -79,10 +80,7 @@ const ReviewAddPage = () => {
 
     if (!axiosList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

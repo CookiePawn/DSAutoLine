@@ -12,6 +12,7 @@ import {
 } from '../services/Request'
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
+import Loading from "./Loading";
 
 
 
@@ -60,10 +61,7 @@ export const Admin_QuickDealAdd = (props) => {
 
     if (!optionList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{ width: '100%', height: '100%' }}
-            />
+            <Loading />
         )
     }
     return (
@@ -447,10 +445,7 @@ export const Admin_QuickDealEdit = (props) => {
 
     if (!filteredList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{ width: '100%', height: '100%' }}
-            />
+            <Loading />
         )
     }
     return (

@@ -24,6 +24,7 @@ import {
     eventAxios,
 } from '../../services/Request';
 import NoCardList from '../../components/NoCardList'
+import Loading from "../../components/Loading";
 
 
 const Mobile_MainPage = (props) => {
@@ -57,10 +58,7 @@ const Mobile_MainPage = (props) => {
 
     if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventLine) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

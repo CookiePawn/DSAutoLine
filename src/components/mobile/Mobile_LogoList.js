@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../../styles/mobile/Mobile_QuickFAQ.css'
 import { enterListAxios } from "../../services/Request";
+import Loading from "../../components/Loading";
 
 
 export const Mobile_LogoList = (props) => {
@@ -17,10 +18,7 @@ export const Mobile_LogoList = (props) => {
 
     if (!enterList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

@@ -5,6 +5,7 @@ import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import { reviewAxios } from '../../services/Request';
 import { Mobile_ReviewPageCard } from '../../components/mobile/Mobile_Card'
 import NoCardList from '../../components/NoCardList'
+import Loading from "../../components/Loading";
 
 
 
@@ -22,10 +23,7 @@ const Mobile_Review = (props) => {
 
     if (!reviewList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

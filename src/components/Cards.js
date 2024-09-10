@@ -65,9 +65,19 @@ export const HotDealCard = (props) => {
  * @returns 
  */
 export const QuickDealCard = (props) => {
+    const [optionStat, setOptionStat] = useState(false)
+
     return (
         <>
             <div className='quickDealCard' onClick={() => { props.setPopup(props.item.car_code); document.body.style.overflowY = 'hidden' }}>
+                {optionStat &&
+                    <div className='quickDealOptionPopupDiv'>
+                        <p>[옵션]</p>
+                        {props.item.option.map((list, _) => (
+                            <p>{list.name}</p>
+                        ))}
+                    </div>
+                }
                 <img
                     className='hotDealCardImg'
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -101,7 +111,7 @@ export const QuickDealCard = (props) => {
                             </>
                             : <>
                                 <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
-                                <p className='quickDealCardInfoMore'>외 {props.item.option.length - 2}건</p>
+                                <p className='quickDealCardInfoMore' onMouseEnter={() => setOptionStat(!optionStat)}>외 {props.item.option.length - 2}건</p>
                             </>
                         }
                     </div>
@@ -346,12 +356,20 @@ export const HotDealCarCard = (props) => {
  */
 export const QuickDealCarCard = (props) => {
     const [isUsePopupVisible1, setIsUsePopupVisible1] = useState(null);
-
+    const [optionStat, setOptionStat] = useState(false)
 
     return (
         <>
             {isUsePopupVisible1 !== null && <QuickDealCarCard_Popup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
             <div className='quickDealCard' onClick={() => { setIsUsePopupVisible1(props.item.car_code); document.body.style.overflowY = 'hidden' }}>
+                {optionStat &&
+                    <div className='quickDealOptionPopupDiv'>
+                        <p>[옵션]</p>
+                        {props.item.option.map((list, _) => (
+                            <p>{list.name}</p>
+                        ))}
+                    </div>
+                }
                 <img
                     className='hotDealCardImg'
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -385,7 +403,7 @@ export const QuickDealCarCard = (props) => {
                             </>
                             : <>
                                 <p className='quickDealCardInfo1'>{props.item.option[0] && props.item.option[0].name}, {props.item.option[1] && props.item.option[1].name}</p>
-                                <p className='quickDealCardInfoMore'>외 {props.item.option.length - 2}건</p>
+                                <p className='quickDealCardInfoMore' onMouseEnter={() => setOptionStat(!optionStat)}>외 {props.item.option.length - 2}건</p>
                             </>
                         }
                     </div>

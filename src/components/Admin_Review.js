@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css'
 import { reviewAxios, reviewChangeAxios, reviewDeleteAxios } from '../services/Request'
 import NoCardList from '../components/NoCardList'
-
+import Loading from "../components/Loading";
 
 
 
@@ -33,10 +33,7 @@ const Admin_Review = (props) => {
 
     if (!carList) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

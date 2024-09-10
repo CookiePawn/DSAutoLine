@@ -6,6 +6,7 @@ import { Mobile_QuickFAQPageCard } from "../../components/mobile/Mobile_Card";
 import { Mobile_LogoList } from "../../components/mobile/Mobile_LogoList";
 import { quickFAQAxios, eventAxios } from '../../services/Request'
 import NoCardList from '../../components/NoCardList'
+import Loading from "../../components/Loading";
 
 
 
@@ -48,10 +49,7 @@ const Mobile_QuickFAQ = (props) => {
 
     if (!quickFAQList || !banner) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

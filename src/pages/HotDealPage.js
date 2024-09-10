@@ -6,6 +6,7 @@ import { HotDealCarCard } from '../components/Cards'
 import { hotDealAxios, eventAxios } from '../services/Request'
 import FastFAQSticky from '../components/FastFAQSticky'
 import NoCardList from '../components/NoCardList'
+import Loading from "../components/Loading";
 
 
 const HotDealPage = (props) => {
@@ -39,10 +40,7 @@ const HotDealPage = (props) => {
 
     if (!hotDealList || !banner) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (

@@ -12,6 +12,7 @@ import '../styles/slick-theme.css'
 import { handleNext, handlePrev, reviewSlicerSettings } from '../utils/SliderMove';
 import FastFAQSticky from '../components/FastFAQSticky';
 import NoCardList from '../components/NoCardList'
+import Loading from "../components/Loading";
 
 
 
@@ -35,10 +36,7 @@ const ReviewMorePage = () => {
     
     if (!reviewInfo) {
         return (
-            <img
-                src={`${process.env.REACT_APP_IMG_URL}/error.png`}
-                style={{width: '100%', height: '100%'}}
-            />
+            <Loading />
         )
     }
     return (
