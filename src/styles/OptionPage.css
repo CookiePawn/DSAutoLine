@@ -280,6 +280,7 @@ body {
     margin-right: 40px;
     cursor: pointer;
     border: 1px solid#ededed;
+    border-radius: 4px;
 }
 
 .colorBtn.selected {
@@ -472,7 +473,7 @@ body {
 
 .trimInfoDiv > span > span.selected {
     border: 1px solid #0064FF;
-    margin: 0;
+    margin-top: 0;
 }
 
 .trimInfoDiv > span > span > p {

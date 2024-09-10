@@ -28,11 +28,11 @@ export const Mobile_LogoList = (props) => {
             <section className="mobile_logoListSection">
                 <button
                     className={props.categoryStat === '국산' && 'selected'}
-                    onClick={() => props.setCategoryStat('국산')}
+                    onClick={() => { props.setCategoryStat('국산'); props.setBrandStat(props.all ? 'all' : '기아')}}
                 >국산 브랜드</button>
                 <button
                     className={props.categoryStat === '수입' && 'selected'}
-                    onClick={() => props.setCategoryStat('수입')}
+                    onClick={() => { props.setCategoryStat('수입'); props.setBrandStat(props.all ? 'all' : 'BMW')}}
                 >수입 브랜드</button>
                 <span>
                     {props.all &&

@@ -1304,3 +1304,441 @@
     margin-bottom: 20px;
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+.admin_content_quickDealUserListTitleSpan {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.admin_content_quickDealUserListTitleSpan > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    text-align: center;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(1) {
+    width: 11%;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(2) {
+    width: 8%;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(3) {
+    width: 12%;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(4) {
+    width: 15%;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(5) {
+    width: 40%;
+}
+
+.admin_content_quickDealUserListTitleSpan > p:nth-of-type(6) {
+    width: 11%;
+}
+
+
+.admin_content_quickDealUserListDiv {
+    position: relative;
+    width: 100%;
+}
+
+.admin_content_quickDealUserListDiv > div {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.admin_content_quickDealUserListDiv > div > span {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p > span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #dbdbdb;
+    margin: 0;
+}
+
+.admin_content_quickDealUserListDiv > div > span > span > p > span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #dbdbdb;
+    margin: 0;
+}
+
+.admin_content_quickDealUserListDiv > div > span > span > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p:nth-of-type(1) {
+    width: 11%;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p:nth-of-type(2) {
+    width: 8%;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p:nth-of-type(3) {
+    width: 12%;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p:nth-of-type(4) {
+    width: 15%;
+}
+
+.admin_content_quickDealUserListDiv > div > span > p:nth-of-type(5) {
+    width: 11%;
+}
+
+.admin_content_quickDealUserListDiv > div > span > span {
+    width: 40%;
+}
+
+.admin_content_quickDealUserListDiv > div > button:nth-of-type(1) {
+    position: absolute;
+    right: 55px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #0064FF;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.admin_content_quickDealUserListDiv > div > button:nth-of-type(2) {
+    position: absolute;
+    right: 0px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #FF0000;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+.admin_content_quickFAQUserListTitleSpan {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    text-align: center;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(1) {
+    width: 5%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(2) {
+    width: 8%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(3) {
+    width: 12%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(4) {
+    width: 12%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(5) {
+    width: 25%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(6) {
+    width: 25%;
+}
+
+.admin_content_quickFAQUserListTitleSpan > p:nth-of-type(7) {
+    width: 7%;
+}
+
+
+.admin_content_quickFAQUserListDiv {
+    position: relative;
+    width: 100%;
+}
+
+.admin_content_quickFAQUserListDiv > div {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.admin_content_quickFAQUserListDiv > div > span {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p > span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #dbdbdb;
+    margin: 0;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > span > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > span > p > span{
+    font-size: 12px;
+    font-weight: 400;
+    color: #dbdbdb;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p:nth-of-type(1) {
+    width: 5%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p:nth-of-type(2) {
+    width: 8%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p:nth-of-type(3) {
+    width: 12%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p:nth-of-type(4) {
+    width: 12%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > p:nth-of-type(5) {
+    width: 7%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > span:nth-of-type(1) {
+    width: 25%;
+}
+
+.admin_content_quickFAQUserListDiv > div > span > span:nth-of-type(2) {
+    width: 25%;
+}
+
+.admin_content_quickFAQUserListDiv > div > button:nth-of-type(1) {
+    position: absolute;
+    right: 55px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #0064FF;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.admin_content_quickFAQUserListDiv > div > button:nth-of-type(2) {
+    position: absolute;
+    right: 0px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #FF0000;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+.admin_content_carmentoUserListTitleSpan {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.admin_content_carmentoUserListTitleSpan > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    text-align: center;
+}
+
+.admin_content_carmentoUserListTitleSpan > p:nth-of-type(1) {
+    width: 15%;
+}
+
+.admin_content_carmentoUserListTitleSpan > p:nth-of-type(2) {
+    width: 10%;
+}
+
+.admin_content_carmentoUserListTitleSpan > p:nth-of-type(3) {
+    width: 15%;
+}
+
+.admin_content_carmentoUserListTitleSpan > p:nth-of-type(4) {
+    width: 40%;
+}
+
+
+
+.admin_content_carmentoUserListDiv {
+    position: relative;
+    width: 100%;
+}
+
+.admin_content_carmentoUserListDiv > div {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.admin_content_carmentoUserListDiv > div > span {
+    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.admin_content_carmentoUserListDiv > div > span > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #767676;
+    margin: 0;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+.admin_content_carmentoUserListDiv > div > span > p:nth-of-type(1) {
+    width: 15%;
+}
+
+.admin_content_carmentoUserListDiv > div > span > p:nth-of-type(2) {
+    width: 10%;
+}
+
+.admin_content_carmentoUserListDiv > div > span > p:nth-of-type(3) {
+    width: 15%;
+}
+
+.admin_content_carmentoUserListDiv > div > span > p:nth-of-type(4) {
+    width: 40%;
+}
+
+
+
+.admin_content_carmentoUserListDiv > div > button:nth-of-type(1) {
+    position: absolute;
+    right: 55px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #0064FF;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.admin_content_carmentoUserListDiv > div > button:nth-of-type(2) {
+    position: absolute;
+    right: 0px;
+    width: 55px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #dbdbdb;
+    color: #FF0000;
+    font-weight: 400;
+    cursor: pointer;
+}

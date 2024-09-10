@@ -19,8 +19,17 @@ const Mobile_HotDeal = (props) => {
         const fetchData = async () => {
             const tmp1 = await hotDealAxios()
             setHotDealList(tmp1.sort((a, b) => {
-                return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
-            }))
+                // 먼저 category를 기준으로 정렬
+                const categoryComparison = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+                
+                // category가 같으면 name을 기준으로 오름차순 정렬
+                if (categoryComparison === 0) {
+                    return a.name.localeCompare(b.name);  // 이름 오름차순 정렬
+                }
+            
+                // category가 다르면 category 기준으로 정렬
+                return categoryComparison;
+            }));
             const tmp2 = await eventAxios(2, 0)
             setBanner(tmp2)
         }

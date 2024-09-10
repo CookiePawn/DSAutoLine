@@ -70,7 +70,7 @@ export const Admin_UserCompletedList = (props) => {
     return (
         <div className="admin_content">
             <h2>고객 리스트
-                <span>- 완료 
+                <span>- 완료
                     {currentSituation && (
                         parseInt(currentSituation.counsel_y ? currentSituation.counsel_y : 0) +
                         parseInt(currentSituation.estimate_y ? currentSituation.estimate_y : 0) +
@@ -248,28 +248,32 @@ const QuickDealList = (props) => {
         <>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                <span className="admin_content_quickDealUserListTitleSpan">
                     <p>신청일</p>
                     <p>이름</p>
                     <p>연락처</p>
-                    <p>차종</p>
+                    <p>모델</p>
                     <p>옵션</p>
                     <p>금액</p>
                 </span>
             </div>
-            <div className="admin_content_UserAllListDiv">
+            <div className="admin_content_quickDealUserListDiv">
                 {props.item.length === 0 && <NoCardList card={'고객이'} />}
                 {props.item.map((item, idx) => (
                     <div>
-                        <span style={{ justifyContent: 'space-between' }}>
+                        <span>
                             <p>{item.created_at.slice(0, 10)}</p>
                             <p>{item.name}</p>
                             <p>{item.phone}</p>
-                            <p>{item.enter} {item.car_name}</p>
+                            <p><span>[회사]</span><br />{item.enter}<br /><br /><span>[차량]</span><br />{item.car_name}</p>
                             <span>
-                                <p>{item.info}</p>
+                                <p><span>[트림]</span></p>
+                                <p>· {item.info}</p>
+                                <br />
+                                <p><span>[옵션]</span></p>
+                                {item.option.length === 0 && <p>-</p>}
                                 {item.option.map((item, idx) => (
-                                    <p>{item.name}</p>
+                                    <p>· {item.name}</p>
                                 ))}
                             </span>
                             <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
@@ -305,40 +309,44 @@ const QuickFAQList = (props) => {
         <>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                <span className="admin_content_quickFAQUserListTitleSpan">
                     <p>신청일</p>
                     <p>이름</p>
                     <p>연락처</p>
-                    <p>차종</p>
+                    <p>모델</p>
                     <p>옵션</p>
                     <p>이용조건</p>
                     <p>금액</p>
                 </span>
             </div>
-            <div className="admin_content_UserAllListDiv">
+            <div className="admin_content_quickFAQUserListDiv">
                 {props.item.length === 0 && <NoCardList card={'고객이'} />}
                 {props.item.map((item, idx) => (
                     <div>
-                        <span style={{ justifyContent: 'space-between' }}>
+                        <span>
                             <p>{item.created_at.slice(0, 10)}</p>
                             <p>{item.name}</p>
                             <p>{item.phone}</p>
-                            <p>{item.enter} {item.car_name}</p>
+                            <p><span>[회사]</span><br />{item.enter}<br /><br /><span>[차량]</span><br />{item.car_name}</p>
                             <span>
-                                <p>{item.trim1}</p>
-                                <p>{item.trim2}</p>
+                                <p><span>[트림]</span></p>
+                                <p>· {item.trim1}</p>
+                                <p>· {item.trim2}</p>
+                                <br />
+                                <p><span>[옵션]</span></p>
+                                {item.option.length === 0 && <p>-</p>}
                                 {item.option.map((item, idx) => (
-                                    <p>{item.name}</p>
+                                    <p>· {item.name}</p>
                                 ))}
                             </span>
                             <span>
-                                <p>이용 방법 - {item.method}</p>
-                                <p>이용 기간 - {item.period}</p>
-                                <p>보증금 - {item.deposit}</p>
-                                <p>보증금(원) - {item.deposit_price} 원</p>
-                                <p>선납금 - {item.payment_price}</p>
-                                <p>보험 연령 - {item.age}</p>
-                                <p>연간 주행거리 - {item.annual_mileage}</p>
+                                <p><span>이용 방법 -</span> {item.method}</p>
+                                <p><span>이용 기간 -</span> {item.period}</p>
+                                <p><span>보증금 -</span> {item.deposit}</p>
+                                <p><span>보증금(원) -</span> {item.deposit_price.toLocaleString()} 원</p>
+                                <p><span>선납금 -</span> {item.payment_price}</p>
+                                <p><span>보험 연령 -</span> {item.age}</p>
+                                <p><span>연간 주행거리 -</span> {item.annual_mileage}</p>
                             </span>
                             <p>{parseInt(item.price / 10000).toLocaleString()} 만원</p>
                         </span>
@@ -374,14 +382,14 @@ const CarmentoList = (props) => {
         <>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                <span className="admin_content_carmentoUserListTitleSpan" style={{ justifyContent: 'space-between' }}>
                     <p>신청일</p>
                     <p>이름</p>
                     <p>연락처</p>
                     <p>담당 카멘토</p>
                 </span>
             </div>
-            <div className="admin_content_UserAllListDiv">
+            <div className="admin_content_carmentoUserListDiv">
                 {props.item.length === 0 && <NoCardList card={'고객이'} />}
                 {props.item.map((item, idx) => (
                     <div>
@@ -424,14 +432,14 @@ const FastFAQList = (props) => {
         <>
             <div className="header-row">
                 {/* <input type="checkbox" /> */}
-                <span className="admin_content_UserListTitleSpan" style={{ justifyContent: 'space-between' }}>
+                <span className="admin_content_carmentoUserListTitleSpan" style={{ justifyContent: 'space-between' }}>
                     <p>신청일</p>
                     <p>이름</p>
                     <p>연락처</p>
                     <p>차종</p>
                 </span>
             </div>
-            <div className="admin_content_UserAllListDiv">
+            <div className="admin_content_carmentoUserListDiv">
                 {props.item.length === 0 && <NoCardList card={'고객이'} />}
                 {props.item.map((item, idx) => (
                     <div>
