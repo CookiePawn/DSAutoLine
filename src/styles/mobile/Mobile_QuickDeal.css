@@ -1,6 +1,14 @@
 .mobile_quickDealPageCard {
     width: calc(50% - 8px);
     cursor: pointer;
+    position: relative;
+}
+
+.mobile_quickDealPageCard > div > img {
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .mobile_quickDealPageCard>img {

@@ -42,6 +42,14 @@
 .mobile_hotDealPageCard {
     width: calc(50% - 8px);
     cursor: pointer;
+    position: relative;
+}
+
+.mobile_hotDealPageCard > div > img {
+    width: 80px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .mobile_hotDealPageCard>img {

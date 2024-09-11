@@ -185,6 +185,14 @@ body {
     height: 226px;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+}
+
+.mobile_hotDealCard > div > img {
+    width: 55px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 
 .mobile_hotDealCard>img {
@@ -319,6 +327,14 @@ body {
     height: 291px;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+}
+
+.mobile_quickDealCard > div > img {
+    width: 70px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 
 .mobile_quickDealCard>img {

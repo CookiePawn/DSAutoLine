@@ -6,6 +6,9 @@ import { Mobile_QuickDealCardPopup } from './Mobile_Popup'
 export const Mobile_HotDealCard = (props) => {
     return (
         <div className="mobile_hotDealCard" onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <div>
+                <img src={require('../../assets/img/functionIcon/hotDealCardTitle.png')} />
+            </div>
             <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             <h4>{props.item.name}</h4>
             <p>{props.item.info}</p>
@@ -32,6 +35,9 @@ export const Mobile_QuickDealCard = (props) => {
         <>
             {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} item={isUsePopupVisible1} />}
             <div className="mobile_quickDealCard" onClick={() => setIsUsePopupVisible1(props.item)}>
+                <div>
+                    <img src={require('../../assets/img/functionIcon/quickDealCardTitle.png')} />
+                </div>
                 <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
                 <h4>{props.item.enter} {props.item.name}</h4>
                 <p>{props.item.info}</p>
@@ -93,7 +99,7 @@ export const Mobile_ReviewCard = (props) => {
 
 export const Mobile_CarmentoCard = (props) => {
     return (
-        <div className="mobile_CarmentoCard" onClick={() => props.setPopup({name: props.name, img: props.img})}>
+        <div className="mobile_CarmentoCard" onClick={() => props.setPopup({ name: props.name, img: props.img })}>
             <div>
                 <span></span>
                 <img src={require(`../../assets/img/carmento/${props.img}.jpg`)} />
@@ -121,6 +127,9 @@ export const Mobile_QuickFAQPageCard = (props) => {
 export const Mobile_HotDealPageCard = (props) => {
     return (
         <div className="mobile_hotDealPageCard" onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <div>
+                <img src={require('../../assets/img/functionIcon/hotDealCardTitle.png')} />
+            </div>
             <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             <h4>{props.item.name}</h4>
             <p>{props.item.info}</p>
@@ -145,6 +154,9 @@ export const Mobile_QuickDealPageCard = (props) => {
         <>
             {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} item={isUsePopupVisible1} />}
             <div className="mobile_quickDealPageCard" onClick={() => setIsUsePopupVisible1(props.item)}>
+                <div>
+                    <img src={require('../../assets/img/functionIcon/quickDealCardTitle.png')} />
+                </div>
                 <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
                 <h4>{props.item.enter} {props.item.name}</h4>
                 <p>{props.item.info}</p>
