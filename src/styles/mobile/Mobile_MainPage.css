@@ -182,7 +182,6 @@ body {
 .mobile_hotDealCard {
     min-width: 127px;
     max-width: 127px;
-    height: 226px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -324,7 +323,6 @@ body {
 .mobile_quickDealCard {
     min-width: 127px;
     max-width: 127px;
-    height: 291px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
