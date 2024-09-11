@@ -78,7 +78,7 @@ const MainPage = (props) => {
     }
     return (
         <div className='mainPage_container'>
-            {quickDealPopup && <QuickDealCarCard_Popup setPopup={setQuickDealPopup} id={quickDealPopup} />}
+            {quickDealPopup && <QuickDealCarCard_Popup setPopup={setQuickDealPopup} item={quickDealPopup} />}
             <GNB stat={false} />
             <BannerSlider />
             <FastFAQSticky height={1300} />

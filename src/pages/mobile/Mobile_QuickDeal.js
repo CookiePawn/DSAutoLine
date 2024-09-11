@@ -64,8 +64,8 @@ const Mobile_QuickDeal = (props) => {
                 <img src={`${process.env.REACT_APP_IMG_URL}/${banner[0].img}.png`} alt='이벤트 베너'  onClick={() => window.location.href=`/event/${banner[0].event_num}`}/>
             </section>
             <section className="mobile_hotDeal_hotDealListSection">
-                <h3>빠른 간편 문의</h3>
-                <p>빠르게 문의 해보세요.</p>
+                <h3>즉시 출고</h3>
+                <p>바로 출고 될 수 있는 차량을 확인하세요.</p>
                 <Mobile_LogoList categoryStat={categoryStat} setCategoryStat={setCategoryStat} brandStat={brandStat} setBrandStat={setBrandStat} all={true}/>
                 <h4>차량 리스트</h4>
                 <span>

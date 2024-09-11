@@ -17,6 +17,7 @@ const BannerSlider = () => {
     const [currentIndex, setCurrentIndex] = useState(1); // Starting at 1 to account for the first clone
     const [isTransitioning, setIsTransitioning] = useState(false);
     const sliderRef = useRef();
+    const intervalRef = useRef(null); // To store the interval ID
 
     const handlePrevClick = () => {
         if (!isTransitioning) {
@@ -52,6 +53,19 @@ const BannerSlider = () => {
         }
     }, [currentIndex, eventList]);
 
+    // Automatically advance the slider every 3 seconds
+    useEffect(() => {
+        if (eventList) {
+            intervalRef.current = setInterval(() => {
+                handleNextClick();
+            }, 5000); // 5 seconds interval
+
+            return () => {
+                clearInterval(intervalRef.current); // Clear interval on component unmount
+            };
+        }
+    }, [eventList, isTransitioning]);
+
     const handleIndicatorClick = (index) => {
         if (!isTransitioning) {
             setIsTransitioning(true);
@@ -70,10 +84,9 @@ const BannerSlider = () => {
     };
 
     if (!eventList) {
-        return (
-            <Loading />
-        );
+        return <Loading />;
     }
+
     return (
         <section className="mainPage_BannerSection">
             <div className="slider-container" style={{ marginLeft: (document.body.clientWidth - 1280) / 2 }}>

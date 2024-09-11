@@ -30,7 +30,7 @@ const Mobile_MainPage_FastFAQ = (props) => {
             <h3>간편하게 문의해보세요</h3>
             <input placeholder="모델" value={car} onChange={(e) => setCar(e.target.value)} />
             <input placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
-            <input placeholder='연락처("-" 없이 입력)' type="number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input placeholder='연락처("-" 없이 입력)' type="number" maxLength={11} value={phone} onChange={(e) => setPhone(e.target.value)} />
             <span>
                 {
                     !infoSelect1

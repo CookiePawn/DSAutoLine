@@ -116,13 +116,17 @@ export const Mobile_QuickDealCardPopup = (props) => {
             <div className='QuickDeal_Section'>
                 <div className='QuickDeal_Title'>
                     <h1>즉시 출고 문의</h1>
+                    <img src={require('../../assets/img/dsautoline/DSAUTOLINE.png')} />
                 </div>
-                <div className='QuickDeal_line' />
                 <div className='QuickDeal_info'>
+                    <div className='QuickDeal_input'>
+                        <p>모델</p>
+                        <h3>{props.item.enter} {props.item.name}</h3>
+                    </div>
                     <div className='QuickDeal_input'>
                         <p>이름</p>
                         <input
-                            placeholder=''
+                            placeholder='ex) 홍길동'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -130,31 +134,31 @@ export const Mobile_QuickDealCardPopup = (props) => {
                     <div className='QuickDeal_input'>
                         <p>연락처</p>
                         <input
-                            placeholder=''
+                            placeholder='ex) 01012345678'
                             value={number}
                             type='number'
+                            maxLength={11}
                             onChange={(e) => setNumber(e.target.value)}
                         />
                     </div>
                     <div className='QuickDeal_agree'>
-                        <span style={{ marginTop: 16 }}>
+                        <span>
+                            <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                             {
                                 !infoSelect1
                                     ? <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                         </span>
-
                     </div>
                     <div className='QuickDeal_agree'>
                         <span>
+                            <p><span>(필수)</span> 개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                             {
                                 !infoSelect2
                                     ? <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                                     : <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
                             }
-                            <p>개인정보 수집·이용·제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>(보기)</span></p>
                         </span>
 
                     </div>
@@ -165,14 +169,14 @@ export const Mobile_QuickDealCardPopup = (props) => {
                         onClick={async () => {
                             if (name !== '' && number !== '' && infoSelect1 && infoSelect2) {
                                 await quickCounselingInsertAxios({
-                                    car_code: props.id,
+                                    car_code: props.item.car_code,
                                     name: name,
                                     phone: number,
                                     type: "즉시 출고",
                                 })
                                 setName('')
                                 setNumber('')
-                                alert('상담 신청이 완료되었습니다')
+                                alert('문의 신청이 완료되었습니다')
                                 props.setPopup(null)
                             } else {
                                 alert('내용이 입력되지 않았습니다')
@@ -184,7 +188,6 @@ export const Mobile_QuickDealCardPopup = (props) => {
                     <button className='Quick_close' onClick={() => { props.setPopup(null); document.body.style.overflowY = 'auto' }}>닫기</button>
                 </div>
             </div>
-
         </div>
     );
 }

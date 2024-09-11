@@ -17,6 +17,9 @@ import { QuickDealCarCard_Popup } from '../components/PopUp';
 export const HotDealCard = (props) => {
     return (
         <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <div>
+                <img src={require('../assets/img/functionIcon/hotDealCardTitle.png')} />
+            </div>
             <img
                 className='hotDealCardImg'
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -69,7 +72,7 @@ export const QuickDealCard = (props) => {
 
     return (
         <>
-            <div className='quickDealCard' onClick={() => { props.setPopup(props.item.car_code); document.body.style.overflowY = 'hidden' }}>
+            <div className='quickDealCard' onClick={() => { props.setPopup(props.item); document.body.style.overflowY = 'hidden' }}>
                 {optionStat &&
                     <div className='quickDealOptionPopupDiv'>
                         <p>[옵션]</p>
@@ -78,6 +81,9 @@ export const QuickDealCard = (props) => {
                         ))}
                     </div>
                 }
+                <div>
+                    <img src={require('../assets/img/functionIcon/quickDealCardTitle.png')} />
+                </div>
                 <img
                     className='hotDealCardImg'
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -144,7 +150,7 @@ export const QuickDealCard = (props) => {
  */
 export const EventCard = (props) => {
     return (
-        <div className='eventCard' onClick={() => { props.setCarmentoPopup(true); props.setMento({name: `${props.item.name} ${props.item.position}`, img: props.item.img}); document.body.style.overflow = 'hidden' }}>
+        <div className='eventCard' onClick={() => { props.setCarmentoPopup(true); props.setMento({ name: `${props.item.name} ${props.item.position}`, img: props.item.img }); document.body.style.overflow = 'hidden' }}>
             <img src={require(`../assets/img/carmento/${props.item.img}.jpg`)} />
             <div>
                 <span>
@@ -307,6 +313,9 @@ export const QuickCarCard = (props) => {
 export const HotDealCarCard = (props) => {
     return (
         <div className='hotDealCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <div>
+                <img src={require('../assets/img/functionIcon/hotDealCardTitle.png')} />
+            </div>
             <img
                 className='hotDealCardImg'
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
@@ -360,8 +369,8 @@ export const QuickDealCarCard = (props) => {
 
     return (
         <>
-            {isUsePopupVisible1 !== null && <QuickDealCarCard_Popup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
-            <div className='quickDealCard' onClick={() => { setIsUsePopupVisible1(props.item.car_code); document.body.style.overflowY = 'hidden' }}>
+            {isUsePopupVisible1 !== null && <QuickDealCarCard_Popup setPopup={setIsUsePopupVisible1} item={isUsePopupVisible1} />}
+            <div className='quickDealCard' onClick={() => { setIsUsePopupVisible1(props.item); document.body.style.overflowY = 'hidden' }}>
                 {optionStat &&
                     <div className='quickDealOptionPopupDiv'>
                         <p>[옵션]</p>
@@ -370,6 +379,9 @@ export const QuickDealCarCard = (props) => {
                         ))}
                     </div>
                 }
+                <div>
+                    <img src={require('../assets/img/functionIcon/quickDealCardTitle.png')} />
+                </div>
                 <img
                     className='hotDealCardImg'
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}

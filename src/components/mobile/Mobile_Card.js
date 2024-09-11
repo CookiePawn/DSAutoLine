@@ -30,8 +30,8 @@ export const Mobile_QuickDealCard = (props) => {
 
     return (
         <>
-            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
-            <div className="mobile_quickDealCard" onClick={() => setIsUsePopupVisible1(props.item.car_code)}>
+            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} item={isUsePopupVisible1} />}
+            <div className="mobile_quickDealCard" onClick={() => setIsUsePopupVisible1(props.item)}>
                 <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
                 <h4>{props.item.enter} {props.item.name}</h4>
                 <p>{props.item.info}</p>
@@ -143,8 +143,8 @@ export const Mobile_QuickDealPageCard = (props) => {
 
     return (
         <>
-            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} id={isUsePopupVisible1} />}
-            <div className="mobile_quickDealPageCard" onClick={() => setIsUsePopupVisible1(props.item.car_code)}>
+            {isUsePopupVisible1 !== null && <Mobile_QuickDealCardPopup setPopup={setIsUsePopupVisible1} item={isUsePopupVisible1} />}
+            <div className="mobile_quickDealPageCard" onClick={() => setIsUsePopupVisible1(props.item)}>
                 <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
                 <h4>{props.item.enter} {props.item.name}</h4>
                 <p>{props.item.info}</p>

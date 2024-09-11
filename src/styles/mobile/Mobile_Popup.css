@@ -184,35 +184,6 @@
 }
 
 
-.QuickDeal_Section {
-    width: 90%;
-    height: 400px;
-}
-
-.QuickDeal_Title>h1 {
-    font-size: 20px;
-}
-
-.QuickDeal_input {
-    width: 90%;
-    margin: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.QuickDeal_input>p {
-    font-size: 14px;
-    margin-left: 0px;
-}
-
-.QuickDeal_input>input {
-    width: 220px;
-    margin: 0;
-    margin-left: auto;
-}
-
-
-
 
 
 .mobile_optionPopupDiv {

@@ -297,7 +297,7 @@ const Mobile_Option = (props) => {
                 <h4>개인 정보</h4>
                 <span>
                     <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10} />
-                    <input placeholder="연락처를 적어주세요" value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} maxLength={11} />
+                    <input placeholder="연락처를 적어주세요" value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} type="number" maxLength={11} />
                 </span>
                 <div>
                     <span>

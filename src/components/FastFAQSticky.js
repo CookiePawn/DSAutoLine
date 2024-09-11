@@ -88,7 +88,13 @@ const FastFAQSticky = (props) => {
                         </div>
                         <div>
                             <h4>연락처</h4>
-                            <input value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={11} placeholder='ex) 01012345678'/>
+                            <input 
+                                value={phone} 
+                                onChange={(e) => setPhone(e.target.value)} 
+                                maxLength={11} 
+                                placeholder='ex) 01012345678'
+                                type='number'
+                            />
                         </div>
                         <span>
                             {
