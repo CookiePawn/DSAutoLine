@@ -184,8 +184,8 @@ const Mobile_Option = (props) => {
             </section>
             <section className="mobile_option_trimSection">
                 <h3>세부 모델 선택</h3>
-                <button onClick={() => setTrimStat(0)} className={trimStat === 0 && 'selected'}>트림 1</button>
-                <button onClick={() => setTrimStat(1)} className={trimStat === 1 && 'selected'}>트림 2</button>
+                <button onClick={() => setTrimStat(0)} className={trimStat === 0 && 'selected'}>세부모델</button>
+                <button onClick={() => setTrimStat(1)} className={trimStat === 1 && 'selected'}>세부트림</button>
                 <span style={{ display: trimStat === 0 ? 'block' : 'none' }}>
                     {Array.from(new Set(content.trim.map(item => item.trim1.trim()))).map((item, _) => (
                         <span onClick={() => { setTrimSelect1(item); setTrimStat(1); setOptions([]); }} className={trimSelect1 === item ? 'selected' : ''}>

@@ -237,7 +237,7 @@ const OptionPage = (props) => {
                             <h3>세부모델 선택</h3>
                             <div className="optionTrimDiv">
                                 <span className={trimStat === 0 ? 'selected' : ''} onClick={() => trimStat === 0 ? setTrimStat(null) : setTrimStat(0)}>
-                                    <p>트림 1</p>
+                                    <p>세부모델</p>
                                     <div className='upDownIcon' >
                                         {trimStat === 0
                                             ? <UpIcon color={'white'} size={24} />
@@ -246,7 +246,7 @@ const OptionPage = (props) => {
                                     </div>
                                 </span>
                                 <span className={trimStat === 1 ? 'selected' : ''} onClick={() => trimStat === 1 ? setTrimStat(null) : setTrimStat(1)}>
-                                    <p>트림 2</p>
+                                    <p>세부트림</p>
                                     <div className='upDownIcon' >
                                         {trimStat === 1
                                             ? <UpIcon color={'white'} size={24} />
