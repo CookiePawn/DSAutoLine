@@ -283,6 +283,9 @@ export const QuickCarCard = (props) => {
             className={`carCard ${props.carStat === props.index ? 'selected' : ''}`}
             onClick={() => props.setCarStat(props.index)}
         >
+            <div>
+                <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.logo_img}.png`} />
+            </div>
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
                 alt="빠른 간편 문의 카드 이미지"
