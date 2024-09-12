@@ -389,7 +389,7 @@ body {
 
 .optionTrimDiv > span {
     position: relative;
-    width: calc(50% - 8px);
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -426,13 +426,12 @@ body {
 }
 
 .trimInfoDiv > span {
-    margin-top: 67px;
+    margin-top: 30px;
     width: 50%;
     max-height: 430px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     overflow-y: auto;
+    display: block;
+    gap: 30px;
 }
 
 /* 스크롤바 전체 */
@@ -458,17 +457,20 @@ body {
 
 .trimInfoDiv > span > span {
     width: 90%;
-    height: auto;
     border: 1px solid #dbdbdb;
     border-radius: 12px;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 10px 20px;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.trimInfoDiv > span > span:last-child {
+    margin-bottom: 0px;
 }
 
 .trimInfoDiv > span > span.selected {
