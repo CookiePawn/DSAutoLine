@@ -109,9 +109,9 @@ body {
     min-width: 290px;
     max-width: 290px;
     position: relative;
-    height: 400px;
     cursor: pointer;
     box-sizing: border-box;
+    border: 1px solid #f5f5f5;
 }
 
 .carCard:hover {
@@ -184,6 +184,25 @@ body {
     color: #767676;
     font-size: 18px;
     font-weight: 500;
+}
+
+.carCard > button {
+    display: block;
+    width: 95%;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #0064FF;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.carCard > button:hover {
+    background-color: blue;
 }
 
 

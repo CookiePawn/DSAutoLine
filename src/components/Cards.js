@@ -57,6 +57,7 @@ export const HotDealCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -137,6 +138,7 @@ export const QuickDealCard = (props) => {
                         <p>{props.item.deposit} 30%</p>
                     </span>
                 </div>
+                <button>상담 신청하기</button>
             </div>
         </>
     )
@@ -250,6 +252,9 @@ export const ReviewCard = (props) => {
 export const PopularCarCard = (props) => {
     return (
         <div className='carCard' onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
+            <div>
+                <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.logo_img}.png`} />
+            </div>
             <img
                 src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}
                 alt="차량 이미지"
@@ -264,6 +269,7 @@ export const PopularCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price.toLocaleString()}</span>원</p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -300,6 +306,7 @@ export const QuickCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -356,6 +363,7 @@ export const HotDealCarCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -438,6 +446,7 @@ export const QuickDealCarCard = (props) => {
                         <p>{props.item.deposit} 30%</p>
                     </span>
                 </div>
+                <button>상담 신청하기</button>
             </div>
         </>
     )

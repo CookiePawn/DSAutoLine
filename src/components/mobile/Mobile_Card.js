@@ -22,6 +22,7 @@ export const Mobile_HotDealCard = (props) => {
                 <p>{props.item.payment}</p>
                 <p>{props.item.deposit} 30%</p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -59,6 +60,7 @@ export const Mobile_QuickDealCard = (props) => {
                     <p>{props.item.payment}</p>
                     <p>{props.item.deposit} 30%</p>
                 </span>
+                <button>상담 신청하기</button>
             </div>
         </>
     )
@@ -68,15 +70,15 @@ export const Mobile_QuickDealCard = (props) => {
 
 export const Mobile_PopularCard = (props) => {
     return (
-        <div className="mobile_hotDealCard" style={{ height: 200 }}>
+        <div className="mobile_hotDealCard">
             <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             <h4>{props.item.name}</h4>
             <p>{props.item.info}</p>
             <span>
                 <p>차량가</p>
-                <p><span></span>{props.item.price.toLocaleString()}<span>원</span></p>
-
+                <p><span></span>{parseInt(props.item.price/10000).toLocaleString()}<span>만원</span></p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -123,6 +125,7 @@ export const Mobile_QuickFAQPageCard = (props) => {
             <span>
                 <p>차량가</p><p><span></span> {props.item.price.toLocaleString()}<span>원</span></p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -147,6 +150,7 @@ export const Mobile_HotDealPageCard = (props) => {
                 <p>{props.item.payment}</p>
                 <p>{props.item.deposit} 30%</p>
             </span>
+            <button>견적서 신청하기</button>
         </div>
     )
 }
@@ -185,6 +189,7 @@ export const Mobile_QuickDealPageCard = (props) => {
                     <p>{props.item.payment}</p>
                     <p>{props.item.deposit} 30%</p>
                 </span>
+                <button>상담 신청하기</button>
             </div>
         </>
     )
