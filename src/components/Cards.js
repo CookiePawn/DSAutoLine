@@ -57,7 +57,7 @@ export const HotDealCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button>견적서 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -269,7 +269,7 @@ export const PopularCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price.toLocaleString()}</span>원</p>
             </span>
-            <button>견적서 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -306,7 +306,7 @@ export const QuickCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
             </span>
-            <button>견적서 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -363,7 +363,7 @@ export const HotDealCarCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button>견적서 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
