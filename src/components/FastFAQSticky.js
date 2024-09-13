@@ -60,8 +60,10 @@ const FastFAQSticky = (props) => {
                 phone: phone,
                 car_name: car,
             });
-            setNextStat(true);
-            document.body.style.overflow = 'hidden';
+            alert('상담 신청이 완료되었습니다.')
+            setCar('')
+            setName('')
+            setPhone('')
         } else {
             alert('내용이 입력되지 않았습니다')
         }

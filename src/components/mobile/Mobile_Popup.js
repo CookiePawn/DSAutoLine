@@ -291,16 +291,22 @@ export const Mobile_Admin_UserList_Popup = (props) => {
                         <p>연락처</p>
                         <h4>{props.item.phone}</h4>
                     </span>
-                    {props.item.mento === undefined &&
+                    {props.item.mento === undefined && props.item.type !== '이벤트' &&
                         <span>
                             <p>차종</p>
                             <h4>{props.item.enter} {props.item.car_name}</h4>
                         </span>
                     }
-                    {props.item.mento !== undefined &&
+                    {props.item.mento !== undefined && 
                         <span>
                             <p>담당 카멘토</p>
                             <h4>{props.item.mento}</h4>
+                        </span>
+                    }
+                    {props.item.type === '이벤트' &&
+                        <span>
+                            <p>이벤트명</p>
+                            <h4>{props.item.car_name}</h4>
                         </span>
                     }
                     {(props.item.type === '빠른 간편 문의/ 한정 특가' || props.item.type === '즉시 출고') &&

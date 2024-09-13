@@ -71,3 +71,23 @@
     border-radius: 12px;
     outline: none;
 }
+
+
+.edcontainer > button {
+    display: block;
+    width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    height: 80px;
+    border: none;
+    background-color: #0064FF;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.eventDetailPage_FasrFAQ {
+    width: 100%;
+    background-color: #dbdbdb;
+}

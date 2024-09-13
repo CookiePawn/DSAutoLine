@@ -140,6 +140,7 @@
 .mobile_eventMore_contentSection {
     width: 90%;
     margin: auto;
+    margin-bottom: 50px;
     min-height: 600px;
 }
 
