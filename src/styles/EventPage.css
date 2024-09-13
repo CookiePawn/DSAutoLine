@@ -120,13 +120,49 @@
 
 
 .eventCardTitle>h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: #000000;
+    max-height: 45px;
+    min-height: 45px;
 }
 
 .eventCardTitle>p {
     font-size: 16px;
     font-weight: 400;
     color: #767676;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+
+.cardImgSection > div {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 70px;
+    height: 70px;
+    background-color: #0064FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.cardImgSection > div > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+}
+
+.cardImgSection > div > span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
 }

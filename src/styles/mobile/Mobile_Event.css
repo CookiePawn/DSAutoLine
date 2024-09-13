@@ -42,6 +42,7 @@
 
 .mobile_eventPageCard {
     width: 100%;
+    position: relative;
 }
 
 .mobile_eventPageCard > img {
@@ -62,7 +63,7 @@
 
 .mobile_eventPageCard > p {
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 12px;
     font-weight: 400;
     color: #AEAEAE;
@@ -100,7 +101,36 @@
     width: 100%;
 }
 
+.mobile_eventPageCard > div {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    background-color: #0064FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
+.mobile_eventPageCard > div > p {
+    font-size: 10px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+}
+
+.mobile_eventPageCard > div > span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+}
 
 
 

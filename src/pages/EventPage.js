@@ -22,7 +22,7 @@ const EventPage = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await eventAxios(null, 0)
+            const response = await eventAxios(0, 0)
             setEventList(response.filter(item => item.type !== 4))
         }
         fetchData()
@@ -30,7 +30,7 @@ const EventPage = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await eventAxios(null, selectedButton)
+            const response = await eventAxios(0, selectedButton)
             setEventList(response.filter(item => item.type !== 4))
         }
         fetchData()

@@ -173,12 +173,30 @@ export const EventCard = (props) => {
  * @returns 
  */
 export const EventCardlist = (props) => {
+    // 종료일 (2024-12-31)
+    const endDate = new Date(props.item.end_date);
+    // 현재 날짜
+    const today = new Date();
+    // 날짜 차이 계산 (밀리초 단위)
+    const timeDifference = endDate - today;
+    // 밀리초를 일 단위로 변환
+    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
     return (
         <div
             className="eventCardlist"
             onClick={() => window.location.href = `/Event/${props.item.event_num}`}
         >
             <div className={`cardImgSection ${props.isEnded ? 'dimmed' : ''}`}>
+                {!props.isEnded
+                    ? <div>
+                        <p>D-Day</p>
+                        <span>{daysRemaining}</span>
+                    </div>
+                    : <div>
+                        <p>종료</p>
+                    </div>
+                }
                 <img
                     className="eventCardImg"
                     src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`}

@@ -76,7 +76,7 @@ export const Mobile_PopularCard = (props) => {
             <p>{props.item.info}</p>
             <span>
                 <p>차량가</p>
-                <p><span></span>{parseInt(props.item.price/10000).toLocaleString()}<span>만원</span></p>
+                <p><span></span>{parseInt(props.item.price / 10000).toLocaleString()}<span>만원</span></p>
             </span>
             <button>견적 및 상담 신청하기</button>
         </div>
@@ -196,6 +196,15 @@ export const Mobile_QuickDealPageCard = (props) => {
 }
 
 export const Mobile_EventPageCard = (props) => {
+    // 종료일 (2024-12-31)
+    const endDate = new Date(props.item.end_date);
+    // 현재 날짜
+    const today = new Date();
+    // 날짜 차이 계산 (밀리초 단위)
+    const timeDifference = endDate - today;
+    // 밀리초를 일 단위로 변환
+    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    
     return (
         <div className="mobile_eventPageCard" onClick={() => { if (props.stat !== true) window.location.href = `/Event/${props.item.event_num}` }}>
             {props.stat === true
@@ -205,7 +214,15 @@ export const Mobile_EventPageCard = (props) => {
                 </span>
                 : <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             }
-
+            {!props.stat
+                ? <div>
+                    <p>D-Day</p>
+                    <span>{daysRemaining}</span>
+                </div>
+                : <div>
+                    <p>종료</p>
+                </div>
+            }
             <h4>{props.item.title}</h4>
             <p>{props.item.start_date} ~ {props.item.end_date}</p>
         </div>
