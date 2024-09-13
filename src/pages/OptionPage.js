@@ -24,7 +24,6 @@ const OptionPage = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await estimatedAxios(id)
-            console.log(response)
             setContent(response)
         }
         fetchData()

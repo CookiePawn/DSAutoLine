@@ -78,7 +78,6 @@ export const Admin_EventAdd = () => {
                     state: 'in',
                     event_num: random1,
                 }])
-                console.log(mainURL)
                 await imageUploadAxios(bannerURL, `event_${random1}`)
                 await imageUploadAxios(mainURL, `event_${random2}`)
                 setNameStat('')

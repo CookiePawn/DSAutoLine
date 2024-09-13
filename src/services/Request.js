@@ -192,7 +192,6 @@ export const estimatedAxios = async (id) => {
 export const estimatedAddAxios = async (data) => {
     try {
         const response = await axios.post(`${dbServerUrl}/estimateInsert`, data)
-        console.log(response)
     } catch (error) {
         // console.log(error)
     }

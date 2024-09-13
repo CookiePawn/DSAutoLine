@@ -273,7 +273,6 @@ export const Mobile_SearchPopup = (props) => {
 
 
 export const Mobile_Admin_UserList_Popup = (props) => {
-    console.log(props.item)
     return (
         <div className="mobile_popupDimmed">
             <div className="mobile_AdminPopupDiv">
