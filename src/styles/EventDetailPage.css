@@ -39,14 +39,18 @@
 }
 
 .ScriptSection {
-    width: 1000px;
+    width: 1280px;
     margin: auto;
+    padding-bottom: 120px;
     font-size: 18px;
     font-weight: 400;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 .ScriptSection > img {
-    width: 100%;
+    width: 1000px;
 }
 
 .ScriptSection > p {
@@ -61,33 +65,148 @@
 }
 
 .backButton {
-    padding: 10.2px 42px;
+    width: 210px;
+    height: 51px;
     font-size: 18px;
     color: #767676;
     background-color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     border: 1px solid #bbb;
-    border-radius: 12px;
+    box-sizing: border-box;
     outline: none;
 }
 
 
 .edcontainer > button {
     display: block;
-    width: 1000px;
+    width: 544px;
     margin: auto;
     margin-top: 50px;
     height: 80px;
     border: none;
+    border-radius: 46px;
     background-color: #0064FF;
     color: white;
-    font-size: 20px;
+    font-size: 27px;
+    font-weight: 500;
     cursor: pointer;
 }
 
 
-.eventDetailPage_FasrFAQ {
+
+
+
+.ScriptSection > span {
+    width: 1280px;
+    height: 100%;
+    position: absolute;
+}
+
+.ScriptSection > span > span {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+
+
+
+.eventDetailPage_FastFAQ {
     width: 100%;
-    background-color: #dbdbdb;
+    height: 93px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #0064FF;
+    box-sizing: border-box;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 90vh;
+}
+
+.eventDetailPage_FastFAQ > img {
+    width: 125px;
+    height: 28px;
+    margin-right: 46px;
+}
+
+.eventDetailPage_FastFAQ > p {
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    margin-right: 13px ;
+    white-space: nowrap;
+}
+
+.eventDetailPage_FastFAQ > input:nth-of-type(1) {
+    width: 109px;
+    height: 33px;
+    box-sizing: border-box;
+    border: 1px solid #A9A9A9;
+    border-radius: 6px;
+    padding: 0 10px;
+    margin-right: 19px;
+}
+
+.eventDetailPage_FastFAQ > input:nth-of-type(2) {
+    width: 300px;
+    height: 33px;
+    box-sizing: border-box;
+    border: 1px solid #A9A9A9;
+    border-radius: 6px;
+    padding: 0 10px;
+    margin-right: 59px;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    margin-right: 34px;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span:nth-of-type(1) {
+    margin-bottom: 11px;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span > img {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span > p {
+    color: #7D7D7D;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span > p > span:nth-of-type(1) {
+    color: #0064FF;
+}
+
+.eventDetailPage_FastFAQ > span:nth-of-type(1) > span > p > span:nth-of-type(2) {
+    cursor: pointer;
+}
+
+.eventDetailPage_FastFAQ > button {
+    width: 117px;
+    height: 35px;
+    border: none;
+    border-radius: 17px;
+    background-color: #0064FF;
+    color: white;
+    cursor: pointer;
 }
