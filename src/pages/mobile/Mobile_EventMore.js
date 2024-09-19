@@ -6,6 +6,7 @@ import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import { eventInfoAxios } from '../../services/Request';
 import Loading from "../../components/Loading";
 import { fastFAQAxios } from '../../services/Request';
+import { Mobile_TermsofInformationPopup } from '../../components/mobile/Mobile_Popup'
 
 
 const Mobile_EventMore = (props) => {
@@ -48,6 +49,7 @@ const Mobile_EventMore = (props) => {
     }
     return (
         <div className="mobile_container">
+            {isUsePopupVisible && <Mobile_TermsofInformationPopup setPopup={setIsUsePopupVisible} />}
             <Mobile_GNB page={'이벤트/프로모션'} />
             <section className="mobile_eventMore_contentSection">
                 <h3>{content.title}</h3>
@@ -59,35 +61,40 @@ const Mobile_EventMore = (props) => {
                     <button onClick={() => window.location.href = 'https://first-stay.co.kr/'}>퍼스트스테이 바로가기</button>
                 }
                 {!content.title.includes('퍼스트스테이') &&
-                    <>
-                        <div className='eventDetailPage_FasrFAQ'>
-                            <input value={name} onChange={(e) => setName(e.target.value)} placeholder='ex) 홍길동' />
-                            <input
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                maxLength={11}
-                                placeholder='ex) 01012345678'
-                                type='number'
-                            />
-                            <span>
-                                {
-                                    !infoSelect1
-                                        ? <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                        : <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                }
-                                <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
-                            </span>
-                            <span>
-                                {
-                                    !infoSelect2
-                                        ? <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
-                                        : <img style={{ width: 23, height: 23 }} src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
-                                }
-                                <p><span>(필수)</span> 개인정보 수집ㆍ이용ㆍ제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
-                            </span>
-                            <button onClick={clickFunction}>상담하기</button>
-                        </div>
-                    </>
+                    <span className="mobile_eventMore_sticky">
+                        <span>
+                            <div className='mobile_eventDetailPage_FastFAQ'>
+                                <img src={require('../../assets/img/dsautoline/DSAUTOLINE.png')} />
+                                <span>
+                                    <h4>이름</h4>
+                                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder='ex) 홍길동' />
+                                    <h4>연락처</h4>
+                                    <input
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        maxLength={11}
+                                        placeholder='ex) 01012345678'
+                                        type='number'
+                                    />
+                                </span>
+                                <span>
+                                    {
+                                        !infoSelect1
+                                            ? <img src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                                            : <img src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                                    }
+                                    <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => setIsUsePopupVisible(true)}>[보기]</span></p>
+                                    {
+                                        !infoSelect2
+                                            ? <img src={require('../../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                                            : <img src={require('../../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                                    }
+                                    <p><span>(필수)</span> 개인정보 수집ㆍ이용ㆍ제공 동의 <span onClick={() => setIsUsePopupVisible(true)}>[보기]</span></p>
+                                    <button onClick={clickFunction}>상담하기</button>
+                                </span>
+                            </div>
+                        </span>
+                    </span>
                 }
             </section>
             <Mobile_Footer />
