@@ -98,7 +98,7 @@ export const Admin_UserCompletedList = (props) => {
             {userStat === 1 && <QuickFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 2 && <FastFAQList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 3 && <CarmentoList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
-            {userStat === 4 && <EventUserList item={userList !== null && userList} stat={4} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 4 && <EventUserList item={userList !== null && userList} stat={0} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
         </div>
     )
 }
@@ -190,7 +190,7 @@ export const Admin_UserIncompleteList = (props) => {
             {userStat === 1 && <QuickFAQList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 2 && <FastFAQList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
             {userStat === 3 && <CarmentoList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
-            {userStat === 4 && <EventUserList item={userList !== null && userList} stat={4} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
+            {userStat === 4 && <EventUserList item={userList !== null && userList} stat={1} onClickDelete={onClickDelete} onClickChange={onClickChange} />}
         </div>
     )
 }
