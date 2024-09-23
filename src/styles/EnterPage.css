@@ -169,11 +169,13 @@ body, html {
 .Enter_bannerSection {
     min-width: 1280px;
     max-width: 1280px;
+    min-height: 600px;
     display: flex;
     margin: auto;
-    height: 600px;
     background-color: #d9d9d9;
+    border: 1px solid #ededed;
     border-radius: 12px;
+    box-sizing: border-box;
     margin-top: 70px;
 }
 

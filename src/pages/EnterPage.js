@@ -56,7 +56,7 @@ const EnterPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className='Enter_bannerSection'/>  
+                <img className='Enter_bannerSection' src={require('../assets/img/enter/enter_001.webp')}/>  
                 <div className='Enter_line'></div>
 
                 <div className='Enter_HOWSection'>
@@ -107,7 +107,7 @@ const EnterPage = () => {
                                 <p>고객님께서 저희 서비스를 사용을 하여 차량을 받으셔도<br/>고객님의 신용도에는 전혀 영향이 없습니다.</p>
                             </div>
                         </div>
-                        <div className='Enter_bannerSection'/> 
+                        <img className='Enter_bannerSection' src={require('../assets/img/enter/enter_002.jpg')}/> 
                     </div>
                     <div className='Enter_line'></div>
                 </div>
@@ -142,7 +142,7 @@ const EnterPage = () => {
                                 <p>개인 사업자 고객님과 법인 사업자 고객님들을 모두 생각하여<br/>사업자 비용을 처리하실 수 있도록 지원하고 있습니다.</p>
                             </div>
                         </div>
-                        <div className='Enter_bannerSection'/> 
+                        <img className='Enter_bannerSection' src={require('../assets/img/enter/enter_003.jpg')}/> 
                     </div>
                     <div className='Enter_line'></div>
                     
