@@ -71,7 +71,6 @@ const Mobile_Enter = (props) => {
                 <p>개인 사업자 고객님과 법인 사업자 고객님들을 모두 생각하여 사업자 비용을 처리하실 수 있도록 지원하고 있습니다.</p>
                 <h3><span>04</span> 신용도에 영향 X</h3>
                 <p>고객님께서 저희 서비스를 사용을 하여 차량을 받으셔도 고객님의 신용도에는 전혀 영향이 없습니다.</p>
-                <span><img src={require('../../assets/img/enter/enter_002.jpg')}/></span>
             </section>
             <section className="mobile_enter_rentSection">
                 <h4>LEASE</h4>
@@ -84,7 +83,6 @@ const Mobile_Enter = (props) => {
                 <p>고객님께서 서비스를 이용하신 후에도 보험 경력을 변경되지 않고 기존 고객님의 보험 경력이 그대로 유지됩니다.</p>
                 <h3><span>04</span> 개인 사업자, 법인 사업자 비용 처리 가능</h3>
                 <p>개인 사업자 고객님과 법인 사업자 고객님들을 모두 생각하여 사업자 비용을 처리하실 수 있도록 지원하고 있습니다.</p>
-                <span><img src={require('../../assets/img/enter/enter_003.jpg')}/></span>
             </section>
             <section className="mobile_enter_procedureSection">
                 <h4>PROCEDURE</h4>
