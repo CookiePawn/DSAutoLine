@@ -47,7 +47,7 @@ const Mobile_Enter = (props) => {
                 <h4>VISION</h4>
                 <h3>DS AUTOLINE은<br/>고객님의 마음을 움직입니다.</h3>
                 <p>신뢰와 믿음을 바탕으로<br/>고객님의 마음을 움직이겠습니다.</p>
-                <span><img src={require('../../assets/img/enter/enter_001.webp')}/></span>
+                <span><img src={require('../../assets/img/enter/enter_001.jpg')}/></span>
             </section>
             <section className="mobile_enter_howSection">
                 <h4>HOW</h4>

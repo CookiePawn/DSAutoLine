@@ -56,7 +56,7 @@ const EnterPage = () => {
                         </div>
                     </div>
                 </div>
-                <img className='Enter_bannerSection' src={require('../assets/img/enter/enter_001.webp')}/>  
+                <img className='Enter_bannerSection' src={require('../assets/img/enter/enter_001.jpg')}/>  
                 <div className='Enter_line'></div>
 
                 <div className='Enter_HOWSection'>
