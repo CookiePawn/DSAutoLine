@@ -222,6 +222,7 @@ body, html {
 
 .moveButton1 {
   width: 44px;
+  align-items: center;
   height: 44px;
   background-color: #9FA5AB;
   color: white;
@@ -238,7 +239,7 @@ body, html {
 .moveButton {
   position: absolute;
   left: 0px;
-  width: 44px;
+  width: 40px;
   height: 44px;
   background-color: #9FA5AB;
   color: white;
@@ -247,6 +248,7 @@ body, html {
   z-index: 900;
   font-weight: 600;
   font-size: 20px;
+  padding: 0 10px 0 0;
   opacity: 80%;
   transition: all 0.5s ease;
 }
@@ -254,10 +256,10 @@ body, html {
 .moveButton.right {
   left: auto;
   right: 0px;
-  left: initial;
   z-index: 900;
   font-weight: 600;
   font-size: 20px;
+  padding: 0 0 0 10px;
 }
 
 
