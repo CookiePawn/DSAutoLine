@@ -106,7 +106,7 @@ const Mobile_MainPage = (props) => {
                 <p onClick={() => window.location.href='/Review'}>전체 보기 〉</p>
                 <h3>고객 리뷰</h3>
                 <span>
-                    {reviewList.length === 0 && <NoCardList card={'리뷰가'} />}
+                    {reviewList.length === 0 && <NoCardList card={'리뷰가'} />} 
                     {reviewList.map((item, _) => (
                         <Mobile_ReviewCard item={item} />
                     ))}
