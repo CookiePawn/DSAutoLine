@@ -293,7 +293,7 @@ export const Mobile_Admin_UserList_Popup = (props) => {
                     </span>
                     {props.item.mento === undefined && props.item.type !== '이벤트' &&
                         <span>
-                            <p>차종</p>
+                            <p>{props.company === true ? '기업명' : '차종'}</p>
                             <h4>{props.item.enter} {props.item.car_name}</h4>
                         </span>
                     }

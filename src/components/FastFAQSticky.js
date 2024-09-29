@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/FastFAQSticky.css';
-import { OptionPagePopUp, TermsofInformationPopup } from '../components/PopUp';
+import { TermsofInformationPopup } from '../components/PopUp';
 import { fastFAQAxios } from '../services/Request';
 
 const FastFAQSticky = (props) => {
@@ -14,19 +14,9 @@ const FastFAQSticky = (props) => {
     const [car, setCar] = useState('');
 
     const [load, setLoad] = useState(0);
-    const [nextStat, setNextStat] = useState(false);
 
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
-    const [isInformationPopupVisible, setIsInformationPopupVisible] = useState(false);
 
-
-    const handleOpenInformationPopup = () => {
-        setIsInformationPopupVisible(true);
-    };
-
-    const handleCloseInformationPopup = () => {
-        setIsInformationPopupVisible(false);
-    };
 
     useEffect(() => {
         // 페이지 높이를 업데이트하는 함수
@@ -71,9 +61,7 @@ const FastFAQSticky = (props) => {
 
     return (
         <section className="mainPage_QuickFAQSection">
-            {nextStat && <OptionPagePopUp />}
             {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
-            {isInformationPopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
             <span>
                 <span style={load !== 0 ? { height: document.body.clientHeight - props.height } : null}>
                     <div>
