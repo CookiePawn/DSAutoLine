@@ -19,6 +19,7 @@ import '../styles/slick-theme.css'
 import { handleNext, handlePrev, hotDealSlicerSettings, reviewSlicerSettings } from '../utils/SliderMove';
 import FastFAQSticky from '../components/FastFAQSticky';
 import BannerSlider from '../components/Main_EventBanner';
+import LineBanner from '../components/Main_EventLineBanner'
 import NoCardList from '../components/NoCardList'
 import Loading from '../components/Loading';
 
@@ -149,9 +150,7 @@ const MainPage = (props) => {
                     </span>
                 </a>
             </section>
-            <div className='eventBannerImage'>
-                <img src={`${process.env.REACT_APP_IMG_URL}/${eventList[0].img}.png`} />
-            </div>
+            <LineBanner />
             <section className='popularSection'>
                 <h1 style={{ marginBottom: 40 }}>가장 <span>인기 많은 차량</span></h1>
                 {/* <span>

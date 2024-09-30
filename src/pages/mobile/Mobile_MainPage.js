@@ -90,9 +90,13 @@ const Mobile_MainPage = (props) => {
                 </span>
                 <button onClick={() => window.location.href='/QuickDeal'}>자세히 보기</button>
             </section>
-            <section className="mobile_main_lineBannerSection">
-                <img src={`${process.env.REACT_APP_IMG_URL}/${eventLine[0].img}.png`} />
-            </section>
+
+
+
+
+
+
+            
             <section className="mobile_main_popularSection">
                 <h3>가장 인기 많은 차량</h3>
                 <span>
