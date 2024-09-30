@@ -7,48 +7,57 @@ import { fastFAQAxios } from '../services/Request';
 
 const BannerSlider = () => {
     const [eventList, setEventList] = useState(null);
-
-    // 입력 상태
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [car, setCar] = useState('');
-
-    // 간편 문의 상태
     const [infoSelect1, setInfoSelect1] = useState(false);
     const [infoSelect2, setInfoSelect2] = useState(false);
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
-
-    // 슬라이드 상태
-    const [currentIndex, setCurrentIndex] = useState(1); // 첫 슬라이드는 복제된 슬라이드를 보여줌
+    const [currentIndex, setCurrentIndex] = useState(1);
+    const [isSliding, setIsSliding] = useState(true); // State to control slider interval
     const transitionRef = useRef(true);
     const sliderRef = useRef(null);
+    const intervalRef = useRef(null);
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await eventAxios(null, 0);
             const filteredEvents = response.filter((item) => item.type === 0);
-            // 복제된 첫 번째, 마지막 슬라이드를 추가합니다.
             setEventList([filteredEvents[filteredEvents.length - 1], ...filteredEvents, filteredEvents[0]]);
         };
         fetchData();
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext();
-        }, 5000);
+        startSliding();
+        return () => stopSliding();
+    }, [currentIndex, eventList, isSliding]);
 
-        return () => clearInterval(interval);
-    }, [currentIndex, eventList]);
+    const startSliding = () => {
+        if (isSliding) {
+            stopSliding(); // Clear previous interval before starting a new one
+            intervalRef.current = setInterval(() => {
+                handleNext();
+            }, 5000);
+        }
+    };
 
-    // 다음 슬라이드로 이동
+    const stopSliding = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+    };
+
+    const toggleSliding = () => {
+        setIsSliding(!isSliding);
+    };
+
     const handleNext = () => {
         if (eventList && eventList.length > 0) {
             setCurrentIndex((prevIndex) => prevIndex + 1);
         }
     };
 
-    // 이전 슬라이드로 이동
     const handlePrev = () => {
         if (eventList && eventList.length > 0) {
             setCurrentIndex((prevIndex) => prevIndex - 1);
@@ -57,7 +66,6 @@ const BannerSlider = () => {
 
     useEffect(() => {
         if (eventList) {
-            // 애니메이션이 끝난 후, 복제된 첫 슬라이드나 마지막 슬라이드로 이동할 때 처리
             if (currentIndex === 0) {
                 setTimeout(() => {
                     transitionRef.current = false;
@@ -95,10 +103,13 @@ const BannerSlider = () => {
         return <Loading />;
     }
 
+    const actualIndex = currentIndex === 0 ? eventList.length - 2 : currentIndex === eventList.length - 1 ? 1 : currentIndex;
+
     return (
         <>
             {isUsePopupVisible && <TermsofInformationPopup onClose={setIsUsePopupVisible} />}
             <section className="mainPage_BannerSection">
+                {/* Form Section */}
                 <div>
                     <img src={require('../assets/img/dsautoline/DSAUTOLINE.png')} alt="Quick FAQ Icon" />
                     <h1>기업 전용 상담</h1>
@@ -122,24 +133,9 @@ const BannerSlider = () => {
                         />
                     </div>
                     <span>
-                        {
-                            !infoSelect1
-                                ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                                : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
-                        }
-                        <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
+                        {/* Consent Boxes */}
                     </span>
-                    <span>
-                        {
-                            !infoSelect2
-                                ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
-                                : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
-                        }
-                        <p><span>(필수)</span> 개인정보 수집ㆍ이용ㆍ제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
-                    </span>
-                    <button onClick={clickFunction}>
-                        기업 전용 상담 신청하기
-                    </button>
+                    <button onClick={clickFunction}>기업 전용 상담 신청하기</button>
                 </div>
                 <div className="banner-slider">
                     <div
@@ -160,6 +156,16 @@ const BannerSlider = () => {
                     </div>
                     <button className="prev-button" onClick={handlePrev}>〈</button>
                     <button className="next-button" onClick={handleNext}>〉</button>
+                    <button 
+                        className="stop-button" 
+                        onClick={toggleSliding}
+                        style={isSliding ? {fontSize: 30, paddingBottom: 5} : {fontSize: 16}}
+                    >
+                        {isSliding ? '■' : '▶'}
+                    </button>
+                    <span>
+                        <p><span>{actualIndex}</span> / {eventList.length - 2}</p>
+                    </span>
                 </div>
             </section>
         </>
