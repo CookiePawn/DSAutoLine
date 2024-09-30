@@ -133,7 +133,20 @@ const BannerSlider = () => {
                         />
                     </div>
                     <span>
-                        {/* Consent Boxes */}
+                        {
+                            !infoSelect1
+                                ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                                : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect1(!infoSelect1)} />
+                        }
+                        <p><span>(필수)</span> 개인정보 제 3자 제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
+                    </span>
+                    <span>
+                        {
+                            !infoSelect2
+                                ? <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_nonSelectBox.png')} alt="Select Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                                : <img style={{ width: 23, height: 23 }} src={require('../assets/img/functionIcon/optionPage_SelectBox.png')} alt="Selected Box" onClick={() => setInfoSelect2(!infoSelect2)} />
+                        }
+                        <p><span>(필수)</span> 개인정보 수집ㆍ이용ㆍ제공 동의 <span onClick={() => { setIsUsePopupVisible(true); document.body.style.overflowY = 'hidden' }}>[보기]</span></p>
                     </span>
                     <button onClick={clickFunction}>기업 전용 상담 신청하기</button>
                 </div>
@@ -156,10 +169,10 @@ const BannerSlider = () => {
                     </div>
                     <button className="prev-button" onClick={handlePrev}>〈</button>
                     <button className="next-button" onClick={handleNext}>〉</button>
-                    <button 
-                        className="stop-button" 
+                    <button
+                        className="stop-button"
                         onClick={toggleSliding}
-                        style={isSliding ? {fontSize: 30, paddingBottom: 5} : {fontSize: 16}}
+                        style={isSliding ? { fontSize: 30, paddingBottom: 5 } : { fontSize: 16 }}
                     >
                         {isSliding ? '■' : '▶'}
                     </button>
