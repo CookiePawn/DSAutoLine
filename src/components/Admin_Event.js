@@ -133,12 +133,12 @@ export const Admin_EventAdd = () => {
                 >
                     즉시 출고 추가
                 </button>
-                <button
+                {/* <button
                     className={`admin_content_event_button ${selectedEvent === 4 ? "active" : ""}`}
                     onClick={() => handleEventClick(4, "1280 x 100")}
                 >
                     메인 띠 배너 추가
-                </button>
+                </button> */}
             </div>
             <div className="admin_content_event_addSection">
                 <div className="admin_content_event_addSection_body">
