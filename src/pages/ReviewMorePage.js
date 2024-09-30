@@ -32,8 +32,8 @@ const ReviewMorePage = () => {
         }
         fetchData()
     }, [])
-    
-    
+
+
     if (!reviewInfo) {
         return (
             <Loading />
@@ -41,16 +41,16 @@ const ReviewMorePage = () => {
     }
     return (
         <>
-            <GNB page={'고객 리뷰'}/>
-            <FastFAQSticky height={450}/>
+            <GNB page={'고객 리뷰'} />
+            <FastFAQSticky height={450} />
             <section className="reviewMoreSection">
-                <img 
-                    src={`${process.env.REACT_APP_IMG_URL}/${reviewInfo.img}.png`} 
+                <img
+                    src={`${process.env.REACT_APP_IMG_URL}/${reviewInfo.img}.png`}
                     alt="리뷰 이미지"
                     onError={(e) => {
                         e.target.onerror = null; // 무한 루프 방지
                         e.target.src = `${process.env.REACT_APP_IMG_URL}/error.png`;
-                    }}    
+                    }}
                 />
                 <div>
                     <h1>{reviewInfo.enter} {reviewInfo.car_name}</h1>
@@ -74,7 +74,7 @@ const ReviewMorePage = () => {
             </section>
             <section className="reviewMoreListSection">
                 <h1>관련 리뷰</h1>
-                {reviewInfo.order.length === 0 && <NoCardList card={'리뷰가'}/>}
+                {reviewInfo.order.length === 0 && <NoCardList card={'리뷰가'} />}
                 <div
                     className='reviewMoreListDiv'
                     onMouseEnter={() => setReviewHovered(true)}
@@ -100,12 +100,12 @@ const ReviewMorePage = () => {
                         ))}
                     </Slider>
                 </div>
-                <a className='moreBtnA' href='/Review' style={{marginBottom: 200}}>
-                    <span>
-                        <p>목록으로</p>
-                    </span>
-                </a>
             </section>
+            <a className='moreBtnA' href='/Review' style={{ marginBottom: 200 }}>
+                <span>
+                    <p>목록으로</p>
+                </span>
+            </a>
             <Footer />
         </>
     )

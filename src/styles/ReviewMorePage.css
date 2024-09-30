@@ -70,7 +70,9 @@
 .reviewMoreListSection {
     min-width: 1280px;
     max-width: 1280px;
+    max-height: 657px;
     margin: auto;
+    overflow: hidden;
 }
 
 .reviewMoreListSection > h1 {
@@ -81,6 +83,7 @@
     margin: 0;
     margin: auto;
     margin-bottom: 40px;
+    white-space: nowrap;
 }
 
 .reviewMoreListDiv {
