@@ -14,7 +14,7 @@ const BannerSlider = () => {
     const [infoSelect2, setInfoSelect2] = useState(false);
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(1);
-    const [isSliding, setIsSliding] = useState(true); // State to control slider interval
+    const [isSliding, setIsSliding] = useState(true);
     const transitionRef = useRef(true);
     const sliderRef = useRef(null);
     const intervalRef = useRef(null);
@@ -35,7 +35,7 @@ const BannerSlider = () => {
 
     const startSliding = () => {
         if (isSliding) {
-            stopSliding(); // Clear previous interval before starting a new one
+            stopSliding();
             intervalRef.current = setInterval(() => {
                 handleNext();
             }, 5000);
@@ -179,6 +179,15 @@ const BannerSlider = () => {
                     <span>
                         <p><span>{actualIndex}</span> / {eventList.length - 2}</p>
                     </span>
+                    <div className="eventBanner_indicator-container">
+                        {eventList.slice(1, -1).map((_, index) => (
+                            <span
+                                key={index}
+                                className={`indicator-dot ${index + 1 === actualIndex ? 'active' : ''}`}
+                                onClick={() => setCurrentIndex(index + 1)}
+                            ></span>
+                        ))}
+                    </div>
                 </div>
             </section>
         </>
