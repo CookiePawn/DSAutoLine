@@ -107,6 +107,7 @@ const FastFAQSticky = (props) => {
                         >
                             상담신청하기
                         </button>
+                        <img src={require('../assets/img/dsautoline/phone_001.jpg')} onClick={clickFunction}/>
                     </div>
                 </span>
             </span>

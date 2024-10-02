@@ -52,7 +52,6 @@ const MainPage = (props) => {
     const [quickDealList, setQuickDealList] = useState(null)
     const [reviewList, setReviewList] = useState(null)
     const [popularList, setPopularList] = useState(null)
-    const [eventList, setEvevntList] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,15 +63,13 @@ const MainPage = (props) => {
             setReviewList(response3)
             const response4 = await popularListAxios()
             setPopularList(response4)
-            const response5 = await eventAxios(4, 0)
-            setEvevntList(response5)
         }
         fetchData()
     }, [])
 
     
 
-    if (!hotDealList || !quickDealList || !reviewList || !popularList || !eventList) {
+    if (!hotDealList || !quickDealList || !reviewList || !popularList ) {
         return (
             <Loading />
         )

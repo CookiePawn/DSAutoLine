@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Main_EventBanner.css';
-import { eventAxios } from '../services/Request';
+import { eventAxios, fastFAQAxios } from '../services/Request';
 import Loading from "../components/Loading";
 import { TermsofInformationPopup } from '../components/PopUp';
-import { fastFAQAxios } from '../services/Request';
 
 const BannerSlider = () => {
     const [eventList, setEventList] = useState(null);

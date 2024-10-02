@@ -24,7 +24,7 @@
   top: 300px;
   min-width: 260px;
   max-width: 260px;
-  height: 370px;
+  height: 420px;
   background-color: white;
   border: 1px solid #0064FF;
   border-radius: 12px;
@@ -36,7 +36,7 @@
   box-sizing: border-box;
 }
 
-.mainPage_QuickFAQSection>span>span>div>img {
+.mainPage_QuickFAQSection>span>span>div>img:nth-of-type(1) {
   width: 85px;
   height: 19px;
   margin-top: 12px;
@@ -125,13 +125,23 @@
 
 .mainPage_QuickFAQSection>span>span>div>button {
   position: absolute;
-  bottom: 0px;
+  bottom: 35px;
   width: 100%;
   min-height: 44px;
   font-size: 16px;
   font-weight: 600;
   color: white;
   background-color: #0064FF;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+.mainPage_QuickFAQSection>span>span>div>img:nth-of-type(2) {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  min-height: 35px;
   border: none;
   margin: 0;
   cursor: pointer;
