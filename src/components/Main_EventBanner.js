@@ -3,11 +3,12 @@ import '../styles/Main_EventBanner.css';
 import { eventAxios, fastFAQAxios } from '../services/Request';
 import Loading from "../components/Loading";
 import { TermsofInformationPopup } from '../components/PopUp';
+import useFastFAQStore from '../zustand/store';
 
 const BannerSlider = () => {
+    const { name, setName, phone, setPhone } = useFastFAQStore();
+
     const [eventList, setEventList] = useState(null);
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
     const [car, setCar] = useState('');
     const [infoSelect1, setInfoSelect1] = useState(false);
     const [infoSelect2, setInfoSelect2] = useState(false);
