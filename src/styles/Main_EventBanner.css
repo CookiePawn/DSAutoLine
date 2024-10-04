@@ -138,7 +138,7 @@
     overflow: hidden;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > button {
+.mainPage_BannerSection>div:nth-of-type(2)>button {
     background-color: #767676;
     opacity: 80%;
     color: white;
@@ -149,7 +149,7 @@
     cursor: pointer;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > button:nth-of-type(1) {
+.mainPage_BannerSection>div:nth-of-type(2)>button:nth-of-type(1) {
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -158,32 +158,32 @@
     border-bottom-left-radius: 50px;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > button:nth-of-type(2) {
+.mainPage_BannerSection>div:nth-of-type(2)>button:nth-of-type(2) {
     position: absolute;
     left: 50px;
     bottom: 20px;
     padding: 0px 0px 0px 10px;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > button:nth-of-type(3) {
+.mainPage_BannerSection>div:nth-of-type(2)>button:nth-of-type(3) {
     position: absolute;
     left: 80px;
     bottom: 20px;
     font-weight: 600;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > div {
+.mainPage_BannerSection>div:nth-of-type(2)>div {
     min-width: 100%;
     display: flex;
     flex-direction: row;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > div > img{
+.mainPage_BannerSection>div:nth-of-type(2)>div>img {
     min-width: 100%;
     cursor: pointer;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > span {
+.mainPage_BannerSection>div:nth-of-type(2)>span {
     width: 60px;
     height: 40px;
     background-color: #767676;
@@ -199,7 +199,7 @@
     border-bottom-right-radius: 50px;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > span > p {
+.mainPage_BannerSection>div:nth-of-type(2)>span>p {
     font-size: 16px;
     color: white;
     font-weight: 500;
@@ -208,7 +208,7 @@
     cursor: default;
 }
 
-.mainPage_BannerSection>div:nth-of-type(2) > span > p > span {
+.mainPage_BannerSection>div:nth-of-type(2)>span>p>span {
     font-size: 24px;
     color: white;
     font-weight: 600;
@@ -223,7 +223,7 @@
     bottom: 35px;
 }
 
-.eventBanner_indicator-container > .indicator-dot {
+.eventBanner_indicator-container>.indicator-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -233,7 +233,7 @@
     transition: background-color 0.3s;
 }
 
-.eventBanner_indicator-container > .indicator-dot.active {
+.eventBanner_indicator-container>.indicator-dot.active {
     background-color: #0064FF;
 }
 
@@ -267,21 +267,23 @@
 
 .eventLineBannerSection {
     position: relative;
-    width: 1280px;
-    height: 500px;
+    max-width: 1280px;
+    min-width: 1280px;
+    min-height: 700px;
     margin: auto;
     margin-top: 120px;
 }
 
-.eventLineBannerSection > img {
+.eventLineBannerSection>img {
     position: absolute;
-    top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 700px;
 }
 
-.eventLineBannerSection > button:nth-of-type(1) {
+.eventLineBannerSection>button:nth-of-type(1) {
     position: absolute;
-    top: 300px;
+    top: 400px;
     left: 20px;
     width: 70px;
     height: 50px;
@@ -290,9 +292,9 @@
     cursor: pointer;
 }
 
-.eventLineBannerSection > button:nth-of-type(2) {
+.eventLineBannerSection>button:nth-of-type(2) {
     position: absolute;
-    top: 300px;
+    top: 400px;
     right: 20px;
     width: 70px;
     height: 50px;
@@ -301,16 +303,16 @@
     cursor: pointer;
 }
 
-.eventLineBannerSection > span {
+.eventLineBannerSection>span {
     position: absolute;
-    top: 235px;
+    top: 330px;
     left: 120px;
     min-width: 1040px;
     max-width: 1040px;
     overflow: hidden;
 }
 
-.eventLineBannerSection > span > span {
+.eventLineBannerSection>span>span {
     max-width: 1040px;
     min-width: 1040px;
     height: 180px;
@@ -319,11 +321,13 @@
     gap: 10px;
 }
 
-.eventLineBannerSection > span > span > img {
+.eventLineBannerSection>span>span>img {
     min-width: 340px;
     max-width: 340px;
     min-height: 180px;
     max-width: 180px;
     border-radius: 12px;
     cursor: pointer;
+    border: 1px solid #ededed;
+    box-sizing: border-box;
 }

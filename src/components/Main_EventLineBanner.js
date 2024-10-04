@@ -39,7 +39,7 @@ const Main_EventLineBanner = (props) => {
     return (
         <>
             <section className="eventLineBannerSection">
-                <img src={require('../assets/img/event/event_line001.jpg')} alt="Banner" />
+                <img src={require('../assets/img/event/event_line001.gif')} alt="Banner" />
                 <button onClick={handlePrev}></button>
                 <button onClick={handleNext}></button>
                 <span>
