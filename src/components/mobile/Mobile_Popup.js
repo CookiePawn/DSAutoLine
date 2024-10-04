@@ -105,8 +105,8 @@ export const Mobile_QuickDealCardPopup = (props) => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
     // 간편 문의 변수
-    const [infoSelect1, setInfoSelect1] = useState(false);
-    const [infoSelect2, setInfoSelect2] = useState(false);
+    const [infoSelect1, setInfoSelect1] = useState(true);
+    const [infoSelect2, setInfoSelect2] = useState(true);
 
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
 

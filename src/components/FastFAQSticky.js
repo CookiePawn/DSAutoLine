@@ -5,8 +5,8 @@ import { fastFAQAxios } from '../services/Request';
 
 const FastFAQSticky = (props) => {
     // 간편 문의 변수
-    const [infoSelect1, setInfoSelect1] = useState(false);
-    const [infoSelect2, setInfoSelect2] = useState(false);
+    const [infoSelect1, setInfoSelect1] = useState(true);
+    const [infoSelect2, setInfoSelect2] = useState(true);
 
     // insert
     const [name, setName] = useState('');

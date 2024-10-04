@@ -3,8 +3,8 @@ import { fastFAQAxios } from '../../services/Request'
 
 const Mobile_MainPage_FastFAQ = (props) => {
     // 간편 문의 변수
-    const [infoSelect1, setInfoSelect1] = useState(false);
-    const [infoSelect2, setInfoSelect2] = useState(false);
+    const [infoSelect1, setInfoSelect1] = useState(true);
+    const [infoSelect2, setInfoSelect2] = useState(true);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [car, setCar] = useState('');

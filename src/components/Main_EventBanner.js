@@ -10,8 +10,8 @@ const BannerSlider = () => {
 
     const [eventList, setEventList] = useState(null);
     const [car, setCar] = useState('');
-    const [infoSelect1, setInfoSelect1] = useState(false);
-    const [infoSelect2, setInfoSelect2] = useState(false);
+    const [infoSelect1, setInfoSelect1] = useState(true);
+    const [infoSelect2, setInfoSelect2] = useState(true);
     const [isUsePopupVisible, setIsUsePopupVisible] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(1);
     const [isSliding, setIsSliding] = useState(true);

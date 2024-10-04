@@ -23,8 +23,8 @@ const Mobile_Option = (props) => {
     }, [id])
 
 
-    const [infoSelect1, setInfoSelect1] = useState(false)
-    const [infoSelect2, setInfoSelect2] = useState(false)
+    const [infoSelect1, setInfoSelect1] = useState(true)
+    const [infoSelect2, setInfoSelect2] = useState(true)
     const [colorStat, setColorStat] = useState([])
     const [oilStat, setOilStat] = useState(null)
 
