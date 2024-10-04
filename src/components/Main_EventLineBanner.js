@@ -42,6 +42,7 @@ const Main_EventLineBanner = (props) => {
                 <video muted autoPlay loop>
                     <source src={require('../assets/img/event/event_line001.mp4')} type="video/mp4" />
                 </video>
+                <img src={require('../assets/img/event/event_line001.png')}/>
                 <button onClick={handlePrev}></button>
                 <button onClick={handleNext}></button>
                 <span>
