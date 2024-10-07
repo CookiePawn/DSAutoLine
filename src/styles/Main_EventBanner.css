@@ -307,7 +307,7 @@
     height: 50px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .eventLineBannerSection>span {
