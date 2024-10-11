@@ -126,6 +126,9 @@ const Mobile_MainPage = (props) => {
                 </span>
             </section>
             <Mobile_PartnerSection />
+            <a id="chat-channel-button" href="https://pf.kakao.com/_NsEhn/chat">
+                <img src="/images/consult_small_yellow_pc.png" alt="카카오톡 채널 채팅하기 버튼" />
+            </a>
             <Mobile_Footer />
         </div>
     )

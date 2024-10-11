@@ -67,9 +67,9 @@ const MainPage = (props) => {
         fetchData()
     }, [])
 
-    
 
-    if (!hotDealList || !quickDealList || !reviewList || !popularList ) {
+
+    if (!hotDealList || !quickDealList || !reviewList || !popularList) {
         return (
             <Loading />
         )
