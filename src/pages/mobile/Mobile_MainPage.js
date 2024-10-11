@@ -5,15 +5,15 @@ import Mobile_Footer from "../../components/mobile/Mobile_Footer";
 import Mobile_MainPage_Banner from "../../components/mobile/Mobile_MainPage_Banner";
 import Mobile_MainPage_FastFAQ from "../../components/mobile/Mobile_MainPage_FastFAQ";
 import { Mobile_PartnerSection } from '../../components/Partner'
-import { 
+import {
     Mobile_CarmentoPopup,
     Mobile_TermsofInformationPopup,
 } from "../../components/mobile/Mobile_Popup";
-import { 
-    Mobile_HotDealCard, 
-    Mobile_QuickDealCard, 
+import {
+    Mobile_HotDealCard,
+    Mobile_QuickDealCard,
     Mobile_PopularCard,
-    Mobile_ReviewCard, 
+    Mobile_ReviewCard,
     Mobile_CarmentoCard
 } from "../../components/mobile/Mobile_Card";
 import {
@@ -63,13 +63,16 @@ const Mobile_MainPage = (props) => {
     }
     return (
         <div className="mobile_container">
-            {carmentoPopup !== null && <Mobile_CarmentoPopup mento={carmentoPopup} setPopup={setCarmentoPopup} setTerms={setTermsInfoPopup}/> }
-            {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup}/>}
+            {carmentoPopup !== null && <Mobile_CarmentoPopup mento={carmentoPopup} setPopup={setCarmentoPopup} setTerms={setTermsInfoPopup} />}
+            {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup} />}
             <Mobile_GNB page={'메인'} />
             <section className="mobile_main_eventBannerSection">
                 <Mobile_MainPage_Banner />
+                <a id="chat-channel-button" href="https://pf.kakao.com/_NsEhn/chat">
+                    <img src="/images/consult_small_yellow_pc.png" alt="카카오톡 채널 채팅하기 버튼" />
+                </a>
             </section>
-            <Mobile_MainPage_FastFAQ setTerms={setTermsInfoPopup}/>
+            <Mobile_MainPage_FastFAQ setTerms={setTermsInfoPopup} />
             <section className="mobile_main_hotDealSection">
                 <h3>한정 특가</h3>
                 <span>
@@ -78,7 +81,7 @@ const Mobile_MainPage = (props) => {
                         <Mobile_HotDealCard item={item} />
                     ))}
                 </span>
-                <button onClick={() => window.location.href='/HotDeal'}>자세히 보기</button>
+                <button onClick={() => window.location.href = '/HotDeal'}>자세히 보기</button>
             </section>
             <section className="mobile_main_quickDealSection">
                 <h3>즉시 출고</h3>
@@ -88,7 +91,7 @@ const Mobile_MainPage = (props) => {
                         <Mobile_QuickDealCard item={item} />
                     ))}
                 </span>
-                <button onClick={() => window.location.href='/QuickDeal'}>자세히 보기</button>
+                <button onClick={() => window.location.href = '/QuickDeal'}>자세히 보기</button>
             </section>
 
 
@@ -96,7 +99,7 @@ const Mobile_MainPage = (props) => {
 
 
 
-            
+
             <section className="mobile_main_popularSection">
                 <h3>가장 인기 많은 차량</h3>
                 <span>
@@ -107,10 +110,10 @@ const Mobile_MainPage = (props) => {
                 </span>
             </section>
             <section className="mobile_main_reviewSection">
-                <p onClick={() => window.location.href='/Review'}>전체 보기 〉</p>
+                <p onClick={() => window.location.href = '/Review'}>전체 보기 〉</p>
                 <h3>고객 리뷰</h3>
                 <span>
-                    {reviewList.length === 0 && <NoCardList card={'리뷰가'} />} 
+                    {reviewList.length === 0 && <NoCardList card={'리뷰가'} />}
                     {reviewList.map((item, _) => (
                         <Mobile_ReviewCard item={item} />
                     ))}
@@ -119,16 +122,13 @@ const Mobile_MainPage = (props) => {
             <section className="mobile_main_carmentoSection">
                 <h3>우수 카멘토</h3>
                 <span>
-                    <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup} img={'carmento1'}/>
-                    <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup} img={'carmento2'}/>
-                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup} img={'carmento3'}/>
-                    <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup} img={'carmento4'}/>
+                    <Mobile_CarmentoCard name={'김태경 팀장'} setPopup={setCarmentoPopup} img={'carmento1'} />
+                    <Mobile_CarmentoCard name={'허종현 대리'} setPopup={setCarmentoPopup} img={'carmento2'} />
+                    <Mobile_CarmentoCard name={'최진욱 대리'} setPopup={setCarmentoPopup} img={'carmento3'} />
+                    <Mobile_CarmentoCard name={'정의석 과장'} setPopup={setCarmentoPopup} img={'carmento4'} />
                 </span>
             </section>
             <Mobile_PartnerSection />
-            <a id="chat-channel-button" href="https://pf.kakao.com/_NsEhn/chat">
-                <img src="/images/consult_small_yellow_pc.png" alt="카카오톡 채널 채팅하기 버튼" />
-            </a>
             <Mobile_Footer />
         </div>
     )
