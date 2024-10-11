@@ -39,7 +39,21 @@ function App() {
 
 	return (
 		<Router>
-			<div>
+			<div style={{position: 'relative'}}>
+				<a
+					id="chat-channel-button"
+					href="https://pf.kakao.com/_NsEhn/chat"
+					target="_blank"
+					rel="noopener noreferrer"
+					style={{
+						position: 'fixed',
+						bottom: 20,
+						right: 20,
+						zIndex: 2000,
+					}}
+				>
+					<img src={require('./assets/img/kakaotalk/consult_small_yellow_pc.png')} alt="카카오톡 채널 채팅하기 버튼" />
+				</a>
 				<Routes>
 					{/* 메인 페이지 */}
 					<Route path="/" element={isMobile ? <Mobile_MainPage /> : <MainPage />} />

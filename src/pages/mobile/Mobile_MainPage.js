@@ -68,9 +68,6 @@ const Mobile_MainPage = (props) => {
             <Mobile_GNB page={'메인'} />
             <section className="mobile_main_eventBannerSection">
                 <Mobile_MainPage_Banner />
-                <a id="chat-channel-button" href="https://pf.kakao.com/_NsEhn/chat">
-                    <img src="/images/consult_small_yellow_pc.png" alt="카카오톡 채널 채팅하기 버튼" />
-                </a>
             </section>
             <Mobile_MainPage_FastFAQ setTerms={setTermsInfoPopup} />
             <section className="mobile_main_hotDealSection">
