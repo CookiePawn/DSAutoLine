@@ -27,10 +27,11 @@ const Mobile_ReviewAdd = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await carEnterListAxios()
-            setAxiosList(response)
+            const filteredList = response.filter(item => item.name !== '12312312' && item.name !== '1231231')
+            setAxiosList(filteredList)
             // 중복을 제거한 제조사 목록을 생성
             setEnterOptions(Array.from(
-                new Set(response.map(item => item.enter))
+                new Set(filteredList.map(item => item.enter))
             ).map(enter => ({
                 value: enter,
                 label: enter
@@ -38,12 +39,11 @@ const Mobile_ReviewAdd = (props) => {
 
             // 중복을 제거한 자동차 모델 목록을 생성
             setCarOptions(Array.from(
-                new Set(response.map(item => item.name))
+                new Set(filteredList.map(item => item.name))
             ).map(name => ({
                 value: name,
                 label: name
             })));
-            setCarOptions(carOptions.filter(item => item.value !== '12312312' && item.value !== '1231231'))
         }
         fetchData()
     }, [])
