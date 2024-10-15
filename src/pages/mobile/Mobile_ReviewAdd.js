@@ -43,6 +43,7 @@ const Mobile_ReviewAdd = (props) => {
                 value: name,
                 label: name
             })));
+            setCarOptions(carOptions.filter(item => item.value !== '12312312' && item.value !== '1231231'))
         }
         fetchData()
     }, [])
