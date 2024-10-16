@@ -15,3 +15,5 @@
   
   정의석 - UI/UX Designer
   
+# Notion
+    https://halved-writer-29b.notion.site/DS-AUTO-LINE-WEB-DEV-d7523b1774bc410fbccbb8243b2efcc4?pvs=74
