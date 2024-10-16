@@ -11,19 +11,19 @@
     Clean Code ~ 10/15
 
 # MEMBER
-      안준철 - Frontend
-[GitHub](https://github.com/CookiePawn)
+   안준철 - Frontend
+   [GitHub](https://github.com/CookiePawn)
       
-      백지환 - UI/UX Designer
-[GitHub](https://github.com/baekJiHwan)
+   백지환 - UI/UX Designer
+   [GitHub](https://github.com/baekJiHwan)
       
-      심민혁 - Frontend
-[GitHub](https://github.com/minhyuksim)
+   심민혁 - Frontend
+   [GitHub](https://github.com/minhyuksim)
       
-      소대현 - Backend
-[GitHub](https://github.com/meohyeon)
+   소대현 - Backend
+   [GitHub](https://github.com/meohyeon)
       
-      정의석 - UI/UX Designer
+   정의석 - UI/UX Designer
   
 # Notion
     https://halved-writer-29b.notion.site/DS-AUTO-LINE-WEB-DEV-d7523b1774bc410fbccbb8243b2efcc4?pvs=74
