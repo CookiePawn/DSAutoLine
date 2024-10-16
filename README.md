@@ -1,8 +1,8 @@
 # DSAutoLine
 
-  WEB DEV. 07/20 ~ 09/01
-  
-  MOBILE DEV. 09/01 ~ 09/10
+    WEB DEV. 07/20 ~ 09/01
+    
+    MOBILE DEV. 09/01 ~ 09/10
 
 # MEMBER
   안준철 - Frontend
