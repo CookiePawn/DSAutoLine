@@ -5,13 +5,13 @@
   MOBILE DEV. 09/01 ~ 09/10
 
 # MEMBER
-  안준철
+  안준철 - Frontend
   
-  백지환
+  백지환 - UI/UX Designer
   
-  심민혁
+  심민혁 - Frontend
   
-  소대현
+  소대현 - Backend
   
-  정의석
+  정의석 - UI/UX Designer
   
