@@ -4,6 +4,8 @@
     
     MOBILE DEV. 09/01 ~ 09/10
 
+    Clean Code ~ 10/15
+
 # MEMBER
       안준철 - Frontend
       
