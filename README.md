@@ -8,12 +8,16 @@
 
 # MEMBER
       안준철 - Frontend
+      https://github.com/CookiePawn
       
       백지환 - UI/UX Designer
+      https://github.com/baekJiHwan
       
       심민혁 - Frontend
+      https://github.com/minhyuksim
       
       소대현 - Backend
+      https://github.com/meohyeon
       
       정의석 - UI/UX Designer
   
