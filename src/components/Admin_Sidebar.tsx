@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/Admin_Sidebar.css'
-import { UpIcon, DownIcon, RightIcon } from '../components/Icons'
+import { UpIcon, DownIcon, RightIcon } from './Icons'
 
-function Admin_Sidebar(props) {
-    const [categoryStat, setCategoryStat] = useState(null)
+
+interface AdminSideBerProps {
+    pageStat: number,
+    setPageStat: (value: number) => void,
+}
+
+
+const Admin_Sidebar: React.FC<AdminSideBerProps> = (props) => {
+    const [categoryStat, setCategoryStat] = useState<any>(null)
 
     const pageStat = props.pageStat;
     const setPageStat = props.setPageStat;
@@ -23,8 +30,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 1 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 1.1 && 'selected'} onClick={() => setPageStat(1.1)}>차량 추가</p>
-                        <p className={pageStat === 1.2 && 'selected'} onClick={() => setPageStat(1.2)}>차량 관리</p>
+                        <p className={pageStat === 1.1 ? 'selected' : ''} onClick={() => setPageStat(1.1)}>차량 추가</p>
+                        <p className={pageStat === 1.2 ? 'selected' : ''} onClick={() => setPageStat(1.2)}>차량 관리</p>
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 2 ? null : 2)}>
@@ -38,8 +45,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 2 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 2.1 && 'selected'} onClick={() => setPageStat(2.1)}>차량 추가</p>
-                        <p className={pageStat === 2.2 && 'selected'} onClick={() => setPageStat(2.2)}>차량 관리</p>
+                        <p className={pageStat === 2.1 ? 'selected' : ''} onClick={() => setPageStat(2.1)}>차량 추가</p>
+                        <p className={pageStat === 2.2 ? 'selected' : ''} onClick={() => setPageStat(2.2)}>차량 관리</p>
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 3 ? null : 3)}>
@@ -53,8 +60,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 3 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 3.1 && 'selected'} onClick={() => setPageStat(3.1)}>차량 추가</p>
-                        <p className={pageStat === 3.2 && 'selected'} onClick={() => setPageStat(3.2)}>차량 관리</p>
+                        <p className={pageStat === 3.1 ? 'selected' : ''} onClick={() => setPageStat(3.1)}>차량 추가</p>
+                        <p className={pageStat === 3.2 ? 'selected' : ''} onClick={() => setPageStat(3.2)}>차량 관리</p>
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 4 ? null : 4)}>
@@ -68,11 +75,11 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 4 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 4.1 && 'selected'} onClick={() => setPageStat(4.1)}>이벤트 추가</p>
-                        <p className={pageStat === 4.2 && 'selected'} onClick={() => setPageStat(4.2)}>이벤트 관리</p>
+                        <p className={pageStat === 4.1 ? 'selected' : ''} onClick={() => setPageStat(4.1)}>이벤트 추가</p>
+                        <p className={pageStat === 4.2 ? 'selected' : ''} onClick={() => setPageStat(4.2)}>이벤트 관리</p>
                     </div>
                 }
-                <span onClick={() => { setCategoryStat(null); setPageStat(5) }} className={pageStat === 5 && 'selected'}>
+                <span onClick={() => { setCategoryStat(null); setPageStat(5) }} className={pageStat === 5 ? 'selected' : ''}>
                     <p>리뷰</p>
                     <span>
                         <RightIcon size={25} color={'#bbb'} />
@@ -91,8 +98,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 6 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 6.1 && 'selected'} onClick={() => setPageStat(6.1)}>외장 색상</p>
-                        <p className={pageStat === 6.2 && 'selected'} onClick={() => setPageStat(6.2)}>옵션</p>
+                        <p className={pageStat === 6.1 ? 'selected' : ''} onClick={() => setPageStat(6.1)}>외장 색상</p>
+                        <p className={pageStat === 6.2 ? 'selected' : ''} onClick={() => setPageStat(6.2)}>옵션</p>
                     </div>
                 }
                 <span onClick={() => setCategoryStat(categoryStat === 7 ? null : 7)}>
@@ -106,8 +113,8 @@ function Admin_Sidebar(props) {
                 </span>
                 {categoryStat === 7 &&
                     <div className='admin_Sidebar_categoryDiv'>
-                        <p className={pageStat === 7.1 && 'selected'} onClick={() => setPageStat(7.1)}>완료 고객</p>
-                        <p className={pageStat === 7.2 && 'selected'} onClick={() => setPageStat(7.2)}>미완료 고객</p>
+                        <p className={pageStat === 7.1 ? 'selected' : ''} onClick={() => setPageStat(7.1)}>완료 고객</p>
+                        <p className={pageStat === 7.2 ? 'selected' : ''} onClick={() => setPageStat(7.2)}>미완료 고객</p>
                     </div>
                 }
             </div>

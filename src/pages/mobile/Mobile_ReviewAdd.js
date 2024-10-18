@@ -46,7 +46,7 @@ const Mobile_ReviewAdd = (props) => {
             })));
         }
         fetchData()
-    }, []) 
+    }, [])   
 
     const clickFunction = async () => {
         if (name !== '' && car !== '' && enter !== '' && img !== null && starStat >= 1 && comment !== '') {

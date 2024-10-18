@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../../styles/mobile/Mobile_Admin.css'
 import { Mobile_Admin_UserCompletedList, Mobile_Admin_UserIncompleteList } from '../../components/mobile/Mobile_Admin_Content'
-import Admin_Login from "../../components/Admin_Login";
+import Admin_Login from "../../components/Admin_Login.tsx";
 
 
 

@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import '../styles/Admin_Content.css'
 import { loginAxios } from '../services/Request'
 
+interface AdminLoginProps {
+    width: string;
+    height: string;
+    setLogin: (value: number) => void;
+}
 
-
-const Admin_Login = (props) => {
-    const [id, setID] = useState('')
-    const [pw, setPW] = useState('')
-    const [count, setCount] = useState(5)
+const Admin_Login: React.FC<AdminLoginProps> = (props) => {
+    const [id, setID] = useState<string>('')
+    const [pw, setPW] = useState<string>('')
+    const [count, setCount] = useState<number>(5)
 
     return (
         <div className="admin_content">
@@ -20,7 +24,7 @@ const Admin_Login = (props) => {
                     <input value={pw} onChange={(e) => setPW(e.target.value)} />
                     <button
                         onClick={async () => {
-                            const response = await loginAxios({ id: id, password: pw })
+                            const response: any = await loginAxios({ id: id, password: pw })
                             if (response.sc === 200) {
                                 alert('DS AUTOLINE님 어서오세요!')
                                 if (props.width === '90%') {

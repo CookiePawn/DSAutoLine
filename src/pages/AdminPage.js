@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Admin_Sidebar from '../components/Admin_Sidebar';
-import Admin_Login from '../components/Admin_Login';
+import Admin_Sidebar from '../components/Admin_Sidebar.tsx';
+import Admin_Login from '../components/Admin_Login.tsx';
 import { Admin_ColorOption, Admin_Option } from '../components/Admin_Option';
 import { Admin_HotdealAdd, Admin_HotdealEdit } from '../components/Admin_Hotdeal';
 import { Admin_QuickFAQAdd, Admin_QuickFAQEdit } from '../components/Admin_QuickFAQ';
