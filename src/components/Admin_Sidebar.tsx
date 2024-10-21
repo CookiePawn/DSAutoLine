@@ -15,7 +15,7 @@ const Admin_Sidebar: React.FC<AdminSideBerProps> = (props) => {
     const pageStat = props.pageStat;
     const setPageStat = props.setPageStat;
 
- 
+  
     return (
         <div className="admin_Sidebar_sidebar">
             <div className="menu">
