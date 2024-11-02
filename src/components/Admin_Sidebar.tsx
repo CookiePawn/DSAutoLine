@@ -17,7 +17,7 @@ const Admin_Sidebar: React.FC<AdminSideBerProps> = (props) => {
 
      
     return (
-        <div className="admin_Sidebar_sidebar">
+        <div className="admin_Sidebar_sidebar"> 
             <div className="menu">
                 <span onClick={() => setCategoryStat(categoryStat === 1 ? null : 1)}>
                     <p>빠른 간편 문의</p>
