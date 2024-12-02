@@ -204,6 +204,9 @@ const EnterPage = () => {
                 <div className='Space'></div>
                 
             </div>
+
+            
+
             <Footer />
         </>
     );
