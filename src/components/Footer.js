@@ -54,7 +54,8 @@ const Footer = (props) => {
             if(window.wcs){
             wcs.inflow();
             wcs_do();
-            }
+            } 
+            
             </script>
                     </footer>
                 )
