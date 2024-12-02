@@ -1,4 +1,10 @@
 import axios from 'axios';
+import {
+    loadNaverWCS,
+    sendOptionConversion,
+    sendEnterConversion,
+    sendFastFAQConversion,
+} from '../utils/NaverWcs';
 
 
 const dbServerUrl = process.env.REACT_APP_DB_SERVER_URL;
@@ -164,6 +170,14 @@ export const eventInfoAxios = async (id) => {
 export const fastFAQAxios = async (data) => {
     try {
         await axios.post(`${dbServerUrl}/counseling`, data)
+        // TODO: 기업 상담 전환 스크립트
+        if (data.type === '기업상담') {
+            await loadNaverWCS();
+            sendEnterConversion();
+        } else if (data.type === undefined) {
+            await loadNaverWCS();
+            sendFastFAQConversion();
+        }
     } catch (error) {
         // console.log(error)
     }
@@ -191,7 +205,10 @@ export const estimatedAxios = async (id) => {
  */
 export const estimatedAddAxios = async (data) => {
     try {
-        const response = await axios.post(`${dbServerUrl}/estimateInsert`, data)
+        await axios.post(`${dbServerUrl}/estimateInsert`, data)
+        // TODO: 견적서 신청 전환 스크립트
+        await loadNaverWCS();
+        sendOptionConversion();
     } catch (error) {
         // console.log(error)
     }
@@ -308,7 +325,7 @@ export const eventAddAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 이벤트 삭제 DELETE
@@ -320,7 +337,7 @@ export const eventDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -335,7 +352,7 @@ export const reviewChangeAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 리뷰 삭제 DELETE
@@ -347,7 +364,7 @@ export const reviewDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -363,7 +380,7 @@ export const colorGetAxios = async () => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 색상 추가 POST
@@ -375,7 +392,7 @@ export const colorAddAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 색상 삭제 DELETE
@@ -387,7 +404,7 @@ export const colorDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -402,7 +419,7 @@ export const optionGetAxios = async () => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 색상 추가 POST
@@ -414,7 +431,7 @@ export const optionAddAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 색상 삭제 DELETE
@@ -426,7 +443,7 @@ export const optionDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -441,7 +458,7 @@ export const currentSituationAxios = async () => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 /**
@@ -455,7 +472,7 @@ export const userListAxios = async (type, active) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 고객 리스트 - 견적서 DELETE
@@ -467,7 +484,7 @@ export const carInquiryDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 고객 리스트 - 견적서 완료/미완료 POST
@@ -479,7 +496,7 @@ export const carInquiryChangeAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 /**
@@ -492,7 +509,7 @@ export const counselingInquiryDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 고객 리스트 - 간편 상담 완료/미완료 POST
@@ -504,7 +521,7 @@ export const counselingInquiryChangeAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 /**
@@ -517,7 +534,7 @@ export const mentoInquiryDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 고객 리스트 - 우수 카멘토 완료/미완료 POST
@@ -543,7 +560,7 @@ export const quickInquiryDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 고객 리스트 - 즉시출고 완료/미완료 POST
@@ -568,7 +585,7 @@ export const carFaqDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 한정 특가 차량 삭제 DELETE
@@ -580,7 +597,7 @@ export const hotDealDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 즉시 출고 차량 삭제 DELETE
@@ -592,7 +609,7 @@ export const quickDealDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -612,7 +629,7 @@ export const carInsertAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -627,7 +644,7 @@ export const faqFilterAxios = async () => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 /**
  * 관리자 페이지 - 한정특가 추가 POST
@@ -639,7 +656,7 @@ export const hotDealInsertAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 /**
@@ -652,7 +669,7 @@ export const quickDealInsertAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -674,7 +691,7 @@ export const quickCounselingInsertAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
@@ -691,7 +708,7 @@ export const enterListAxios = async () => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
 
 
