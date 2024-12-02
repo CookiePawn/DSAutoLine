@@ -12,7 +12,6 @@ import {
 import Loading from "../components/Loading";
 
 
-
 export const Admin_EventAdd = () => {
     const [selectedEvent, setSelectedEvent] = useState(0);
     const [selectedSize, setSelectedSize] = useState('1280 x 700');

@@ -45,6 +45,7 @@ const Footer = (props) => {
             <div>
                 <p>COPYRIGHT @2024 DSAUTOLINE CO, LTD ALL RIGHTS RESERVED.</p>
             </div>
+            <p>test</p>
         </footer>
     )
 }
