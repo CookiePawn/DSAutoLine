@@ -37,16 +37,12 @@ function App() {
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-	const sendKakaoTalkConversion = () => {
-		window.location.href="/sendKakaoTalkConversion.html";
-	}
-
 	return (
 		<Router>
 			<div style={{position: 'relative'}}>
 				<a
 					id="chat-channel-button"
-					onClick={sendKakaoTalkConversion}
+					href="https://pf.kakao.com/_NsEhn/chat"
 					target="_blank"
 					rel="noopener noreferrer"
 					style={{

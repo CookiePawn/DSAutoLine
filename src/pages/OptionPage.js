@@ -16,6 +16,7 @@ import Loading from "../components/Loading";
 
 
 
+
 const OptionPage = (props) => {
     const { id } = useParams();
     const [content, setContent] = useState(null)
@@ -302,7 +303,7 @@ const OptionPage = (props) => {
                                 </span>
                             </div>
                             <h3 style={{ marginTop: 120 }}>옵션 추가하기</h3>
-                            {optionStat.length === 0 && <NoCardList card={'옵션이'} />}
+                            {optionStat.length === 0 && <NoCardList card={'옵션이'}/>}
                             {trimSelect1 !== null && trimSelect2 !== null
                                 ? <div className="optionSelectDiv">
                                     {optionStat.map((item, _) => (
@@ -381,12 +382,12 @@ const OptionPage = (props) => {
                             <h4>개인 정보</h4>
                             <span>
                                 <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10} />
-                                <input
-                                    placeholder="연락처를 적어주세요"
-                                    value={useingSelect9}
-                                    onChange={event => setUseingSelect9(event.target.value)}
+                                <input 
+                                    placeholder="연락처를 적어주세요" 
+                                    value={useingSelect9} 
+                                    onChange={event => setUseingSelect9(event.target.value)} 
                                     type="number"
-                                    maxLength={11}
+                                    maxLength={11} 
                                 />
                             </span>
                         </div>
