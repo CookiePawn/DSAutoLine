@@ -45,9 +45,19 @@ const Footer = (props) => {
             <div>
                 <p>COPYRIGHT @2024 DSAUTOLINE CO, LTD ALL RIGHTS RESERVED.</p>
             </div>
-            <p>test</p>
-        </footer>
-    )
-}
+            
+            <script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script> 
+            <script type="text/javascript"> 
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = "s_54bd969202cb";
+            if (!_nasa) var _nasa={};
+            if(window.wcs){
+            wcs.inflow();
+            wcs_do();
+            }
+            </script>
+                    </footer>
+                )
+            }
 
 export default Footer
