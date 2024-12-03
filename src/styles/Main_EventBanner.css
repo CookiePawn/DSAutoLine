@@ -401,7 +401,7 @@
   .slider-controls {    
     position: absolute;
     bottom: 20px;
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
     z-index: 10;
   }
