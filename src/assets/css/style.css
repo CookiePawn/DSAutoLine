@@ -1,0 +1,49 @@
+#chat-channel-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+@media (min-width: 768px) { /* 웹 브라우저 (태블릿 이상의 크기) */
+    #chat-channel-button img {
+        width: 150px;
+    }
+}
+
+.gnb-social-container {
+    position: relative;
+    min-width: 1280px;
+    max-width: 1280px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;    
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.gnb-phone {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: #333;
+}
+
+.gnb-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.gnb-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.gnb-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
