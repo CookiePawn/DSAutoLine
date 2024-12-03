@@ -338,3 +338,71 @@
     border: 1px solid #ededed;
     box-sizing: border-box;
 }
+
+/* 슬라이더 컨트롤 스타일 */
+.slider-controls {
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .slider-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: gray;
+    border-radius: 20px;
+  }
+  
+  .prev-button,
+  .next-button {
+    background-color: gray;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .slider-info p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .toggle-button {
+    padding-bottom: 5px;
+    border-radius: 50%;
+    background-color: gray;
+    border: none;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .slider-button button {
+    cursor: pointer;
+  }
+  
+  .slider-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  /* 스타일을 수정하여 위치 및 외관을 설정 */
+  .slider-controls {    
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  
