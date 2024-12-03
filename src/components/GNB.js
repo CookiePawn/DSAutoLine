@@ -88,7 +88,7 @@ const GNB = (props) => {
                             className="gnb-icon"
                         />
                     </a>
-                    <a href="https://blog.example.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer">
                         <img
                             src={require('../assets/icons/blog.png')}
                             alt="Blog"
