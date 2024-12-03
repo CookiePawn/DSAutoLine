@@ -77,6 +77,39 @@ const GNB = (props) => {
                     }
                 </div>
             </div>
+            <div className="gnb-social-container">
+                <span className="gnb-phone">☎ 1661-1310</span>
+                <div className="gnb-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img 
+                            src={require('../assets/icons/instagram.png')}
+                            alt="Instagram"
+                            className="gnb-icon"
+                        />
+                    </a>
+                    <a href="https://blog.example.com" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src={require('../assets/icons/blog.png')}
+                            alt="Blog"
+                            className="gnb-icon"
+                        />
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src={require('../assets/icons/facebook.png')}
+                            alt="Facebook"
+                            className="gnb-icon"
+                        />
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src={require('../assets/icons/youtube.png')}
+                            alt="YouTube"
+                            className="gnb-icon"
+                        />
+                    </a>
+                </div>
+            </div>
         </div>
     )
 }
