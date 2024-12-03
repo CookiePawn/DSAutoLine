@@ -167,18 +167,22 @@ const BannerSlider = () => {
                             />
                         ))}
                     </div>
-                    <button className="prev-button" onClick={handlePrev}>〈</button>
-                    <button className="next-button" onClick={handleNext}>〉</button>
-                    <button
-                        className="stop-button"
-                        onClick={toggleSliding}
-                        style={isSliding ? { fontSize: 30, paddingBottom: 5 } : { fontSize: 16 }}
-                    >
-                        {isSliding ? '■' : '▶'}
-                    </button>
-                    <span>
-                        <p><span>{actualIndex}</span> / {eventList.length - 2}</p>
-                    </span>
+                    <div className="slider-controls">
+                        <button
+                            className="toggle-button"
+                            onClick={toggleSliding}
+                            style={isSliding ? { fontSize: 20 } : { fontSize: 20 }}
+                        >
+                            {isSliding ? '⏸' : '▶'}
+                        </button>
+                        <div className="slider-button">
+                            <button className="prev-button" onClick={handlePrev}>〈</button>
+                            <span className="slider-info">
+                                <p>{actualIndex} / {eventList.length - 2}</p>
+                            </span>
+                            <button className="next-button" onClick={handleNext}>〉</button>
+                        </div>
+                    </div>
                     <div className="eventBanner_indicator-container">
                         {eventList.slice(1, -1).map((_, index) => (
                             <span

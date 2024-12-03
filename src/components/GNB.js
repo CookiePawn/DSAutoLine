@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SearchIcon, CloseIcon } from './Icons'
 import '../styles/GNB.css'
+import '../assets/css/style.css'
 import DSAutoLine from '../assets/img/dsautoline/DSAUTOLINE.png'
 import { quickFAQAxios } from '../services/Request';
 
