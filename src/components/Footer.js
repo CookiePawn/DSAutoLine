@@ -47,7 +47,7 @@ const Footer = (props) => {
             </div>
             
             
-                <script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script> 
+                {/* <script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script> 
                 <script type="text/javascript"> 
                 if (!wcs_add) var wcs_add={};
                 wcs_add["wa"] = "s_54bd969202cb";
@@ -56,7 +56,7 @@ const Footer = (props) => {
                 wcs.inflow();
                 wcs_do();
                 }
-                </script>
+                </script> */}
 
                     </footer>
                 )
