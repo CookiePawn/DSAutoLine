@@ -77,17 +77,14 @@ const GNB = (props) => {
                         </div>
                     }
                 </div>
-            </div>
-            <div className="gnb-ad-container">
-                <div className="ad-content">
-                <span className="ad-warning">※ 광고 문의 사절</span>
-                    <div className="ad-contact">
-                    ☎ 1661-1310
-                    </div>
-                </div>
-            </div>
+            </div>            
             <div className="gnb-social-container">
-                <span className="gnb-phone">☎ 1661-1310</span>
+                <div className="ad-content">
+                    <span className="ad-warning">※ 광고 문의 사절</span>
+                        <div className="ad-contact">
+                        ☎ 1661-1310
+                        </div>
+                </div>
                 <div className="gnb-icons">
                     <a href="https://www.instagram.com/ds_autoline/" target="_blank" rel="noopener noreferrer">
                         <img 
