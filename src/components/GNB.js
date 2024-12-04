@@ -78,17 +78,25 @@ const GNB = (props) => {
                     }
                 </div>
             </div>
+            <div className="gnb-ad-container">
+                <div className="ad-content">
+                <span className="ad-warning">※ 광고 문의 사절</span>
+                    <div className="ad-contact">
+                    ☎ 1661-1310
+                    </div>
+                </div>
+            </div>
             <div className="gnb-social-container">
                 <span className="gnb-phone">☎ 1661-1310</span>
                 <div className="gnb-icons">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/ds_autoline/" target="_blank" rel="noopener noreferrer">
                         <img 
                             src={require('../assets/icons/instagram.png')}
                             alt="Instagram"
                             className="gnb-icon"
                         />
                     </a>
-                    <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://blog.naver.com/ds_autoline" target="_blank" rel="noopener noreferrer">
                         <img
                             src={require('../assets/icons/blog.png')}
                             alt="Blog"
@@ -102,7 +110,7 @@ const GNB = (props) => {
                             className="gnb-icon"
                         />
                     </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.youtube.com/@%EB%94%94%EC%97%90%EC%8A%A4%EC%98%A4%ED%86%A0%EB%9D%BC%EC%9D%B8-d7k" target="_blank" rel="noopener noreferrer">
                         <img
                             src={require('../assets/icons/youtube.png')}
                             alt="YouTube"

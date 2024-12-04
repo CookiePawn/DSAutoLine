@@ -11,11 +11,49 @@
     }
 }
 
+.gnb-ad-container {
+    position: relative;
+    min-width: 980px;
+    max-width: 980px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    align-items: center;    
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.ad-content {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    justify-content: center; /* 세로 가운데 정렬 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.ad-warning {
+    font-size: 14px; /* 작은 글씨 크기 */
+    color: darkgreen; /* 강조 색상 */
+    font-weight: bold; /* 강조 */
+    margin-bottom: 5px; /* 아래 여백 */
+}
+
+.ad-contact {
+    font-size: 18px; /* 큰 글씨 크기 */
+    font-weight: bold;
+}
+
+.phone-icon {
+    margin-right: 5px; /* 아이콘과 번호 간격 */
+}
+
 .gnb-social-container {
     position: relative;
     min-width: 1280px;
     max-width: 1280px;
-    height: 80px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     margin: auto;
