@@ -11,26 +11,13 @@
     }
 }
 
-.gnb-ad-container {
-    position: relative;
-    min-width: 980px;
-    max-width: 980px;
-    height: 20px;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    align-items: center;    
-    justify-content: flex-end;
-    padding: 10px 20px;
-    background-color: white;
-}
-
 .ad-content {
     display: flex;
     flex-direction: column; /* 세로 정렬 */
     align-items: flex-start; /* 왼쪽 정렬 */
     justify-content: center; /* 세로 가운데 정렬 */
     text-align: left; /* 텍스트 왼쪽 정렬 */
+    margin-right: 20px;
 }
 
 .ad-warning {
