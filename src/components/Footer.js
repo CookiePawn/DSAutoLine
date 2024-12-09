@@ -2,6 +2,7 @@ import '../styles/Footer.css'
 import dsautoline_white from '../assets/img/dsautoline/dsautoline_white.png'
 import { TermsofInformationPopup, TermsofUsePopUp } from '../components/PopUp';
 import React, { useState } from 'react';
+import NaverScript from '../components/NaverScript'; // NaverScript import
 
 
 
@@ -17,6 +18,9 @@ const Footer = (props) => {
 
     return (
         <footer className='footerSection'>
+            {/* 네이버 스크립트 */}
+            <NaverScript />
+
             <div>
                 <span>
                     <p onClick={() => {setIsUsePopupVisible1(true); document.body.style.overflowY='hidden'}}>이용약관</p>
@@ -45,20 +49,7 @@ const Footer = (props) => {
             <div>
                 <p>COPYRIGHT @2024 DSAUTOLINE CO, LTD ALL RIGHTS RESERVED.</p>
             </div>
-            
-            
-                {/* <script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script> 
-                <script type="text/javascript"> 
-                if (!wcs_add) var wcs_add={};
-                wcs_add["wa"] = "s_54bd969202cb";
-                if (!_nasa) var _nasa={};
-                if(window.wcs){
-                wcs.inflow();
-                wcs_do();
-                }
-                </script> */}
-
-                    </footer>
+        </footer>
                 )
             }
 
