@@ -37,6 +37,21 @@ function App() {
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+	// 카카오톡 버튼 클릭 핸들러
+	const handleKakaoButtonClick = () => {
+		if (window.wcs) {
+			if (!window.wcs_add) window.wcs_add = {};
+			window.wcs_add['wa'] = 's_54bd969202cb';
+
+			const _conv = {
+				value: '100', // 원하는 전환 값
+				type: 'lead', // 전환 타입 설정
+			};
+			window.wcs.trans(_conv);
+			console.log('Naver conversion script executed');
+		}
+	};
+
 	return (
 		<Router>
 			<div style={{position: 'relative'}}>
@@ -51,6 +66,7 @@ function App() {
 						right: 20,
 						zIndex: 2000,
 					}}
+					onClick={handleKakaoButtonClick} // 클릭 핸들러 추가
 				>
 					<img src={require('./assets/img/kakaotalk/consult_small_yellow_pc.png')} alt="카카오톡 채널 채팅하기 버튼" />
 				</a>
