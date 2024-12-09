@@ -7,23 +7,45 @@ const NaverScript = () => {
     script.async = true;
     document.body.appendChild(script);
 
-    script.onload = () => {
+    const initializeWcs = () => {
       if (!window.wcs_add) window.wcs_add = {};
       window.wcs_add["wa"] = "s_54bd969202cb";
       if (!window._nasa) window._nasa = {};
-      if (window.wcs) {
-        window.wcs.inflow();
-        window.wcs_do();
-      }
+
+      // 재시도 로직
+      const interval = setInterval(() => {
+        if (window.wcs) {
+          console.log("Executing wcs functions...");
+          window.wcs.inflow();
+          window.wcs_do();
+          clearInterval(interval); // 초기화 완료 후 인터벌 종료
+        }
+      }, 100);
+
+      // 5초 내에 초기화 실패 시 로그 출력
+      setTimeout(() => {
+        clearInterval(interval);
+        if (!window.wcs) {
+          console.error("Failed to initialize wcs object.");
+        }
+      }, 5000);
+    };
+
+    script.onload = () => {
+      console.log("Naver script loaded successfully!");
+      initializeWcs();
+    };
+
+    script.onerror = () => {
+      console.error("Failed to load Naver script.");
     };
 
     return () => {
-      // Clean up 스크립트 제거
       document.body.removeChild(script);
     };
   }, []);
 
-  return null; // 렌더링할 UI 없음
+  return null;
 };
 
 export default NaverScript;
