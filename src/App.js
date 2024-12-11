@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 //PC
 import MainPage from './pages/MainPage';
@@ -29,6 +29,7 @@ import Mobile_QuickDeal from './pages/mobile/Mobile_QuickDeal';
 import Mobile_Option from './pages/mobile/Mobile_Option'
 import Mobile_Enter from './pages/mobile/Mobile_Enter';
 import Mobile_Admin from './pages/mobile/Mobile_Admin';
+import PopupWindow from './components/PopupWindow'; // 팝업 컴포넌트 import
 
 function App() {
 	useEffect(() => {
@@ -36,9 +37,6 @@ function App() {
 	}, [])
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-	// 팝업 상태 관리
-	const [showPopup, setShowPopup] = useState(false);
 
 	// 카카오톡 버튼 클릭 핸들러
 	const handleKakaoButtonClick = () => {
@@ -55,54 +53,12 @@ function App() {
 		}
 	};
 
-	// 페이지 로드 시 팝업 표시 조건 확인
-	useEffect(() => {
-		const popupLastClosed = localStorage.getItem('popupLastClosed');
-		const now = new Date().getTime();
-		// 24시간(1일) 기준
-		const oneDay = 24 * 60 * 60 * 1000;
-
-		if (!popupLastClosed || now - popupLastClosed > oneDay) {
-		setShowPopup(true); // 24시간이 지났으면 팝업 표시
-		}
-	}, []);
-
-	// "하루 동안 보지 않기" 버튼 핸들러
-	const handleHideForADay = () => {
-		const now = new Date().getTime();
-		localStorage.setItem('popupLastClosed', now); // 현재 시간을 저장
-		setShowPopup(false); // 팝업 닫기
-	};
-
-	// "닫기" 버튼 핸들러
-	const handleClosePopup = () => {
-		setShowPopup(false); // 팝업 닫기
-	};
-
 	return (
 		<Router>
 			<div style={{position: 'relative'}}>
 
 				{/* 광고 팝업 */}
-				{showPopup && (
-				<div className="popup">
-					<a href="https://dsautoline.com/event/CgPiO452QGTbDersPhav" target="_blank" rel="noopener noreferrer">
-						<img
-						src={require('./assets/img/advertisement.png')} // 광고 이미지 경로
-						alt="광고 팝업"						
-						className="advertisement-img"
-						/>
-					</a>
-					<div className="popup-button-container">
-					<button className="popup-button" onClick={handleHideForADay}>
-						하루 동안 보지 않기
-					</button>
-					<button className="popup-button" onClick={handleClosePopup}>
-						닫기
-					</button>
-					</div>
-				</div>
-				)}
+				<PopupWindow />
 
 				<a
 					id="chat-channel-button"
