@@ -72,3 +72,52 @@
     transform: scale(1.2);
     opacity: 0.8;
 }
+
+/* 팝업 스타일 */
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    width: 90%;
+    max-width: 400px;
+    z-index: 3000;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* 버튼 컨테이너 스타일 */
+  .popup-button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f1f1f1;
+  }
+  
+  /* 버튼 스타일 */
+  .popup-button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .advertisement-img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer; /* 마우스 포인터 표시 */
+  }
+
+  /* 모바일 화면용 팝업 스타일 */
+@media (max-width: 768px) {
+    .popup {
+      width: 80%; /* 모바일에서는 더 작은 너비 */
+      top: 30%; /* 약간 아래로 조정 */
+    }
+  }
+  
