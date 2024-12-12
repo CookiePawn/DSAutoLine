@@ -73,20 +73,32 @@
     opacity: 0.8;
 }
 
-/* 팝업 스타일 */
-.popup {
+/* App.css 또는 PopupWindow 관련 CSS 파일에 추가 */
+.popup-overlay {
     position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-    width: 90%;
-    max-width: 400px;
-    z-index: 3000;
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+    z-index: 999; /* 팝업 아래, 다른 요소 위 */
   }
+  
+  .popup {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 1000; /* overlay 위에 나타남 */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px #0000004d;
+    max-width: 400px;
+    overflow: hidden;   
+    width: 90%;
+  }
+  
   
   /* 버튼 컨테이너 스타일 */
   .popup-button-container {
@@ -116,8 +128,12 @@
   /* 모바일 화면용 팝업 스타일 */
 @media (max-width: 768px) {
     .popup {
-      width: 80%; /* 모바일에서는 더 작은 너비 */
-      top: 30%; /* 약간 아래로 조정 */
+        width: 80%; /* 모바일에서는 더 작은 너비 */
+        height: auto; /* 기본적으로 높이는 내용에 맞게 */
+        max-height: 50%; /* 최대 높이 제한 */
+        top: 50%; /* 중앙 정렬 */
+        transform: translate(-50%, -50%); /* 팝업 위치 조정 */
+        overflow-y: auto; /* 내용이 많을 경우 스크롤 활성화 */
     }
   }
   
