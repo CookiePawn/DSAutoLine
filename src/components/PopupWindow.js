@@ -38,8 +38,7 @@ function PopupWindow() {
   return (
     <div className="popup">
       <a
-        href="https://dsautoline.com/event/CgPiO452QGTbDersPhav"
-        target="_blank"
+        href="https://dsautoline.com/event/CgPiO452QGTbDersPhav"        
         rel="noopener noreferrer"
       >
         <img
