@@ -39,8 +39,7 @@ function PopupWindow() {
       {/* 팝업 창 */}
       <div className="popup">
         <a
-          href="https://dsautoline.com/event/CgPiO452QGTbDersPhav"
-          target="_blank"
+          href="https://dsautoline.com/event/CgPiO452QGTbDersPhav"          
           rel="noopener noreferrer"
         >
           <img
