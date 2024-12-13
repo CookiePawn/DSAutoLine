@@ -45,8 +45,8 @@ function App() {
 			window.wcs_add['wa'] = 's_54bd969202cb';
 
 			const _conv = {
-				value: '100', // 원하는 전환 값
-				type: 'lead', // 전환 타입 설정
+				value: '1', // 원하는 전환 값
+				type: 'custom001', // 전환 타입 설정
 			};
 			window.wcs.trans(_conv);
 			console.log('Naver conversion script executed');
