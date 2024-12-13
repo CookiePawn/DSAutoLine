@@ -3,6 +3,21 @@ import { StarIcon } from '../../components/Icons'
 import { Mobile_QuickDealCardPopup } from './Mobile_Popup'
 
 
+const clickFunction = async () => {
+
+    if (window.wcs) {
+        if (!window.wcs_add) window.wcs_add = {};
+        window.wcs_add['wa'] = 's_54bd969202cb';//견적 및 상담신청하기
+
+        const _conv = {
+            value: '10', // 원하는 전환 값
+            type: 'lead', // 전환 타입 설정
+        };
+        window.wcs.trans(_conv);
+        console.log('Naver conversion script executed');
+    }
+}
+
 export const Mobile_HotDealCard = (props) => {
     return (
         <div className="mobile_hotDealCard" onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
@@ -22,7 +37,7 @@ export const Mobile_HotDealCard = (props) => {
                 <p>{props.item.payment}</p>
                 <p>{props.item.deposit} 30%</p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -78,7 +93,7 @@ export const Mobile_PopularCard = (props) => {
                 <p>차량가</p>
                 <p><span></span>{parseInt(props.item.price / 10000).toLocaleString()}<span>만원</span></p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -125,7 +140,7 @@ export const Mobile_QuickFAQPageCard = (props) => {
             <span>
                 <p>차량가</p><p><span></span> {props.item.price.toLocaleString()}<span>원</span></p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -150,7 +165,7 @@ export const Mobile_HotDealPageCard = (props) => {
                 <p>{props.item.payment}</p>
                 <p>{props.item.deposit} 30%</p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }

@@ -6,8 +6,20 @@ import { IoMdStar } from "react-icons/io";
 import { RightIcon } from './Icons';
 import { QuickDealCarCard_Popup } from '../components/PopUp';
 
+const clickFunction = async () => {
 
+    if (window.wcs) {
+        if (!window.wcs_add) window.wcs_add = {};
+        window.wcs_add['wa'] = 's_54bd969202cb';//견적 및 상담신청하기
 
+        const _conv = {
+            value: '10', // 원하는 전환 값
+            type: 'lead', // 전환 타입 설정
+        };
+        window.wcs.trans(_conv);
+        console.log('Naver conversion script executed');
+    }
+}
 
 /**
  * 메인 페이지 - 한정 특가 상품 카드
@@ -57,7 +69,7 @@ export const HotDealCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -287,7 +299,7 @@ export const PopularCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price.toLocaleString()}</span>원</p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -324,7 +336,7 @@ export const QuickCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
             </span>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -381,7 +393,7 @@ export const HotDealCarCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button>견적 및 상담 신청하기</button>
+            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
         </div>
     )
 }
