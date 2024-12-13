@@ -44,6 +44,18 @@ const FastFAQSticky = (props) => {
     }, []); // 빈 배열로 한번만 실행
 
     const clickFunction = async () => {
+        if (window.wcs) {
+			if (!window.wcs_add) window.wcs_add = {};
+			window.wcs_add['wa'] = 's_54bd969202cb';//우측 상담 신청하기(웹)
+
+			const _conv = {
+				value: '100', // 원하는 전환 값
+				type: 'lead', // 전환 타입 설정
+			};
+			window.wcs.trans(_conv);
+			console.log('Naver conversion script executed');
+		}
+
         if (infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') {
             await fastFAQAxios({
                 name: name,
