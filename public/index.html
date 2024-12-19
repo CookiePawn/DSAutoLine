@@ -28,15 +28,34 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HB6D1PPRLS"></script>;
+<!-- Google Tag -->
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtag.start': new Date().getTime(),
+      event: 'gtag.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtag/js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
 
-gtag('config', 'G-HB6D1PPRLS');
+    // Initialize gtag.js after script is loaded
+    j.onload = function() {
+      w[l] = w[l] || [];
+      w.gtag = function() {
+        w[l].push(arguments);
+      };
+      w.gtag('js', new Date());
+      w.gtag('config', i);
+    };
+  })(window, document, 'script', 'dataLayer', 'G-HB6D1PPRLS');
 </script>
+<!-- End Google Tag -->
+
 
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
