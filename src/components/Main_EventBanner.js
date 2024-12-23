@@ -83,30 +83,33 @@ const BannerSlider = () => {
     }, [currentIndex, eventList]);
 
     const clickFunction = async () => {
-
-        if (window.wcs) {
-			if (!window.wcs_add) window.wcs_add = {};
-			window.wcs_add['wa'] = 's_54bd969202cb';//기업전용상담신청
-
-			const _conv = {
-				value: '100', // 원하는 전환 값
-				type: 'lead', // 전환 타입 설정
-			};
-			window.wcs.trans(_conv);
-			console.log('Naver conversion script executed');
-		}
-
         if (infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') {
-            await fastFAQAxios({
-                name: name,
-                phone: phone,
-                car_name: car,
-                type: '기업상담',
-            });
-            alert('상담 신청이 완료되었습니다.');
-            setCar('');
-            setName('');
-            setPhone('');
+            try {
+                await fastFAQAxios({
+                    name: name,
+                    phone: phone,
+                    car_name: car,
+                    type: '기업상담',
+                });
+                if (window.wcs) {
+                    if (!window.wcs_add) window.wcs_add = {};
+                    window.wcs_add['wa'] = 's_54bd969202cb'; // 기업전용상담신청
+    
+                    const _conv = {
+                        value: '100', // 원하는 전환 값
+                        type: 'lead', // 전환 타입 설정
+                    };
+                    window.wcs.trans(_conv);
+                    console.log('Naver conversion script executed');
+                }
+                alert('상담 신청이 완료되었습니다.');
+                setCar('');
+                setName('');
+                setPhone('');
+            } catch (error) {
+                console.error('Data submission failed:', error);
+                alert('서버에 문제가 발생했습니다. 다시 시도해주세요.');
+            }
         } else {
             alert('내용이 입력되지 않았습니다.');
         }
