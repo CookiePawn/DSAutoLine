@@ -209,7 +209,7 @@ const OptionPage = (props) => {
                         </div>
                         {colorStat.length !== 0 && trimSelect1 && trimSelect2 && options && useingSelect1 && useingSelect2 && useingSelect3 && useingSelect5 && useingSelect6 && useingSelect7 && useingSelect8 !== '' && useingSelect9.length >= 10 && infoSelect1 && infoSelect2
                             ? <p className="nextBtn" onClick={clickFunction}>견적서 확인</p>
-                            : <p className="nonNextBtn">견적서 확인</p>
+                            : <p className="nonNextBtn" onClick={clickFunction}>견적서 확인</p>
                         }
 
                     </div>
