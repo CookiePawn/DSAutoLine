@@ -7,19 +7,53 @@ import { RightIcon } from './Icons';
 import { QuickDealCarCard_Popup } from '../components/PopUp';
 
 const clickFunction = async () => {
+    if (infoSelect1 && infoSelect2 && id && content) {
+        try {
+            await estimatedAddAxios({
+                car_code: id,
+                car_name: content.name,
+                enter: content.enter,
+                in_color: content.in_color,
+                out_color: content.out_color,
+                trim1: trimSelect1,
+                trim2: trimSelect2,
+                options: options.map(option => option.name),
+                method: useingSelect1,
+                period: useingSelect2,
+                deposit: useingSelect3,
+                deposit_price: useingSelect4,
+                payment_price: useingSelect5,
+                age: useingSelect6,
+                annual_mileage: useingSelect7,
+                name: useingSelect8,
+                phone: useingSelect9,
+                price: trimPrice + optionPrice,
+                type: "빠른 간편 문의/ 한정 특가"
+            });
 
-    if (window.wcs) {
-        if (!window.wcs_add) window.wcs_add = {};
-        window.wcs_add['wa'] = 's_54bd969202cb';//견적 및 상담신청하기
+            if (window.wcs) {
+                if (!window.wcs_add) window.wcs_add = {};
+                window.wcs_add['wa'] = 's_54bd969202cb'; // 견적 및 상담신청하기
 
-        const _conv = {
-            value: '10', // 원하는 전환 값
-            type: 'lead', // 전환 타입 설정
-        };
-        window.wcs.trans(_conv);
-        console.log('Naver conversion script executed');
+                const _conv = {
+                    value: '10', // 원하는 전환 값
+                    type: 'lead', // 전환 타입 설정
+                };
+                window.wcs.trans(_conv);
+                console.log('Naver conversion script executed');
+            }
+
+            setNextStat(true);
+            document.body.style.overflow = 'hidden';
+        } catch (error) {
+            console.error('Data submission failed:', error);
+            alert('서버에 문제가 발생했습니다. 다시 시도해주세요.');
+        }
+    } else {
+        alert('내용이 입력되지 않았습니다');
     }
-}
+};
+
 
 /**
  * 메인 페이지 - 한정 특가 상품 카드
@@ -69,7 +103,7 @@ export const HotDealCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -299,7 +333,7 @@ export const PopularCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price.toLocaleString()}</span>원</p>
             </span>
-            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -336,7 +370,7 @@ export const QuickCarCard = (props) => {
                 <p className='hotDealCardMonthPriceTitle'>차량가</p>
                 <p className='hotDealCardMonthPrice' style={{ marginLeft: 'auto' }}><span>{props.item.price && props.item.price.toLocaleString()}</span> 원</p>
             </span>
-            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
@@ -393,7 +427,7 @@ export const HotDealCarCard = (props) => {
                     <p>{props.item.deposit} 30%</p>
                 </span>
             </div>
-            <button onClick={clickFunction}>견적 및 상담 신청하기</button>
+            <button>견적 및 상담 신청하기</button>
         </div>
     )
 }
