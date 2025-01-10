@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../../styles/mobile/Mobile_Footer.css'
 import { Mobile_TermsofUsePopup, Mobile_TermsofInformationPopup } from "./Mobile_Popup";
+import NaverScript from '../components/NaverScript'; // NaverScript import
 
 
 const Mobile_Footer = (props) => {
@@ -11,6 +12,8 @@ const Mobile_Footer = (props) => {
         <>
             {termsUsePopup && <Mobile_TermsofUsePopup setPopup={setTermsUsePopup}/>}
             {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup}/>}
+            {/* 네이버 스크립트 */}
+            <NaverScript />
             <section className="mobile_footer_section">
                 <div className="mobile_footer_useInfoDiv">
                     <span>
