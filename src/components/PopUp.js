@@ -330,6 +330,39 @@ export const QuickDealCarCard_Popup = (props) => {
                     <button
                         className='Quick_apply'
                         onClick={async () => {
+
+                            const namePattern = /^[가-힣]{2,}$/; // 한글 2자 이상
+                            const phonePattern = /^010\d{8}$/; // '010'으로 시작하고 총 11자리
+                            const isRepeatingNumbers = (number) => {
+                                // 동일한 숫자가 8자리 반복되는 경우
+                                return /^(\d)\1{7}$/.test(number);
+                            };
+
+                            if (popupName.trim() === '') {
+                                alert('이름을 입력해주세요.');
+                                return;
+                            }
+
+                            if (!namePattern.test(popupName.trim())) {
+                                alert('이름은 한글 2자 이상으로 입력해주세요.');
+                                return;
+                            }
+
+                            if (popupNumber.trim() === '') {
+                                alert('전화번호를 입력해주세요.');
+                                return;
+                            }
+
+                            if (!phonePattern.test(popupNumber.trim())) {
+                                alert('전화번호는 "010"으로 시작하며 총 11자리여야 합니다.');
+                                return;
+                            }
+
+                            if (isRepeatingNumbers(popupNumber.trim().slice(3))) {
+                                alert('전화번호는 동일한 숫자를 반복할 수 없습니다.');
+                                return;
+                            }
+
                             if (popupName !== '' && popupNumber !== '' && infoSelect1 && infoSelect2) {
                                 await quickCounselingInsertAxios({
                                     car_code: props.item.car_code,
