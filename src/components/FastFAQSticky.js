@@ -46,6 +46,39 @@ const FastFAQSticky = (props) => {
     const clickFunction = async () => {
         if (infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') {
             try {
+
+                const namePattern = /^[가-힣]{2,}$/; // 한글 2자 이상
+                const phonePattern = /^010\d{8}$/; // '010'으로 시작하고 총 11자리
+                const isRepeatingNumbers = (number) => {
+                    // 동일한 숫자가 8자리 반복되는 경우
+                    return /^(\d)\1{7}$/.test(number);
+                };
+
+                if (name.trim() === '') {
+                    alert('이름을 입력해주세요.');
+                    return;
+                }
+
+                if (!namePattern.test(name.trim())) {
+                    alert('이름은 한글 2자 이상으로 입력해주세요.');
+                    return;
+                }
+
+                if (phone.trim() === '') {
+                    alert('전화번호를 입력해주세요.');
+                    return;
+                }
+
+                if (!phonePattern.test(phone.trim())) {
+                    alert('전화번호는 "010"으로 시작하며 총 11자리여야 합니다.');
+                    return;
+                }
+
+                if (isRepeatingNumbers(phone.trim().slice(3))) {
+                    alert('전화번호는 동일한 숫자를 반복할 수 없습니다.');
+                    return;
+                }
+
                 await fastFAQAxios({
                     name: name,
                     phone: phone,
