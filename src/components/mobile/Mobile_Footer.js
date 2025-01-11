@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../../styles/mobile/Mobile_Footer.css'
 import { Mobile_TermsofUsePopup, Mobile_TermsofInformationPopup } from "./Mobile_Popup";
-import NaverScript from '../components/NaverScript'; // NaverScript import
+import NaverScript from '../../components/NaverScript'; // NaverScript import
 
 
 const Mobile_Footer = (props) => {
