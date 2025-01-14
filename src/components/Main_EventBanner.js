@@ -140,6 +140,17 @@ const BannerSlider = () => {
                     window.wcs.trans(_conv);
                     console.log('Naver conversion script executed');
                 }
+
+                // Google Ads conversion script
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-16793145665/JOZVCIm3-IUaEMGizMc-',
+                        'value': 1.0,
+                        'currency': 'KRW',
+                    });
+                    console.log('Google Ads conversion script executed');
+                }
+
                 alert('상담 신청이 완료되었습니다.');
                 setCar('');
                 setName('');
