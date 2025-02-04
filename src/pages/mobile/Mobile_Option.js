@@ -369,6 +369,8 @@ const Mobile_Option = (props) => {
                             setUseingSelect9(onlyNums.slice(0, 11)); // 최대 11자 제한
                         }}
                         type="text"
+                        inputmode="numeric" 
+                        pattern="[0-9]*"
                         maxLength={11}
                     />
                 </span>
