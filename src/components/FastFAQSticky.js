@@ -143,11 +143,14 @@ const FastFAQSticky = (props) => {
                         <div>
                             <h4>연락처</h4>
                             <input 
-                                value={phone} 
-                                onChange={(e) => setPhone(e.target.value)} 
+                                value={phone}                                 
                                 maxLength={11} 
                                 placeholder='ex) 01012345678'
-                                type='number'
+                                type="text"
+                                onChange={(e) => {
+                                    const onlyNums = e.target.value.replace(/[^0-9]/g, ''); // 숫자만 허용
+                                    setPhone(onlyNums.slice(0, 11)); // 최대 11자 제한
+                                }}
                             />
                         </div>
                         <span>
