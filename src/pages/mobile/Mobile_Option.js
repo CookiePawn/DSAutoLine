@@ -361,7 +361,16 @@ const Mobile_Option = (props) => {
                 <h4>개인 정보</h4>
                 <span>
                     <input placeholder="이름을 적어주세요" value={useingSelect8} onChange={event => setUseingSelect8(event.target.value)} maxLength={10} />
-                    <input placeholder="연락처를 적어주세요" value={useingSelect9} onChange={event => setUseingSelect9(event.target.value)} type="number" maxLength={11} />
+                    <input
+                        placeholder="연락처를 적어주세요"
+                        value={useingSelect9}
+                        onChange={(e) => {
+                            const onlyNums = e.target.value.replace(/[^0-9]/g, ''); // 숫자만 허용
+                            setUseingSelect9(onlyNums.slice(0, 11)); // 최대 11자 제한
+                        }}
+                        type="text"
+                        maxLength={11}
+                    />
                 </span>
                 <div>
                     <span>
