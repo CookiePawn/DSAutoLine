@@ -136,7 +136,9 @@ export const Mobile_QuickDealCardPopup = (props) => {
                         <input
                             placeholder='ex) 01012345678'
                             value={number}
-                            type="text" 
+                            type="text"
+                            inputmode="numeric" 
+                            pattern="[0-9]*"
                             maxLength={11}
                             onChange={(e) => {
                                 const onlyNums = e.target.value.replace(/[^0-9]/g, ''); // 숫자만 허용
