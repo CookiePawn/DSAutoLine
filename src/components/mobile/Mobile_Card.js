@@ -70,7 +70,7 @@ export const Mobile_QuickDealCard = (props) => {
 
 export const Mobile_PopularCard = (props) => {
     return (
-        <div className="mobile_hotDealCard">
+        <div className="mobile_hotDealCard" onClick={() => window.location.href = `/Option/${props.item.car_code}`}>
             <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             <h4>{props.item.name}</h4>
             <p>{props.item.info}</p>
