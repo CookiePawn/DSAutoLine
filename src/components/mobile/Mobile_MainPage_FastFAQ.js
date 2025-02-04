@@ -77,7 +77,9 @@ const Mobile_MainPage_FastFAQ = (props) => {
             <input placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
             <input 
                 placeholder='연락처("-" 없이 입력)' 
-                type="text" 
+                type="text"
+                inputmode="numeric" 
+                pattern="[0-9]*"
                 maxLength={11} 
                 value={phone} 
                 onChange={(e) => {
