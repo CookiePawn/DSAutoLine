@@ -298,9 +298,12 @@ export const QuickDealCarCard_Popup = (props) => {
                         <input
                             placeholder='ex) 01012345678'
                             value={popupNumber}
-                            type='number'
-                            maxLength={11}
-                            onChange={(e) => setPopupnumber(e.target.value)}
+                            type="text"
+                            maxLength={11}                            
+                            onChange={(e) => {
+                                const onlyNums = e.target.value.replace(/[^0-9]/g, ''); // 숫자만 허용
+                                setPopupnumber(onlyNums.slice(0, 11)); // 최대 11자 제한
+                            }} 
                         />
                     </div>
                     <div className='QuickDeal_agree'>
