@@ -136,9 +136,12 @@ export const Mobile_QuickDealCardPopup = (props) => {
                         <input
                             placeholder='ex) 01012345678'
                             value={number}
-                            type='number'
+                            type="text" 
                             maxLength={11}
-                            onChange={(e) => setNumber(e.target.value)}
+                            onChange={(e) => {
+                                const onlyNums = e.target.value.replace(/[^0-9]/g, ''); // 숫자만 허용
+                                setNumber(onlyNums.slice(0, 11)); // 최대 11자 제한
+                            }}
                         />
                     </div>
                     <div className='QuickDeal_agree'>
