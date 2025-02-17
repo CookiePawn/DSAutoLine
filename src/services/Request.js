@@ -100,11 +100,11 @@ export const reviewAddAxios = async (data) => {
  * 빠른 간편 문의 페이지
  * @returns 
  */
-export const quickFAQAxios = async (entry, enter, category) => {
+export const quickFAQAxios = async (entry, enter, category, carcode) => {
     let response;
     try {
-        if (entry === null && enter === null && category === null) {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=&category=`)
+        if (entry === null && enter === null && category === null && carcode == null) {
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=&category=&carcode=`)
         } else if (category === '전체' && enter === 'all') {
             response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=`)
         } else if (category === '전체') {

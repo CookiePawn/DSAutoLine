@@ -29,7 +29,7 @@ export const Admin_QuickFAQEdit = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await quickFAQAxios(null, null, null)
+            const response = await quickFAQAxios(null, null, null, null)
             setCarList(response)
         }
         fetchData()
