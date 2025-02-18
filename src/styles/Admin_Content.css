@@ -154,6 +154,7 @@
 
 .admin_content_colorCardList {
     overflow-y: auto;
+    height: 498px;
 }
 
 /* 스크롤바 전체 */

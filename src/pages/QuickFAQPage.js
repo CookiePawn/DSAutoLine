@@ -22,7 +22,7 @@ const QuickFAQPage = (props) => {
     const categoryOrder = ['경차', '소형/승용', 'SUV', '스포츠카', '화물'];
 
     const fetchData = async (entry, enter, category) => {
-        const response1 = await quickFAQAxios(entry, enter, category)
+        const response1 = await quickFAQAxios(entry, enter, category, null)
         setQuickFAQList(response1.sort((a, b) => {
             // 먼저 category를 기준으로 정렬
             const categoryComparison = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
