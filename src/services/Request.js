@@ -106,13 +106,15 @@ export const quickFAQAxios = async (entry, enter, category, carcode) => {
         if (entry === null && enter === null && category === null && carcode == null) {
             response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=&category=&carcode=`)
         } else if (category === '전체' && enter === 'all') {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=`)
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=&carcode=`)
         } else if (category === '전체') {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=${enter}&category=`)
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=${enter}&category=&carcode=`)
         } else if (enter === 'all') {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=${category}`)
-        } else {
-            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=${enter}&category=${category}`)
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=&category=${category}&carcode=`)
+        } else if (entry === null && enter === null && category === null && carcode != null) {
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=&enter=&category=&carcode=${carcode}`)
+        }else {
+            response = await axios.get(`${dbServerUrl}/quickFAQ?entry=${entry}&enter=${enter}&category=${category}&carcode=`)
         }
         return response.data
     } catch (error) {
@@ -347,9 +349,33 @@ export const reviewDeleteAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
+/**
+ * 관리자 페이지 - 차량 코드의 옵션 로드 GET
+ * @returns 
+ */
+export const optionCarCodeGetAxios = async (car_code) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/car/option/${car_code}`)
+        return response.data
+    } catch (error) {
+        // console.log(error)
+    }
+}
 
+/**
+ * 관리자 페이지 - 차량 코드의 색상 로드 GET
+ * @returns 
+ */
+export const colorCarCodeGetAxios = async (car_code) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/car/color/${car_code}`)
+        return response.data
+    } catch (error) {
+        // console.log(error)
+    }
+}
 
 
 /**

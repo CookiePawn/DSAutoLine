@@ -15,6 +15,7 @@ import {
 import { imageResize4_3, generateRandomString } from '../utils/imageResize'
 import NoCardList from '../components/NoCardList'
 import Loading from "./Loading";
+import Admin_QuickFAQManage from "./Admin_QuickFAQManage"; // 수정 컴포넌트 추가
 
 
 
@@ -26,6 +27,8 @@ export const Admin_QuickFAQEdit = (props) => {
     const [carList, setCarList] = useState(null)
     const [filteredList, setFilteredList] = useState(null)
     const [searchValue, setSearchValue] = useState('');
+    const [selectedCar, setSelectedCar] = useState(null); // 선택한 차량 데이터 저장
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,6 +69,11 @@ export const Admin_QuickFAQEdit = (props) => {
             <Loading />
         )
     }
+
+    // 🚀 차량 수정 화면으로 전환
+    if (selectedCar) {
+        return <Admin_QuickFAQManage selectedCar={selectedCar} setSelectedCar={setSelectedCar} />;
+    }
     return (
         <div className="admin_content">
             <h2>빠른 간편 문의 <span>- 차량 관리</span></h2>
@@ -81,7 +89,12 @@ export const Admin_QuickFAQEdit = (props) => {
             <div className="admin_content_HotdealList">
                 {filteredList.length === 0 && <NoCardList card={'차량이'} />}
                 {filteredList.map((item, idx) => (
-                    <div className="admin_content_HotdealItem" key={item.id}>
+                    <div 
+                    className="admin_content_HotdealItem"
+                        key={item.id}
+                        onClick={() => setSelectedCar(item)} // 🚀 클릭 시 수정 화면으로 이동
+                        style={{ cursor: "pointer" }}
+                    >
                         <img
                             className="admin_content_hotdeal-image"
                             src={`${process.env.REACT_APP_IMG_URL}/${item.img}.png`}
