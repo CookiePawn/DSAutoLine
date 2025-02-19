@@ -668,12 +668,24 @@ export const carInsertAxios = async (data) => {
     }
 }
 
-
 /**
  * 관리자 페이지 - 차량 관리 수정
  * @returns 
  */
 export const carUpdateAxios = async (data) => {
+    try {
+        const response = await axios.post(`${dbServerUrl}/carUpdate`, data)
+        return response.data;
+    } catch (error) {
+        // console.log(error)
+    }
+}
+
+/**
+ * 관리자 페이지 - 차량 관리 수정
+ * @returns 
+ */
+export const quickCarUpdateAxios = async (data) => {
     try {
         const response = await axios.post(`${dbServerUrl}/quick/carUpdate`, data)
         return response.data;

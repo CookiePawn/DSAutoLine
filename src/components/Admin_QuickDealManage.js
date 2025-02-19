@@ -7,7 +7,7 @@ import {
     colorCarCodeGetAxios,
     quickOptionCarCodeGetAxios,
     optionGetAxios,
-    carUpdateAxios
+    quickCarUpdateAxios
 } from '../services/Request';
 import { imageResize4_3 } from '../utils/imageResize';
 import Loading from "./Loading";
@@ -115,7 +115,7 @@ const Admin_QuickDealManage = ({ selectedCar, setSelectedCar }) => {
             };
 
             console.log("🚀 백엔드로 전송할 데이터:", requestData);
-            const response = await carUpdateAxios(requestData);
+            const response = await quickCarUpdateAxios(requestData);
 
             if (response?.sc === 200) {
                 alert('🚀 차량 정보가 성공적으로 수정되었습니다!');
