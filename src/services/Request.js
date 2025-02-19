@@ -377,6 +377,19 @@ export const colorCarCodeGetAxios = async (car_code) => {
     }
 }
 
+/**
+ * 관리자 페이지 - 색상 로드 GET
+ * @returns 
+ */
+export const carDetailGetAxios = async (car_code) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/car/detail/model/${car_code}`)
+        return response.data
+    } catch (error) {
+        // console.log(error)
+    }
+} 
+
 
 /**
  * 관리자 페이지 - 색상 로드 GET
@@ -638,8 +651,21 @@ export const carInsertAxios = async (data) => {
     } catch (error) {
         // console.log(error)
     }
-} 
+}
 
+
+/**
+ * 관리자 페이지 - 차량 관리 수정
+ * @returns 
+ */
+export const carUpdateAxios = async (data) => {
+    try {
+        const response = await axios.post(`${dbServerUrl}/carUpdate`, data)
+        return response.data;
+    } catch (error) {
+        // console.log(error)
+    }
+}
 
 
 /**
