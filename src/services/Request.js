@@ -26,19 +26,21 @@ export const hotDealAxios = async () => {
  * 즉시 출고 페이지 데이터 요청
  * @returns 
  */
-export const quickDealAxios = async (entry, enter, category) => {
+export const quickDealAxios = async (entry, enter, category, carcode) => {
     let response;
     try {
-        if (entry === null && enter === null && category === null) {
-            response = await axios.get(`${dbServerUrl}/quickDeal?entry=&enter=&category=`)
+        if (entry === null && enter === null && category === null && carcode == null) {
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=&enter=&category=&carcode=`)
         } else if (category === '전체' && enter === 'all') {
-            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=&carcode=`)
         } else if (category === '전체') {
-            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=&carcode=`)
         } else if (enter === 'all') {
-            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=${category}`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=&category=${category}&carcode=`)
+        } else if (entry === null && enter === null && category === null && carcode != null) {
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=&enter=&category=&carcode=${carcode}`)
         } else {
-            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=${category}`)
+            response = await axios.get(`${dbServerUrl}/quickDeal?entry=${entry}&enter=${enter}&category=${category}&carcode=`)
         }
         return response.data
     } catch (error) {
@@ -355,6 +357,19 @@ export const reviewDeleteAxios = async (data) => {
  * 관리자 페이지 - 차량 코드의 옵션 로드 GET
  * @returns 
  */
+export const quickOptionCarCodeGetAxios = async (car_code) => {
+    try {
+        const response = await axios.get(`${dbServerUrl}/quick/option/${car_code}`)
+        return response.data
+    } catch (error) {
+        // console.log(error)
+    }
+}
+
+/**
+ * 관리자 페이지 - 차량 코드의 옵션 로드 GET
+ * @returns 
+ */
 export const optionCarCodeGetAxios = async (car_code) => {
     try {
         const response = await axios.get(`${dbServerUrl}/car/option/${car_code}`)
@@ -660,7 +675,7 @@ export const carInsertAxios = async (data) => {
  */
 export const carUpdateAxios = async (data) => {
     try {
-        const response = await axios.post(`${dbServerUrl}/carUpdate`, data)
+        const response = await axios.post(`${dbServerUrl}/quick/carUpdate`, data)
         return response.data;
     } catch (error) {
         // console.log(error)
