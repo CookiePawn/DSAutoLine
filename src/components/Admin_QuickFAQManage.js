@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../styles/Admin_Content.css';
 import '../styles/QuickFAQPage.css';
-import { quickFAQAxios, colorGetAxios, colorCarCodeGetAxios, optionCarCodeGetAxios, optionGetAxios, carUpdateAxios } from '../services/Request';
+import { quickFAQAxios, colorGetAxios, colorCarCodeGetAxios, optionCarCodeGetAxios, optionGetAxios, carDetailGetAxios, carUpdateAxios } from '../services/Request';
 import { imageResize4_3 } from '../utils/imageResize';
 import Loading from "./Loading";
 
@@ -16,6 +16,11 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
     const [FAQ_model, setFAQ_model] = useState("");
     const [FAQ_detailmodel, setFAQ_detailmodel] = useState("");
     const [FAQ_detailmodel_price, setFAQ_detailmodel_price] = useState("");
+    const [minFuel, setMinFuel] = useState(0);
+    const [maxFuel, setMaxFuel] = useState(0);
+    const [maxCC, setMaxCC] = useState(0)
+    const [minCC, setMinCC] = useState(0)
+    const [trims, setTrims] = useState([]);
     const [fuelTypes, setFuelTypes] = useState({
         gasoline: 0,
         diesel: 0,
@@ -65,6 +70,41 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
         }
     }, [carData]);
 
+    useEffect(() => {
+        const fetchTrims = async () => {
+            try {
+                const carDetailResponse = await carDetailGetAxios(selectedCar.car_code);                
+                setTrims(carDetailResponse);
+            } catch (error) {
+                console.error("❌ 트림 데이터 불러오기 오류:", error);
+            }
+        };
+
+        fetchTrims();
+    }, []);
+
+    const handleUpdateModel = () => {
+        if (!FAQ_model || !FAQ_detailmodel || !FAQ_detailmodel_price) {
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+    
+        const newTrim = {
+            seq: Date.now(), // 임시 고유 값 (DB 저장 후 업데이트 필요)
+            trim1: FAQ_model,
+            trim2: FAQ_detailmodel,
+            price: FAQ_detailmodel_price
+        };
+    
+        setTrims([...trims, newTrim]);
+    
+        // 입력 필드 초기화
+        setFAQ_model('');
+        setFAQ_detailmodel('');
+        setFAQ_detailmodel_price('');
+    };
+    
+
     // ✅ 색상 및 옵션 데이터 불러오기
     useEffect(() => {
         const fetchOptionsAndColors = async () => {
@@ -72,8 +112,6 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                 // 전체 색상 리스트 가져오기
                 const colorResponse = await colorGetAxios();
                 setColorList(colorResponse);
-
-                console.log("selectedCar:", JSON.stringify(selectedCar, null, 2));
 
                 // 현재 차량에 선택된 색상 불러오기
                 if (selectedCar) {                    
@@ -101,20 +139,72 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
     // ✅ 차량 데이터 업데이트 핸들러
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setCarData(prev => ({ ...prev, [name]: value }));
+        
+        setCarData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
+    
 
     // ✅ 차량 수정 저장
-    // const handleSave = async () => {
-    //     try {
-    //         await carUpdateAxios({ ...carData, ...fuelTypes });
-    //         alert('🚀 차량 정보가 수정되었습니다!');
-    //         setSelectedCar(null); // 수정 완료 후 목록으로 돌아가기
-    //     } catch (error) {
-    //         console.error("❌ Error updating car data:", error);
-    //         alert("수정 중 오류가 발생했습니다.");
-    //     }
-    // };
+    const handleSave = async () => {
+        if (!carData) {
+            alert("차량 데이터를 확인해주세요.");
+            return;
+        }
+    
+        try {
+            const requestData = {
+                car_code: selectedCar.car_code,
+                name: carData.name,
+                img: carData.img,
+                price: carData.price,
+                year: carData.year,
+                month: carData.month,
+                fuelTypes: {
+                    gasoline: fuelTypes["가솔린"] ? 1 : 0,
+                    diesel: fuelTypes["디젤"] ? 1 : 0,
+                    lpg: fuelTypes["LPG"] ? 1 : 0,
+                    hybrid: fuelTypes["하이브리드"] ? 1 : 0,
+                    electric: fuelTypes["전기"] ? 1 : 0,
+                    h2: fuelTypes["수소"] ? 1 : 0
+                },
+                trims,
+                colors: carSelectedColors.map(color => ({
+                    name: color.name,  // ✅ 색상명 추가
+                    rgb: color.rgb     // ✅ 색상 코드 추가
+                })),
+                options: optionSelectedList.map(option => ({
+                    id: option.id,
+                    name: option.name,
+                    price: option.price
+                })),
+                minFuelEfficiency: carData.min_fuel_efficiency || 0,
+                maxFuelEfficiency: carData.max_fuel_efficiency || 0,
+                minCC: carData.min_cc || 0,
+                maxCC: carData.max_cc || 0,
+            };
+    
+            console.log("🚀 백엔드로 전송할 데이터:", requestData);
+    
+            // ✅ 백엔드 API 호출 (차량 정보 업데이트)
+            const response = await carUpdateAxios(requestData);
+    
+            console.log("🔥 백엔드 응답:", response);
+    
+            if (response?.sc === 200) {
+                alert('🚀 차량 정보가 성공적으로 수정되었습니다!');
+                setSelectedCar(null);
+            } else {
+                console.error("⚠️ 백엔드 응답 오류:", response.data);
+                throw new Error("백엔드 응답 오류");
+            }
+        } catch (error) {
+            console.error("❌ 차량 수정 중 오류 발생:", error.response?.data || error.message);
+            alert("수정 중 오류가 발생했습니다.");
+        }
+    };    
 
     return (
         <div className="admin_content">
@@ -131,7 +221,7 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                 />
 
                 <h3>차량 사진</h3>
-                {carData.img && <img src={`${process.env.REACT_APP_IMG_URL}/${carData.img}.png`} alt="차량 이미지" />}
+                {carData.img && <img src={`${process.env.REACT_APP_IMG_URL}/${carData.img}.png`} style={{ width: '500px'}} alt="차량 이미지" />}
                 <input
                     type="file"
                     accept="image/*"
@@ -181,6 +271,55 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                             {type.toUpperCase()}
                         </button>
                     ))}
+                </div>
+
+                <div className="admin_content_FAQ_newcar_bodySection">
+                    <div className="admin_content_FAQ_newcar_PriceSection">
+                        <h3>연비</h3>
+                        <div className="admin_content_FAQ_MAXMINSection">
+                            <p>최소</p>
+                            <input
+                                name="min_fuel_efficiency"
+                                placeholder="입력해주세요."
+                                type="number"
+                                value={carData.min_fuel_efficiency || ""}
+                                onChange={handleInputChange}
+                            />
+                            <p>~</p>
+                            <p>최대</p>
+                            <input
+                                name="max_fuel_efficiency"
+                                placeholder="입력해주세요."
+                                type="number"
+                                value={carData.max_fuel_efficiency || ""}
+                                onChange={handleInputChange}
+                            />
+                            <p>km/L</p>
+                        </div>
+                    </div>
+                    <div className="admin_content_FAQ_newcar_PriceSection">
+                        <h3>배기</h3>
+                        <div className="admin_content_FAQ_MAXMINSection">
+                            <p>최소 </p>
+                            <input
+                                name="min_cc"
+                                placeholder="입력해주세요."
+                                type="number"
+                                value={carData.min_cc || ""}
+                                onChange={handleInputChange}
+                            />
+                            <p>~ </p>
+                            <p>최대 </p>
+                            <input
+                                name="max_cc"
+                                placeholder="입력해주세요."
+                                type="number"
+                                value={carData.max_cc || ""}
+                                onChange={handleInputChange}
+                            />
+                            <p> CC</p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* ✅ 외장 색상 UI 적용 */}
@@ -238,6 +377,23 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                     </span>
                 </div>
 
+                <div className="admin_content_FAQ_add_model">
+                {trims.map((model, index) => (
+                    <div 
+                        key={model.seq} 
+                        style={{ borderBottom: "1px solid #dbdbdb", maxWidth: 1000, padding: "10px 0" }}
+                    >
+                        <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>
+                            삭제
+                        </button>
+                        <h4>
+                            {model.trim1} <span>/</span> {model.trim2} <br />
+                            <span>-</span> {parseInt(model.price).toLocaleString()} 원
+                        </h4>
+                    </div>
+                ))}
+                </div>
+
                 {/* ✅ 세부 모델 (트림) 수정 */}
                 <h3 style={{ marginTop: 150 }}>세부모델 수정</h3>
                 <div className="admin_content_FAQ_detail_Section_input">
@@ -261,6 +417,7 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                     />
                     <p>원</p>    
                 </div>
+                <button className="admin_content_FAQ_add_modelOptionList" onClick={handleUpdateModel}>세부모델 추가하기</button>
                 
                 
                 <div className="admin_content_FAQ_ColorAddDiv">
@@ -322,9 +479,7 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                     </span>
                 </div>
 
-                {/* <button className="admin_content_FAQ_alladd_addbutton" onClick={handleSave}>
-                    수정 완료
-                </button> */}
+                <button className="admin_content_FAQ_alladd_addbutton" onClick={handleSave}>수정 완료</button>
             </div>
         </div>
     );
