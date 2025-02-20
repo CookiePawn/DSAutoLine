@@ -89,14 +89,16 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
             return;
         }
     
-        const newTrim = {
-            seq: Date.now(), // 임시 고유 값 (DB 저장 후 업데이트 필요)
+        // 선택된 옵션 리스트 기준으로 각각의 옵션마다 세부 모델 생성
+        const newTrims = optionSelectedList.map(option => ({
+            seq: Date.now() + Math.random(), // 임시 고유 값
             trim1: FAQ_model,
             trim2: FAQ_detailmodel,
-            price: FAQ_detailmodel_price
-        };
-    
-        setTrims([...trims, newTrim]);
+            price: FAQ_detailmodel_price,
+            name: option.name // 옵션명을 model.name에 저장
+        }));
+
+        setTrims([...trims, ...newTrims]);
     
         // 입력 필드 초기화
         setFAQ_model('');
@@ -390,6 +392,9 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                             {model.trim1} <span>/</span> {model.trim2} <br />
                             <span>-</span> {parseInt(model.price).toLocaleString()} 원
                         </h4>
+                        <span>
+                            <p>{model.name}</p>
+                        </span>
                     </div>
                 ))}
                 </div>
