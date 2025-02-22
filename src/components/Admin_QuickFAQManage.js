@@ -30,6 +30,8 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
         h2: 0
     });
 
+    const [selectedTrims, setSelectedTrims] = useState([]); // ✅ 선택된 트림 관리
+
     // ✅ 선택한 차량 데이터 불러오기
     useEffect(() => {
         if (selectedCar) {
@@ -380,11 +382,41 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                 </div>
 
                 <div className="admin_content_FAQ_add_model">
+                {/* ✅ 전체 선택 체크박스 추가 */}
+                <div style={{ marginBottom: "10px" }}>
+                    <input
+                        type="checkbox"
+                        checked={trims.length > 0 && selectedTrims.length === trims.length}
+                        onChange={(e) => {
+                            if (e.target.checked) {
+                                setSelectedTrims(trims.map(trim => trim.seq));
+                            } else {
+                                setSelectedTrims([]);
+                            }
+                        }}
+                    />
+                    <label style={{ marginLeft: "5px" }}>전체 선택</label>
+                </div>
+
                 {trims.map((model, index) => (
                     <div 
                         key={model.seq} 
-                        style={{ borderBottom: "1px solid #dbdbdb", maxWidth: 1000, padding: "10px 0" }}
+                        style={{ borderBottom: "1px solid #dbdbdb", maxWidth: 1000, padding: "10px 0", display: "flex", alignItems: "center" }}
                     >
+                        {/* ✅ 개별 선택 체크박스 추가 */}
+                        <input 
+                            type="checkbox" 
+                            checked={selectedTrims.includes(model.seq)} 
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setSelectedTrims([...selectedTrims, model.seq]);
+                                } else {
+                                    setSelectedTrims(selectedTrims.filter(seq => seq !== model.seq));
+                                }
+                            }}
+                            style={{ marginRight: "10px" }}
+                        />
+
                         <button onClick={() => setTrims(trims.filter((_, i) => i !== index))}>
                             삭제
                         </button>
@@ -397,7 +429,20 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
                         </span>
                     </div>
                 ))}
-                </div>
+
+                {/* ✅ 선택 삭제 버튼 추가 */}
+                {selectedTrims.length > 0 && (
+                    <button 
+                        onClick={() => {
+                            setTrims(trims.filter(trim => !selectedTrims.includes(trim.seq)));
+                            setSelectedTrims([]); // 선택 초기화
+                        }}
+                        style={{ marginTop: "10px", backgroundColor: "red", color: "white", padding: "5px 10px", border: "none", borderRadius: "5px" }}
+                    >
+                        선택 삭제
+                    </button>
+                )}
+            </div>
 
                 {/* ✅ 세부 모델 (트림) 수정 */}
                 <h3 style={{ marginTop: 150 }}>세부모델 수정</h3>
