@@ -139,34 +139,33 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
     }, []);
 
     // 1. 그룹화 함수 추가
-// 1. 그룹화 함수 수정
-const groupByTrimAndPrice = (array) => {
-    return array.reduce((result, current) => {
-        // trim1, trim2, price가 모두 같은 그룹 찾기
-        const existingGroup = result.find(group => 
-            group.trim1 === current.trim1 && 
-            group.trim2 === current.trim2 && 
-            group.price === current.price
-        );
+    const groupByTrimAndPrice = (array) => {
+        return array.reduce((result, current) => {
+            // trim1, trim2, price가 모두 같은 그룹 찾기
+            const existingGroup = result.find(group => 
+                group.trim1 === current.trim1 && 
+                group.trim2 === current.trim2 && 
+                group.price === current.price
+            );
 
-        if (existingGroup) {
-            // 기존 그룹에 name 추가
-            existingGroup.names.push(current.name);
-        } else {
-            // 새로운 그룹 생성
-            result.push({
-                seq: current.seq,
-                trim1: current.trim1,
-                trim2: current.trim2,
-                price: current.price,
-                names: [current.name]
-            });
-        }
-        return result;
-    }, []);
-};
+            if (existingGroup) {
+                // 기존 그룹에 name 추가
+                existingGroup.names.push(current.name);
+            } else {
+                // 새로운 그룹 생성
+                result.push({
+                    seq: current.seq,
+                    trim1: current.trim1,
+                    trim2: current.trim2,
+                    price: current.price,
+                    names: [current.name]
+                });
+            }
+            return result;
+        }, []);
+    };
 
-const groupedTrims = groupByTrimAndPrice(trims);
+    const groupedTrims = groupByTrimAndPrice(trims);
 
 
     if (!carData) return <Loading />;
@@ -430,43 +429,43 @@ const groupedTrims = groupByTrimAndPrice(trims);
                 </div>
 
                 {/* 2. 렌더링 부분 수정*/}                
-{groupedTrims.map((model, index) => (
-    <div 
-        key={model.seq} 
-        style={{ borderBottom: "1px solid #dbdbdb", maxWidth: 1000, padding: "10px 0", display: "flex", alignItems: "center" }}
-    >
-        {/* ✅ 개별 선택 체크박스 추가 */}
-        <input 
-            type="checkbox" 
-            checked={selectedTrims.includes(model.seq)} 
-            onChange={(e) => {
-                if (e.target.checked) {
-                    setSelectedTrims([...selectedTrims, model.seq]);
-                } else {
-                    setSelectedTrims(selectedTrims.filter(seq => seq !== model.seq));
-                }
-            }}
-            style={{ marginRight: "10px" }}
-        />
+                {groupedTrims.map((model, index) => (
+                    <div 
+                        key={model.seq} 
+                        style={{ borderBottom: "1px solid #dbdbdb", maxWidth: 1000, padding: "10px 0", display: "flex", alignItems: "center" }}
+                    >
+                        {/* ✅ 개별 선택 체크박스 추가 */}
+                        <input 
+                            type="checkbox" 
+                            checked={selectedTrims.includes(model.seq)} 
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setSelectedTrims([...selectedTrims, model.seq]);
+                                } else {
+                                    setSelectedTrims(selectedTrims.filter(seq => seq !== model.seq));
+                                }
+                            }}
+                            style={{ marginRight: "10px" }}
+                        />
 
-        <button onClick={() => setTrims(trims.filter((trim) => 
-            trim.trim1 !== model.trim1 || 
-            trim.trim2 !== model.trim2 || 
-            trim.price !== model.price
-        ))}>
-            삭제
-        </button>
-        <h4>
-            {model.trim1} <span>/</span> {model.trim2} <br />
-            <span>-</span> {parseInt(model.price).toLocaleString()} 원
-        </h4>
-        <span>
-            {model.names.map((name, idx) => (
-                <p key={idx}>{name}</p>
-            ))}
-        </span>
-    </div>
-))}
+                        <button onClick={() => setTrims(trims.filter((trim) => 
+                            trim.trim1 !== model.trim1 || 
+                            trim.trim2 !== model.trim2 || 
+                            trim.price !== model.price
+                        ))}>
+                            삭제
+                        </button>
+                        <h4>
+                            {model.trim1} <span>/</span> {model.trim2} <br />
+                            <span>-</span> {parseInt(model.price).toLocaleString()} 원
+                        </h4>
+                        <span>
+                            {model.names.map((name, idx) => (
+                                <p key={idx}>{name}</p>
+                            ))}
+                        </span>
+                    </div>
+                ))}
 
 
                 {/* ✅ 선택 삭제 버튼 추가 */}
