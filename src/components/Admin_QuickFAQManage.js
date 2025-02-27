@@ -128,8 +128,10 @@ const Admin_QuickFAQManage = ({ selectedCar, setSelectedCar }) => {
 
                 // 현재 차량에 선택된 옵션 불러오기
                 if (selectedCar) {                    
-                    const optionResponse = await optionCarCodeGetAxios(selectedCar.car_code);
-                    setOptionSelectedList(optionResponse);
+                    // const optionResponse = await optionCarCodeGetAxios(selectedCar.car_code);
+                    // setOptionSelectedList(optionResponse);
+                    // 🔽 수정: 미리 선택된 상태가 없도록 빈 배열로 초기화
+                    setOptionSelectedList([]);
                 }
             } catch (error) {
                 console.error("❌ Error fetching options or colors:", error);
