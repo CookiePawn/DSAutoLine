@@ -43,7 +43,7 @@ function PopupWindow() {
           rel="noopener noreferrer"
         >
           <img
-            src={require('../assets/img/advertisement.png')} // 광고 이미지 경로
+            src={require('../assets/img/new_advertisement.png')} // 광고 이미지 경로
             alt="광고 팝업"
             className="advertisement-img"
           />
