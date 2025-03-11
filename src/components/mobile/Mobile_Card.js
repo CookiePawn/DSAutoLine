@@ -121,7 +121,7 @@ export const Mobile_QuickFAQPageCard = (props) => {
             </div>
             <img src={`${process.env.REACT_APP_IMG_URL}/${props.item.img}.png`} />
             <h4>{props.item.name}</h4>
-            <p>{props.item.year}.{props.item.month} 년식 · {props.item.category} · {props.item.electric === 1 ? props.item.max_cc + 'Km' : props.item.min_fuel_efficiency + '~' + props.item.max_fuel_efficiency + 'Km/L'}</p>
+            <p>{props.item.year}.{props.item.month} 년형 · {props.item.category} · {props.item.electric === 1 ? props.item.max_cc + 'Km' : props.item.min_fuel_efficiency + '~' + props.item.max_fuel_efficiency + 'Km/L'}</p>
             <span>
                 <p>차량가</p><p><span></span> {props.item.price.toLocaleString()}<span>원</span></p>
             </span>
