@@ -10,17 +10,17 @@ const Mobile_MainPage_FastFAQ = (props) => {
     const [car, setCar] = useState('');
 
     const clickFunction = async () => {
-        if (window.wcs) {
-			if (!window.wcs_add) window.wcs_add = {};
-			window.wcs_add['wa'] = 's_54bd969202cb';//우측 상담 신청하기(모바일)
+        // if (window.wcs) {
+		// 	if (!window.wcs_add) window.wcs_add = {};
+		// 	window.wcs_add['wa'] = 's_54bd969202cb';//우측 상담 신청하기(모바일)
 
-			const _conv = {
-				value: '100', // 원하는 전환 값
-				type: 'lead', // 전환 타입 설정
-			};
-			window.wcs.trans(_conv);
-			console.log('Naver conversion script executed');
-		}
+		// 	const _conv = {
+		// 		value: '100', // 원하는 전환 값
+		// 		type: 'lead', // 전환 타입 설정
+		// 	};
+		// 	window.wcs.trans(_conv);
+		// 	console.log('Naver conversion script executed');
+		// }
 
         if (infoSelect1 && infoSelect2 && name !== '' && phone !== '' && car !== '') {
 
@@ -63,28 +63,28 @@ const Mobile_MainPage_FastFAQ = (props) => {
             });
 
             // Google Ads conversion script
-            if (typeof window.gtag === 'function') {
-                window.gtag('event', 'conversion', {
-                    'send_to': 'AW-16793145665/JOZVCIm3-IUaEMGizMc-',
-                    'value': 1.0,
-                    'currency': 'KRW',
-                });
-                console.log('Google Ads conversion script executed');
-            } else {
-                console.warn('Google Ads gtag function is not available');
-            }
+            // if (typeof window.gtag === 'function') {
+            //     window.gtag('event', 'conversion', {
+            //         'send_to': 'AW-16793145665/JOZVCIm3-IUaEMGizMc-',
+            //         'value': 1.0,
+            //         'currency': 'KRW',
+            //     });
+            //     console.log('Google Ads conversion script executed');
+            // } else {
+            //     console.warn('Google Ads gtag function is not available');
+            // }
 
             // ✅ Google Ads 페이지 로드 이벤트 스니펫 추가 ✅
-            if (typeof window.gtag === 'function') {
-                window.gtag('event', 'conversion', {
-                    'send_to': 'AW-16851989347/mZMrCLqwgJkaEOPm0-M-',
-                    'value': 1.0,
-                    'currency': 'KRW',
-                });
-                console.log('Google Ads page load conversion script executed');
-            } else {
-                console.warn('Google Ads page load gtag function is not available');
-            }
+            // if (typeof window.gtag === 'function') {
+            //     window.gtag('event', 'conversion', {
+            //         'send_to': 'AW-16851989347/mZMrCLqwgJkaEOPm0-M-',
+            //         'value': 1.0,
+            //         'currency': 'KRW',
+            //     });
+            //     console.log('Google Ads page load conversion script executed');
+            // } else {
+            //     console.warn('Google Ads page load gtag function is not available');
+            // }
 
             alert('상담 신청이 완료되었습니다')
             setCar('')

@@ -160,41 +160,41 @@ const OptionPage = (props) => {
                 });
     
                 // 네이버 전환 스크립트 호출
-                if (window.wcs) {
-                    if (!window.wcs_add) window.wcs_add = {};
-                    window.wcs_add['wa'] = 's_54bd969202cb'; // 전환 ID 설정
+                // if (window.wcs) {
+                //     if (!window.wcs_add) window.wcs_add = {};
+                //     window.wcs_add['wa'] = 's_54bd969202cb'; // 전환 ID 설정
     
-                    const conversionData = {
-                        value: '10', // 전환 값 설정
-                        type: 'lead' // 전환 타입 설정
-                    };
-                    window.wcs.trans(conversionData);
-                    console.log('Naver conversion script executed');
-                }
+                //     const conversionData = {
+                //         value: '10', // 전환 값 설정
+                //         type: 'lead' // 전환 타입 설정
+                //     };
+                //     window.wcs.trans(conversionData);
+                //     console.log('Naver conversion script executed');
+                // }
 
                 // Google Ads conversion script
-                if (typeof window.gtag === 'function') {
-                    window.gtag('event', 'conversion', {
-                        'send_to': 'AW-16793145665/JOZVCIm3-IUaEMGizMc-',
-                        'value': 1.0,
-                        'currency': 'KRW',
-                    });
-                    console.log('Google Ads conversion script executed');
-                } else {
-                    console.warn('Google Ads gtag function is not available');
-                }
+                // if (typeof window.gtag === 'function') {
+                //     window.gtag('event', 'conversion', {
+                //         'send_to': 'AW-16793145665/JOZVCIm3-IUaEMGizMc-',
+                //         'value': 1.0,
+                //         'currency': 'KRW',
+                //     });
+                //     console.log('Google Ads conversion script executed');
+                // } else {
+                //     console.warn('Google Ads gtag function is not available');
+                // }
 
                 // ✅ Google Ads 페이지 로드 이벤트 스니펫 추가 ✅
-                if (typeof window.gtag === 'function') {
-                    window.gtag('event', 'conversion', {
-                        'send_to': 'AW-16851989347/mZMrCLqwgJkaEOPm0-M-',
-                        'value': 1.0,
-                        'currency': 'KRW',
-                    });
-                    console.log('Google Ads page load conversion script executed');
-                } else {
-                    console.warn('Google Ads page load gtag function is not available');
-                }
+                // if (typeof window.gtag === 'function') {
+                //     window.gtag('event', 'conversion', {
+                //         'send_to': 'AW-16851989347/mZMrCLqwgJkaEOPm0-M-',
+                //         'value': 1.0,
+                //         'currency': 'KRW',
+                //     });
+                //     console.log('Google Ads page load conversion script executed');
+                // } else {
+                //     console.warn('Google Ads page load gtag function is not available');
+                // }
     
                 // 성공 메시지 및 리디렉션
                 alert('견적서 신청이 완료되었습니다.');
