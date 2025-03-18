@@ -19,7 +19,7 @@ const Footer = (props) => {
     return (
         <footer className='footerSection'>
             {/* 네이버 스크립트 */}
-            <NaverScript />
+            {/* <NaverScript /> */}
 
             <div>
                 <span>

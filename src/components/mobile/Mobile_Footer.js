@@ -13,7 +13,7 @@ const Mobile_Footer = (props) => {
             {termsUsePopup && <Mobile_TermsofUsePopup setPopup={setTermsUsePopup}/>}
             {termsInfoPopup && <Mobile_TermsofInformationPopup setPopup={setTermsInfoPopup}/>}
             {/* 네이버 스크립트 */}
-            <NaverScript />
+            {/* <NaverScript /> */}
             <section className="mobile_footer_section">
                 <div className="mobile_footer_useInfoDiv">
                     <span>
